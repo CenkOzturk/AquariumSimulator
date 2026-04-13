@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 
 @Composable
-fun FishUi(fish: FishModel) {
+fun FishView(fish: FishModel) {
     Image(
         painter = painterResource(fish.resId),
         contentDescription = null,

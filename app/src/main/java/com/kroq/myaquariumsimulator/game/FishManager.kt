@@ -10,7 +10,7 @@ object FishManager {
 
     fun init() {
         fishes.clear()
-        fishes.addAll(FishDatabase.getInitialFishes())
+        fishes.addAll(FishDatabase.getInitialFishes().filter { it.visible })
     }
 
     fun update(
@@ -21,10 +21,10 @@ object FishManager {
         }
     }
 
-    /*fun setVisible(id: Int, value: Boolean) {
+    fun setVisible(id: Int, value: Boolean) {
         val index = fishes.indexOfFirst { it.id == id }
         if (index != -1) {
             fishes[index] = fishes[index].copy(visible = value)
         }
-    }*/
+    }
 }

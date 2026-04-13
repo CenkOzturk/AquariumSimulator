@@ -6,29 +6,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.FishManager
+import com.kroq.myaquariumsimulator.ui.component.AquariumView
+import com.kroq.myaquariumsimulator.ui.component.Background
 import kotlinx.coroutines.delay
 
 @Composable
 fun GameScreen() {
-
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.toFloat()
     val screenHeight = configuration.screenHeightDp.toFloat()
 
-    // 🟦 AQUARIUM BOUNDS (BURASI DOĞRU YER)
-    val aquariumWidth = screenWidth * 0.40f
-    val aquariumHeight = screenHeight * 0.40f
+    AquariumManager.init(screenWidth, screenHeight)
 
-    val offsetX = (screenWidth - aquariumWidth) / 2f
-    val offsetY = (screenHeight - aquariumHeight) / 2f
-
-    LaunchedEffect(Unit) {
+    LaunchedEffect(screenWidth, screenHeight) {
         FishManager.init()
 
-        while (true) {
-            FishManager.update(aquariumWidth, aquariumHeight)
-            delay(16)
+        AquariumManager.currentAquarium?.let { currentAquarium ->
+            while (true) {
+                FishManager.update(
+                    currentAquarium.width,
+                    currentAquarium.height
+                )
+                delay(16)
+            }
         }
     }
 
@@ -36,11 +38,8 @@ fun GameScreen() {
 
         Background()
 
-        Aquarium(
-            offsetX = offsetX,
-            offsetY = offsetY,
-            width = aquariumWidth,
-            height = aquariumHeight
-        )
+        AquariumManager.currentAquarium?.let {
+            AquariumView(it)
+        }
     }
 }
