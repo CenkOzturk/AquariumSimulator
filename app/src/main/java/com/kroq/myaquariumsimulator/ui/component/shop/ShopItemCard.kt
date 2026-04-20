@@ -1,6 +1,7 @@
 package com.kroq.myaquariumsimulator.ui.component.shop
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -19,21 +20,25 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 @Composable
-fun ShopItemCard() {
-
+fun ShopItemCard(
+    item: ShopItem,
+    onClick: () -> Unit
+) {
     Box(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(6.dp)
             .aspectRatio(1f)
-            .clip(RoundedCornerShape(16.dp)) // 🔥 EKLEDİK
+            .clip(RoundedCornerShape(18.dp)) // 🔥 ripple fix
             .background(Color.White)
+            .border(2.dp, Color.Transparent, RoundedCornerShape(18.dp))
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(bounded = true)
-            ) {  }
-            .padding(8.dp)
+            ) { onClick() }
+            .padding(10.dp)
     ) {
 
         Column(
@@ -41,11 +46,24 @@ fun ShopItemCard() {
             verticalArrangement = Arrangement.SpaceBetween
         ) {
 
-            Text("🐟", fontSize = 28.sp)
+            // 🔹 ICON
+            Text(
+                text = item.icon,
+                fontSize = 28.sp
+            )
 
-            Text("Rare", fontSize = 12.sp)
+            // 🔹 TITLE
+            Text(
+                text = item.title,
+                fontSize = 13.sp
+            )
 
-            Text("120 💰", fontSize = 12.sp)
+            // 🔹 PRICE
+            Text(
+                text = "${item.price} 💰",
+                fontSize = 12.sp,
+                color = Color.Gray
+            )
         }
     }
 }

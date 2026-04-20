@@ -1,5 +1,7 @@
 package com.kroq.myaquariumsimulator.model.aquarium
 
+import com.kroq.myaquariumsimulator.model.shop.ShopItem
+
 enum class AquariumType {
     SMALL,
     MEDIUM,
@@ -39,5 +41,13 @@ fun createAquarium(
             height = screenHeight * 0.7f,
             color = 0xFF1D6FA5
         )
+    }
+}
+
+fun AquariumType.toShopItem(): ShopItem {
+    return when (this) {
+        AquariumType.SMALL -> ShopItem(0, "Small", 5, "🧪")
+        AquariumType.MEDIUM -> ShopItem(1, "Medium", 10, "🧪")
+        AquariumType.LARGE -> ShopItem(2, "Large", 20, "🧪")
     }
 }

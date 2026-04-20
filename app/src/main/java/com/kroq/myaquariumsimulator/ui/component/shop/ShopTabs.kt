@@ -8,25 +8,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
-enum class ShopTab {
-    FISH, AQUARIUM, ITEMS
-}
 
 @Composable
-fun ShopTabs() {
-
-    var selected by remember { mutableStateOf(ShopTab.FISH) }
+fun ShopTabs(
+    selected: ShopTab,
+    onTabSelected: (ShopTab) -> Unit
+) {
 
     Row(
         modifier = Modifier
@@ -43,11 +37,8 @@ fun ShopTabs() {
                     .weight(1f)
                     .padding(4.dp)
                     .clip(RoundedCornerShape(50))
-                    .clickable { selected = tab }
-                    .background(
-                        if (isSelected) Color.White else Color.Transparent,
-                        RoundedCornerShape(50)
-                    )
+                    .background(if (isSelected) Color.White else Color.Transparent)
+                    .clickable { onTabSelected(tab) }
                     .padding(vertical = 10.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -56,8 +47,7 @@ fun ShopTabs() {
                         ShopTab.FISH -> "🐟 Fish"
                         ShopTab.AQUARIUM -> "🧪 Tank"
                         ShopTab.ITEMS -> "🧱 Items"
-                    },
-                    fontSize = 14.sp
+                    }
                 )
             }
         }

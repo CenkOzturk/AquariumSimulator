@@ -1,5 +1,6 @@
 package com.kroq.myaquariumsimulator.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,8 +16,10 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.FishManager
+import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.ui.component.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.Background
+import com.kroq.myaquariumsimulator.ui.component.ConfirmPopup
 import com.kroq.myaquariumsimulator.ui.component.ShopPopup
 import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
 import kotlinx.coroutines.delay
@@ -28,20 +31,20 @@ fun GameScreen() {
     val screenHeight = configuration.screenHeightDp.toFloat()
 
     var isShopOpen by remember { mutableStateOf(false) }
+    var selectedTankState by remember {mutableStateOf(AquariumType.SMALL)}
+    var showConfirm by remember { mutableStateOf(false) }
 
     AquariumManager.init(screenWidth, screenHeight)
+    FishManager.init()
+    val aquarium = AquariumManager.currentAquarium ?: return
 
-    LaunchedEffect(screenWidth, screenHeight) {
-        FishManager.init()
-
-        AquariumManager.currentAquarium?.let { currentAquarium ->
-            while (true) {
-                FishManager.update(
-                    currentAquarium.width,
-                    currentAquarium.height
-                )
-                delay(16)
-            }
+    LaunchedEffect(aquarium.width, aquarium.height) {
+        while (true) {
+            FishManager.update(
+                aquarium.width,
+                aquarium.height
+            )
+            delay(16)
         }
     }
 
@@ -49,9 +52,7 @@ fun GameScreen() {
 
         Background()
 
-        AquariumManager.currentAquarium?.let {
-            AquariumView(it)
-        }
+        AquariumView(aquarium)
 
         ShopButton(
             onClick = { isShopOpen = true },
@@ -62,7 +63,27 @@ fun GameScreen() {
 
         if (isShopOpen) {
             ShopPopup(
-                onClose = { isShopOpen = false }
+                onClose = { isShopOpen = false },
+                onTankSelected = { selectedTank ->
+                    selectedTankState = selectedTank
+                    showConfirm = true
+                }
+            )
+        }
+
+        if (showConfirm) {
+            ConfirmPopup(
+                onNo = { showConfirm = false },
+                onYes = {
+                    AquariumManager.upgrade(
+                        type = selectedTankState,
+                        screenWidth = screenWidth,
+                        screenHeight = screenHeight
+                    )
+
+                    showConfirm = false
+                    isShopOpen = false
+                }
             )
         }
     }

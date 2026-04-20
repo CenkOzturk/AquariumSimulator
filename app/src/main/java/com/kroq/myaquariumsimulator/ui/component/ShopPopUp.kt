@@ -1,5 +1,6 @@
 package com.kroq.myaquariumsimulator.ui.component
 
+import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -13,14 +14,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
+import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
+import com.kroq.myaquariumsimulator.model.shop.items
 import com.kroq.myaquariumsimulator.ui.component.shop.CloseButton
 import com.kroq.myaquariumsimulator.ui.component.shop.Handle
 import com.kroq.myaquariumsimulator.ui.component.shop.ShopGrid
@@ -29,10 +36,14 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ShopPopup(
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    onTankSelected: (AquariumType) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val offsetY = remember { Animatable(1000f) }
+    var selectedTab by remember { mutableStateOf(ShopTab.AQUARIUM) }
+
+    val currentItems = selectedTab.items()
 
     // 🎬 OPEN ANIMATION
     LaunchedEffect(Unit) {
@@ -84,15 +95,45 @@ fun ShopPopup(
 
                 Handle(Modifier.align(Alignment.CenterHorizontally))
 
-                ShopTabs()
+                ShopTabs(
+                    selected = selectedTab,
+                    onTabSelected = { selectedTab = it }
+                )
 
-                ShopGrid()
+                ShopGrid(
+                    items = currentItems,
+                    onClick = { item ->
+                        when (selectedTab) {
+                            ShopTab.AQUARIUM -> {
+                                Log.i("seçilen akvaryum", item.id.toString())
+                                AquariumType.entries.getOrNull(item.id)?.let {
+                                    onTankSelected(it)
+                                    Log.i("seçilen akvaryum", it.name)
+                                }
+                            }
+
+                            ShopTab.FISH -> {
+                                // şimdilik boş
+                            }
+
+                            ShopTab.ITEMS -> {
+                                // şimdilik boş
+                            }
+                        }
+                    }
+                )
 
                 Spacer(modifier = Modifier.weight(1f))
 
                 CloseButton(
                     Modifier.align(Alignment.CenterHorizontally),
-                    onClose)
+                    onClose = {
+                        scope.launch {
+                            offsetY.animateTo(1000f, tween(300))
+                            onClose()
+                        }
+                    }
+                )
             }
         }
     }
