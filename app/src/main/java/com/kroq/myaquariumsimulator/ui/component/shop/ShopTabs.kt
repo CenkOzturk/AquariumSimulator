@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
-
 @Composable
 fun ShopTabs(
     selected: ShopTab,

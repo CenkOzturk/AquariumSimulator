@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.ui.screen
 
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,9 +12,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.FishManager
+import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.ui.component.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.Background
@@ -26,6 +27,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun GameScreen() {
+    val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.toFloat()
     val screenHeight = configuration.screenHeightDp.toFloat()
@@ -34,7 +36,9 @@ fun GameScreen() {
     var selectedTankState by remember {mutableStateOf(AquariumType.SMALL)}
     var showConfirm by remember { mutableStateOf(false) }
 
-    AquariumManager.init(screenWidth, screenHeight)
+    GameManager.load(LocalContext.current)
+
+    AquariumManager.init(context, screenWidth, screenHeight)
     FishManager.init()
     val aquarium = AquariumManager.currentAquarium ?: return
 
@@ -76,9 +80,10 @@ fun GameScreen() {
                 onNo = { showConfirm = false },
                 onYes = {
                     AquariumManager.upgrade(
-                        type = selectedTankState,
-                        screenWidth = screenWidth,
-                        screenHeight = screenHeight
+                        context,
+                        selectedTankState,
+                        screenWidth,
+                        screenHeight
                     )
 
                     showConfirm = false
