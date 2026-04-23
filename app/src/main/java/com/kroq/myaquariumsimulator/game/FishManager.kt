@@ -1,6 +1,7 @@
 package com.kroq.myaquariumsimulator.game
 
 import androidx.compose.runtime.mutableStateListOf
+import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 
@@ -8,9 +9,12 @@ object FishManager {
 
     val fishes = mutableStateListOf<FishModel>()
 
-    fun init() {
+    fun initFromGameState(state: GameState) {
+
+        val initialFishes = FishDatabase.getFishByIds(state.ownedFishIds)
+
         fishes.clear()
-        fishes.addAll(FishDatabase.getInitialFishes().filter { it.visible })
+        fishes.addAll(initialFishes)
     }
 
     fun update(
