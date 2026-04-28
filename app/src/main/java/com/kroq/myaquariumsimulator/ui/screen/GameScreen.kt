@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.kroq.myaquariumsimulator.game.AquariumManager
+import com.kroq.myaquariumsimulator.game.BubbleManager
 import com.kroq.myaquariumsimulator.game.CoinLoop
 import com.kroq.myaquariumsimulator.game.FishManager
 import com.kroq.myaquariumsimulator.game.GameManager
@@ -65,6 +66,11 @@ fun GameScreen() {
                 AquariumManager.getCurrentAquarium().height
             )
             delay(16)
+
+            BubbleManager.update(
+                AquariumManager.getCurrentAquarium().width,
+                AquariumManager.getCurrentAquarium().height
+            )
         }
     }
 

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
@@ -16,7 +17,15 @@ fun Background(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .clipToBounds()
-            .background(Color.Black)
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF021B2B),
+                        Color(0xFF063A5B),
+                        Color(0xFF021B2B)
+                    )
+                )
+            )
     )
 }
 
