@@ -33,7 +33,7 @@ object CoinLoop {
                         it.copy(coins = it.coins + fishCount)
                     }
 
-                    delay(1000)
+                    delay(10000)
                 }
             }
         }

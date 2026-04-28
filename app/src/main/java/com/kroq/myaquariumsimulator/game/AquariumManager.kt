@@ -23,13 +23,8 @@ object AquariumManager {
         }
     }
 
-    fun getCurrentAquarium(
-        screenWidth: Float,
-        screenHeight: Float
-    ): AquariumModel {
-
+    fun getCurrentAquarium(): AquariumModel {
         val type = AquariumType.valueOf(GameManager.state.aquariumType)
-
-        return createAquarium(type, screenWidth, screenHeight)
+        return createAquarium(type)
     }
 }

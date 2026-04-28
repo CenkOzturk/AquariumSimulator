@@ -1,5 +1,7 @@
 package com.kroq.myaquariumsimulator.model.aquarium
 
+import com.kroq.myaquariumsimulator.game.ScreenManager.screenHeight
+import com.kroq.myaquariumsimulator.game.ScreenManager.screenWidth
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 enum class AquariumType {
@@ -9,9 +11,7 @@ enum class AquariumType {
 }
 
 fun createAquarium(
-    type: AquariumType,
-    screenWidth: Float,
-    screenHeight: Float
+    type: AquariumType
 ): AquariumModel {
 
     return when (type) {
@@ -21,7 +21,8 @@ fun createAquarium(
             offsetY = screenHeight * 0.2f,
             width = screenWidth * 0.6f,
             height = screenHeight * 0.35f,
-            color = 0xFF3A86FF
+            color = 0xFF3A86FF,
+            fishCount = 2
         )
 
         AquariumType.MEDIUM -> AquariumModel(
@@ -30,7 +31,8 @@ fun createAquarium(
             offsetY = screenHeight * 0.15f,
             width = screenWidth * 0.75f,
             height = screenHeight * 0.5f,
-            color = 0xFF2F8FCE
+            color = 0xFF2F8FCE,
+            fishCount = 3
         )
 
         AquariumType.LARGE -> AquariumModel(
@@ -39,7 +41,8 @@ fun createAquarium(
             offsetY = screenHeight * 0.1f,
             width = screenWidth * 0.9f,
             height = screenHeight * 0.7f,
-            color = 0xFF1D6FA5
+            color = 0xFF1D6FA5,
+            fishCount = 5
         )
     }
 }

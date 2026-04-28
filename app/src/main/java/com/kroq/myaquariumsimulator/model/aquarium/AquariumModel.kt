@@ -6,5 +6,6 @@ data class AquariumModel(
     val offsetY: Float,
     val width: Float,
     val height: Float,
-    val color: Long
+    val color: Long,
+    val fishCount: Int
 )

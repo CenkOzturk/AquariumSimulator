@@ -1,7 +1,13 @@
 package com.kroq.myaquariumsimulator.model.shop
 
+import com.kroq.myaquariumsimulator.game.FishManager
+import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.aquarium.toShopItem
+import com.kroq.myaquariumsimulator.model.fish.FishDatabase
+import com.kroq.myaquariumsimulator.model.fish.toShopItem
+import com.kroq.myaquariumsimulator.utils.Utils
+import kotlin.text.contains
 
 enum class ShopTab {
     FISH,
@@ -11,15 +17,17 @@ enum class ShopTab {
 
 fun ShopTab.items(): List<ShopItem> {
     return when (this) {
-        ShopTab.AQUARIUM -> AquariumType.entries.map {
-            it.toShopItem()
+        ShopTab.AQUARIUM -> {
+            AquariumType.entries
+                .filter { it.name !in GameManager.state.aquariumType }
+                .map { it.toShopItem() }
         }
 
-        ShopTab.FISH -> listOf(
-            ShopItem(10, "Fish 1", 3, "🐟"),
-            ShopItem(11, "Fish 2", 5, "🐠"),
-            ShopItem(12, "Fish 3", 8, "🐡")
-        )
+        ShopTab.FISH -> {
+            FishDatabase.getAllFishes()
+                .filter { it.id !in GameManager.state.ownedFishIds }
+                .map { it.toShopItem() }
+        }
 
         ShopTab.ITEMS -> listOf(
             ShopItem(20, "Plant", 2, "🌿"),

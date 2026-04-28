@@ -1,19 +1,33 @@
 package com.kroq.myaquariumsimulator.game
 
+import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
 import com.kroq.myaquariumsimulator.model.fish.FishModel
+import com.kroq.myaquariumsimulator.utils.Utils.random
 
 object FishLogic {
-
-    private const val FISH_SIZE = 70f
-
     fun update(
         fish: FishModel,
         aquariumWidth: Float,
         aquariumHeight: Float
     ): FishModel {
+        val isTargetOutOfBounds =
+            fish.targetX !in 0f..(aquariumWidth - FISH_SIZE) ||
+                    fish.targetY !in 50f..(aquariumHeight - 50f)
 
-        val dx = fish.targetX - fish.x
-        val dy = fish.targetY - fish.y
+        val fixedTargetX = if (isTargetOutOfBounds) {
+            (0f..(aquariumWidth - FISH_SIZE)).random()
+        } else {
+            fish.targetX
+        }
+
+        val fixedTargetY = if (isTargetOutOfBounds) {
+            (50f..(aquariumHeight - 50f)).random()
+        } else {
+            fish.targetY
+        }
+
+        val dx = fixedTargetX - fish.x
+        val dy = fixedTargetY - fish.y
 
         val distance = kotlin.math.sqrt(dx * dx + dy * dy)
 
@@ -42,9 +56,5 @@ object FishLogic {
             y = newY.coerceIn(50f, aquariumHeight - 50f),
             direction = if (dirX > 0) 1 else -1
         )
-    }
-
-    private fun ClosedFloatingPointRange<Float>.random(): Float {
-        return (start + Math.random() * (endInclusive - start)).toFloat()
     }
 }
