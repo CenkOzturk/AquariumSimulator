@@ -3,7 +3,9 @@ package com.kroq.myaquariumsimulator.ui.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
@@ -28,38 +30,64 @@ fun AquariumView(aquarium: AquariumModel) {
             .offset(aquarium.offsetX.dp, aquarium.offsetY.dp)
             .width(aquarium.width.dp)
             .height(aquarium.height.dp)
-            .clip(RoundedCornerShape(24.dp))
-            .background(
-                Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0x663BAED6), // üst daha açık
-                        Color(0xFF1D6FA5)  // alt koyu
-                    )
-                )
-            )
-            .border(
-                2.dp,
-                Color.White.copy(alpha = 0.2f),
-                RoundedCornerShape(24.dp)
-            )
+            .clip(RoundedCornerShape(28.dp))
+            .background(Color(0xFF0A2A43))
     ) {
-        // 🌊 iç katman (hafif gradient overlay hissi)
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
                     Brush.verticalGradient(
-                        colors = listOf(
-                            Color.White.copy(0.08f),
-                            Color.Transparent,
-                            Color.Black.copy(0.1f)
+                        listOf(
+                            Color(0xFF3FA7D6),
+                            Color(0xFF1B6CA8)
                         )
                     )
                 )
         )
-        BubbleLayer()
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp)
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            Color.White.copy(0.25f),
+                            Color.Transparent
+                        )
+                    )
+                )
+        )
+
+        BubbleView()
+        EarnCoinView()
 
         FishLayer()
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .border(
+                    2.dp,
+                    Color.White.copy(alpha = 0.3f),
+                    RoundedCornerShape(28.dp)
+                )
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+                .width(20.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            Color.White.copy(0.15f),
+                            Color.Transparent
+                        )
+                    )
+                )
+        )
     }
 }
 

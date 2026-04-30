@@ -26,7 +26,6 @@ object CoinLoop {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
 
                 while (isActive) {
-
                     val fishCount = GameManager.state.ownedFishIds.size
 
                     GameManager.update(context) {

@@ -16,10 +16,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.BubbleManager
+import com.kroq.myaquariumsimulator.game.CoinManager
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 
 @Composable
-fun BubbleLayer() {
+fun BubbleView() {
     val context = LocalContext.current
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -40,7 +41,8 @@ fun BubbleLayer() {
                         CircleShape
                     )
                     .clickable {
-                        BubbleManager.popBubble(context, bubble)
+                        BubbleManager.popBubble(context, bubble.id)
+                        CoinManager.spawn("+5", bubble.x, bubble.y)
                     }
             )
         }
@@ -51,6 +53,6 @@ fun BubbleLayer() {
 @Composable
 fun BubbleLayerPreview() {
     MyAquariumSimulatorTheme {
-        BubbleLayer()
+        BubbleView()
     }
 }
