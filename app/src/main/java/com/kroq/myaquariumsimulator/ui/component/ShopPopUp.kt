@@ -26,10 +26,8 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.GameManager
-import com.kroq.myaquariumsimulator.game.ItemManager
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
-import com.kroq.myaquariumsimulator.model.item.toShopItem
 import com.kroq.myaquariumsimulator.model.shop.items
 import com.kroq.myaquariumsimulator.ui.component.shop.CloseButton
 import com.kroq.myaquariumsimulator.ui.component.shop.Handle
@@ -42,7 +40,8 @@ import kotlinx.coroutines.launch
 fun ShopPopup(
     onClose: () -> Unit,
     onTankSelected: (AquariumType) -> Unit,
-    onFishSelected: (Int) -> Unit
+    onFishSelected: (Int) -> Unit,
+    onItemSelected: (Int) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val offsetY = remember { Animatable(1000f) }
@@ -124,9 +123,7 @@ fun ShopPopup(
                             }
 
                             ShopTab.ITEMS -> {
-                                ItemManager
-                                    .getAllItems()
-                                    .map { it.toShopItem() }
+                                onItemSelected(item.id)
                             }
                         }
                     }

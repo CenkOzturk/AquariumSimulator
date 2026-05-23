@@ -28,6 +28,7 @@ import com.kroq.myaquariumsimulator.game.ScreenManager.screenWidth
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
+import com.kroq.myaquariumsimulator.utils.Utils.hasItem
 
 @Composable
 fun AquariumView(aquarium: AquariumModel) {
@@ -54,53 +55,61 @@ fun AquariumView(aquarium: AquariumModel) {
             EarnCoinView()
 
             //SAND
-            Image(
-                painter = painterResource(R.drawable.sand),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomCenter)
-            )
+            if (hasItem(300)) {
+                Image(
+                    painter = painterResource(R.drawable.sand),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .align(Alignment.BottomCenter)
+                )
+            }
 
             //SEAWEED
-            Image(
-                painter = painterResource(R.drawable.seaweed_short),
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(
-                        bottom = 40.dp,
-                        start = 10.dp
-                    )
-            )
+            if (hasItem(302)) {
+                Image(
+                    painter = painterResource(R.drawable.seaweed_short),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(
+                            bottom = 40.dp,
+                            start = 10.dp
+                        )
+                )
+            }
 
             FishLayer()
 
             //STAR
-            Image(
-                painter = painterResource(R.drawable.starfish),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(160.dp)
-                    .align(Alignment.TopStart)
-                    .padding(start = 20.dp, bottom = 50.dp)
-            )
+            if (hasItem(303)) {
+                Image(
+                    painter = painterResource(R.drawable.starfish),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(160.dp)
+                        .align(Alignment.TopStart)
+                        .padding(start = 20.dp, bottom = 50.dp)
+                )
+            }
 
             //ROCKS
-            Image(
-                painter = painterResource(R.drawable.rock_small),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(130.dp)
-                    .align(Alignment.BottomStart)
-            )
-            Image(
-                painter = painterResource(R.drawable.rock_small),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(130.dp)
-                    .align(Alignment.BottomEnd)
-            )
+            if (hasItem(301)) {
+                Image(
+                    painter = painterResource(R.drawable.rock_small),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(130.dp)
+                        .align(Alignment.BottomStart)
+                )
+                Image(
+                    painter = painterResource(R.drawable.rock_small),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(130.dp)
+                        .align(Alignment.BottomEnd)
+                )
+            }
 
             BubbleView()
         }

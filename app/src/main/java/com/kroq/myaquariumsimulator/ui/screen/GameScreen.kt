@@ -25,6 +25,7 @@ import com.kroq.myaquariumsimulator.game.BubbleManager
 import com.kroq.myaquariumsimulator.game.CoinLoop
 import com.kroq.myaquariumsimulator.game.FishManager
 import com.kroq.myaquariumsimulator.game.GameManager
+import com.kroq.myaquariumsimulator.game.ItemManager
 import com.kroq.myaquariumsimulator.game.ScreenManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.loadGameState
@@ -85,7 +86,8 @@ fun GameScreen() {
             onClick = {
                 GameManager.update(context) {
                     it.copy(
-                        ownedFishIds = setOf(0),
+                        ownedFishIds = setOf(100),
+                        ownedItemIds = setOf(),
                         coins = 50
                     )
                 }
@@ -120,6 +122,9 @@ fun GameScreen() {
                 onFishSelected = { fishId ->
                     FishManager.buy(context, fishId)
                     isShopOpen = false
+                },
+                onItemSelected = { itemId ->
+                    ItemManager.buy(context, itemId)
                 }
             )
         }

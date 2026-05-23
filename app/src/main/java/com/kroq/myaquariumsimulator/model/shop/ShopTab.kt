@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.model.shop
 
-import com.kroq.myaquariumsimulator.game.FishManager
 import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.game.ItemManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
@@ -8,7 +7,6 @@ import com.kroq.myaquariumsimulator.model.aquarium.toShopItem
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.fish.toShopItem
 import com.kroq.myaquariumsimulator.model.item.toShopItem
-import com.kroq.myaquariumsimulator.utils.Utils
 import kotlin.text.contains
 
 enum class ShopTab {
