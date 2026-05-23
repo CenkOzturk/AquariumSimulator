@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.ui.component
 
-import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -27,8 +26,10 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.GameManager
+import com.kroq.myaquariumsimulator.game.ItemManager
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
+import com.kroq.myaquariumsimulator.model.item.toShopItem
 import com.kroq.myaquariumsimulator.model.shop.items
 import com.kroq.myaquariumsimulator.ui.component.shop.CloseButton
 import com.kroq.myaquariumsimulator.ui.component.shop.Handle
@@ -123,7 +124,9 @@ fun ShopPopup(
                             }
 
                             ShopTab.ITEMS -> {
-                                // şimdilik boş
+                                ItemManager
+                                    .getAllItems()
+                                    .map { it.toShopItem() }
                             }
                         }
                     }

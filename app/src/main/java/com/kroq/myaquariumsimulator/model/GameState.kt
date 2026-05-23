@@ -4,12 +4,13 @@ import android.content.Context
 import androidx.datastore.preferences.core.edit
 import com.kroq.myaquariumsimulator.data.PrefKeys
 import com.kroq.myaquariumsimulator.data.dataStore
+import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import kotlinx.coroutines.flow.first
 
 data class GameState(
-    val aquariumType: String = "SMALL",
+    val aquariumType: String = AquariumType.SMALL.name,
     val ownedFishIds: Set<Int> = setOf(0),
-    val ownedItemIds: Set<Int> = emptySet(),
+    val ownedItemIds: Set<Int> = setOf(0),
     val coins: Int = 0
 )
 
@@ -18,9 +19,9 @@ suspend fun loadGameState(context: Context): GameState {
     val prefs = context.dataStore.data.first()
 
     return GameState(
-        aquariumType = prefs[PrefKeys.AQUARIUM] ?: "SMALL",
+        aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
         ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: setOf(0),
-        ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: emptySet(),
+        ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(0),
         coins = prefs[PrefKeys.COINS] ?: 0
     )
 }

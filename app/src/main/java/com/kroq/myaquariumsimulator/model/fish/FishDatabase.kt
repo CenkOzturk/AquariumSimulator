@@ -1,7 +1,6 @@
 package com.kroq.myaquariumsimulator.model.fish
 
 import com.kroq.myaquariumsimulator.R
-import com.kroq.myaquariumsimulator.game.GameManager
 
 object FishDatabase {
     private val fishes = listOf(

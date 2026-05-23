@@ -39,9 +39,8 @@ import kotlinx.coroutines.delay
 @Composable
 fun GameScreen() {
     val context = LocalContext.current
-    val configuration = LocalConfiguration.current
-    val screenWidth = configuration.screenWidthDp.toFloat()
-    val screenHeight = configuration.screenHeightDp.toFloat()
+    val screenWidth = LocalConfiguration.current.screenWidthDp.toFloat()
+    val screenHeight = LocalConfiguration.current.screenHeightDp.toFloat()
     val lifecycleOwner = LocalLifecycleOwner.current
 
     var isShopOpen by remember { mutableStateOf(false) }
@@ -87,7 +86,7 @@ fun GameScreen() {
                 GameManager.update(context) {
                     it.copy(
                         ownedFishIds = setOf(0),
-                        coins = 0
+                        coins = 50
                     )
                 }
                 Utils.showToast("RESET")
