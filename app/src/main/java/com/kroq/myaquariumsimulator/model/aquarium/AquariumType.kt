@@ -49,8 +49,8 @@ fun createAquarium(
 
 fun AquariumType.toShopItem(): ShopItem {
     return when (this) {
-        AquariumType.SMALL -> ShopItem(0, "Small", 5, "🧪")
-        AquariumType.MEDIUM -> ShopItem(1, "Medium", 10, "🧪")
-        AquariumType.LARGE -> ShopItem(2, "Large", 20, "🧪")
+        AquariumType.SMALL -> ShopItem(200, "Small", 5, "🧪")
+        AquariumType.MEDIUM -> ShopItem(201, "Medium", 10, "🧪")
+        AquariumType.LARGE -> ShopItem(202, "Large", 20, "🧪")
     }
 }

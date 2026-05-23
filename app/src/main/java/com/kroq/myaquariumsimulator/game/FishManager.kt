@@ -10,7 +10,6 @@ import com.kroq.myaquariumsimulator.utils.Utils
 import com.kroq.myaquariumsimulator.utils.Utils.random
 
 object FishManager {
-
     val fishes = mutableStateListOf<FishModel>()
 
     fun initFromGameState(state: GameState) {
@@ -30,10 +29,6 @@ object FishManager {
     }
 
     fun buy(context: Context, fishId: Int) {
-
-        val fixsh = FishDatabase.getAllFishes()
-            .find { it.id == fishId } ?: return
-
         val price = 2 // şimdilik sabit
 
         val success = CoinManager.spendCoins(context, price)
