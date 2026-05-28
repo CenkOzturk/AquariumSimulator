@@ -32,7 +32,7 @@ fun createAquarium(
             width = screenWidth * 0.75f,
             height = screenHeight * 0.5f,
             color = 0xFF2F8FCE,
-            fishCount = 3
+            fishCount = 5
         )
 
         AquariumType.LARGE -> AquariumModel(
@@ -42,7 +42,7 @@ fun createAquarium(
             width = screenWidth * 0.9f,
             height = screenHeight * 0.7f,
             color = 0xFF1D6FA5,
-            fishCount = 5
+            fishCount = 15
         )
     }
 }

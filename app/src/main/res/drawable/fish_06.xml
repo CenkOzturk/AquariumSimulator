@@ -1,0 +1,52 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="260dp"
+    android:height="140dp"
+    android:viewportWidth="260"
+    android:viewportHeight="140">
+
+    <!-- Tail -->
+    <path
+        android:pathData="M65,70 L15,35 L15,105 Z"
+        android:fillColor="#FF9F1C"/>
+
+    <!-- Top Fin -->
+    <path
+        android:pathData="M120,28 C135,0 165,0 180,30"
+        android:fillColor="#FFBF69"/>
+
+    <!-- Bottom Fin -->
+    <path
+        android:pathData="M125,112 C145,135 170,130 182,105"
+        android:fillColor="#FFBF69"/>
+
+    <!-- Body -->
+    <path
+        android:pathData="M65,70
+                          C95,10 210,10 245,70
+                          C210,130 95,130 65,70 Z"
+        android:fillColor="#FF7B00"/>
+
+    <!-- Belly -->
+    <path
+        android:pathData="M85,85
+                          C120,115 200,112 225,75
+                          C195,105 115,108 85,85 Z"
+        android:fillColor="#FFD6A5"/>
+
+    <!-- Eye -->
+    <path
+        android:pathData="M210,52 m10,0 a10,10 0 1 0 -20,0 a10,10 0 1 0 20,0"
+        android:fillColor="#FFFFFF"/>
+
+    <path
+        android:pathData="M214,52 m4,0 a4,4 0 1 0 -8,0 a4,4 0 1 0 8,0"
+        android:fillColor="#000000"/>
+
+    <!-- Smile -->
+    <path
+        android:pathData="M198,82 Q215,95 230,80"
+        android:strokeWidth="2"
+        android:strokeColor="#000000"
+        android:fillColor="#00000000"/>
+
+</vector>
