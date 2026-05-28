@@ -6,7 +6,7 @@ import com.kroq.myaquariumsimulator.model.item.ItemType
 
 data class GameProgress(
     val aquariumType: AquariumType,
-    val ownedItems: Set<ItemType>
+    val ownedItems: List<ItemType>
 )
 
 fun GameProgress.calculateTier(): PlayerTier {
