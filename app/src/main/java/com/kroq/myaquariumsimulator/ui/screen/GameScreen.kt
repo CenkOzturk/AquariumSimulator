@@ -85,6 +85,7 @@ fun GameScreen() {
             onClick = {
                 GameManager.update(context) {
                     it.copy(
+                        aquariumType = AquariumType.SMALL.name,
                         ownedFishIds = setOf(100),
                         ownedItemIds = setOf(),
                         coins = 50

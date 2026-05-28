@@ -3,6 +3,7 @@ package com.kroq.myaquariumsimulator.game
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
+import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
@@ -45,5 +46,9 @@ object FishManager {
             }
 
         fishes.addAll(newFishes)
+    }
+
+    fun canUnlock(fish: FishModel, progress: GameProgress): Boolean {
+        return fish.requirementType.isSatisfied(progress)
     }
 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 @Composable
@@ -25,6 +26,7 @@ fun ShopGrid(
 
             ShopItemCard(
                 item = item,
+                playerTier = PlayerTier.SILVER,
                 onClick = { onClick(item) }
             )
         }
