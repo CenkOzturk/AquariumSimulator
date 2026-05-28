@@ -6,19 +6,12 @@ import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
 import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
-import com.kroq.myaquariumsimulator.utils.Utils
+import com.kroq.myaquariumsimulator.model.fish.toShopItem
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.utils.Utils.random
 
 object FishManager {
     val fishes = mutableStateListOf<FishModel>()
-
-    fun initFromGameState(state: GameState) {
-
-        val initialFishes = FishDatabase.getFishByIds(state.ownedFishIds)
-
-        fishes.clear()
-        fishes.addAll(initialFishes)
-    }
 
     fun fishMove(
         aquariumWidth: Float,
@@ -29,25 +22,11 @@ object FishManager {
     }
 
     fun buy(context: Context, fishId: Int) {
-        val price = 2 // şimdilik sabit
-
-        val success = CoinManager.spendCoins(context, price)
-
-        if (!success) {
-            Utils.showToast("Satın alma başarısız! Paran yetmedi :(")
-            return
-        }
-
-        GameManager.update(context) {
-            it.copy(
-                ownedFishIds = it.ownedFishIds + fishId
-            )
-        }
-
+        CoinManager.purchaseItem(context, ShopTab.FISH, FishDatabase.getAllFishes().map { it.toShopItem() }, fishId)
         syncWithGameState(GameManager.state)
     }
 
-    fun syncWithGameState(state: GameState) {
+    private fun syncWithGameState(state: GameState) {
         val currentIds = fishes.map { it.id }.toSet()
         val targetIds = state.ownedFishIds
 

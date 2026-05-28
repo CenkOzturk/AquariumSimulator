@@ -2,12 +2,46 @@ package com.kroq.myaquariumsimulator.game
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
+import com.kroq.myaquariumsimulator.model.shop.ShopItem
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
+import com.kroq.myaquariumsimulator.utils.Utils
 
 
 object CoinManager {
     fun addCoins(context: Context, amount: Int) {
         GameManager.update(context) {
             it.copy(coins = it.coins + amount)
+        }
+    }
+
+    fun purchaseItem(
+        context: Context,
+        shopTab: ShopTab,
+        list: List<ShopItem>,
+        shopItemId: Int,
+        onFail: () -> Unit = { Utils.showToast("Satın alma başarısız! Paran yetmedi :(") }
+    ) {
+        val price = list.find { it.id == shopItemId }?.price ?: 0
+
+        if (!spendCoins(context, price)) {
+            onFail()
+            return
+        }
+
+        GameManager.update(context) {
+            when (shopTab) {
+                ShopTab.ITEMS -> {
+                    it.copy(
+                        ownedItemIds = it.ownedItemIds + shopItemId
+                    )
+                }
+                ShopTab.FISH -> {
+                    it.copy(
+                        ownedFishIds = it.ownedFishIds + shopItemId
+                    )
+                } else -> it
+            }
+
         }
     }
 

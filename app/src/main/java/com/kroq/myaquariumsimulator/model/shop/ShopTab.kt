@@ -1,11 +1,11 @@
 package com.kroq.myaquariumsimulator.model.shop
 
 import com.kroq.myaquariumsimulator.game.GameManager
-import com.kroq.myaquariumsimulator.game.ItemManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.aquarium.toShopItem
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.fish.toShopItem
+import com.kroq.myaquariumsimulator.model.item.ItemDatabase
 import com.kroq.myaquariumsimulator.model.item.toShopItem
 import kotlin.text.contains
 
@@ -30,7 +30,7 @@ fun ShopTab.items(): List<ShopItem> {
         }
 
         ShopTab.ITEMS ->
-            ItemManager.getAllItems()
+            ItemDatabase.getAllItems()
                 .filter { it.id !in GameManager.state.ownedItemIds }
                 .map { it.toShopItem()
         }

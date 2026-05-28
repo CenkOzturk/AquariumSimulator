@@ -52,7 +52,6 @@ fun GameScreen() {
         val loaded = loadGameState(context)
         ScreenManager.init(screenWidth, screenHeight)
         GameManager.initialize(loaded)
-        FishManager.initFromGameState(loaded)
         CoinLoop.start(lifecycleOwner, context)
     }
 
@@ -125,6 +124,7 @@ fun GameScreen() {
                 },
                 onItemSelected = { itemId ->
                     ItemManager.buy(context, itemId)
+                    isShopOpen = false
                 }
             )
         }
