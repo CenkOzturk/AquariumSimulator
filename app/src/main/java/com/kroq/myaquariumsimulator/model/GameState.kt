@@ -13,7 +13,7 @@ data class GameState(
     val ownedFishIds: Set<Int> = setOf(),
     val ownedItemIds: Set<Int> = setOf(),
     val coins: Int = 25,
-    var selectedShopTab: ShopTab = ShopTab.AQUARIUM
+    var selectedShopTab: ShopTab = ShopTab.FISH
 )
 
 suspend fun loadGameState(context: Context): GameState {
