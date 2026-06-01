@@ -19,7 +19,10 @@ fun ShopTab.items(): List<ShopItem> {
     return when (this) {
         ShopTab.AQUARIUM -> {
             AquariumType.entries
-                .filter { it.name !in GameManager.state.aquariumType }
+                .filter {
+                    it.ordinal > AquariumType.valueOf(GameManager.state.aquariumType)
+                        .ordinal
+                }
                 .map { it.toShopItem() }
         }
 

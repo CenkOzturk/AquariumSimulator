@@ -116,6 +116,7 @@ fun GameScreen() {
 
         if (isShopOpen) {
             ShopPopup(
+                context = context,
                 onClose = { isShopOpen = false },
                 playerTier = GameProgress(
                     AquariumManager.getCurrentAquarium().type,

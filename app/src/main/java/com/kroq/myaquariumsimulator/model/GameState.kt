@@ -5,13 +5,15 @@ import androidx.datastore.preferences.core.edit
 import com.kroq.myaquariumsimulator.data.PrefKeys
 import com.kroq.myaquariumsimulator.data.dataStore
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import kotlinx.coroutines.flow.first
 
 data class GameState(
     val aquariumType: String = AquariumType.SMALL.name,
     val ownedFishIds: Set<Int> = setOf(),
     val ownedItemIds: Set<Int> = setOf(),
-    val coins: Int = 25
+    val coins: Int = 25,
+    var selectedShopTab: ShopTab = ShopTab.AQUARIUM
 )
 
 suspend fun loadGameState(context: Context): GameState {

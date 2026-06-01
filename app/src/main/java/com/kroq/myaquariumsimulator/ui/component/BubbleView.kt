@@ -42,7 +42,7 @@ fun BubbleView() {
                     )
                     .clickable {
                         BubbleManager.popBubble(context, bubble.id)
-                        CoinManager.spawn("+5", bubble.x, bubble.y)
+                        CoinManager.spawn("5", bubble.x, bubble.y)
                     }
             )
         }

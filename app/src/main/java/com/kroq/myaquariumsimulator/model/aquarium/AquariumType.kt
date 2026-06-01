@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.model.aquarium
 
 import com.kroq.myaquariumsimulator.game.ScreenManager.screenHeight
 import com.kroq.myaquariumsimulator.game.ScreenManager.screenWidth
+import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 enum class AquariumType {
@@ -53,7 +54,7 @@ fun createAquarium(
 fun AquariumType.toShopItem(): ShopItem {
     return when (this) {
         AquariumType.SMALL -> ShopItem(0, "Small", 0, "🧪")
-        AquariumType.MEDIUM -> ShopItem(1, "Medium", 1000, "🧪")
-        AquariumType.LARGE -> ShopItem(2, "Large", 5000, "🧪")
+        AquariumType.MEDIUM -> ShopItem(1, "Medium", 1000, "🧪", requiredTier = PlayerTier.BRONZE)
+        AquariumType.LARGE -> ShopItem(2, "Large", 5000, "🧪", requiredTier = PlayerTier.SILVER)
     }
 }

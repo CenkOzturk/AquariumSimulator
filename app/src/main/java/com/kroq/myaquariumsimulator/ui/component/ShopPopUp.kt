@@ -1,5 +1,6 @@
 package com.kroq.myaquariumsimulator.ui.component
 
+import android.content.Context
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -39,6 +40,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ShopPopup(
+    context: Context,
     onClose: () -> Unit,
     playerTier: PlayerTier,
     onTankSelected: (AquariumType) -> Unit,
@@ -47,9 +49,9 @@ fun ShopPopup(
 ) {
     val scope = rememberCoroutineScope()
     val offsetY = remember { Animatable(1000f) }
-    var selectedTab by remember { mutableStateOf(ShopTab.AQUARIUM) }
+    var currentTab = GameManager.state.selectedShopTab
 
-    val currentItems = selectedTab.items()
+    val currentItems = currentTab.items()
 
     // 🎬 OPEN ANIMATION
     LaunchedEffect(Unit) {
@@ -102,14 +104,19 @@ fun ShopPopup(
                 Handle(Modifier.align(Alignment.CenterHorizontally))
 
                 ShopTabs(
-                    selected = selectedTab,
-                    onTabSelected = { selectedTab = it }
+                    selected = currentTab,
+                    onTabSelected = { tab ->
+                        currentTab = tab
+                        GameManager.update(context) {
+                            it.copy(selectedShopTab = tab)
+                        }
+                    }
                 )
 
                 ShopGrid(
                     items = currentItems,
                     onClick = { item ->
-                        when (selectedTab) {
+                        when (currentTab) {
                             ShopTab.AQUARIUM -> {
                                 AquariumType.entries.getOrNull(item.id)?.let {
                                     onTankSelected(it)

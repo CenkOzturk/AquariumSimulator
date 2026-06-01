@@ -14,14 +14,16 @@ sealed class RequirementType {
 
     object BRONZE : RequirementType() {
         override fun isSatisfied(progress: GameProgress): Boolean {
-            return progress.aquariumType == AquariumType.SMALL &&
+            return (progress.aquariumType == AquariumType.SMALL
+                    || progress.aquariumType == AquariumType.MEDIUM) &&
                     progress.ownedItems.contains(ItemType.SAND)
         }
     }
 
     object SILVER : RequirementType() {
         override fun isSatisfied(progress: GameProgress): Boolean {
-            return progress.aquariumType == AquariumType.MEDIUM &&
+            return (progress.aquariumType == AquariumType.MEDIUM
+                    || progress.aquariumType == AquariumType.LARGE) &&
                     progress.ownedItems.contains(ItemType.SEAWEED_SHORT)
         }
     }

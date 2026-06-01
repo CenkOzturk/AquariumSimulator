@@ -51,7 +51,7 @@ object BubbleManager {
 
         bubbles.removeAll { it.id == bubbleId }
 
-        CoinManager.addCoins(context, 5)
+        CoinManager.addCoins(context, 5000)
     }
 
     data class BubbleModel(

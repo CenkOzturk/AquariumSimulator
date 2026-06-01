@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.game.CoinManager
 import com.kroq.myaquariumsimulator.game.ScreenManager.screenHeight
 import com.kroq.myaquariumsimulator.game.ScreenManager.screenWidth
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
@@ -52,7 +53,9 @@ fun AquariumView(aquarium: AquariumModel) {
                     )
                 )
         ) {
-            EarnCoinView()
+            CoinManager.texts.forEach { coin ->
+                EarnCoinView(coin)
+            }
 
             //SAND
             if (hasItem(300)) {
@@ -73,7 +76,7 @@ fun AquariumView(aquarium: AquariumModel) {
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(
-                            bottom = 40.dp,
+                            bottom = 20.dp,
                             start = 10.dp
                         )
                 )
