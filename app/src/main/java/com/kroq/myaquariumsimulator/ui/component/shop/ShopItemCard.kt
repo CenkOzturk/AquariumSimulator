@@ -46,7 +46,7 @@ fun ShopItemCard(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(bounded = true)
             ) { onClick() }
-            .padding(12.dp)
+            .padding(8.dp)
     ) {
 
         // TIER BADGE
@@ -82,7 +82,7 @@ fun ShopItemCard(
             // TITLE
             Text(
                 text = item.title,
-                fontSize = 13.sp,
+                fontSize = 12.sp,
                 color = if (isUnlocked) Color.Black else Color.Gray,
                 maxLines = 1
             )

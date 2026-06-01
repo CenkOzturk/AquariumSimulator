@@ -1,12 +1,15 @@
 package com.kroq.myaquariumsimulator.model.item
 
+import com.kroq.myaquariumsimulator.model.fish.RequirementType
+import com.kroq.myaquariumsimulator.model.fish.toPlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 data class AquariumItemModel(
     val id: Int,
     val type: ItemType,
     val resId: Int,
-    val price: Int
+    val price: Int,
+    val requirementType: RequirementType = RequirementType.FREE
 )
 
 fun AquariumItemModel.toShopItem(): ShopItem {
@@ -15,5 +18,6 @@ fun AquariumItemModel.toShopItem(): ShopItem {
         title = type.name,
         price = price,
         icon = "🌿",
+        requiredTier = requirementType.toPlayerTier()
     )
 }

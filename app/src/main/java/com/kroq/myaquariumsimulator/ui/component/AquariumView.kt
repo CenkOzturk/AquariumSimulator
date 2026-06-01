@@ -166,7 +166,8 @@ fun AquariumViewPreview() {
                 width = screenWidth * 0.6f,
                 height = screenHeight * 0.35f,
                 color = 0xFF3A86FF,
-                fishCount = 2
+                fishCount = 2,
+                price = 100
             )
         )
     }

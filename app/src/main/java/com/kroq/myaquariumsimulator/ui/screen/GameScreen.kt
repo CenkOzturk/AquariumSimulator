@@ -27,7 +27,9 @@ import com.kroq.myaquariumsimulator.game.FishManager
 import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.game.ItemManager
 import com.kroq.myaquariumsimulator.game.ScreenManager
+import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
+import com.kroq.myaquariumsimulator.model.calculateTier
 import com.kroq.myaquariumsimulator.model.loadGameState
 import com.kroq.myaquariumsimulator.ui.component.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.Background
@@ -52,7 +54,7 @@ fun GameScreen() {
         val loaded = loadGameState(context)
         ScreenManager.init(screenWidth, screenHeight)
         GameManager.initialize(loaded)
-        CoinLoop.start(lifecycleOwner, context)
+        CoinLoop.start(context, lifecycleOwner)
     }
 
     LaunchedEffect(
@@ -86,9 +88,9 @@ fun GameScreen() {
                 GameManager.update(context) {
                     it.copy(
                         aquariumType = AquariumType.SMALL.name,
-                        ownedFishIds = setOf(100),
+                        ownedFishIds = setOf(),
                         ownedItemIds = setOf(),
-                        coins = 50
+                        coins = 25
                     )
                 }
                 Utils.showToast("RESET")
@@ -115,6 +117,10 @@ fun GameScreen() {
         if (isShopOpen) {
             ShopPopup(
                 onClose = { isShopOpen = false },
+                playerTier = GameProgress(
+                    AquariumManager.getCurrentAquarium().type,
+                    ItemManager.items.map { it.type }
+                ).calculateTier(),
                 onTankSelected = { selectedTank ->
                     selectedTankState = selectedTank
                     showConfirm = true

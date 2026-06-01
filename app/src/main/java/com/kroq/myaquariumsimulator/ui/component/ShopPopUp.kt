@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.GameManager
+import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.shop.items
@@ -39,6 +40,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun ShopPopup(
     onClose: () -> Unit,
+    playerTier: PlayerTier,
     onTankSelected: (AquariumType) -> Unit,
     onFishSelected: (Int) -> Unit,
     onItemSelected: (Int) -> Unit
@@ -126,7 +128,8 @@ fun ShopPopup(
                                 onItemSelected(item.id)
                             }
                         }
-                    }
+                    },
+                    playerTier = playerTier
                 )
 
                 Spacer(modifier = Modifier.weight(1f))

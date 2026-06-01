@@ -22,7 +22,8 @@ fun createAquarium(
             width = screenWidth * 0.6f,
             height = screenHeight * 0.35f,
             color = 0xFF3A86FF,
-            fishCount = 2
+            fishCount = 6,
+            price = 0
         )
 
         AquariumType.MEDIUM -> AquariumModel(
@@ -32,7 +33,8 @@ fun createAquarium(
             width = screenWidth * 0.75f,
             height = screenHeight * 0.5f,
             color = 0xFF2F8FCE,
-            fishCount = 5
+            fishCount = 10,
+            price = 1000
         )
 
         AquariumType.LARGE -> AquariumModel(
@@ -42,15 +44,16 @@ fun createAquarium(
             width = screenWidth * 0.9f,
             height = screenHeight * 0.7f,
             color = 0xFF1D6FA5,
-            fishCount = 15
+            fishCount = 15,
+            price = 5000
         )
     }
 }
 
 fun AquariumType.toShopItem(): ShopItem {
     return when (this) {
-        AquariumType.SMALL -> ShopItem(0, "Small", 5, "🧪")
-        AquariumType.MEDIUM -> ShopItem(1, "Medium", 10, "🧪")
-        AquariumType.LARGE -> ShopItem(2, "Large", 20, "🧪")
+        AquariumType.SMALL -> ShopItem(0, "Small", 0, "🧪")
+        AquariumType.MEDIUM -> ShopItem(1, "Medium", 1000, "🧪")
+        AquariumType.LARGE -> ShopItem(2, "Large", 5000, "🧪")
     }
 }

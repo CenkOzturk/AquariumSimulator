@@ -12,6 +12,8 @@ data class FishModel(
     val targetY: Float,
     val speed: Float,
     val direction: Int,
+    val price: Int,
+    val income: Int,
     val requirementType: RequirementType = RequirementType.FREE,
     val phase: Float = (0..1000).random().toFloat()
 )
@@ -20,7 +22,7 @@ fun FishModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
         title = "Fish $id",
-        price = getFishPrice(id),
+        price = price,
         icon = "🐟",
         requiredTier = requirementType.toPlayerTier()
     )
@@ -32,17 +34,6 @@ fun RequirementType.toPlayerTier(): PlayerTier {
         RequirementType.BRONZE -> PlayerTier.BRONZE
         RequirementType.SILVER -> PlayerTier.SILVER
         RequirementType.GOLD -> PlayerTier.GOLD
-    }
-}
-
-fun getFishPrice(id: Int): Int {
-    return when (id) {
-        1 -> 5
-        2 -> 10
-        3 -> 15
-        4 -> 25
-        5 -> 40
-        else -> 10
     }
 }
 

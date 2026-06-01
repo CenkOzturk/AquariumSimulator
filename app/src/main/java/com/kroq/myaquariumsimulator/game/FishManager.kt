@@ -23,7 +23,11 @@ object FishManager {
     }
 
     fun buy(context: Context, fishId: Int) {
-        CoinManager.purchaseItem(context, ShopTab.FISH, FishDatabase.getAllFishes().map { it.toShopItem() }, fishId)
+        CoinManager.purchaseItem(
+            context,
+            ShopTab.FISH,
+            FishDatabase.getAllFishes().map { it.toShopItem() }, fishId
+        )
         syncWithGameState(GameManager.state)
     }
 

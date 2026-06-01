@@ -13,12 +13,12 @@ import com.kroq.myaquariumsimulator.game.CoinManager
 @Composable
 fun EarnCoinView() {
     Box(modifier = Modifier.fillMaxSize()) {
-        CoinManager.texts.forEach { t ->
+        CoinManager.texts.forEach { coin ->
             Text(
-                text = t.text,
-                color = Color.Yellow.copy(alpha = t.alpha),
+                text = coin.text,
+                color = Color.Yellow.copy(alpha = coin.alpha),
                 modifier = Modifier
-                    .offset(t.x.dp, t.y.dp)
+                    .offset(coin.x.dp, coin.y.dp)
             )
         }
     }

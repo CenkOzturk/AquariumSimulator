@@ -7,5 +7,6 @@ data class AquariumModel(
     val width: Float,
     val height: Float,
     val color: Long,
-    val fishCount: Int
+    val fishCount: Int,
+    val price: Int
 )

@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.first
 
 data class GameState(
     val aquariumType: String = AquariumType.SMALL.name,
-    val ownedFishIds: Set<Int> = setOf(100),
+    val ownedFishIds: Set<Int> = setOf(),
     val ownedItemIds: Set<Int> = setOf(),
-    val coins: Int = 0
+    val coins: Int = 25
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -20,9 +20,9 @@ suspend fun loadGameState(context: Context): GameState {
 
     return GameState(
         aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
-        ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: setOf(100),
+        ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: setOf(),
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(),
-        coins = prefs[PrefKeys.COINS] ?: 0
+        coins = prefs[PrefKeys.COINS] ?: 25
     )
 }
 
