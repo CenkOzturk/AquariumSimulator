@@ -1,6 +1,8 @@
 package com.kroq.myaquariumsimulator.ui.screen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -13,16 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.BubbleManager
 import com.kroq.myaquariumsimulator.game.CoinLoop
+import com.kroq.myaquariumsimulator.game.FishFoodManager
 import com.kroq.myaquariumsimulator.game.FishManager
 import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.game.ItemManager
@@ -30,10 +30,12 @@ import com.kroq.myaquariumsimulator.game.ScreenManager
 import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.calculateTier
+import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.loadGameState
 import com.kroq.myaquariumsimulator.ui.component.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.Background
 import com.kroq.myaquariumsimulator.ui.component.ConfirmPopup
+import com.kroq.myaquariumsimulator.ui.component.ResourceBadge
 import com.kroq.myaquariumsimulator.ui.component.ShopPopup
 import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
 import com.kroq.myaquariumsimulator.utils.Utils
@@ -90,7 +92,8 @@ fun GameScreen() {
                         aquariumType = AquariumType.SMALL.name,
                         ownedFishIds = setOf(),
                         ownedItemIds = setOf(),
-                        coins = 25
+                        coins = 2500,
+                        foodCount = 10
                     )
                 }
                 Utils.showToast("RESET")
@@ -106,13 +109,13 @@ fun GameScreen() {
                 .padding(20.dp)
         )
 
-        Text(
+        Row(
             modifier = Modifier.padding(20.dp),
-            text = "💰 ${GameManager.state.coins}",
-            fontStyle = TextStyle.Default.fontStyle,
-            fontSize = 24.sp,
-            color = Color.White
-        )
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ResourceBadge("💰 ${GameManager.state.coins}")
+            ResourceBadge("🍤 ${GameManager.state.foodCount}")
+        }
 
         if (isShopOpen) {
             ShopPopup(
@@ -131,7 +134,11 @@ fun GameScreen() {
                     isShopOpen = false
                 },
                 onItemSelected = { itemId ->
-                    ItemManager.buy(context, itemId)
+                    if (isFood(itemId)) {
+                        FishFoodManager.buyFood(context, itemId)
+                    } else {
+                        ItemManager.buy(context, itemId)
+                    }
                     isShopOpen = false
                 }
             )

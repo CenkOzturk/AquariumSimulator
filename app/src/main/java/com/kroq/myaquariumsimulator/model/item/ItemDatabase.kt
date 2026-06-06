@@ -12,18 +12,18 @@ object ItemDatabase {
             price = 250
         ),
         AquariumItemModel(
-            id = 302,
-            type = ItemType.SEAWEED_SHORT,
-            resId = R.drawable.seaweed_short,
-            price = 500,
-            requirementType = RequirementType.BRONZE
-        ),
-        AquariumItemModel(
             id = 301,
             type = ItemType.ROCK_SMALL,
             resId = R.drawable.rock_small,
             price = 1000,
             requirementType = RequirementType.SILVER
+        ),
+        AquariumItemModel(
+            id = 302,
+            type = ItemType.SEAWEED_SHORT,
+            resId = R.drawable.seaweed_short,
+            price = 500,
+            requirementType = RequirementType.BRONZE
         ),
         AquariumItemModel(
             id = 303,

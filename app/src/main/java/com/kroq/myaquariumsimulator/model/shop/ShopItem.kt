@@ -7,7 +7,8 @@ data class ShopItem(
     val title: String,
     val price: Int,
     val icon: String,
-    val requiredTier: PlayerTier = PlayerTier.FREE
+    val requiredTier: PlayerTier = PlayerTier.FREE,
+    val isConsumable: Boolean = false
 )
 
 

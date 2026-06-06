@@ -13,6 +13,7 @@ data class GameState(
     val ownedFishIds: Set<Int> = setOf(),
     val ownedItemIds: Set<Int> = setOf(),
     val coins: Int = 25,
+    val foodCount: Int = 10,
     var selectedShopTab: ShopTab = ShopTab.FISH
 )
 
@@ -24,7 +25,8 @@ suspend fun loadGameState(context: Context): GameState {
         aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
         ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: setOf(),
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(),
-        coins = prefs[PrefKeys.COINS] ?: 25
+        coins = prefs[PrefKeys.COINS] ?: 25,
+        foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10
     )
 }
 
@@ -41,5 +43,7 @@ suspend fun saveGameState(
         prefs[PrefKeys.ITEMS] = state.ownedItemIds.map { it.toString() }.toSet()
 
         prefs[PrefKeys.COINS] = state.coins
+
+        prefs[PrefKeys.FOOD_COUNT] = state.foodCount
     }
 }

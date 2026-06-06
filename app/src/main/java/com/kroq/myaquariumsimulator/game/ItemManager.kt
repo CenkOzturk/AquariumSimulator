@@ -11,7 +11,12 @@ import com.kroq.myaquariumsimulator.model.shop.ShopTab
 object ItemManager {
     val items = mutableStateListOf<AquariumItemModel>()
     fun buy(context: Context, itemId: Int) {
-        CoinManager.purchaseItem(context, ShopTab.ITEMS, ItemDatabase.getAllItems().map { it.toShopItem() }, itemId)
+        CoinManager.purchaseItem(
+            context,
+            ShopTab.ITEMS,
+            ItemDatabase.getAllItems().map { it.toShopItem() },
+            itemId
+        )
         syncWithGameState()
     }
 

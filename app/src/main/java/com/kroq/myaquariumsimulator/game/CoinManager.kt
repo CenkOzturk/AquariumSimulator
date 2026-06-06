@@ -2,6 +2,8 @@ package com.kroq.myaquariumsimulator.game
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
+import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.getFoodCountByIds
+import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.utils.Utils
@@ -31,10 +33,17 @@ object CoinManager {
         GameManager.update(context) {
             when (shopTab) {
                 ShopTab.ITEMS -> {
-                    it.copy(
-                        ownedItemIds = it.ownedItemIds + shopItemId
-                    )
+                    if (isFood(shopItemId)) {
+                        it.copy(
+                            foodCount = it.foodCount + getFoodCountByIds(shopItemId)
+                        )
+                    } else {
+                        it.copy(
+                            ownedItemIds = it.ownedItemIds + shopItemId
+                        )
+                    }
                 }
+
                 ShopTab.FISH -> {
                     it.copy(
                         ownedFishIds = it.ownedFishIds + shopItemId
