@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateListOf
 import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
 import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameState
+import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.fish.toShopItem
@@ -14,11 +15,9 @@ import com.kroq.myaquariumsimulator.utils.Utils.random
 object FishManager {
     val fishes = mutableStateListOf<FishModel>()
 
-    fun fishMove(
-        aquariumWidth: Float,
-        aquariumHeight: Float) {
+    fun fishMove(aquarium: AquariumModel) {
         for (i in fishes.indices) {
-            fishes[i] = FishLogic.update(fishes[i], aquariumWidth, aquariumHeight)
+            fishes[i] = FishLogic.update(fishes[i], aquarium)
         }
     }
 
@@ -42,10 +41,12 @@ object FishManager {
             .filter { it.id in newFishIds }
             .map { template ->
                 template.copy(
-                    x = (0f..(aquarium.width - FISH_SIZE)).random(),
-                    y = (50f..(aquarium.height - 50f)).random(),
-                    targetX = (0f..(aquarium.width - FISH_SIZE)).random(),
-                    targetY = (50f..(aquarium.height - 50f)).random()
+                    move = template.move.copy(
+                        x = (0f..(aquarium.width - FISH_SIZE)).random(),
+                        y = (50f..(aquarium.height - 50f)).random(),
+                        targetX = (0f..(aquarium.width - FISH_SIZE)).random(),
+                        targetY = (50f..(aquarium.height - 50f)).random()
+                    )
                 )
             }
 

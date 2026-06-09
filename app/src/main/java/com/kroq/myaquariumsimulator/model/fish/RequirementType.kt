@@ -1,6 +1,7 @@
 package com.kroq.myaquariumsimulator.model.fish
 
 import com.kroq.myaquariumsimulator.model.GameProgress
+import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.item.ItemType
 
@@ -33,5 +34,14 @@ sealed class RequirementType {
             return progress.aquariumType == AquariumType.LARGE &&
                     progress.ownedItems.containsAll(ItemType.entries)
         }
+    }
+}
+
+fun RequirementType.toPlayerTier(): PlayerTier {
+    return when (this) {
+        RequirementType.FREE -> PlayerTier.FREE
+        RequirementType.BRONZE -> PlayerTier.BRONZE
+        RequirementType.SILVER -> PlayerTier.SILVER
+        RequirementType.GOLD -> PlayerTier.GOLD
     }
 }

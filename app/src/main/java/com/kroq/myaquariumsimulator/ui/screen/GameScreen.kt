@@ -64,16 +64,10 @@ fun GameScreen() {
         ScreenManager.screenHeight)
     {
         while (true) {
-            FishManager.fishMove(
-                AquariumManager.getCurrentAquarium().width,
-                AquariumManager.getCurrentAquarium().height
-            )
+            FishManager.fishMove(AquariumManager.getCurrentAquarium())
             delay(16)
 
-            BubbleManager.update(
-                AquariumManager.getCurrentAquarium().width,
-                AquariumManager.getCurrentAquarium().height
-            )
+            BubbleManager.update(AquariumManager.getCurrentAquarium())
         }
     }
 
