@@ -54,28 +54,34 @@ fun GameScreen() {
 
     LaunchedEffect(Unit) {
         val loaded = loadGameState(context)
-        ScreenManager.init(screenWidth, screenHeight)
         GameManager.initialize(loaded)
         CoinLoop.start(context, lifecycleOwner)
     }
 
-    LaunchedEffect(
-        ScreenManager.screenWidth,
-        ScreenManager.screenHeight)
-    {
+    LaunchedEffect(screenWidth, screenHeight) {
         while (true) {
-            FishManager.fishMove(AquariumManager.getCurrentAquarium())
+            val aquarium = AquariumManager.getCurrentAquarium()
+            FishManager.fishMove(aquarium)
+            BubbleManager.update(aquarium)
             delay(16)
-
-            BubbleManager.update(AquariumManager.getCurrentAquarium())
         }
     }
+
+    ScreenManager.init(screenWidth, screenHeight)
 
     Box(modifier = Modifier.fillMaxSize()) {
 
         Background()
 
-        AquariumView(AquariumManager.getCurrentAquarium())
+        val aquarium = remember(
+            GameManager.state.aquariumType,
+            screenWidth,
+            screenHeight
+        ) {
+            AquariumManager.getCurrentAquarium()
+        }
+
+        AquariumView(aquarium)
 
         //RESET BUTTON
         Button(

@@ -8,6 +8,7 @@ data class FishModel(
     val price: Int,
     val income: Int,
     val move: FishMoveModel,
+    val fedUntil: Long = 50000L,
     val requirementType: RequirementType = RequirementType.FREE
 )
 

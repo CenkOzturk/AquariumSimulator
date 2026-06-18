@@ -3,6 +3,7 @@ package com.kroq.myaquariumsimulator.game
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
+import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
 import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
@@ -28,6 +29,16 @@ object FishManager {
             FishDatabase.getAllFishes().map { it.toShopItem() }, fishId
         )
         syncWithGameState(GameManager.state)
+    }
+
+    fun feedFish(fishId: Int) {
+        val index = fishes.indexOfFirst { it.id == fishId }
+
+        if (index == -1) return
+
+        fishes[index] = fishes[index].copy(
+            fedUntil = System.currentTimeMillis() + FEED_DURATION
+        )
     }
 
     private fun syncWithGameState(state: GameState) {
