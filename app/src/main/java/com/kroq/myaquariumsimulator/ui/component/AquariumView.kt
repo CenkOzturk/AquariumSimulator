@@ -1,5 +1,6 @@
 package com.kroq.myaquariumsimulator.ui.component
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -32,7 +33,7 @@ import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 import com.kroq.myaquariumsimulator.utils.Utils.hasItem
 
 @Composable
-fun AquariumView(aquarium: AquariumModel) {
+fun AquariumView(context: Context, aquarium: AquariumModel) {
     Box(
         modifier = Modifier
             .offset(aquarium.offsetX.dp, aquarium.offsetY.dp)
@@ -82,7 +83,7 @@ fun AquariumView(aquarium: AquariumModel) {
                 )
             }
 
-            FishLayer()
+            FishLayer(context = context)
 
             //STAR
             if (hasItem(303)) {
@@ -161,7 +162,7 @@ fun AquariumView(aquarium: AquariumModel) {
 @Composable
 fun AquariumViewPreview() {
     MyAquariumSimulatorTheme {
-        AquariumView(
+        /*AquariumView(
             AquariumModel(
                 type = AquariumType.SMALL,
                 offsetX = screenWidth * 0.2f,
@@ -172,6 +173,6 @@ fun AquariumViewPreview() {
                 fishCount = 2,
                 price = 100
             )
-        )
+        )*/
     }
 }

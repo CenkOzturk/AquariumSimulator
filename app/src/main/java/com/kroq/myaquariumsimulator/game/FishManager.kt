@@ -46,7 +46,7 @@ object FishManager {
         val targetIds = state.ownedFishIds
 
         val newFishIds = targetIds - currentIds
-        val aquarium = AquariumManager.getCurrentAquarium()
+        val aquarium = AquariumManager.currentAquarium
 
         val newFishes = FishDatabase.getAllFishes()
             .filter { it.id in newFishIds }

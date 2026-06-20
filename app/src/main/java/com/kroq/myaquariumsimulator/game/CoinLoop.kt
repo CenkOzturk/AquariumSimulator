@@ -1,20 +1,22 @@
 package com.kroq.myaquariumsimulator.game
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.kroq.myaquariumsimulator.data.Constants.INCOME_CYCLE_SECONDS
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
+import com.kroq.myaquariumsimulator.model.fish.FishModel
+import com.kroq.myaquariumsimulator.model.fish.coinMultiplier
+import com.kroq.myaquariumsimulator.model.fish.isFed
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 object CoinLoop {
-
-
     private var job: Job? = null
 
     fun start(
@@ -26,8 +28,8 @@ object CoinLoop {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 while (isActive) {
                     var totalIncome = 0
-                    GameManager.state.ownedFishIds.forEach { fishID ->
-                        totalIncome += FishDatabase.getAllFishes().find { it.id == fishID }!!.income
+                    FishManager.fishes.forEach { fish ->
+                        totalIncome += fish.income * fish.coinMultiplier()
                     }
 
                     GameManager.update(context) {

@@ -20,6 +20,7 @@ object GameManager {
 
     fun initialize(newState: GameState) {
         state = newState
+        AquariumManager.initialize(state.aquariumType)
 
         val initialFishes = FishDatabase.getFishByIds(state.ownedFishIds)
 
@@ -32,6 +33,7 @@ object GameManager {
         items.addAll(initialItems)
     }
 
+    //TODO buna refactor atılacak managerlar dışından bu işlem yapılmamalı
     fun update(context: Context, reducer: (GameState) -> GameState) {
         val newState = reducer(state)
         state = newState

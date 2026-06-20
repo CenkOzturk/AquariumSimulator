@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.model.PlayerTier
@@ -150,11 +151,9 @@ fun ShopPopup(
 
                             ShopTab.FISH -> {
                                 if (GameManager.state.ownedFishIds.count() >=
-                                    AquariumManager.getCurrentAquarium().fishCount
+                                    AquariumManager.currentAquarium.fishCount
                                 ) {
-                                    Utils.showToast(
-                                        message = "Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz"
-                                    )
+                                    Utils.showToast(R.string.shop_too_much_fish)
                                 } else {
                                     onFishSelected(item.id)
                                 }

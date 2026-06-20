@@ -26,4 +26,8 @@ object FishDatabase {
     fun getFishByIds(ids: Set<Int>): List<FishModel> {
         return fishes.filter { it.id in ids }
     }
+
+    fun getFishById(fishID: Int): FishModel {
+        return fishes.find { it.id == fishID }!!
+    }
 }

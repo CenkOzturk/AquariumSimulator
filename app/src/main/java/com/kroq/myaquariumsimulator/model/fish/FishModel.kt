@@ -12,6 +12,14 @@ data class FishModel(
     val requirementType: RequirementType = RequirementType.FREE
 )
 
+fun FishModel.isFed(): Boolean {
+    return fedUntil > System.currentTimeMillis()
+}
+
+fun FishModel.coinMultiplier(): Int {
+    return if (isFed()) 2 else 1
+}
+
 fun FishModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,

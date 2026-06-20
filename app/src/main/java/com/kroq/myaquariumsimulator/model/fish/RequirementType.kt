@@ -32,7 +32,7 @@ sealed class RequirementType {
     object GOLD : RequirementType() {
         override fun isSatisfied(progress: GameProgress): Boolean {
             return progress.aquariumType == AquariumType.LARGE &&
-                    progress.ownedItems.containsAll(ItemType.entries)
+                    progress.ownedItems.contains(ItemType.ROCK_SMALL)
         }
     }
 }

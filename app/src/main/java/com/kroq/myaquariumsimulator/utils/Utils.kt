@@ -3,6 +3,7 @@ package com.kroq.myaquariumsimulator.utils
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.StringRes
 import com.kroq.myaquariumsimulator.game.ItemManager.items
 
 object Utils {
@@ -19,6 +20,12 @@ object Utils {
     fun showToast(message: String) {
         appContext?.let {
             Toast.makeText(it, message, Toast.LENGTH_SHORT).show()
+        } ?: Log.e("ToastUtil", "Context henüz init edilmemiş!")
+    }
+
+    fun showToast(@StringRes messageRes: Int) {
+        appContext?.let {
+            Toast.makeText(it, it.getString(messageRes), Toast.LENGTH_SHORT).show()
         } ?: Log.e("ToastUtil", "Context henüz init edilmemiş!")
     }
 

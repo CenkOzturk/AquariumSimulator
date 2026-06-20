@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.kroq.myaquariumsimulator.game.AquariumManager
@@ -40,6 +41,7 @@ import com.kroq.myaquariumsimulator.ui.component.ShopPopup
 import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
+import com.kroq.myaquariumsimulator.R
 
 @Composable
 fun GameScreen() {
@@ -60,7 +62,7 @@ fun GameScreen() {
 
     LaunchedEffect(screenWidth, screenHeight) {
         while (true) {
-            val aquarium = AquariumManager.getCurrentAquarium()
+            val aquarium = AquariumManager.currentAquarium
             FishManager.fishMove(aquarium)
             BubbleManager.update(aquarium)
             delay(16)
@@ -78,10 +80,10 @@ fun GameScreen() {
             screenWidth,
             screenHeight
         ) {
-            AquariumManager.getCurrentAquarium()
+            AquariumManager.currentAquarium
         }
 
-        AquariumView(aquarium)
+        AquariumView(context, aquarium)
 
         //RESET BUTTON
         Button(
@@ -99,7 +101,7 @@ fun GameScreen() {
                 Utils.showToast("RESET")
             }
         ) {
-            Text(text = "RESET")
+            Text(text = stringResource(R.string.btn_reset))
         }
 
         ShopButton(
@@ -113,8 +115,15 @@ fun GameScreen() {
             modifier = Modifier.padding(20.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            ResourceBadge("💰 ${GameManager.state.coins}")
-            ResourceBadge("🍤 ${GameManager.state.foodCount}")
+            //ResourceBadge("💰 ${GameManager.state.coins}")
+            ResourceBadge(
+                stringResource(
+                    R.string.coin_value, GameManager.state.coins)
+            )
+            ResourceBadge(
+                stringResource(
+                    R.string.fish_food_value, GameManager.state.foodCount)
+            )
         }
 
         if (isShopOpen) {
@@ -122,7 +131,7 @@ fun GameScreen() {
                 context = context,
                 onClose = { isShopOpen = false },
                 playerTier = GameProgress(
-                    AquariumManager.getCurrentAquarium().type,
+                    AquariumManager.currentAquarium.type,
                     ItemManager.items.map { it.type }
                 ).calculateTier(),
                 onTankSelected = { selectedTank ->

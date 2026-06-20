@@ -12,7 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
 @Composable
@@ -43,9 +45,9 @@ fun ShopTabs(
             ) {
                 Text(
                     text = when (tab) {
-                        ShopTab.FISH -> "🐟 Fish"
-                        ShopTab.AQUARIUM -> "🧪 Tank"
-                        ShopTab.ITEMS -> "🧱 Items"
+                        ShopTab.FISH -> stringResource(R.string.shop_tab_fish)
+                        ShopTab.AQUARIUM -> stringResource(R.string.shop_tab_aquarium)
+                        ShopTab.ITEMS -> stringResource(R.string.shop_tab_items)
                     }
                 )
             }

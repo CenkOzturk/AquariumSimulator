@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.game
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.getFoodCountByIds
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
@@ -16,12 +17,15 @@ object CoinManager {
         }
     }
 
+    //TODO updatelenicek listeye gerek yok price gönder direkt
     fun purchaseItem(
         context: Context,
         shopTab: ShopTab,
         list: List<ShopItem>,
         shopItemId: Int,
-        onFail: () -> Unit = { Utils.showToast("Satın alma başarısız! Paran yetmedi :(") }
+        onFail: () -> Unit = {
+            Utils.showToast(R.string.shop_no_coin_error)
+        }
     ) {
         val price = list.find { it.id == shopItemId }?.price ?: 0
 

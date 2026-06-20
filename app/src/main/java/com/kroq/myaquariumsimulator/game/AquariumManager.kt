@@ -1,18 +1,29 @@
 package com.kroq.myaquariumsimulator.game
 
 import android.content.Context
-import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.aquarium.createAquarium
 import com.kroq.myaquariumsimulator.model.aquarium.toShopItem
 
 object AquariumManager {
 
+    var currentAquarium by mutableStateOf(
+        createAquarium(AquariumType.SMALL)
+    )
+        private set
+
+    fun initialize(aquariumType: String) {
+        currentAquarium =
+            createAquarium(AquariumType.valueOf(aquariumType))
+    }
+
     fun upgrade(
         context: Context,
         type: AquariumType
     ) {
-
         val price = type.toShopItem().price
 
         val success = CoinManager.spendCoins(context, price)
@@ -21,10 +32,16 @@ object AquariumManager {
         GameManager.update(context) {
             it.copy(aquariumType = type.name)
         }
+
+        refresh()
     }
 
-    fun getCurrentAquarium(): AquariumModel {
-        val type = AquariumType.valueOf(GameManager.state.aquariumType)
-        return createAquarium(type)
+    private fun refresh() {
+        currentAquarium =
+            createAquarium(
+                AquariumType.valueOf(
+                    GameManager.state.aquariumType
+                )
+            )
     }
 }

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">My Aquarium Simulator</string>
+
+    <string name="btn_reset">RESET</string>
+    <string name="btn_close">✕</string>
+    <string name="btn_shop">"🛒"</string>
+
+    <string name="shop_tab_fish">"🐟 Fish"</string>
+    <string name="shop_tab_aquarium">"🧪 Tank"</string>
+    <string name="shop_tab_items">"🧱 Items"</string>
+
+    <string name="coin_value">"💰 %s"</string>
+    <string name="fish_food_value">"🍤 %s"</string>
+
+    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :("</string>
+    <string name="shop_no_coin_error">"Satın alma başarısız! Paran yetmedi :("</string>
+    <string name="shop_too_much_fish">"Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz"</string>
 </resources>
