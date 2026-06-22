@@ -8,7 +8,6 @@ import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
-import com.kroq.myaquariumsimulator.model.fish.toShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.utils.Utils.random
 
@@ -21,10 +20,11 @@ object FishManager {
         }
     }
 
-    fun buy(fishId: Int) {
+    fun buy(fishId: Int, price: Int) {
         CoinManager.purchaseItem(
             ShopTab.FISH,
-            FishDatabase.getAllFishes().map { it.toShopItem() }, fishId
+            price,
+            fishId
         )
         syncWithGameState(GameManager.state)
     }

@@ -3,23 +3,19 @@ package com.kroq.myaquariumsimulator.game
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.getFoodCountByIds
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
-import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.utils.Utils
 
 
 object CoinManager {
-    //TODO updatelenicek listeye gerek yok price gönder direkt
     fun purchaseItem(
         shopTab: ShopTab,
-        list: List<ShopItem>,
+        price: Int,
         shopItemId: Int,
         onFail: () -> Unit = {
             Utils.showToast(R.string.shop_no_coin_error)
         }
     ) {
-        val price = list.find { it.id == shopItemId }?.price ?: 0
-
         if (!spendCoins(price)) {
             onFail()
             return

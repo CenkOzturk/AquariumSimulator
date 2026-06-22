@@ -4,15 +4,14 @@ import androidx.compose.runtime.mutableStateListOf
 import com.kroq.myaquariumsimulator.model.item.AquariumItemModel
 import com.kroq.myaquariumsimulator.game.GameManager.state
 import com.kroq.myaquariumsimulator.model.item.ItemDatabase
-import com.kroq.myaquariumsimulator.model.item.toShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
 object ItemManager {
     val items = mutableStateListOf<AquariumItemModel>()
-    fun buy(itemId: Int) {
+    fun buy(itemId: Int, price: Int) {
         CoinManager.purchaseItem(
             ShopTab.ITEMS,
-            ItemDatabase.getAllItems().map { it.toShopItem() },
+            price,
             itemId
         )
         syncWithGameState()

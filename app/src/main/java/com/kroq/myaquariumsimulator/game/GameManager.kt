@@ -30,7 +30,6 @@ object GameManager {
         items.addAll(initialItems)
     }
 
-    //TODO buna refactor atılacak managerlar dışından bu işlem yapılmamalı
     fun update(reducer: (GameState) -> GameState) {
         val newState = reducer(state)
         state = newState

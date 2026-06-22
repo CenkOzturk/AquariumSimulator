@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.ui.component
 
-import android.content.Context
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -31,6 +30,7 @@ import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
+import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.shop.items
 import com.kroq.myaquariumsimulator.ui.component.shop.AnimatedShopGrid
@@ -42,12 +42,11 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ShopPopup(
-    context: Context,
     onClose: () -> Unit,
     playerTier: PlayerTier,
     onTankSelected: (AquariumType) -> Unit,
-    onFishSelected: (Int) -> Unit,
-    onItemSelected: (Int) -> Unit
+    onFishSelected: (ShopItem) -> Unit,
+    onItemSelected: (ShopItem) -> Unit
 ) {
     val scope = rememberCoroutineScope()
 
@@ -153,12 +152,12 @@ fun ShopPopup(
                                 ) {
                                     Utils.showToast(R.string.shop_too_much_fish)
                                 } else {
-                                    onFishSelected(item.id)
+                                    onFishSelected(item)
                                 }
                             }
 
                             ShopTab.ITEMS -> {
-                                onItemSelected(item.id)
+                                onItemSelected(item)
                             }
                         }
                     },

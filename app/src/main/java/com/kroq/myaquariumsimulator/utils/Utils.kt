@@ -23,10 +23,17 @@ object Utils {
         } ?: Log.e("ToastUtil", "Context henüz init edilmemiş!")
     }
 
-    fun showToast(@StringRes messageRes: Int) {
+    fun showToast(
+        @StringRes resId: Int,
+        vararg formatArgs: Any?
+    ) {
         appContext?.let {
-            Toast.makeText(it, it.getString(messageRes), Toast.LENGTH_SHORT).show()
-        } ?: Log.e("ToastUtil", "Context henüz init edilmemiş!")
+            Toast.makeText(
+                it,
+                it.getString(resId, *formatArgs),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     fun ClosedFloatingPointRange<Float>.random(): Float {

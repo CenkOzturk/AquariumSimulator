@@ -109,7 +109,6 @@ fun GameScreen() {
             modifier = Modifier.padding(20.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            //ResourceBadge("💰 ${GameManager.state.coins}")
             ResourceBadge(
                 stringResource(
                     R.string.coin_value, GameManager.state.coins)
@@ -122,7 +121,6 @@ fun GameScreen() {
 
         if (isShopOpen) {
             ShopPopup(
-                context = context,
                 onClose = { isShopOpen = false },
                 playerTier = GameProgress(
                     AquariumManager.currentAquarium.type,
@@ -132,15 +130,15 @@ fun GameScreen() {
                     selectedTankState = selectedTank
                     showConfirm = true
                 },
-                onFishSelected = { fishId ->
-                    FishManager.buy(fishId)
+                onFishSelected = { fish ->
+                    FishManager.buy(fish.id, fish.price)
                     isShopOpen = false
                 },
-                onItemSelected = { itemId ->
-                    if (isFood(itemId)) {
-                        FishFoodManager.buyFood(itemId)
+                onItemSelected = { item ->
+                    if (isFood(item.id)) {
+                        FishFoodManager.buyFood(item.id, item.price)
                     } else {
-                        ItemManager.buy(itemId)
+                        ItemManager.buy(item.id, item.price)
                     }
                     isShopOpen = false
                 }

@@ -12,7 +12,7 @@
     <string name="coin_value">"💰 %s"</string>
     <string name="fish_food_value">"🍤 %s"</string>
 
-    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :("</string>
+    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem %s"</string>
     <string name="shop_no_coin_error">"Satın alma başarısız! Paran yetmedi :("</string>
     <string name="shop_too_much_fish">"Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz"</string>
 </resources>
