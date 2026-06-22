@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.game
 
-import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -20,18 +19,13 @@ object AquariumManager {
             createAquarium(AquariumType.valueOf(aquariumType))
     }
 
-    fun upgrade(
-        context: Context,
-        type: AquariumType
-    ) {
+    fun upgrade(type: AquariumType) {
         val price = type.toShopItem().price
 
-        val success = CoinManager.spendCoins(context, price)
+        val success = CoinManager.spendCoins(price)
         if (!success) return
 
-        GameManager.update(context) {
-            it.copy(aquariumType = type.name)
-        }
+        GameManager.update { it.copy(aquariumType = type.name) }
 
         refresh()
     }

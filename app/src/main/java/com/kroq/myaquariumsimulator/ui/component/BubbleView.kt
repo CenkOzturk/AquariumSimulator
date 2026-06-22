@@ -15,8 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.data.Constants.BUBBLE_VALUE
 import com.kroq.myaquariumsimulator.game.BubbleManager
-import com.kroq.myaquariumsimulator.game.CoinManager
+import com.kroq.myaquariumsimulator.game.FloatingTextManager
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 
 @Composable
@@ -42,7 +43,7 @@ fun BubbleView() {
                     )
                     .clickable {
                         BubbleManager.popBubble(context, bubble.id)
-                        CoinManager.spawn("5", bubble.x, bubble.y)
+                        FloatingTextManager.spawn(BUBBLE_VALUE, bubble.x, bubble.y)
                     }
             )
         }

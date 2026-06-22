@@ -20,7 +20,6 @@ object CoinLoop {
     private var job: Job? = null
 
     fun start(
-        context: Context,
         lifecycleOwner: LifecycleOwner
     ) {
         job?.cancel()
@@ -32,9 +31,7 @@ object CoinLoop {
                         totalIncome += fish.income * fish.coinMultiplier()
                     }
 
-                    GameManager.update(context) {
-                        it.copy(coins = it.coins + totalIncome)
-                    }
+                    CoinManager.addCoins(totalIncome)
 
                     delay(INCOME_CYCLE_SECONDS)
                 }

@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.game
 
-import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
 import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
@@ -22,9 +21,8 @@ object FishManager {
         }
     }
 
-    fun buy(context: Context, fishId: Int) {
+    fun buy(fishId: Int) {
         CoinManager.purchaseItem(
-            context,
             ShopTab.FISH,
             FishDatabase.getAllFishes().map { it.toShopItem() }, fishId
         )
@@ -62,6 +60,10 @@ object FishManager {
             }
 
         fishes.addAll(newFishes)
+    }
+
+    fun updateFish(fishId: Int) {
+        GameManager.update { it.copy(ownedFishIds = it.ownedFishIds + fishId) }
     }
 
     fun canUnlock(fish: FishModel, progress: GameProgress): Boolean {

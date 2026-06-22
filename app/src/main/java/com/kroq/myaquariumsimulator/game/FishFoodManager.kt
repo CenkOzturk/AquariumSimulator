@@ -8,9 +8,8 @@ import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.utils.Utils
 
 object FishFoodManager {
-    fun buyFood(context: Context, itemId: Int) {
+    fun buyFood(itemId: Int) {
         CoinManager.purchaseItem(
-            context,
             ShopTab.ITEMS,
             FishFoodItemDatabase.getAllFishFeed().map { it.toShopItem() },
             itemId
@@ -18,16 +17,16 @@ object FishFoodManager {
     }
 
     //TODO balık seviyesine ve oyuncu seviyesine bağlı olarak değiştirilecek şekilde tekrar ayalanacak
-    fun consumeFood(context: Context) {
+    fun consumeFood() {
         if (GameManager.state.foodCount <= 0) {
             Utils.showToast(R.string.no_food_error)
             return
+        } else {
+            updateFood(-1)
         }
+    }
 
-        GameManager.update(context) {
-            it.copy(
-                foodCount = it.foodCount - 1
-            )
-        }
+    fun updateFood(value: Int) {
+        GameManager.update { it.copy(foodCount = it.foodCount + value) }
     }
 }

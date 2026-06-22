@@ -42,6 +42,7 @@ import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.game.SaveManager
 
 @Composable
 fun GameScreen() {
@@ -56,8 +57,9 @@ fun GameScreen() {
 
     LaunchedEffect(Unit) {
         val loaded = loadGameState(context)
+        SaveManager.init(context)
         GameManager.initialize(loaded)
-        CoinLoop.start(context, lifecycleOwner)
+        CoinLoop.start(lifecycleOwner)
     }
 
     LaunchedEffect(screenWidth, screenHeight) {
@@ -83,21 +85,13 @@ fun GameScreen() {
             AquariumManager.currentAquarium
         }
 
-        AquariumView(context, aquarium)
+        AquariumView(aquarium)
 
         //RESET BUTTON
         Button(
             modifier = Modifier.align(Alignment.BottomStart),
             onClick = {
-                GameManager.update(context) {
-                    it.copy(
-                        aquariumType = AquariumType.SMALL.name,
-                        ownedFishIds = setOf(),
-                        ownedItemIds = setOf(),
-                        coins = 2500,
-                        foodCount = 10
-                    )
-                }
+                GameManager.resetGame()
                 Utils.showToast("RESET")
             }
         ) {
@@ -139,14 +133,14 @@ fun GameScreen() {
                     showConfirm = true
                 },
                 onFishSelected = { fishId ->
-                    FishManager.buy(context, fishId)
+                    FishManager.buy(fishId)
                     isShopOpen = false
                 },
                 onItemSelected = { itemId ->
                     if (isFood(itemId)) {
-                        FishFoodManager.buyFood(context, itemId)
+                        FishFoodManager.buyFood(itemId)
                     } else {
-                        ItemManager.buy(context, itemId)
+                        ItemManager.buy(itemId)
                     }
                     isShopOpen = false
                 }
@@ -157,11 +151,7 @@ fun GameScreen() {
             ConfirmPopup(
                 onNo = { showConfirm = false },
                 onYes = {
-                    AquariumManager.upgrade(
-                        context,
-                        selectedTankState
-                    )
-
+                    AquariumManager.upgrade(selectedTankState)
                     showConfirm = false
                     isShopOpen = false
                 }

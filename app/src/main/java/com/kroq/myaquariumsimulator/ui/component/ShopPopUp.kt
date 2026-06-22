@@ -131,9 +131,7 @@ fun ShopPopup(
                     selected = currentTab,
                     onTabSelected = { tab ->
                         currentTab = tab
-                        GameManager.update(context) {
-                            it.copy(selectedShopTab = tab)
-                        }
+                        GameManager.updateSelectedTab(tab)
                     }
                 )
 

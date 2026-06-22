@@ -1,6 +1,5 @@
 package com.kroq.myaquariumsimulator.ui.component
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,16 +23,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
-import com.kroq.myaquariumsimulator.game.CoinManager
-import com.kroq.myaquariumsimulator.game.ScreenManager.screenHeight
-import com.kroq.myaquariumsimulator.game.ScreenManager.screenWidth
+import com.kroq.myaquariumsimulator.game.FloatingTextManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
-import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 import com.kroq.myaquariumsimulator.utils.Utils.hasItem
 
 @Composable
-fun AquariumView(context: Context, aquarium: AquariumModel) {
+fun AquariumView(aquarium: AquariumModel) {
     Box(
         modifier = Modifier
             .offset(aquarium.offsetX.dp, aquarium.offsetY.dp)
@@ -54,7 +50,7 @@ fun AquariumView(context: Context, aquarium: AquariumModel) {
                     )
                 )
         ) {
-            CoinManager.texts.forEach { coin ->
+            FloatingTextManager.texts.forEach { coin ->
                 EarnCoinView(coin)
             }
 
@@ -83,7 +79,7 @@ fun AquariumView(context: Context, aquarium: AquariumModel) {
                 )
             }
 
-            FishLayer(context = context)
+            FishLayer()
 
             //STAR
             if (hasItem(303)) {

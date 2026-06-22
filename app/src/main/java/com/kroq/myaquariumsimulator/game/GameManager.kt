@@ -1,18 +1,15 @@
 package com.kroq.myaquariumsimulator.game
 
-import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.kroq.myaquariumsimulator.game.FishManager.fishes
 import com.kroq.myaquariumsimulator.game.ItemManager.items
 import com.kroq.myaquariumsimulator.model.GameState
+import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.item.ItemDatabase
-import com.kroq.myaquariumsimulator.model.saveGameState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
 object GameManager {
     var state by mutableStateOf(GameState())
@@ -34,12 +31,25 @@ object GameManager {
     }
 
     //TODO buna refactor atılacak managerlar dışından bu işlem yapılmamalı
-    fun update(context: Context, reducer: (GameState) -> GameState) {
+    fun update(reducer: (GameState) -> GameState) {
         val newState = reducer(state)
         state = newState
+        SaveManager.save(newState)
+    }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            saveGameState(context, newState)
+    fun updateSelectedTab(tab: ShopTab) {
+        update{ it.copy(selectedShopTab = tab) }
+    }
+
+    fun resetGame() {
+        update {
+            it.copy(
+                aquariumType = AquariumType.SMALL.name,
+                ownedFishIds = setOf(),
+                ownedItemIds = setOf(),
+                coins = 2500,
+                foodCount = 10
+            )
         }
     }
 }

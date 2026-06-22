@@ -13,11 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.game.CoinManager
+import com.kroq.myaquariumsimulator.model.FloatingText
 import kotlinx.coroutines.launch
 
 @Composable
 fun EarnCoinView(
-    coin: CoinManager.FloatingText
+    coin: FloatingText
 ) {
     val offsetY = remember { Animatable(0f) }
     val alpha = remember { Animatable(1f) }
