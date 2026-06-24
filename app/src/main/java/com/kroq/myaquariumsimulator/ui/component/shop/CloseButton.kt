@@ -18,12 +18,11 @@ import com.kroq.myaquariumsimulator.R
 
 @Composable
 fun CloseButton(modifier: Modifier, onClose: () -> Unit) {
-
     Box(
         modifier = modifier
             .padding(20.dp)
             .size(50.dp)
-            .background(Color.Black, CircleShape)
+            .background(Color(0xFFC61310), CircleShape)
             .clickable { onClose() },
     ) {
         Text(

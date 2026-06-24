@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -43,6 +44,9 @@ import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.game.SaveManager
+import com.kroq.myaquariumsimulator.model.DailyTask
+import com.kroq.myaquariumsimulator.ui.component.DailyTaskButton
+import com.kroq.myaquariumsimulator.ui.component.DailyTaskPopup
 
 @Composable
 fun GameScreen() {
@@ -54,6 +58,7 @@ fun GameScreen() {
     var isShopOpen by remember { mutableStateOf(false) }
     var selectedTankState by remember {mutableStateOf(AquariumType.SMALL)}
     var showConfirm by remember { mutableStateOf(false) }
+    var showTasks by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         val loaded = loadGameState(context)
@@ -76,6 +81,38 @@ fun GameScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Background()
+
+        Column(
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                ResourceBadge(
+                    stringResource(
+                        R.string.coin_value, GameManager.state.coins
+                    )
+                )
+                ResourceBadge(
+                    stringResource(
+                        R.string.fish_food_value, GameManager.state.foodCount
+                    )
+                )
+            }
+
+            DailyTaskButton(
+                modifier = Modifier.padding(top = 24.dp),
+                hasAnyTask = true,
+                hasClaimableReward = true,
+                onClick = {
+                    showTasks = true
+                }
+            )
+        }
 
         val aquarium = remember(
             GameManager.state.aquariumType,
@@ -104,20 +141,6 @@ fun GameScreen() {
                 .align(Alignment.BottomEnd)
                 .padding(20.dp)
         )
-
-        Row(
-            modifier = Modifier.padding(20.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ResourceBadge(
-                stringResource(
-                    R.string.coin_value, GameManager.state.coins)
-            )
-            ResourceBadge(
-                stringResource(
-                    R.string.fish_food_value, GameManager.state.foodCount)
-            )
-        }
 
         if (isShopOpen) {
             ShopPopup(
@@ -153,6 +176,21 @@ fun GameScreen() {
                     showConfirm = false
                     isShopOpen = false
                 }
+            )
+        }
+
+        if (showTasks) {
+            DailyTaskPopup(
+                tasks = listOf(
+                    DailyTask(1, "Feed fish", 2, 3, 50, false),
+                    DailyTask(2, "Pop bubbles", 5, 5, 100, false)
+                ),
+                allCompleted = false,
+                totalReward = 25,
+                onCollect = {
+                    // TODO reward logic
+                },
+                onClose = { showTasks = false }
             )
         }
     }

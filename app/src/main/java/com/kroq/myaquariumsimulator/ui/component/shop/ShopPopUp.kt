@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -77,7 +80,8 @@ fun ShopPopup(
 
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .wrapContentHeight()
                 .padding(top = 64.dp, start = 16.dp, end = 16.dp)
                 .offset { IntOffset(0, offsetY.value.toInt()) }
                 .graphicsLayer {
@@ -117,7 +121,7 @@ fun ShopPopup(
                 }
         ) {
 
-            Column(modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.fillMaxWidth()) {
 
                 Handle(Modifier.align(Alignment.CenterHorizontally))
 
@@ -160,7 +164,7 @@ fun ShopPopup(
                     playerTier = playerTier
                 )
 
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 CloseButton(
                     Modifier.align(Alignment.CenterHorizontally),
