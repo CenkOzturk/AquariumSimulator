@@ -33,11 +33,11 @@ import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.calculateTier
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.loadGameState
-import com.kroq.myaquariumsimulator.ui.component.AquariumView
+import com.kroq.myaquariumsimulator.ui.component.aquarium.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.Background
-import com.kroq.myaquariumsimulator.ui.component.ConfirmPopup
-import com.kroq.myaquariumsimulator.ui.component.ResourceBadge
-import com.kroq.myaquariumsimulator.ui.component.ShopPopup
+import com.kroq.myaquariumsimulator.ui.component.shop.ConfirmPopup
+import com.kroq.myaquariumsimulator.ui.component.aquarium.ResourceBadge
+import com.kroq.myaquariumsimulator.ui.component.shop.ShopPopup
 import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay

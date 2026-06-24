@@ -27,6 +27,6 @@ object ItemManager {
     }
 
     fun updateItems(itemId: Int) {
-        GameManager.update{ it.copy(ownedFishIds = it.ownedItemIds + itemId) }
+        GameManager.update{ it.copy(ownedItemIds = it.ownedItemIds + itemId) }
     }
 }

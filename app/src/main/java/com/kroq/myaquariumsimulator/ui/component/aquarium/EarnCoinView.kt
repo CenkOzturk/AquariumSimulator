@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component
+package com.kroq.myaquariumsimulator.ui.component.aquarium
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.kroq.myaquariumsimulator.game.CoinManager
 import com.kroq.myaquariumsimulator.model.FloatingText
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component
+package com.kroq.myaquariumsimulator.ui.component.shop
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -33,10 +33,6 @@ import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.shop.items
-import com.kroq.myaquariumsimulator.ui.component.shop.AnimatedShopGrid
-import com.kroq.myaquariumsimulator.ui.component.shop.CloseButton
-import com.kroq.myaquariumsimulator.ui.component.shop.Handle
-import com.kroq.myaquariumsimulator.ui.component.shop.ShopTabs
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.launch
 

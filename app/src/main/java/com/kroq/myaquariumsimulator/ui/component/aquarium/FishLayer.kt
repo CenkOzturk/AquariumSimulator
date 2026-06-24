@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component
+package com.kroq.myaquariumsimulator.ui.component.aquarium
 
 import androidx.compose.runtime.Composable
 import com.kroq.myaquariumsimulator.R
