@@ -22,8 +22,7 @@ fun FishLayer() {
                     return@FishView
                 }
 
-                FishManager.feedFish(fish.id)
-                FishFoodManager.updateFood(-fish.income)
+                FishFoodManager.feedFish(fish.id)
             }
         })
     }

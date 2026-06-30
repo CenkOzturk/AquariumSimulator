@@ -43,8 +43,8 @@ import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.game.DailyTaskManager
 import com.kroq.myaquariumsimulator.game.SaveManager
-import com.kroq.myaquariumsimulator.model.DailyTask
 import com.kroq.myaquariumsimulator.ui.component.DailyTaskButton
 import com.kroq.myaquariumsimulator.ui.component.DailyTaskPopup
 
@@ -64,6 +64,12 @@ fun GameScreen() {
         val loaded = loadGameState(context)
         SaveManager.init(context)
         GameManager.initialize(loaded)
+        DailyTaskManager.refreshIfNeeded(
+            GameProgress(
+                AquariumManager.currentAquarium.type,
+                ItemManager.items.map { it.type }
+            ).calculateTier()
+        )
         CoinLoop.start(lifecycleOwner)
     }
 
@@ -180,18 +186,23 @@ fun GameScreen() {
         }
 
         if (showTasks) {
-            DailyTaskPopup(
-                tasks = listOf(
-                    DailyTask(1, "Feed fish", 2, 3, 50, false),
-                    DailyTask(2, "Pop bubbles", 5, 5, 100, false)
-                ),
-                allCompleted = false,
-                totalReward = 25,
-                onCollect = {
-                    // TODO reward logic
-                },
-                onClose = { showTasks = false }
-            )
+            GameManager.state.dailyTask?.let { dailyTask ->
+                if (dailyTask.claimed) {
+                    Utils.showToast(stringResource(R.string.already_received_reward))
+                    showTasks = false
+                } else {
+                    DailyTaskPopup(
+                        tasks = dailyTask.tasks,
+                        allCompleted = dailyTask.isCompleted,
+                        totalReward = dailyTask.totalReward,
+                        onCollect = {
+                            DailyTaskManager.claimReward()
+                            showTasks = false
+                        },
+                        onClose = { showTasks = false }
+                    )
+                }
+            }
         }
     }
 }

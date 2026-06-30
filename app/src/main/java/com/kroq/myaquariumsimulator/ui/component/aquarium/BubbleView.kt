@@ -42,7 +42,7 @@ fun BubbleView() {
                         CircleShape
                     )
                     .clickable {
-                        BubbleManager.popBubble(context, bubble.id)
+                        BubbleManager.popBubble(bubble.id)
                         FloatingTextManager.spawn(BUBBLE_VALUE, bubble.x, bubble.y)
                     }
             )

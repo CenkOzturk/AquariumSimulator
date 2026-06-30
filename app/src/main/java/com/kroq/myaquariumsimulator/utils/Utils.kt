@@ -4,13 +4,19 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
+import com.google.gson.Gson
 import com.kroq.myaquariumsimulator.game.ItemManager.items
+import java.util.Calendar
 
 object Utils {
     var appContext: Context? = null
 
     fun init(context: Context) {
         appContext = context.applicationContext
+    }
+
+    fun emptyString(): String {
+        return ""
     }
 
     fun hasItem(id: Int): Boolean {
@@ -38,5 +44,29 @@ object Utils {
 
     fun ClosedFloatingPointRange<Float>.random(): Float {
         return (start + Math.random() * (endInclusive - start)).toFloat()
+    }
+
+    fun Any.toJson(): String {
+        return Gson().toJson(this)
+    }
+
+    inline fun <reified T> String.fromJson(): T {
+        return Gson().fromJson(this, T::class.java)
+    }
+
+    fun tomorrowAtMidnight(): Long {
+        val calendar = Calendar.getInstance()
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+
+        return calendar.timeInMillis
+    }
+
+    fun isExpired(time: Long): Boolean {
+        return System.currentTimeMillis() >= time
     }
 }

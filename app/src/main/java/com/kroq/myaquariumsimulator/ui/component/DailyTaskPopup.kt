@@ -2,12 +2,9 @@ package com.kroq.myaquariumsimulator.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,14 +19,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kroq.myaquariumsimulator.model.DailyTask
+import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.model.task.TaskModel
 
 @Composable
 fun DailyTaskPopup(
-    tasks: List<DailyTask>,
+    tasks: List<TaskModel>,
     allCompleted: Boolean,
     totalReward: Int,
     onCollect: () -> Unit,
@@ -69,7 +68,7 @@ fun DailyTaskPopup(
 
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = "Daily Tasks".uppercase(),
+                    text = stringResource(R.string.today_missions).uppercase(),
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -101,9 +100,9 @@ fun DailyTaskPopup(
                 ) {
                     Text(
                         text = if (allCompleted)
-                            "Collect +$totalReward 💰"
+                            stringResource(R.string.collect, totalReward)
                         else
-                            "Complete Tasks",
+                            stringResource(R.string.not_complete_tasks),
                         color = Color(0xFF422516),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Medium

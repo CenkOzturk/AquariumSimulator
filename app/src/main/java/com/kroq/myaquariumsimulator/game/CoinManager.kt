@@ -4,6 +4,7 @@ import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.getFoodCountByIds
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
+import com.kroq.myaquariumsimulator.model.task.DailyTaskType
 import com.kroq.myaquariumsimulator.utils.Utils
 
 
@@ -14,9 +15,12 @@ object CoinManager {
         shopItemId: Int,
         onFail: () -> Unit = {
             Utils.showToast(R.string.shop_no_coin_error)
-        }
+        },
+        onSuccess: () -> Unit = {}
     ) {
-        if (!spendCoins(price)) {
+        if (spendCoins(price)) {
+            onSuccess()
+        } else {
             onFail()
             return
         }
@@ -46,5 +50,6 @@ object CoinManager {
 
     fun addCoins(amount: Int) {
         GameManager.update { it.copy(coins = it.coins + amount) }
+        DailyTaskManager.addProgress(DailyTaskType.COLLECT_COIN, amount)
     }
 }

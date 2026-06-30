@@ -6,6 +6,10 @@ import com.kroq.myaquariumsimulator.data.PrefKeys
 import com.kroq.myaquariumsimulator.data.dataStore
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
+import com.kroq.myaquariumsimulator.model.task.DailyTaskModel
+import com.kroq.myaquariumsimulator.utils.Utils.emptyString
+import com.kroq.myaquariumsimulator.utils.Utils.fromJson
+import com.kroq.myaquariumsimulator.utils.Utils.toJson
 import kotlinx.coroutines.flow.first
 
 data class GameState(
@@ -14,7 +18,8 @@ data class GameState(
     val ownedItemIds: Set<Int> = setOf(),
     val coins: Int = 25,
     val foodCount: Int = 10,
-    var selectedShopTab: ShopTab = ShopTab.FISH
+    var selectedShopTab: ShopTab = ShopTab.FISH,
+    val dailyTask: DailyTaskModel? = null
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -26,7 +31,8 @@ suspend fun loadGameState(context: Context): GameState {
         ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: setOf(),
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(),
         coins = prefs[PrefKeys.COINS] ?: 25,
-        foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10
+        foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
+        dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>()
     )
 }
 
@@ -45,5 +51,7 @@ suspend fun saveGameState(
         prefs[PrefKeys.COINS] = state.coins
 
         prefs[PrefKeys.FOOD_COUNT] = state.foodCount
+
+        prefs[PrefKeys.DAILY_TASK] = state.dailyTask?.toJson() ?: emptyString()
     }
 }

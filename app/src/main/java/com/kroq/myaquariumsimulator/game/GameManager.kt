@@ -47,7 +47,8 @@ object GameManager {
                 ownedFishIds = setOf(),
                 ownedItemIds = setOf(),
                 coins = 2500,
-                foodCount = 10
+                foodCount = 10,
+                dailyTask = null
             )
         }
     }

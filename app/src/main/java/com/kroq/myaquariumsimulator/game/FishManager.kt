@@ -9,6 +9,7 @@ import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
+import com.kroq.myaquariumsimulator.model.task.DailyTaskType
 import com.kroq.myaquariumsimulator.utils.Utils.random
 
 object FishManager {
@@ -24,19 +25,12 @@ object FishManager {
         CoinManager.purchaseItem(
             ShopTab.FISH,
             price,
-            fishId
+            fishId,
+            onSuccess = {
+                DailyTaskManager.addProgress(DailyTaskType.BUY_FISH)
+            }
         )
         syncWithGameState(GameManager.state)
-    }
-
-    fun feedFish(fishId: Int) {
-        val index = fishes.indexOfFirst { it.id == fishId }
-
-        if (index == -1) return
-
-        fishes[index] = fishes[index].copy(
-            fedUntil = System.currentTimeMillis() + FEED_DURATION
-        )
     }
 
     private fun syncWithGameState(state: GameState) {

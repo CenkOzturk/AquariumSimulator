@@ -1,7 +1,6 @@
 package com.kroq.myaquariumsimulator.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,10 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kroq.myaquariumsimulator.model.DailyTask
+import com.kroq.myaquariumsimulator.model.task.TaskModel
 
 @Composable
-fun TaskRow(task: DailyTask) {
+fun TaskRow(task: TaskModel) {
 
     Row(
         modifier = Modifier
@@ -24,7 +23,7 @@ fun TaskRow(task: DailyTask) {
     ) {
 
         Text(
-            task.title,
+            task.type.name,
             fontSize = 14.sp
         )
 
