@@ -4,12 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import kotlinx.coroutines.delay
 
 @Composable
 fun AnimatedShopGrid(
+    modifier: Modifier = Modifier,
     items: List<ShopItem>,
     onClick: (ShopItem) -> Unit,
     playerTier: PlayerTier
@@ -27,6 +29,7 @@ fun AnimatedShopGrid(
     }
 
     ShopGrid(
+        modifier = modifier,
         items = items,
         onClick = onClick,
         playerTier = playerTier

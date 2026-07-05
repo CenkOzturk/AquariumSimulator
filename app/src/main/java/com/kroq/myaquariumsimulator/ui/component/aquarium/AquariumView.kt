@@ -66,7 +66,7 @@ fun AquariumView(aquarium: AquariumModel) {
             }
 
             //SEAWEED
-            if (hasItem(302)) {
+            if (hasItem(301)) {
                 Image(
                     painter = painterResource(R.drawable.seaweed_short),
                     contentDescription = null,
@@ -94,7 +94,7 @@ fun AquariumView(aquarium: AquariumModel) {
             }
 
             //ROCKS
-            if (hasItem(301)) {
+            if (hasItem(302)) {
                 Image(
                     painter = painterResource(R.drawable.rock_small),
                     contentDescription = null,

@@ -1,35 +1,25 @@
 package com.kroq.myaquariumsimulator.ui.component.shop
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.model.component.GameGradient
+import com.kroq.myaquariumsimulator.ui.component.GameCircleButton
 
 
 @Composable
-fun CloseButton(modifier: Modifier, onClose: () -> Unit) {
-    Box(
-        modifier = modifier
-            .padding(20.dp)
-            .size(50.dp)
-            .background(Color(0xFFC61310), CircleShape)
-            .clickable { onClose() },
-    ) {
-        Text(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(bottom = 2.dp),
-            text = stringResource(R.string.btn_close),
-            color = Color.White)
-    }
+fun CloseButton(
+    modifier: Modifier = Modifier,
+    gradient: GameGradient,
+    onClose: () -> Unit
+) {
+    GameCircleButton(
+        modifier = modifier,
+        gradient = gradient,
+        icon = Icons.Rounded.Close,
+        onClick = onClose,
+        size = 40.dp
+    )
 }

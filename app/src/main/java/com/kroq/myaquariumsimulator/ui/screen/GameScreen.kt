@@ -45,8 +45,9 @@ import kotlinx.coroutines.delay
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.game.DailyTaskManager
 import com.kroq.myaquariumsimulator.game.SaveManager
-import com.kroq.myaquariumsimulator.ui.component.DailyTaskButton
-import com.kroq.myaquariumsimulator.ui.component.DailyTaskPopup
+import com.kroq.myaquariumsimulator.ui.component.popup.DailyTaskButton
+import com.kroq.myaquariumsimulator.ui.component.popup.DailyTaskPopup
+import com.kroq.myaquariumsimulator.ui.component.popup.WelcomeGiftPopup
 
 @Composable
 fun GameScreen() {
@@ -59,6 +60,7 @@ fun GameScreen() {
     var selectedTankState by remember {mutableStateOf(AquariumType.SMALL)}
     var showConfirm by remember { mutableStateOf(false) }
     var showTasks by remember { mutableStateOf(false) }
+    var showDailyGift by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         val loaded = loadGameState(context)
@@ -87,6 +89,16 @@ fun GameScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
 
         Background()
+
+        val aquarium = remember(
+            GameManager.state.aquariumType,
+            screenWidth,
+            screenHeight
+        ) {
+            AquariumManager.currentAquarium
+        }
+
+        AquariumView(aquarium)
 
         Column(
             modifier = Modifier
@@ -118,24 +130,23 @@ fun GameScreen() {
                     showTasks = true
                 }
             )
-        }
 
-        val aquarium = remember(
-            GameManager.state.aquariumType,
-            screenWidth,
-            screenHeight
-        ) {
-            AquariumManager.currentAquarium
+            DailyTaskButton(
+                modifier = Modifier.padding(top = 24.dp),
+                hasAnyTask = true,
+                hasClaimableReward = true,
+                onClick = {
+                    showDailyGift = true
+                }
+            )
         }
-
-        AquariumView(aquarium)
 
         //RESET BUTTON
         Button(
             modifier = Modifier.align(Alignment.BottomStart),
             onClick = {
                 GameManager.resetGame()
-                Utils.showToast("RESET")
+                Utils.showToast(R.string.btn_reset)
             }
         ) {
             Text(text = stringResource(R.string.btn_reset))
@@ -203,6 +214,19 @@ fun GameScreen() {
                     )
                 }
             }
+        }
+
+        if (showDailyGift) {
+            WelcomeGiftPopup(
+                currentDay = 4,
+                rewardText = "aaa",
+                canClaim = true,
+                claimedToday = false,
+                onClaim = {},
+                onClose = {
+                    showDailyGift = false
+                }
+            )
         }
     }
 }

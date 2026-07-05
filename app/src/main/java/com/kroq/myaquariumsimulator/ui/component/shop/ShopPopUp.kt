@@ -1,43 +1,41 @@
 package com.kroq.myaquariumsimulator.ui.component.shop
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.game.AquariumManager
 import com.kroq.myaquariumsimulator.game.GameManager
 import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
+import com.kroq.myaquariumsimulator.model.component.GameColors
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.shop.items
+import com.kroq.myaquariumsimulator.ui.component.popup.GeneralPopup
 import com.kroq.myaquariumsimulator.utils.Utils
-import kotlinx.coroutines.launch
 
 @Composable
 fun ShopPopup(
@@ -47,11 +45,6 @@ fun ShopPopup(
     onFishSelected: (ShopItem) -> Unit,
     onItemSelected: (ShopItem) -> Unit
 ) {
-    val scope = rememberCoroutineScope()
-
-    val offsetY = remember { Animatable(1000f) }
-    val alpha = remember { Animatable(0f) }
-    val scale = remember { Animatable(0.95f) }
 
     var currentTab by remember {
         mutableStateOf(GameManager.state.selectedShopTab)
@@ -59,125 +52,119 @@ fun ShopPopup(
 
     val currentItems = currentTab.items()
 
-    // 🎬 OPEN ANIMATION (smooth entry)
-    LaunchedEffect(Unit) {
-        launch {
-            offsetY.animateTo(0f, tween(450))
-        }
-        launch {
-            alpha.animateTo(1f, tween(250))
-        }
-        launch {
-            scale.animateTo(1f, tween(300))
-        }
-    }
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black.copy(0.4f * alpha.value))
-    ) {
+    GeneralPopup(
+        onClose = onClose
+    ) { popupModifier, dismiss ->
 
         Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(top = 64.dp, start = 16.dp, end = 16.dp)
-                .offset { IntOffset(0, offsetY.value.toInt()) }
-                .graphicsLayer {
-                    this.alpha = alpha.value
-                    this.scaleX = scale.value
-                    this.scaleY = scale.value
-                }
-                .background(
-                    Color(0xFFF8F9FA),
-                    RoundedCornerShape(28.dp)
-                )
-                .pointerInput(Unit) {
-                    detectDragGestures(
-                        onDrag = { change, drag ->
-                            change.consume()
-                            if (drag.y > 0) {
-                                scope.launch {
-                                    offsetY.snapTo(offsetY.value + drag.y)
+            modifier = popupModifier
+                .fillMaxWidth(.92f)
+                .fillMaxHeight(.68f)
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .clip(RoundedCornerShape(30.dp))
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                GameColors.Shop.top,
+                                GameColors.Shop.light,
+                                GameColors.Shop.base
+                            )
+                        )
+                    )
+                    .border(
+                        width = 3.dp,
+                        brush = Brush.verticalGradient(
+                            listOf(
+                                GameColors.Shop.border,
+                                GameColors.Shop.dark
+                            )
+                        ),
+                        shape = RoundedCornerShape(30.dp)
+                    )
+            ) {
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(
+                            horizontal = 20.dp,
+                            vertical = 18.dp
+                        )
+                ) {
+
+                    Spacer(Modifier.height(8.dp))
+
+                    Text(
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        text = "Shop",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = GameColors.Shop.dark
+                    )
+
+                    Spacer(Modifier.height(4.dp))
+
+                    ShopTabs(
+                        selected = currentTab,
+                        onTabSelected = { tab ->
+                            currentTab = tab
+                            GameManager.updateSelectedTab(tab)
+                        }
+                    )
+
+                    AnimatedShopGrid(
+                        modifier = Modifier.weight(1f),
+                        items = currentItems,
+                        playerTier = playerTier,
+                        onClick = { item ->
+
+                            when (currentTab) {
+
+                                ShopTab.AQUARIUM -> {
+                                    AquariumType.entries
+                                        .getOrNull(item.id)
+                                        ?.let(onTankSelected)
                                 }
-                            }
-                        },
-                        onDragEnd = {
-                            if (offsetY.value > 250f) {
-                                scope.launch {
-                                    launch { offsetY.animateTo(1000f) }
-                                    launch { alpha.animateTo(0f) }
-                                    launch { scale.animateTo(0.95f) }
-                                    onClose()
+
+                                ShopTab.FISH -> {
+
+                                    if (GameManager.state.ownedFishIds.size >=
+                                        AquariumManager.currentAquarium.fishCount
+                                    ) {
+
+                                        Utils.showToast(
+                                            R.string.shop_too_much_fish
+                                        )
+
+                                    } else {
+
+                                        onFishSelected(item)
+                                    }
                                 }
-                            } else {
-                                scope.launch {
-                                    offsetY.animateTo(0f, tween(300))
+
+                                ShopTab.ITEMS -> {
+                                    onItemSelected(item)
                                 }
                             }
                         }
                     )
                 }
-        ) {
-
-            Column(modifier = Modifier.fillMaxWidth()) {
-
-                Handle(Modifier.align(Alignment.CenterHorizontally))
-
-                // 🔥 TAB SWITCH SMOOTHNESS
-                ShopTabs(
-                    selected = currentTab,
-                    onTabSelected = { tab ->
-                        currentTab = tab
-                        GameManager.updateSelectedTab(tab)
-                    }
-                )
-
-                // 🔥 GRID ENTRY ANIMATION WRAPPER
-                AnimatedShopGrid(
-                    items = currentItems,
-                    onClick = { item ->
-                        when (currentTab) {
-
-                            ShopTab.AQUARIUM -> {
-                                AquariumType.entries.getOrNull(item.id)?.let {
-                                    onTankSelected(it)
-                                }
-                            }
-
-                            ShopTab.FISH -> {
-                                if (GameManager.state.ownedFishIds.count() >=
-                                    AquariumManager.currentAquarium.fishCount
-                                ) {
-                                    Utils.showToast(R.string.shop_too_much_fish)
-                                } else {
-                                    onFishSelected(item)
-                                }
-                            }
-
-                            ShopTab.ITEMS -> {
-                                onItemSelected(item)
-                            }
-                        }
-                    },
-                    playerTier = playerTier
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                CloseButton(
-                    Modifier.align(Alignment.CenterHorizontally),
-                    onClose = {
-                        scope.launch {
-                            launch { offsetY.animateTo(1000f, tween(300)) }
-                            launch { alpha.animateTo(0f, tween(200)) }
-                            launch { scale.animateTo(0.95f, tween(200)) }
-                            onClose()
-                        }
-                    }
-                )
             }
+
+            CloseButton(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .offset(
+                        x = 16.dp,
+                        y = (-16).dp
+                    ),
+                gradient = GameColors.Shop,
+                onClose = dismiss
+            )
         }
     }
 }

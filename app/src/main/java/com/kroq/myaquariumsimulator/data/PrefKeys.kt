@@ -11,5 +11,8 @@ object PrefKeys {
     val COINS = intPreferencesKey("coins")
     val FOOD_COUNT = intPreferencesKey("foodCount")
     val DAILY_TASK = stringPreferencesKey("dailyTask")
+
+    val DAILY_GIFT = intPreferencesKey("dailyGift")
+
 }
 
