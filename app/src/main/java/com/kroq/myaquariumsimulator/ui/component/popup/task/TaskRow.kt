@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.popup
+package com.kroq.myaquariumsimulator.ui.component.popup.task
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

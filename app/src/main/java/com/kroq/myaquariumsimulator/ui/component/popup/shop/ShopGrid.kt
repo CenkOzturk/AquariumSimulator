@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.shop
+package com.kroq.myaquariumsimulator.ui.component.popup.shop
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.grid.GridCells

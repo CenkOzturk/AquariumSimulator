@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.popup
+package com.kroq.myaquariumsimulator.ui.component.popup.task
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,11 +34,11 @@ fun DailyTaskPopup(
 ) {
     val colors = GameColors.DailyTask
 
-    GeneralPopup(
+    _root_ide_package_.com.kroq.myaquariumsimulator.ui.component.popup.GeneralPopup(
         onClose = onClose
     ) { popupModifier, dismiss ->
 
-        GamePopup(
+        _root_ide_package_.com.kroq.myaquariumsimulator.ui.component.popup.GamePopup(
             modifier = popupModifier,
             title = stringResource(R.string.today_missions),
             subtitle = "Complete every mission to claim today's reward.",

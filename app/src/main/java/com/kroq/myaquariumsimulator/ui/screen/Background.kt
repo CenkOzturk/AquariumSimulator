@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component
+package com.kroq.myaquariumsimulator.ui.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

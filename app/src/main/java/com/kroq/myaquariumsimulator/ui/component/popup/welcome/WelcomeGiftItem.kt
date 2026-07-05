@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.popup
+package com.kroq.myaquariumsimulator.ui.component.popup.welcome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

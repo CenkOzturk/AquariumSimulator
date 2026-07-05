@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.shop
+package com.kroq.myaquariumsimulator.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

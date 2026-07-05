@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.shop
+package com.kroq.myaquariumsimulator.ui.component
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
@@ -6,8 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.model.component.GameGradient
-import com.kroq.myaquariumsimulator.ui.component.GameCircleButton
-
 
 @Composable
 fun CloseButton(

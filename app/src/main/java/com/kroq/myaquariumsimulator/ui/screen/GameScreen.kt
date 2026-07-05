@@ -34,20 +34,19 @@ import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.calculateTier
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.loadGameState
-import com.kroq.myaquariumsimulator.ui.component.aquarium.AquariumView
-import com.kroq.myaquariumsimulator.ui.component.Background
-import com.kroq.myaquariumsimulator.ui.component.shop.ConfirmPopup
-import com.kroq.myaquariumsimulator.ui.component.aquarium.ResourceBadge
-import com.kroq.myaquariumsimulator.ui.component.shop.ShopPopup
-import com.kroq.myaquariumsimulator.ui.component.shop.ShopButton
+import com.kroq.myaquariumsimulator.ui.aquarium.AquariumView
+import com.kroq.myaquariumsimulator.ui.component.popup.shop.ConfirmPopup
+import com.kroq.myaquariumsimulator.ui.component.ResourceBadge
+import com.kroq.myaquariumsimulator.ui.component.popup.shop.ShopPopup
+import com.kroq.myaquariumsimulator.ui.component.ShopButton
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.game.DailyTaskManager
 import com.kroq.myaquariumsimulator.game.SaveManager
-import com.kroq.myaquariumsimulator.ui.component.popup.DailyTaskButton
-import com.kroq.myaquariumsimulator.ui.component.popup.DailyTaskPopup
-import com.kroq.myaquariumsimulator.ui.component.popup.WelcomeGiftPopup
+import com.kroq.myaquariumsimulator.ui.component.DailyTaskButton
+import com.kroq.myaquariumsimulator.ui.component.popup.task.DailyTaskPopup
+import com.kroq.myaquariumsimulator.ui.component.popup.welcome.WelcomeGiftPopup
 
 @Composable
 fun GameScreen() {

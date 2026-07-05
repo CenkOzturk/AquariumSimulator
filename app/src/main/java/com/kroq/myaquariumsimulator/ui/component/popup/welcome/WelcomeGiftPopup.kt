@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.popup
+package com.kroq.myaquariumsimulator.ui.component.popup.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.data.Constants.WELCOME_GIFT_DAYS
 import com.kroq.myaquariumsimulator.model.component.GameColors
+import com.kroq.myaquariumsimulator.ui.component.popup.GamePopup
+import com.kroq.myaquariumsimulator.ui.component.popup.GeneralPopup
 
 @Composable
 fun WelcomeGiftPopup(

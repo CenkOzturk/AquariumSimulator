@@ -1,4 +1,4 @@
-package com.kroq.myaquariumsimulator.ui.component.shop
+package com.kroq.myaquariumsimulator.ui.component.popup.shop
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,6 +34,7 @@ import com.kroq.myaquariumsimulator.model.component.GameColors
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.shop.items
+import com.kroq.myaquariumsimulator.ui.component.CloseButton
 import com.kroq.myaquariumsimulator.ui.component.popup.GeneralPopup
 import com.kroq.myaquariumsimulator.utils.Utils
 

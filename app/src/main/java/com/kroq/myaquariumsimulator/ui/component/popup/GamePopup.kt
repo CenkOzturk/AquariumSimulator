@@ -27,7 +27,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.model.component.GameGradient
-import com.kroq.myaquariumsimulator.ui.component.shop.CloseButton
+import com.kroq.myaquariumsimulator.ui.component.RoundedGameButton
+import com.kroq.myaquariumsimulator.ui.component.CloseButton
 
 @Composable
 fun GamePopup(
