@@ -44,6 +44,7 @@ import kotlinx.coroutines.delay
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.game.DailyTaskManager
 import com.kroq.myaquariumsimulator.game.SaveManager
+import com.kroq.myaquariumsimulator.game.WelcomeGiftManager
 import com.kroq.myaquariumsimulator.ui.component.DailyTaskButton
 import com.kroq.myaquariumsimulator.ui.component.popup.task.DailyTaskPopup
 import com.kroq.myaquariumsimulator.ui.component.popup.welcome.WelcomeGiftPopup
@@ -65,6 +66,7 @@ fun GameScreen() {
         val loaded = loadGameState(context)
         SaveManager.init(context)
         GameManager.initialize(loaded)
+        WelcomeGiftManager.refreshIfNeeded()
         DailyTaskManager.refreshIfNeeded(
             GameProgress(
                 AquariumManager.currentAquarium.type,
@@ -217,11 +219,13 @@ fun GameScreen() {
 
         if (showDailyGift) {
             WelcomeGiftPopup(
-                currentDay = 4,
-                rewardText = "aaa",
-                canClaim = true,
-                claimedToday = false,
-                onClaim = {},
+                currentDay = WelcomeGiftManager.currentDay(),
+                gift = WelcomeGiftManager.currentGift(),
+                canClaim = WelcomeGiftManager.canClaim(),
+                claimedToday = GameManager.state.welcomeGiftClaimed,
+                onClaim = {
+                    WelcomeGiftManager.claimReward()
+                },
                 onClose = {
                     showDailyGift = false
                 }

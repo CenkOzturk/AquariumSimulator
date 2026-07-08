@@ -20,9 +20,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.model.welcome.GiftModel
 
 @Composable
 fun WelcomeGiftItem(
+    giftModel: GiftModel,
     claimed: Boolean,
     current: Boolean,
     lastDay: Boolean
@@ -48,10 +50,10 @@ fun WelcomeGiftItem(
 
             if (claimed) {
                 Icon(
-                    imageVector = Icons.Default.Check,
+                    painter = painterResource(R.drawable.ic_check_bold),
                     contentDescription = null,
-                    tint = Color.White,
-                    modifier = Modifier.size(20.dp)
+                    tint = Color.Green,
+                    modifier = Modifier.size(36.dp)
                 )
             }
         }
@@ -59,7 +61,7 @@ fun WelcomeGiftItem(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Day 1",
+            text = "Day ${giftModel.day}",
             fontSize = 11.sp,
             fontWeight = FontWeight.SemiBold,
             color = Color(0xFF46637A)

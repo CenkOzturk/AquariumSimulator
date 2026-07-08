@@ -23,13 +23,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.data.Constants.WELCOME_GIFT_DAYS
 import com.kroq.myaquariumsimulator.model.component.GameColors
+import com.kroq.myaquariumsimulator.model.welcome.GiftModel
+import com.kroq.myaquariumsimulator.model.welcome.WelcomeGiftDatabase
 import com.kroq.myaquariumsimulator.ui.component.popup.GamePopup
 import com.kroq.myaquariumsimulator.ui.component.popup.GeneralPopup
 
 @Composable
 fun WelcomeGiftPopup(
     currentDay: Int,
-    rewardText: String,
+    gift: GiftModel,
     canClaim: Boolean,
     claimedToday: Boolean,
     onClaim: () -> Unit,
@@ -60,15 +62,13 @@ fun WelcomeGiftPopup(
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
 
-                repeat(WELCOME_GIFT_DAYS) { index ->
-
-                    val day = index + 1
-
+                WelcomeGiftDatabase.getAllGifts().forEach { gift ->
                     WelcomeGiftItem(
-                        claimed = day < currentDay ||
-                                (day == currentDay && claimedToday),
-                        current = day == currentDay,
-                        lastDay = day == WELCOME_GIFT_DAYS
+                        giftModel = gift,
+                        claimed = gift.day < currentDay ||
+                                (gift.day == currentDay && claimedToday),
+                        current = gift.day == currentDay,
+                        lastDay = gift.day == WELCOME_GIFT_DAYS
                     )
                 }
             }
@@ -112,7 +112,7 @@ fun WelcomeGiftPopup(
                     Spacer(Modifier.height(10.dp))
 
                     Text(
-                        text = rewardText,
+                        text = gift.rewardText,
                         fontWeight = FontWeight.Bold,
                         fontSize = 22.sp,
                         color = colors.border

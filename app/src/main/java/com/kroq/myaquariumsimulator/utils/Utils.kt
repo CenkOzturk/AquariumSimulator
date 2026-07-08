@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import com.google.gson.Gson
 import com.kroq.myaquariumsimulator.game.ItemManager.items
+import java.time.LocalDate
 import java.util.Calendar
 
 object Utils {
@@ -64,6 +65,10 @@ object Utils {
         calendar.set(Calendar.MILLISECOND, 0)
 
         return calendar.timeInMillis
+    }
+
+    fun currentDay(): Int {
+        return LocalDate.now().toEpochDay().toInt()
     }
 
     fun isExpired(time: Long): Boolean {

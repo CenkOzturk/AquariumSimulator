@@ -20,7 +20,9 @@ data class GameState(
     val foodCount: Int = 10,
     var selectedShopTab: ShopTab = ShopTab.FISH,
     val dailyTask: DailyTaskModel? = null,
-    val dailyGift: Int = 1
+    val welcomeGiftDay: Int = 0,
+    val welcomeGiftClaimed: Boolean = false,
+    val lastLoginDay: Int = 0
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -34,7 +36,9 @@ suspend fun loadGameState(context: Context): GameState {
         coins = prefs[PrefKeys.COINS] ?: 25,
         foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
-        dailyGift = prefs[PrefKeys.DAILY_GIFT] ?: 1,
+        welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
+        welcomeGiftClaimed = prefs[PrefKeys.WELCOME_GIFT_CLAIMED] ?: false,
+        lastLoginDay = prefs[PrefKeys.LAST_LOGIN_DAY] ?: 0,
     )
 }
 
@@ -56,7 +60,11 @@ suspend fun saveGameState(
 
         prefs[PrefKeys.DAILY_TASK] = state.dailyTask?.toJson() ?: emptyString()
 
-        prefs[PrefKeys.DAILY_GIFT] = state.dailyGift
+        prefs[PrefKeys.WELCOME_GIFT_DAY] = state.welcomeGiftDay
+
+        prefs[PrefKeys.WELCOME_GIFT_CLAIMED] = state.welcomeGiftClaimed
+
+        prefs[PrefKeys.LAST_LOGIN_DAY] = state.lastLoginDay
 
     }
 }
