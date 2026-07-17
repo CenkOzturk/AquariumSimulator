@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
-import com.kroq.myaquariumsimulator.game.FloatingTextManager
+import com.kroq.myaquariumsimulator.managers.FloatingTextManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 import com.kroq.myaquariumsimulator.utils.Utils.hasItem
@@ -36,6 +36,10 @@ fun AquariumView(aquarium: AquariumModel) {
             .width(aquarium.width.dp)
             .height(aquarium.height.dp)
             .clip(RoundedCornerShape(28.dp))
+            /*.clip(RoundedCornerShape(
+                topStart = 28.dp,
+                topEnd = 28.dp
+            ))*/
             .background(Color(0xFF0A2A43))
     ) {
         Box(
@@ -112,6 +116,8 @@ fun AquariumView(aquarium: AquariumModel) {
             }
 
             BubbleView()
+
+            DirtView()
         }
 
         Box(
@@ -151,6 +157,23 @@ fun AquariumView(aquarium: AquariumModel) {
                     )
                 )
         )
+
+        //TABAN
+        /*Box(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .offset(y = 8.dp)
+                .fillMaxWidth(1.04f)
+                .height(18.dp)
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            Color(0xFF7EC7E8),
+                            Color(0xFF3E8DB7)
+                        )
+                    )
+                )
+        )*/
     }
 }
 

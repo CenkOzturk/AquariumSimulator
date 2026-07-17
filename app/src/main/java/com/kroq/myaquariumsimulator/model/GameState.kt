@@ -22,7 +22,7 @@ data class GameState(
     val dailyTask: DailyTaskModel? = null,
     val welcomeGiftDay: Int = 0,
     val welcomeGiftClaimed: Boolean = false,
-    val lastLoginDay: Int = 0
+    val lastLoginTime: Long = 0L
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -38,7 +38,7 @@ suspend fun loadGameState(context: Context): GameState {
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
         welcomeGiftClaimed = prefs[PrefKeys.WELCOME_GIFT_CLAIMED] ?: false,
-        lastLoginDay = prefs[PrefKeys.LAST_LOGIN_DAY] ?: 0,
+        lastLoginTime = prefs[PrefKeys.LAST_LOGIN_TIME] ?: 0L,
     )
 }
 
@@ -64,7 +64,7 @@ suspend fun saveGameState(
 
         prefs[PrefKeys.WELCOME_GIFT_CLAIMED] = state.welcomeGiftClaimed
 
-        prefs[PrefKeys.LAST_LOGIN_DAY] = state.lastLoginDay
+        prefs[PrefKeys.LAST_LOGIN_TIME] = state.lastLoginTime
 
     }
 }

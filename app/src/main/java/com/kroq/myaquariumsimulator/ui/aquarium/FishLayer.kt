@@ -3,9 +3,10 @@ package com.kroq.myaquariumsimulator.ui.aquarium
 import androidx.compose.runtime.Composable
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
-import com.kroq.myaquariumsimulator.game.FishFoodManager
-import com.kroq.myaquariumsimulator.game.FishManager
-import com.kroq.myaquariumsimulator.game.GameManager
+import com.kroq.myaquariumsimulator.managers.DirtManager
+import com.kroq.myaquariumsimulator.managers.FishFoodManager
+import com.kroq.myaquariumsimulator.managers.FishManager
+import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.model.fish.isFed
 import com.kroq.myaquariumsimulator.utils.Utils
 
@@ -22,6 +23,7 @@ fun FishLayer() {
                     return@FishView
                 }
 
+                DirtManager.addParticle(x = fish.move.x, y = fish.move.y)
                 FishFoodManager.feedFish(fish.id)
             }
         })

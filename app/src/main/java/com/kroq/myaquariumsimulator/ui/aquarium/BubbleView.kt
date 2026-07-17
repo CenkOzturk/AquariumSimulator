@@ -12,22 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.data.Constants.BUBBLE_VALUE
-import com.kroq.myaquariumsimulator.game.BubbleManager
-import com.kroq.myaquariumsimulator.game.FloatingTextManager
+import com.kroq.myaquariumsimulator.managers.BubbleManager
+import com.kroq.myaquariumsimulator.managers.FloatingTextManager
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 
 @Composable
 fun BubbleView() {
-    val context = LocalContext.current
-
     Box(modifier = Modifier.fillMaxSize()) {
-
         BubbleManager.bubbles.forEach { bubble ->
-
             Box(
                 modifier = Modifier
                     .offset(bubble.x.dp, bubble.y.dp)

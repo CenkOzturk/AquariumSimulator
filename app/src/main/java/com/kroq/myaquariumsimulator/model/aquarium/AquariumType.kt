@@ -1,7 +1,7 @@
 package com.kroq.myaquariumsimulator.model.aquarium
 
-import com.kroq.myaquariumsimulator.game.ScreenManager.screenHeight
-import com.kroq.myaquariumsimulator.game.ScreenManager.screenWidth
+import com.kroq.myaquariumsimulator.managers.ScreenManager.screenHeight
+import com.kroq.myaquariumsimulator.managers.ScreenManager.screenWidth
 import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 

@@ -15,8 +15,7 @@ object PrefKeys {
     val DAILY_TASK = stringPreferencesKey("dailyTask")
     val WELCOME_GIFT_DAY = intPreferencesKey("welcomeGiftDay")
     val WELCOME_GIFT_CLAIMED = booleanPreferencesKey("welcomeGiftClaimed")
-
-    val LAST_LOGIN_DAY = intPreferencesKey("lastLoginDay")
+    val LAST_LOGIN_TIME = longPreferencesKey("lastLoginTime")
 
 }
 

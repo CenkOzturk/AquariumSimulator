@@ -10,7 +10,6 @@ data class GameProgress(
 )
 
 fun GameProgress.calculateTier(): PlayerTier {
-
     return when {
         RequirementType.GOLD.isSatisfied(this) -> PlayerTier.GOLD
         RequirementType.SILVER.isSatisfied(this) -> PlayerTier.SILVER

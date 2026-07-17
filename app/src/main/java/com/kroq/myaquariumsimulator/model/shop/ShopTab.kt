@@ -1,6 +1,6 @@
 package com.kroq.myaquariumsimulator.model.shop
 
-import com.kroq.myaquariumsimulator.game.GameManager
+import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.aquarium.toShopItem
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
