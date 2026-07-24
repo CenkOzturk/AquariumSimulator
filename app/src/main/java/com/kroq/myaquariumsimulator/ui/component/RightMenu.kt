@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.managers.CleanerManager
 import com.kroq.myaquariumsimulator.managers.DirtManager
 import com.kroq.myaquariumsimulator.model.GameUiState
 import com.kroq.myaquariumsimulator.ui.component.buttons.CleanButton
@@ -24,7 +25,7 @@ fun RightMenu(
         CleanButton(
             visible = DirtManager.needCleaning(),
             onClick = {
-                DirtManager.clear()
+                CleanerManager.cleanDirt()
             }
         )
 

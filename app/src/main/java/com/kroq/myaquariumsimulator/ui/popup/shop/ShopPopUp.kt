@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -87,7 +88,6 @@ fun ShopPopup(
                         shape = RoundedCornerShape(30.dp)
                     )
             ) {
-
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -101,7 +101,7 @@ fun ShopPopup(
 
                     Text(
                         modifier = Modifier.align(Alignment.CenterHorizontally),
-                        text = "Shop",
+                        text = stringResource(R.string.shop),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = GameColors.Shop.dark
@@ -122,9 +122,7 @@ fun ShopPopup(
                         items = currentItems,
                         playerTier = playerTier,
                         onClick = { item ->
-
                             when (currentTab) {
-
                                 ShopTab.AQUARIUM -> {
                                     AquariumType.entries
                                         .getOrNull(item.id)
@@ -132,17 +130,13 @@ fun ShopPopup(
                                 }
 
                                 ShopTab.FISH -> {
-
                                     if (GameManager.state.ownedFishIds.size >=
                                         AquariumManager.currentAquarium.fishCount
                                     ) {
-
                                         Utils.showToast(
                                             R.string.shop_too_much_fish
                                         )
-
                                     } else {
-
                                         onFishSelected(item)
                                     }
                                 }

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.managers.AquariumManager
+import com.kroq.myaquariumsimulator.managers.CleanerManager
 import com.kroq.myaquariumsimulator.managers.DailyTaskManager
 import com.kroq.myaquariumsimulator.managers.FishFoodManager
 import com.kroq.myaquariumsimulator.managers.FishManager
@@ -13,6 +14,7 @@ import com.kroq.myaquariumsimulator.managers.WelcomeGiftManager
 import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameUiState
 import com.kroq.myaquariumsimulator.model.calculateTier
+import com.kroq.myaquariumsimulator.model.item.CleanerDatabase.isCleaner
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.ui.popup.shop.ConfirmPopup
 import com.kroq.myaquariumsimulator.ui.popup.shop.ShopPopup
@@ -39,10 +41,11 @@ fun PopupContainer(uiState: GameUiState) {
                 uiState.closeShop()
             },
             onItemSelected = { item ->
-
                 if (isFood(item.id)) {
                     FishFoodManager.buyFood(item.id, item.price)
-                } else {
+                } else if (isCleaner(item.id))
+                    CleanerManager.buyCleaner(item.id, item.price)
+                else {
                     ItemManager.buy(item.id, item.price)
                 }
 

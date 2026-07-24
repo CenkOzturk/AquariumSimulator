@@ -22,7 +22,7 @@ fun DirtView() {
                     x = particle.x.dp,
                     y = particle.y.dp
                 )
-                .size(5.dp)
+                .size(8.dp)
                 .clip(CircleShape)
                 .background(Color(0xFF8B5A2B))
         )

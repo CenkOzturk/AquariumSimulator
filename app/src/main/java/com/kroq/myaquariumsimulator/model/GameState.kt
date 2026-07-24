@@ -18,6 +18,7 @@ data class GameState(
     val ownedItemIds: Set<Int> = setOf(),
     val coins: Int = 25,
     val foodCount: Int = 10,
+    val cleanerCount: Int = 10,
     var selectedShopTab: ShopTab = ShopTab.FISH,
     val dailyTask: DailyTaskModel? = null,
     val welcomeGiftDay: Int = 0,
@@ -35,6 +36,7 @@ suspend fun loadGameState(context: Context): GameState {
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(),
         coins = prefs[PrefKeys.COINS] ?: 25,
         foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
+        cleanerCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
         welcomeGiftClaimed = prefs[PrefKeys.WELCOME_GIFT_CLAIMED] ?: false,
@@ -57,6 +59,8 @@ suspend fun saveGameState(
         prefs[PrefKeys.COINS] = state.coins
 
         prefs[PrefKeys.FOOD_COUNT] = state.foodCount
+
+        prefs[PrefKeys.CLEANER_COUNT] = state.cleanerCount
 
         prefs[PrefKeys.DAILY_TASK] = state.dailyTask?.toJson() ?: emptyString()
 

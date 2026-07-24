@@ -2,18 +2,19 @@ package com.kroq.myaquariumsimulator.model.item
 
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
-data class FishFoodItemModel(
+data class CleanerModel(
     val id: Int,
-    val type: ItemType = ItemType.FISH_FOOD,
-    val resId: Int = 0,
+    val type: ItemType = ItemType.CLEANER,
+    val name: String,
+    val icon: Int,
     val price: Int,
-    val foodAmount: Int = 0
+    val cleanerCount: Int
 )
 
-fun FishFoodItemModel.toShopItem(): ShopItem {
+fun CleanerModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        title = type.name + "x" + foodAmount,
+        title = type.name + "x" + cleanerCount,
         price = price,
         icon = "\uD83C\uDF64",
         isConsumable = true

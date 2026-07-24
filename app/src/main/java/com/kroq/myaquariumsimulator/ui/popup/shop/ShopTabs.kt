@@ -30,7 +30,6 @@ fun ShopTabs(
     ) {
 
         ShopTab.entries.forEach { tab ->
-
             val isSelected = tab == selected
 
             Box(
