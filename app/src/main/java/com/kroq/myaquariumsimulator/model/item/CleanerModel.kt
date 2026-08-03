@@ -16,7 +16,7 @@ fun CleanerModel.toShopItem(): ShopItem {
         id = id,
         title = type.name + "x" + cleanerCount,
         price = price,
-        icon = "\uD83C\uDF64",
+        icon = "\uD83E\uDDFD",
         isConsumable = true
     )
 }

@@ -20,9 +20,10 @@ fun Background(modifier: Modifier = Modifier) {
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFF021B2B),
-                        Color(0xFF063A5B),
-                        Color(0xFF021B2B)
+                        Color(0xFF65D5FF),
+                        Color(0xFF45C4F4),
+                        Color(0xFF2AA7E3),
+                        Color(0xFF1286CF)
                     )
                 )
             )

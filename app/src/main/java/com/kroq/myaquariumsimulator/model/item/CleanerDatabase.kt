@@ -22,7 +22,7 @@ object CleanerDatabase {
             id = 502,
             name = "Robot Cleaner",
             icon = R.drawable.ic_cleaner_robot,
-            price = 5000,
+            price = 500000,
             cleanerCount = 999999 // TODO Robot sistemi geldiğinde değiştirilecek.
         )
     )

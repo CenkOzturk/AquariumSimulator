@@ -40,6 +40,13 @@ fun GameHud(
                     GameManager.state.foodCount
                 )
             )
+
+            ResourceBadge(
+                stringResource(
+                    R.string.cleaner_value,
+                    GameManager.state.cleanerCount
+                )
+            )
         }
 
         DailyTaskButton(
