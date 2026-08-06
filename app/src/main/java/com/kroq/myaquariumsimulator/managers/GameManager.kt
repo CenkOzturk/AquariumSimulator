@@ -50,7 +50,8 @@ object GameManager {
                 foodCount = 10,
                 dailyTask = null,
                 welcomeGiftDay = 0,
-                welcomeGiftClaimed = false
+                welcomeGiftClaimed = false,
+                tutorialCompleted = false
             )
         }
     }

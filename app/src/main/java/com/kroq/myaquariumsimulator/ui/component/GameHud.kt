@@ -6,11 +6,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.managers.GameManager
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.GameUiState
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialBoundsType
 import com.kroq.myaquariumsimulator.ui.component.buttons.DailyTaskButton
 
 @Composable
@@ -50,16 +53,31 @@ fun GameHud(
         }
 
         DailyTaskButton(
-            modifier = Modifier.padding(top = 24.dp),
+            modifier = Modifier
+                .padding(top = 24.dp)
+                .onGloballyPositioned {
+                    TutorialManager.updateBounds(
+                        TutorialBoundsType.DAILY_TASK,
+                        it
+                    )
+                },
             hasAnyTask = true,
             hasClaimableReward = true,
             onClick = {
                 uiState.openDailyTasks()
+                TutorialManager.next()
             }
         )
 
         DailyTaskButton(
-            modifier = Modifier.padding(top = 24.dp),
+            modifier = Modifier
+                .padding(top = 24.dp)
+                .onGloballyPositioned {
+                    TutorialManager.updateBounds(
+                        TutorialBoundsType.WELCOME_GIFT,
+                        it
+                    )
+                },
             hasAnyTask = true,
             hasClaimableReward = true,
             onClick = {

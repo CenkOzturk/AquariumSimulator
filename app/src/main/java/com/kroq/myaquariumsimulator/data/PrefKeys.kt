@@ -12,12 +12,11 @@ object PrefKeys {
     val ITEMS = stringSetPreferencesKey("items")
     val COINS = intPreferencesKey("coins")
     val FOOD_COUNT = intPreferencesKey("foodCount")
-
     val CLEANER_COUNT = intPreferencesKey("cleanerCount")
     val DAILY_TASK = stringPreferencesKey("dailyTask")
     val WELCOME_GIFT_DAY = intPreferencesKey("welcomeGiftDay")
     val WELCOME_GIFT_CLAIMED = booleanPreferencesKey("welcomeGiftClaimed")
     val LAST_LOGIN_TIME = longPreferencesKey("lastLoginTime")
-
+    val TUTORIAL_COMPLETED = booleanPreferencesKey("tutorialCompleted")
 }
 

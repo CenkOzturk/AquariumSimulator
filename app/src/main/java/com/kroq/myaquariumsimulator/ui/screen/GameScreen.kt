@@ -26,8 +26,11 @@ import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.ItemManager
 import com.kroq.myaquariumsimulator.managers.SaveManager
 import com.kroq.myaquariumsimulator.managers.ScreenManager
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.managers.WelcomeGiftManager
 import com.kroq.myaquariumsimulator.model.GameProgress
+import com.kroq.myaquariumsimulator.model.GameState
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialStep
 import com.kroq.myaquariumsimulator.model.calculateTier
 import com.kroq.myaquariumsimulator.model.loadGameState
 import com.kroq.myaquariumsimulator.model.rememberGameUiState
@@ -35,6 +38,7 @@ import com.kroq.myaquariumsimulator.ui.aquarium.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.GameHud
 import com.kroq.myaquariumsimulator.ui.component.RightMenu
 import com.kroq.myaquariumsimulator.ui.popup.PopupContainer
+import com.kroq.myaquariumsimulator.ui.tutorial.TutorialOverlay
 import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
 
@@ -113,5 +117,9 @@ fun GameScreen() {
         PopupContainer(
             uiState = uiState
         )
+
+        if (!GameManager.state.tutorialCompleted) {
+            TutorialOverlay()
+        }
     }
 }

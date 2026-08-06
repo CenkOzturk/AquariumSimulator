@@ -14,10 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.managers.TutorialManager
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialBoundsType
 
 @Composable
 fun ShopButton(
@@ -29,6 +32,12 @@ fun ShopButton(
             .size(60.dp)
             .clip(CircleShape) // 🔥 çok önemli
             .background(Color(0xFF1E88E5))
+            .onGloballyPositioned {
+                TutorialManager.updateBounds(
+                    TutorialBoundsType.SHOP,
+                    it
+                )
+            }
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(

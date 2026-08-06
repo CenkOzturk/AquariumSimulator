@@ -7,6 +7,8 @@ import com.kroq.myaquariumsimulator.managers.DirtManager
 import com.kroq.myaquariumsimulator.managers.FishFoodManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
+import com.kroq.myaquariumsimulator.managers.TutorialManager
+import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.fish.isFed
 import com.kroq.myaquariumsimulator.utils.Utils
 
@@ -21,6 +23,9 @@ fun FishLayer() {
                 if (GameManager.state.foodCount <= fish.income) {
                     Utils.showToast(R.string.no_food_error, fish.income)
                     return@FishView
+                }
+                if (!GameState().tutorialCompleted) {
+                    TutorialManager.onFeedFish()
                 }
 
                 DirtManager.addParticle(x = fish.move.x, y = fish.move.y)

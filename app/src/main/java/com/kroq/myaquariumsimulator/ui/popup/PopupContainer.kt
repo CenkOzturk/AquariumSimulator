@@ -10,6 +10,7 @@ import com.kroq.myaquariumsimulator.managers.FishFoodManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.ItemManager
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.managers.WelcomeGiftManager
 import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameUiState

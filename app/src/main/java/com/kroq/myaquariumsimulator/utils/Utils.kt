@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 import com.google.gson.Gson
 import com.kroq.myaquariumsimulator.managers.ItemManager.items
 import java.time.LocalDate
@@ -78,4 +81,10 @@ object Utils {
     fun isExpired(time: Long): Boolean {
         return System.currentTimeMillis() >= time
     }
+
+    @Composable
+    fun Float.toDp(): Dp =
+        with(LocalDensity.current) {
+            this@toDp.toDp()
+        }
 }

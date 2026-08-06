@@ -6,6 +6,7 @@ import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
+import com.kroq.myaquariumsimulator.model.fish.FishDatabase.getAllFishes
 import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.task.DailyTaskType
@@ -29,6 +30,9 @@ object FishManager {
                 DailyTaskManager.addProgress(DailyTaskType.BUY_FISH)
             }
         )
+        if(fishId == getAllFishes().first().id) {
+            TutorialManager.onFirstFishBought()
+        }
         syncWithGameState(GameManager.state)
     }
 

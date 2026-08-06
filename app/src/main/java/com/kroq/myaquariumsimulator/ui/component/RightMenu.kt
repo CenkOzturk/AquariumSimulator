@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.managers.CleanerManager
 import com.kroq.myaquariumsimulator.managers.DirtManager
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.GameUiState
 import com.kroq.myaquariumsimulator.ui.component.buttons.CleanButton
 import com.kroq.myaquariumsimulator.ui.component.buttons.ShopButton
@@ -26,12 +27,14 @@ fun RightMenu(
             visible = DirtManager.needCleaning(),
             onClick = {
                 CleanerManager.cleanDirt()
+                TutorialManager.onCleanClicked()
             }
         )
 
         ShopButton(
             onClick = {
                 uiState.openShop()
+                TutorialManager.onShopOpened()
             }
         )
     }

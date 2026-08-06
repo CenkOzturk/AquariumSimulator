@@ -23,7 +23,8 @@ data class GameState(
     val dailyTask: DailyTaskModel? = null,
     val welcomeGiftDay: Int = 0,
     val welcomeGiftClaimed: Boolean = false,
-    val lastLoginTime: Long = 0L
+    val lastLoginTime: Long = 0L,
+    var tutorialCompleted: Boolean = false
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -41,6 +42,7 @@ suspend fun loadGameState(context: Context): GameState {
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
         welcomeGiftClaimed = prefs[PrefKeys.WELCOME_GIFT_CLAIMED] ?: false,
         lastLoginTime = prefs[PrefKeys.LAST_LOGIN_TIME] ?: 0L,
+        tutorialCompleted = prefs[PrefKeys.TUTORIAL_COMPLETED] ?: false,
     )
 }
 
@@ -70,5 +72,6 @@ suspend fun saveGameState(
 
         prefs[PrefKeys.LAST_LOGIN_TIME] = state.lastLoginTime
 
+        prefs[PrefKeys.TUTORIAL_COMPLETED] = state.tutorialCompleted
     }
 }
