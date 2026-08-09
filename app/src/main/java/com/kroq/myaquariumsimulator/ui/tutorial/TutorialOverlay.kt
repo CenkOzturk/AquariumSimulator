@@ -26,7 +26,6 @@ fun TutorialOverlay() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-
         TutorialSpotlight()
 
         Box(

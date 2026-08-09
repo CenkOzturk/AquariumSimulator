@@ -71,6 +71,7 @@ fun TutorialStep.toBoundsType(): TutorialBoundsType? =
     when (this) {
         TutorialStep.OPEN_SHOP -> TutorialBoundsType.SHOP
         TutorialStep.BUY_FIRST_FISH -> TutorialBoundsType.FIRST_FISH
+        TutorialStep.FEED_FISH -> TutorialBoundsType.FEED_FISH
         TutorialStep.CLEAN -> TutorialBoundsType.CLEAN
         TutorialStep.DAILY_TASK -> TutorialBoundsType.DAILY_TASK
         else -> null

@@ -70,14 +70,7 @@ fun GameHud(
         )
 
         DailyTaskButton(
-            modifier = Modifier
-                .padding(top = 24.dp)
-                .onGloballyPositioned {
-                    TutorialManager.updateBounds(
-                        TutorialBoundsType.WELCOME_GIFT,
-                        it
-                    )
-                },
+            modifier = Modifier.padding(top = 24.dp),
             hasAnyTask = true,
             hasClaimableReward = true,
             onClick = {

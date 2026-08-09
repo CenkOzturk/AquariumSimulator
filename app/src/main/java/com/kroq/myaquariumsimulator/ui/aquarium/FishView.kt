@@ -14,9 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.fish.FishModel
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialBoundsType
 
 @Composable
 fun FishView(
@@ -29,6 +32,12 @@ fun FishView(
         modifier = Modifier
             .offset(fish.move.x.dp, fish.move.y.dp)
             .size(70.dp)
+            .onGloballyPositioned {
+                TutorialManager.updateBounds(
+                    TutorialBoundsType.FEED_FISH,
+                    it
+                )
+            }
     ) {
         Image(
             painter = painterResource(fish.resId),

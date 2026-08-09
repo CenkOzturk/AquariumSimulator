@@ -4,6 +4,7 @@ enum class TutorialBoundsType {
     SHOP,
     CLEAN,
     FIRST_FISH,
-    WELCOME_GIFT,
+
+    FEED_FISH,
     DAILY_TASK
 }

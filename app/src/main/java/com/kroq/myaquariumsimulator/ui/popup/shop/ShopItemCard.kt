@@ -19,11 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.canAccess
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialBoundsType
 
 @Composable
 fun ShopItemCard(
@@ -47,6 +50,14 @@ fun ShopItemCard(
                 indication = ripple(bounded = true)
             ) { onClick() }
             .padding(8.dp)
+            .onGloballyPositioned {
+                if (item.id == 100) {
+                    TutorialManager.updateBounds(
+                        TutorialBoundsType.FIRST_FISH,
+                        it
+                    )
+                }
+            }
     ) {
 
         // TIER BADGE
