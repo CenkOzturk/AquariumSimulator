@@ -1,5 +1,6 @@
 package com.kroq.myaquariumsimulator.model.item
 
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 data class FishFoodItemModel(
@@ -13,7 +14,7 @@ data class FishFoodItemModel(
 fun FishFoodItemModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        title = type.name + "x" + foodAmount,
+        titleResId = R.string.fish_food,
         price = price,
         icon = "\uD83C\uDF64",
         isConsumable = true

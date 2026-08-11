@@ -1,0 +1,87 @@
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="110dp"
+    android:viewportWidth="180"
+    android:viewportHeight="110">
+
+    <!-- Rounded Tail -->
+    <path
+        android:pathData="M52,55
+                          C42,42 27,32 13,32
+                          C8,32 7,37 10,42
+                          C15,50 15,60 10,68
+                          C7,73 8,78 13,78
+                          C27,78 42,68 52,55 Z"
+        android:fillColor="#E8B94F"/>
+
+    <!-- Main Body -->
+    <path
+        android:pathData="M48,55
+                          C48,34 72,19 104,19
+                          C138,19 164,34 169,55
+                          C164,76 138,91 104,91
+                          C72,91 48,76 48,55 Z"
+        android:fillColor="#F4CC68"/>
+
+    <!-- Upper Fin - points backward -->
+    <path
+        android:pathData="M88,29
+                          C79,25 69,20 61,15
+                          C57,12 54,14 56,19
+                          C60,28 69,36 82,40
+                          C85,36 87,33 88,29 Z"
+        android:fillColor="#FFE39A"/>
+
+    <!-- Lower Fin - points backward -->
+    <path
+        android:pathData="M88,81
+                          C79,85 69,91 61,96
+                          C57,99 55,96 57,92
+                          C61,83 70,75 82,71
+                          C85,74 87,77 88,81 Z"
+        android:fillColor="#FFE39A"/>
+
+    <!-- Soft Golden Highlight -->
+    <path
+        android:pathData="M70,39
+                          C78,31 90,28 101,29"
+        android:strokeWidth="5"
+        android:strokeColor="#FFE9B0"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+
+    <!-- Eye -->
+    <path
+        android:pathData="M139,43
+                          m7,0
+                          a7,7 0,1 0,-14 0
+                          a7,7 0,1 0,14 0"
+        android:fillColor="#FFF8E7"/>
+
+    <path
+        android:pathData="M143,43
+                          m2.7,0
+                          a2.7,2.7 0,1 0,-5.4 0
+                          a2.7,2.7 0,1 0,5.4 0"
+        android:fillColor="#6B4A22"/>
+
+    <!-- Soft Mouth -->
+    <path
+        android:pathData="M132,68
+                          C140,75 149,75 157,68"
+        android:strokeWidth="2.5"
+        android:strokeColor="#9A6A32"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+
+    <!-- Decorative Scale -->
+    <path
+        android:pathData="M113,48
+                          C117,44 122,44 126,48"
+        android:strokeWidth="2"
+        android:strokeColor="#E1AD45"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+
+</vector>

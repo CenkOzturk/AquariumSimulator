@@ -28,7 +28,6 @@ fun ShopTabs(
             .padding(16.dp)
             .background(Color.LightGray.copy(0.3f), RoundedCornerShape(50))
     ) {
-
         ShopTab.entries.forEach { tab ->
             val isSelected = tab == selected
 
@@ -47,7 +46,8 @@ fun ShopTabs(
                         ShopTab.FISH -> stringResource(R.string.shop_tab_fish)
                         ShopTab.AQUARIUM -> stringResource(R.string.shop_tab_aquarium)
                         ShopTab.ITEMS -> stringResource(R.string.shop_tab_items)
-                    }
+                    },
+                    maxLines = 1
                 )
             }
         }

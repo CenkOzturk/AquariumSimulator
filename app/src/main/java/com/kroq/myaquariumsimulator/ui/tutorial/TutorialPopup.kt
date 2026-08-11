@@ -16,10 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.tutorial.TutorialStep
 import com.kroq.myaquariumsimulator.model.tutorial.toUiState
@@ -54,7 +56,7 @@ fun TutorialPopup() {
                 Spacer(Modifier.width(12.dp))
 
                 Text(
-                    text = "AquaVille Guide",
+                    text = stringResource(R.string.tutorial_title),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Color(0xFF184A6C)
@@ -64,7 +66,7 @@ fun TutorialPopup() {
             Spacer(Modifier.height(16.dp))
 
             Text(
-                text = state.title,
+                text = stringResource(state.titleResId),
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 18.sp
             )
@@ -72,7 +74,7 @@ fun TutorialPopup() {
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = state.message,
+                text = stringResource(state.messageResId),
                 fontSize = 15.sp,
                 lineHeight = 22.sp,
                 color = Color.DarkGray
@@ -87,13 +89,13 @@ fun TutorialPopup() {
                         TutorialManager.next()
                     }
                 ) {
-                    Text("Continue")
+                    Text(stringResource(R.string.btn_continue))
                 }
 
             } else {
                 Text(
                     modifier = Modifier.align(Alignment.End),
-                    text = "Waiting for your action...",
+                    text = stringResource(R.string.waiting_action),
                     color = Color.Gray,
                     fontStyle = FontStyle.Italic
                 )

@@ -6,6 +6,7 @@ import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 data class AquariumItemModel(
     val id: Int,
+    val nameResId: Int,
     val type: ItemType,
     val resId: Int,
     val price: Int,
@@ -16,7 +17,7 @@ data class AquariumItemModel(
 fun AquariumItemModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        title = type.name,
+        titleResId = nameResId,
         price = price,
         icon = "🌿",
         requiredTier = requirementType.toPlayerTier(),

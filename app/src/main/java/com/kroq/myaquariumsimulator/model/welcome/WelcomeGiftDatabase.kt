@@ -1,7 +1,5 @@
 package com.kroq.myaquariumsimulator.model.welcome
 
-import com.kroq.myaquariumsimulator.model.fish.FishDatabase
-
 object WelcomeGiftDatabase {
 
     private val gifts = listOf(
@@ -44,7 +42,6 @@ object WelcomeGiftDatabase {
 
         GiftModel(
             day = 7,
-            goldenFish = true,
             rewardText = "Golden Fish"
         ),
     )

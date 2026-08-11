@@ -6,23 +6,23 @@ object CleanerDatabase {
     val cleaners = listOf(
         CleanerModel(
             id = 500,
-            name = "Cloth",
+            nameResId = R.string.cleaner_cloth_name,
             icon = R.drawable.ic_cleaner_cloth,
             price = 75,
             cleanerCount = 5
         ),
         CleanerModel(
             id = 501,
-            name = "Sponge",
+            nameResId = R.string.cleaner_sponge_name,
             icon = R.drawable.ic_cleaner_sponge,
-            price = 220,
+            price = 300,
             cleanerCount = 20
         ),
         CleanerModel(
             id = 502,
-            name = "Robot Cleaner",
+            nameResId = R.string.cleaner_robot_name,
             icon = R.drawable.ic_cleaner_robot,
-            price = 500000,
+            price = 50000,
             cleanerCount = 999999 // TODO Robot sistemi geldiğinde değiştirilecek.
         )
     )

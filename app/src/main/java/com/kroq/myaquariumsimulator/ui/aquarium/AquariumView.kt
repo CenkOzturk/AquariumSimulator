@@ -24,6 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.managers.FloatingTextManager
+import com.kroq.myaquariumsimulator.managers.GameManager
+import com.kroq.myaquariumsimulator.managers.GoldFishManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 import com.kroq.myaquariumsimulator.utils.Utils.hasItem
@@ -84,6 +86,18 @@ fun AquariumView(aquarium: AquariumModel) {
             }
 
             FishLayer()
+
+            if (GameManager.state.goldFishUnlocked &&
+                GoldFishManager.visible
+            ) {
+                GoldFishView(
+                    x = GoldFishManager.x,
+                    y = GoldFishManager.y,
+                    onClick = {
+                        GoldFishManager.collect()
+                    }
+                )
+            }
 
             //STAR
             if (hasItem(303)) {

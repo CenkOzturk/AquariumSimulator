@@ -32,7 +32,8 @@ object CleanerManager {
 
         GameManager.update {
             it.copy(
-                cleanerCount = it.cleanerCount - 1
+                cleanerCount = it.cleanerCount - 1,
+                dirtParticleCount = 0
             )
         }
         DirtManager.clear()

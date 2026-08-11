@@ -13,9 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.component.GameColors
 import com.kroq.myaquariumsimulator.ui.aquarium.BubbleView
 import com.kroq.myaquariumsimulator.ui.component.CreditItem
@@ -49,7 +51,7 @@ fun CreditsScreen(
             Spacer(Modifier.height(48.dp))
 
             Text(
-                text = "Credits",
+                text = stringResource(R.string.credits_title),
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -58,34 +60,34 @@ fun CreditsScreen(
             Spacer(Modifier.height(40.dp))
 
             CreditItem(
-                "Game Design",
-                "Cenk Öztürk"
+                stringResource(R.string.credits_game_design),
+                stringResource(R.string.credits_name_cenk)
             )
 
             CreditItem(
-                "Programming",
-                "Cenk Öztürk"
+                stringResource(R.string.credits_programming),
+                stringResource(R.string.credits_name_cenk)
             )
 
             CreditItem(
-                "Game Art",
-                "Cenk Öztürk & ChatGPT"
+                stringResource(R.string.credits_game_art),
+                stringResource(R.string.credits_name_cenk_chatgpt)
             )
 
             CreditItem(
-                "Music",
-                "Coming Soon"
+                stringResource(R.string.credits_music),
+                stringResource(R.string.credits_coming_soon)
             )
 
             CreditItem(
-                "Version",
+                stringResource(R.string.credits_version),
                 "1.0.0"
             )
 
             Spacer(Modifier.weight(1f))
 
             GameMenuButton(
-                text = "BACK",
+                text = stringResource(R.string.menu_back),
                 gradient = GameColors.Shop,
                 onClick = onBack
             )

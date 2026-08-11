@@ -4,6 +4,7 @@ import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 data class FishModel(
     val id: Int,
+    val nameResId: Int,
     val resId: Int,
     val price: Int,
     val income: Int,
@@ -23,7 +24,7 @@ fun FishModel.coinMultiplier(): Int {
 fun FishModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        title = "Fish $id",
+        titleResId = nameResId,
         price = price,
         icon = "🐟",
         requiredTier = requirementType.toPlayerTier()

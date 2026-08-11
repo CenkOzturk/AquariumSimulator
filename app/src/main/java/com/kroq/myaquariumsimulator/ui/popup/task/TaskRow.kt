@@ -8,13 +8,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.model.task.TaskModel
 
 @Composable
 fun TaskRow(task: TaskModel) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -23,7 +23,7 @@ fun TaskRow(task: TaskModel) {
     ) {
 
         Text(
-            task.type.name,
+            text = stringResource(task.nameResId),
             fontSize = 14.sp
         )
 

@@ -24,11 +24,16 @@ fun FishLayer() {
                     Utils.showToast(R.string.no_food_error, fish.income)
                     return@FishView
                 }
-                if (!GameState().tutorialCompleted) {
+                if (!GameManager.state.tutorialCompleted) {
                     TutorialManager.onFeedFish()
                 }
 
                 DirtManager.addParticle(x = fish.move.x, y = fish.move.y)
+                GameManager.update {
+                    it.copy(
+                        dirtParticleCount = DirtManager.particles.count()
+                    )
+                }
                 FishFoodManager.feedFish(fish.id)
             }
         })

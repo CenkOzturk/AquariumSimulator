@@ -15,7 +15,6 @@ import com.kroq.myaquariumsimulator.managers.DirtManager
 @Composable
 fun DirtView() {
     DirtManager.particles.forEach { particle ->
-
         Box(
             modifier = Modifier
                 .offset(

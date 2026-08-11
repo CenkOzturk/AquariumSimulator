@@ -5,7 +5,7 @@ import com.kroq.myaquariumsimulator.model.shop.ShopItem
 data class CleanerModel(
     val id: Int,
     val type: ItemType = ItemType.CLEANER,
-    val name: String,
+    val nameResId: Int,
     val icon: Int,
     val price: Int,
     val cleanerCount: Int
@@ -14,7 +14,7 @@ data class CleanerModel(
 fun CleanerModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        title = type.name + "x" + cleanerCount,
+        titleResId = nameResId,
         price = price,
         icon = "\uD83E\uDDFD",
         isConsumable = true

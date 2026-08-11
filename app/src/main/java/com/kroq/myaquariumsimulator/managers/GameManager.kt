@@ -51,7 +51,9 @@ object GameManager {
                 dailyTask = null,
                 welcomeGiftDay = 0,
                 welcomeGiftClaimed = false,
-                tutorialCompleted = false
+                tutorialCompleted = false,
+                goldFishUnlocked = true,
+                lastGoldFishTime = 0L
             )
         }
     }

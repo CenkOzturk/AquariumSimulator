@@ -1,5 +1,7 @@
 package com.kroq.myaquariumsimulator.model.tutorial
 
+import com.kroq.myaquariumsimulator.R
+
 enum class TutorialStep {
     NONE,
     WELCOME,
@@ -14,56 +16,56 @@ enum class TutorialStep {
 
 fun TutorialStep.toUiState() = when (this) {
     TutorialStep.WELCOME -> TutorialUiState(
-        title = "Welcome to AquaVille!",
-        message = "Let's build your first aquarium.",
+        titleResId = R.string.tutorial_welcome_title,
+        messageResId = R.string.tutorial_welcome_message,
         showContinue = true
     )
 
     TutorialStep.OPEN_SHOP -> TutorialUiState(
-        title = "Open Shop",
-        message = "Tap the Shop button to continue.",
+        titleResId = R.string.tutorial_open_shop_title,
+        messageResId = R.string.tutorial_open_shop_message,
         popupPosition = TutorialPopupPosition.TOP
     )
 
     TutorialStep.TIER_INFO -> TutorialUiState(
-        title = "Unlock New Content",
-        message = "Bronze, Silver and Gold tiers unlock new fish and decorations.",
+        titleResId = R.string.tutorial_tier_info_title,
+        messageResId = R.string.tutorial_tier_info_message,
         showContinue = true,
         popupPosition = TutorialPopupPosition.TOP
     )
 
     TutorialStep.BUY_FIRST_FISH -> TutorialUiState(
-        title = "Buy Your First Fish",
-        message = "Every aquarium needs a fish.",
+        titleResId = R.string.tutorial_buy_first_fish_title,
+        messageResId = R.string.tutorial_buy_first_fish_message,
         popupPosition = TutorialPopupPosition.TOP
     )
 
     TutorialStep.FEED_FISH -> TutorialUiState(
-        title = "Feed Your First Fish",
-        message = "Tap your fish to feed it.",
+        titleResId = R.string.tutorial_feed_fish_title,
+        messageResId = R.string.tutorial_feed_fish_message,
         popupPosition = TutorialPopupPosition.TOP
     )
 
     TutorialStep.CLEAN -> TutorialUiState(
-        title = "Clean Your Aquarium",
-        message = "Aquarium need clean.",
+        titleResId = R.string.tutorial_clean_title,
+        messageResId = R.string.tutorial_clean_message,
         popupPosition = TutorialPopupPosition.TOP
     )
 
     TutorialStep.DAILY_TASK -> TutorialUiState(
-        title = "Daily Tasks",
-        message = "Complete tasks to earn extra coins."
+        titleResId = R.string.tutorial_daily_task_title,
+        messageResId = R.string.tutorial_daily_task_message
     )
 
     TutorialStep.FINISH -> TutorialUiState(
-        title = "You're Ready!",
-        message = "Enjoy AquaVille!",
+        titleResId = R.string.tutorial_finish_title,
+        messageResId = R.string.tutorial_finish_message,
         showContinue = true
     )
 
     TutorialStep.NONE -> TutorialUiState(
-        title = "",
-        message = ""
+        titleResId = R.string.empty_string,
+        messageResId = R.string.empty_string
     )
 }
 

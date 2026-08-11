@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.model.aquarium
 
 data class AquariumModel(
     val type: AquariumType,
+    val nameResId: Int,
     val offsetX: Float,
     val offsetY: Float,
     val width: Float,

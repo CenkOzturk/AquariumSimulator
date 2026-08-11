@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
@@ -125,7 +126,7 @@ fun MainMenuScreen(
             )
 
             GameMenuButton(
-                text = "PLAY",
+                text = stringResource(R.string.menu_play),
                 gradient = GameColors.Ocean,
                 isPrimary = true,
                 onClick = onPlay
@@ -136,7 +137,7 @@ fun MainMenuScreen(
             )
 
             GameMenuButton(
-                text = "SETTINGS",
+                text = stringResource(R.string.menu_settings),
                 gradient = GameColors.WelcomeGift,
                 onClick = onSettings
             )
@@ -146,7 +147,7 @@ fun MainMenuScreen(
             )
 
             GameMenuButton(
-                text = "CREDITS",
+                text = stringResource(R.string.menu_credits),
                 gradient = GameColors.Shop,
                 onClick = onCredits
             )

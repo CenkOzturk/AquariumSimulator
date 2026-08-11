@@ -41,6 +41,7 @@ object TutorialManager {
 
         GameManager.update {
             it.copy(
+                tutorialStep = currentStep.name,
                 tutorialCompleted = currentStep == TutorialStep.NONE
             )
         }
@@ -49,6 +50,7 @@ object TutorialManager {
     fun skip() {
         GameManager.update {
             it.copy(
+                tutorialStep = TutorialStep.NONE.name,
                 tutorialCompleted = true
             )
         }

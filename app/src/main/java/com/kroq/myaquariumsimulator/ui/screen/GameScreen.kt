@@ -23,17 +23,17 @@ import com.kroq.myaquariumsimulator.managers.DailyTaskManager
 import com.kroq.myaquariumsimulator.managers.DirtManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
+import com.kroq.myaquariumsimulator.managers.GoldFishManager
 import com.kroq.myaquariumsimulator.managers.ItemManager
 import com.kroq.myaquariumsimulator.managers.SaveManager
 import com.kroq.myaquariumsimulator.managers.ScreenManager
 import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.managers.WelcomeGiftManager
 import com.kroq.myaquariumsimulator.model.GameProgress
-import com.kroq.myaquariumsimulator.model.GameState
-import com.kroq.myaquariumsimulator.model.tutorial.TutorialStep
 import com.kroq.myaquariumsimulator.model.calculateTier
 import com.kroq.myaquariumsimulator.model.loadGameState
 import com.kroq.myaquariumsimulator.model.rememberGameUiState
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialStep
 import com.kroq.myaquariumsimulator.ui.aquarium.AquariumView
 import com.kroq.myaquariumsimulator.ui.component.GameHud
 import com.kroq.myaquariumsimulator.ui.component.RightMenu
@@ -54,6 +54,7 @@ fun GameScreen() {
         val loaded = loadGameState(context)
         SaveManager.init(context)
         GameManager.initialize(loaded)
+        TutorialManager.initialize()
         WelcomeGiftManager.refreshIfNeeded()
         DailyTaskManager.refreshIfNeeded(
             GameProgress(
@@ -61,6 +62,7 @@ fun GameScreen() {
                 ItemManager.items.map { it.type }
             ).calculateTier()
         )
+        DirtManager.initialize(AquariumManager.currentAquarium)
         CoinLoop.start(lifecycleOwner)
     }
 
@@ -68,6 +70,8 @@ fun GameScreen() {
         while (true) {
             val aquarium = AquariumManager.currentAquarium
             FishManager.fishMove(aquarium)
+            GoldFishManager.update(screenWidth, screenHeight)
+            GoldFishManager.move(screenWidth)
             BubbleManager.update(aquarium)
             DirtManager.update(aquarium)
             delay(16)
@@ -118,8 +122,8 @@ fun GameScreen() {
             uiState = uiState
         )
 
-        if (!GameManager.state.tutorialCompleted) {
+        if (!GameManager.state.tutorialCompleted &&
+            GameManager.state.tutorialStep != TutorialStep.NONE.name)
             TutorialOverlay()
-        }
     }
 }

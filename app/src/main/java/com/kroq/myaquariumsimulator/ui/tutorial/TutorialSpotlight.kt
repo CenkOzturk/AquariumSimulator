@@ -66,7 +66,7 @@ fun TutorialSpotlight() {
                     x = 0.dp,
                     y = bounds.top.toDp()
                 )
-                .width(bounds.left.toDp() - 10.dp)
+                .width(bounds.left.toDp())
                 .height(bounds.height.toDp())
                 .background(Color.Black.copy(.55f))
                 .then(blockerModifier)
@@ -80,7 +80,7 @@ fun TutorialSpotlight() {
                     y = bounds.top.toDp()
                 )
                 .width(
-                    ScreenManager.screenWidth.dp - bounds.right.toDp() - 10.dp
+                    ScreenManager.screenWidth.dp - bounds.right.toDp()
                 )
                 .height(bounds.height.toDp())
                 .background(Color.Black.copy(.55f))

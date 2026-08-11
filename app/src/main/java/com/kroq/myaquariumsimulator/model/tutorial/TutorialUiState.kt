@@ -1,8 +1,10 @@
 package com.kroq.myaquariumsimulator.model.tutorial
 
+import androidx.annotation.StringRes
+
 data class TutorialUiState(
-    val title: String,
-    val message: String,
+    @StringRes val titleResId: Int,
+    @StringRes val messageResId: Int,
     val showContinue: Boolean = false,
     val popupPosition: TutorialPopupPosition = TutorialPopupPosition.BOTTOM
 )

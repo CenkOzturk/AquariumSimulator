@@ -28,7 +28,6 @@ import kotlin.random.Random
 fun FloatingBubble() {
     val configuration = LocalConfiguration.current
 
-    val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
 
     val random = remember {

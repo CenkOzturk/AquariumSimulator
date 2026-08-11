@@ -16,8 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.R
 
 @Composable
 fun ConfirmPopup(
@@ -41,7 +43,10 @@ fun ConfirmPopup(
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-                Text("Buy this aquarium?", fontSize = 16.sp)
+                Text(
+                    text = stringResource(R.string.buy_aquarium_title),
+                    fontSize = 16.sp
+                )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -57,7 +62,9 @@ fun ConfirmPopup(
                             .padding(10.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text("No")
+                        Text(
+                            text = stringResource(R.string.no)
+                        )
                     }
 
                     Box(
@@ -70,7 +77,10 @@ fun ConfirmPopup(
                             .padding(10.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text("Yes", color = Color.White)
+                        Text(
+                            text = stringResource(R.string.yes),
+                            color = Color.White
+                        )
                     }
                 }
             }

@@ -1,28 +1,146 @@
 <resources>
     <string name="app_name">AquaVille</string>
+    <string name="empty_string" translatable="false" />
+    <string name="waiting_action">Waiting for your action…</string>
+    <string name="buy_aquarium_title">Buy this aquarium?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
     <string name="btn_shop">"🛒"</string>
+    <string name="btn_continue">Continue</string>
+
+    <string name="menu_play">PLAY</string>
+    <string name="menu_settings">SETTINGS</string>
+    <string name="menu_credits">CREDITS</string>
+    <string name="menu_back">BACK</string>
 
     <string name="shop">Shop</string>
+    <string name="cleaner">Cleaner</string>
+    <string name="fish_food">Fish Food</string>
 
-    <string name="shop_tab_fish">"🐟 Balıklar"</string>
-    <string name="shop_tab_aquarium">"🧪 Akvaryum"</string>
+    <string name="shop_tab_fish">"🐟 Fish"</string>
+    <string name="shop_tab_aquarium">"🧪 Aquarium"</string>
     <string name="shop_tab_items">"🧱 Items"</string>
 
     <string name="coin_value">"💰 %s"</string>
     <string name="fish_food_value">"🍤 %s"</string>
     <string name="cleaner_value">"🧽 %s"</string>
 
-    <string name="collect">Topla %s 💰</string>
-    <string name="today_missions">Bugünün Görevleri</string>
-    <string name="not_complete_tasks">Görevleri henüz bitirmedim :(</string>
-    <string name="daily_task_reward_claimed">Bütün görevleri bitirdin :)</string>
-    <string name="already_received_reward">Bugünün ödülünü aldın yarın tekrar görüşürüz</string>
+    <string name="collect">Collect %s 💰</string>
+    <string name="today_missions">Today\'s Missions</string>
+    <string name="not_complete_tasks">I haven\'t completed the missions yet :(</string>
+    <string name="daily_task_reward_claimed">You completed all missions :)</string>
+    <string name="already_received_reward">You already claimed today\'s reward. See you tomorrow!</string>
 
-    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem %s"</string>
-    <string name="no_cleaner_error">Temizlik maddeleri yetmedi :(</string>
-    <string name="shop_no_coin_error">"Satın alma başarısız! Paran yetmedi :("</string>
-    <string name="shop_too_much_fish">"Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz"</string>
+    <string name="no_food_error">"Feeding failed! Not enough food :( Required food for this fish: %s"</string>
+    <string name="no_cleaner_error">Not enough cleaning supplies :(</string>
+    <string name="shop_no_coin_error">"Purchase failed! Not enough coins :("</string>
+    <string name="shop_too_much_fish">"Aquarium capacity reached. Please upgrade your aquarium."</string>
+
+    <!-- Fish Names -->
+    <string name="fish_100_name">Melos</string>
+    <string name="fish_101_name">Zibo</string>
+    <string name="fish_102_name">Sunny</string>
+    <string name="fish_103_name">Coral</string>
+    <string name="fish_104_name">Bubbles</string>
+    <string name="fish_105_name">Peach</string>
+    <string name="fish_106_name">Minty</string>
+    <string name="fish_107_name">Twinkle</string>
+    <string name="fish_108_name">Berry</string>
+    <string name="fish_109_name">Ocean</string>
+    <string name="fish_110_name">Luna</string>
+    <string name="fish_111_name">Sapphire</string>
+    <string name="fish_112_name">Pearl</string>
+    <string name="fish_113_name">Bubblegum</string>
+    <string name="fish_114_name">Lagoon</string>
+    <string name="fish_115_name">Daisy</string>
+    <string name="fish_116_name">Rose</string>
+    <string name="fish_117_name">Sakura</string>
+    <string name="fish_118_name">Amethyst</string>
+    <string name="fish_119_name">Aurora</string>
+    <string name="fish_120_name">Crystal</string>
+    <string name="fish_121_name">Starlight</string>
+    <string name="fish_122_name">Dreamer</string>
+    <string name="fish_123_name">Royal</string>
+    <string name="fish_124_name">Golden Star</string>
+
+    <!-- Aqua Names -->
+    <string name="aqua_small">Small</string>
+    <string name="aqua_medium">Medium</string>
+    <string name="aqua_large">Large</string>
+
+    <!-- Item Names -->
+    <string name="item_sand_name">Soft Sand</string>
+    <string name="item_seaweed_short_name">Tiny Seaweed</string>
+    <string name="item_rock_small_name">Little Rock</string>
+    <string name="item_starfish_name">Starfish</string>
+
+    <!-- Cleaner Names -->
+    <string name="cleaner_cloth_name">Cloth</string>
+    <string name="cleaner_sponge_name">Sponge</string>
+    <string name="cleaner_robot_name">Robot Cleaner</string>
+
+    <!-- Tutorial -->
+    <string name="tutorial_title">AquaVille Guide</string>
+
+    <string name="tutorial_welcome_title">Welcome to AquaVille!</string>
+    <string name="tutorial_welcome_message">Let\'s build your first aquarium.</string>
+
+    <string name="tutorial_open_shop_title">Open Shop</string>
+    <string name="tutorial_open_shop_message">Tap the Shop button to continue.</string>
+
+    <string name="tutorial_tier_info_title">Unlock New Content</string>
+    <string name="tutorial_tier_info_message">Bronze, Silver and Gold tiers unlock new fish and decorations.</string>
+
+    <string name="tutorial_buy_first_fish_title">Buy Your First Fish</string>
+    <string name="tutorial_buy_first_fish_message">Every aquarium needs a fish.</string>
+
+    <string name="tutorial_feed_fish_title">Feed Your First Fish</string>
+    <string name="tutorial_feed_fish_message">Tap your fish to feed it.</string>
+
+    <string name="tutorial_clean_title">Clean Your Aquarium</string>
+    <string name="tutorial_clean_message">Feeding your fish can make your aquarium dirty. Keep your aquarium clean.</string>
+    <string name="tutorial_daily_task_title">Daily Tasks</string>
+    <string name="tutorial_daily_task_message">Complete tasks to earn extra coins.</string>
+
+    <string name="tutorial_finish_title">You\'re Ready!</string>
+    <string name="tutorial_finish_message">Enjoy AquaVille!</string>
+
+    <!-- Credits -->
+    <string name="credits_title">Credits</string>
+
+    <string name="credits_game_design">Game Design</string>
+    <string name="credits_programming">Programming</string>
+    <string name="credits_game_art">Game Art</string>
+    <string name="credits_music">Music</string>
+    <string name="credits_version">Version</string>
+
+    <string name="credits_name_cenk">Cenk Öztürk</string>
+    <string name="credits_name_cenk_chatgpt">Cenk Öztürk &amp; ChatGPT</string>
+
+    <string name="credits_coming_soon">Coming Soon</string>
+
+    <!-- Daily -->
+    <string name="daily_today_missions_subtitle">Complete every mission to claim today\'s reward.</string>
+    <string name="daily_total_reward">TOTAL REWARD</string>
+    <string name="daily_total_reward_coins">%s Coins</string>
+    <string name="daily_task_feed_fish">Feed Fish</string>
+    <string name="daily_task_buy_fish_feed">Buy Fish Food</string>
+    <string name="daily_task_buy_fish">Buy Fish</string>
+    <string name="daily_task_buy_item">Buy Item</string>
+    <string name="daily_task_collect_coin">Collect Coins</string>
+    <string name="daily_task_pop_bubble">Pop Bubbles</string>
+    <string name="daily_task_gold_fish">Catch Gold Fish</string>
+
+    <!-- Settings -->
+    <string name="settings_title">SETTINGS</string>
+
+    <string name="settings_music">Music</string>
+    <string name="settings_sound_effects">Sound Effects</string>
+    <string name="settings_notifications">Notifications</string>
+
+    <string name="settings_reset_progress">Reset Progress</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
 </resources>

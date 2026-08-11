@@ -50,6 +50,14 @@ object WelcomeGiftManager {
                     welcomeGiftClaimed = true
                 )
             }
+
+            if (gift.day == 7) {
+                GameManager.update {
+                    it.copy(
+                        goldFishUnlocked = true
+                    )
+                }
+            }
         }
     }
 }

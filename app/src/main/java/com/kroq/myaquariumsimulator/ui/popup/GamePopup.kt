@@ -32,11 +32,11 @@ import com.kroq.myaquariumsimulator.ui.component.buttons.CloseButton
 
 @Composable
 fun GamePopup(
+    modifier: Modifier = Modifier,
     title: String,
     subtitle: String? = null,
     gradient: GameGradient,
     onClose: () -> Unit,
-    modifier: Modifier = Modifier,
     widthFraction: Float = .72f,
     buttonText: String? = null,
     buttonEnabled: Boolean = true,
@@ -117,17 +117,14 @@ fun GamePopup(
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center
                         )
-
                         Spacer(Modifier.height(22.dp))
                     } else {
-
                         Spacer(Modifier.height(22.dp))
                     }
 
                     content()
 
                     if (buttonText != null && onButtonClick != null) {
-
                         Spacer(Modifier.height(22.dp))
 
                         RoundedGameButton(

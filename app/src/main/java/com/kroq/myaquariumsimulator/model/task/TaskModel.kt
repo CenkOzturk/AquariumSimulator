@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.model.task
 
 data class TaskModel(
     val id: Int,
+    val nameResId: Int,
     val type: DailyTaskType,
     val target: Int,
     val progress: Int = 0,

@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.managers
 
 import androidx.compose.runtime.mutableStateListOf
 import com.kroq.myaquariumsimulator.data.Constants.BUBBLE_SPAWN_TIME
+import com.kroq.myaquariumsimulator.data.Constants.BUBBLE_VALUE
 import com.kroq.myaquariumsimulator.model.extras.BubbleModel
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.task.DailyTaskType
@@ -49,6 +50,6 @@ object BubbleManager {
     fun popBubble(bubbleId: Long) {
         bubbles.removeAll { it.id == bubbleId }
         DailyTaskManager.addProgress(DailyTaskType.POP_BUBBLE)
-        CoinManager.addCoins(5000)
+        CoinManager.addCoins(BUBBLE_VALUE)
     }
 }

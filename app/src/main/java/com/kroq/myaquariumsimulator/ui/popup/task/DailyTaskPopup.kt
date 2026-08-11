@@ -43,7 +43,7 @@ fun DailyTaskPopup(
         GamePopup(
             modifier = popupModifier,
             title = stringResource(R.string.today_missions),
-            subtitle = "Complete every mission to claim today's reward.",
+            subtitle = stringResource(R.string.daily_today_missions_subtitle),
             gradient = colors,
             widthFraction = .68f,
             buttonText = if (allCompleted) {
@@ -91,7 +91,7 @@ fun DailyTaskPopup(
                 ) {
 
                     Text(
-                        text = "TOTAL REWARD",
+                        text = stringResource(R.string.daily_total_reward),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         color = colors.dark
@@ -100,7 +100,10 @@ fun DailyTaskPopup(
                     Spacer(Modifier.height(8.dp))
 
                     Text(
-                        text = "$totalReward Coins",
+                        text = stringResource(
+                            R.string.daily_total_reward_coins,
+                            totalReward
+                        ),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
                         color = colors.border

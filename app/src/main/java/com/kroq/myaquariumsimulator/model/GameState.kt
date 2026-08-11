@@ -7,6 +7,7 @@ import com.kroq.myaquariumsimulator.data.dataStore
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.task.DailyTaskModel
+import com.kroq.myaquariumsimulator.model.tutorial.TutorialStep
 import com.kroq.myaquariumsimulator.utils.Utils.emptyString
 import com.kroq.myaquariumsimulator.utils.Utils.fromJson
 import com.kroq.myaquariumsimulator.utils.Utils.toJson
@@ -19,16 +20,19 @@ data class GameState(
     val coins: Int = 25,
     val foodCount: Int = 10,
     val cleanerCount: Int = 10,
-    var selectedShopTab: ShopTab = ShopTab.FISH,
+    val dirtParticleCount: Int = 0,
+    val selectedShopTab: ShopTab = ShopTab.FISH,
     val dailyTask: DailyTaskModel? = null,
     val welcomeGiftDay: Int = 0,
     val welcomeGiftClaimed: Boolean = false,
     val lastLoginTime: Long = 0L,
-    var tutorialCompleted: Boolean = false
+    val tutorialStep: String = TutorialStep.WELCOME.name,
+    val tutorialCompleted: Boolean = false,
+    val goldFishUnlocked: Boolean = false,
+    val lastGoldFishTime: Long = 0L
 )
 
 suspend fun loadGameState(context: Context): GameState {
-
     val prefs = context.dataStore.data.first()
 
     return GameState(
@@ -38,11 +42,16 @@ suspend fun loadGameState(context: Context): GameState {
         coins = prefs[PrefKeys.COINS] ?: 25,
         foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
         cleanerCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
+        dirtParticleCount = prefs[PrefKeys.DIRT_PARTICLE_COUNT] ?: 0,
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
         welcomeGiftClaimed = prefs[PrefKeys.WELCOME_GIFT_CLAIMED] ?: false,
         lastLoginTime = prefs[PrefKeys.LAST_LOGIN_TIME] ?: 0L,
+        tutorialStep = prefs[PrefKeys.TUTORIAL_STEP] ?: TutorialStep.WELCOME.name,
         tutorialCompleted = prefs[PrefKeys.TUTORIAL_COMPLETED] ?: false,
+        goldFishUnlocked = prefs[PrefKeys.GOLD_FISH_UNLOCKED] ?: false,
+        lastGoldFishTime = prefs[PrefKeys.LAST_GOLD_FISH_TIME] ?: 0L
+
     )
 }
 
@@ -51,27 +60,20 @@ suspend fun saveGameState(
     state: GameState
 ) {
     context.dataStore.edit { prefs ->
-
         prefs[PrefKeys.AQUARIUM] = state.aquariumType
-
         prefs[PrefKeys.FISH] = state.ownedFishIds.map { it.toString() }.toSet()
-
         prefs[PrefKeys.ITEMS] = state.ownedItemIds.map { it.toString() }.toSet()
-
         prefs[PrefKeys.COINS] = state.coins
-
         prefs[PrefKeys.FOOD_COUNT] = state.foodCount
-
         prefs[PrefKeys.CLEANER_COUNT] = state.cleanerCount
-
+        prefs[PrefKeys.DIRT_PARTICLE_COUNT] = state.dirtParticleCount
         prefs[PrefKeys.DAILY_TASK] = state.dailyTask?.toJson() ?: emptyString()
-
         prefs[PrefKeys.WELCOME_GIFT_DAY] = state.welcomeGiftDay
-
         prefs[PrefKeys.WELCOME_GIFT_CLAIMED] = state.welcomeGiftClaimed
-
         prefs[PrefKeys.LAST_LOGIN_TIME] = state.lastLoginTime
-
+        prefs[PrefKeys.TUTORIAL_STEP] = state.tutorialStep
         prefs[PrefKeys.TUTORIAL_COMPLETED] = state.tutorialCompleted
+        prefs[PrefKeys.GOLD_FISH_UNLOCKED] = state.goldFishUnlocked
+        prefs[PrefKeys.LAST_GOLD_FISH_TIME] = state.lastGoldFishTime
     }
 }

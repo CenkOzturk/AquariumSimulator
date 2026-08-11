@@ -13,11 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.component.GameColors
-import com.kroq.myaquariumsimulator.ui.aquarium.BubbleView
 import com.kroq.myaquariumsimulator.ui.component.buttons.GameMenuButton
 import com.kroq.myaquariumsimulator.ui.component.settings.*
 
@@ -58,7 +59,7 @@ fun SettingsScreen(
             Spacer(Modifier.height(24.dp))
 
             Text(
-                text = "SETTINGS",
+                text = stringResource(R.string.settings_title),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -67,7 +68,7 @@ fun SettingsScreen(
             Spacer(Modifier.height(32.dp))
 
             SettingsToggleItem(
-                title = "Music",
+                title = stringResource(R.string.settings_music),
                 checked = music,
                 onCheckedChange = onMusicChanged
             )
@@ -75,7 +76,7 @@ fun SettingsScreen(
             Spacer(Modifier.height(12.dp))
 
             SettingsToggleItem(
-                title = "Sound Effects",
+                title = stringResource(R.string.settings_sound_effects),
                 checked = soundEffects,
                 onCheckedChange = onSoundEffectsChanged
             )
@@ -83,7 +84,7 @@ fun SettingsScreen(
             Spacer(Modifier.height(12.dp))
 
             SettingsToggleItem(
-                title = "Notifications",
+                title = stringResource(R.string.settings_notifications),
                 checked = notifications,
                 onCheckedChange = onNotificationsChanged
             )
@@ -91,14 +92,14 @@ fun SettingsScreen(
             Spacer(Modifier.height(12.dp))
 
             SettingsActionItem(
-                title = "Reset Progress",
+                title = stringResource(R.string.settings_reset_progress),
                 onClick = onResetProgress
             )
 
             Spacer(Modifier.height(12.dp))
 
             SettingsActionItem(
-                title = "Privacy Policy",
+                title = stringResource(R.string.settings_privacy_policy),
                 onClick = onPrivacyPolicy
             )
 
@@ -111,7 +112,7 @@ fun SettingsScreen(
             Spacer(Modifier.weight(1f))
 
             GameMenuButton(
-                text = "BACK",
+                text = stringResource(R.string.menu_back),
                 gradient = GameColors.Shop,
                 onClick = onBack
             )
