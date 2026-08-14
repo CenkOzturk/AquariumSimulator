@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,10 +24,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.managers.CoinManager
 import com.kroq.myaquariumsimulator.managers.FloatingTextManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.GoldFishManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
+import com.kroq.myaquariumsimulator.ui.component.AnimatedCoin
 import com.kroq.myaquariumsimulator.ui.theme.MyAquariumSimulatorTheme
 import com.kroq.myaquariumsimulator.utils.Utils.hasItem
 
@@ -130,6 +133,21 @@ fun AquariumView(aquarium: AquariumModel) {
             }
 
             BubbleView()
+
+            CoinManager.coins.forEach { coin ->
+                key(coin.id) {
+                    AnimatedCoin(
+                        coin = coin,
+                        onClick = {
+                            CoinManager.addCoins(coin.amount)
+                            CoinManager.removeCoin(coin.id)
+                        },
+                        onExpired = {
+                            CoinManager.removeCoin(coin.id)
+                        }
+                    )
+                }
+            }
 
             DirtView()
         }

@@ -2,6 +2,8 @@ package com.kroq.myaquariumsimulator.data
 
 object Constants {
     const val FISH_SIZE = 60f
+    const val COIN_SIZE = 64f
+    const val COIN_EXPIRE_TIME = 5 * 1000L
     const val BUBBLE_VALUE = 3
     const val BUBBLE_SPAWN_TIME = 20 * 1000L
     const val FEED_DURATION = 60 * 1000L

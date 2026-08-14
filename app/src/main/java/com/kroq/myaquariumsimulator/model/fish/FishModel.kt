@@ -1,5 +1,6 @@
 package com.kroq.myaquariumsimulator.model.fish
 
+import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 
 data class FishModel(
@@ -9,7 +10,7 @@ data class FishModel(
     val price: Int,
     val income: Int,
     val move: FishMoveModel,
-    val fedUntil: Long = 50000L,
+    val fedUntil: Long = FEED_DURATION,
     val requirementType: RequirementType = RequirementType.FREE
 )
 

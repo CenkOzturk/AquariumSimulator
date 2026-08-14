@@ -3,12 +3,13 @@ package com.kroq.myaquariumsimulator.ui.aquarium
 import androidx.compose.runtime.Composable
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
+import com.kroq.myaquariumsimulator.managers.AquariumManager.currentAquariumBottom
+import com.kroq.myaquariumsimulator.managers.CoinManager
 import com.kroq.myaquariumsimulator.managers.DirtManager
 import com.kroq.myaquariumsimulator.managers.FishFoodManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.TutorialManager
-import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.fish.isFed
 import com.kroq.myaquariumsimulator.utils.Utils
 
@@ -20,7 +21,7 @@ fun FishLayer() {
 
         FishView(fish, fish.isFed(), progress, {
             if (!fish.isFed()) {
-                if (GameManager.state.foodCount <= fish.income) {
+                if (GameManager.state.foodCount < fish.income) {
                     Utils.showToast(R.string.no_food_error, fish.income)
                     return@FishView
                 }
@@ -35,6 +36,11 @@ fun FishLayer() {
                     )
                 }
                 FishFoodManager.feedFish(fish.id)
+                CoinManager.spawnCoin(
+                    fish = fish,
+                    targetY = currentAquariumBottom(),
+                    count = fish.income
+                )
             }
         })
     }

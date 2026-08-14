@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.managers.AquariumManager
+import com.kroq.myaquariumsimulator.managers.AquariumManager.currentAquariumBottom
 import com.kroq.myaquariumsimulator.managers.BubbleManager
 import com.kroq.myaquariumsimulator.managers.CoinLoop
 import com.kroq.myaquariumsimulator.managers.DailyTaskManager
@@ -63,7 +64,7 @@ fun GameScreen() {
             ).calculateTier()
         )
         DirtManager.initialize(AquariumManager.currentAquarium)
-        CoinLoop.start(lifecycleOwner)
+        CoinLoop.start(lifecycleOwner, currentAquariumBottom())
     }
 
     LaunchedEffect(screenWidth, screenHeight) {

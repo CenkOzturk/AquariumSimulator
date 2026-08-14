@@ -38,4 +38,11 @@ object AquariumManager {
                 )
             )
     }
+
+    fun currentAquariumBottom(): Float {
+        return if (GameManager.state.ownedItemIds.count() == 0)
+            currentAquarium.height - 40f
+        else
+            currentAquarium.height - 72f
+    }
 }

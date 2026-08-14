@@ -1,0 +1,57 @@
+package com.kroq.myaquariumsimulator.ui.component
+
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.offset
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.data.Constants.COIN_EXPIRE_TIME
+import com.kroq.myaquariumsimulator.model.CoinModel
+import kotlinx.coroutines.delay
+
+@Composable
+fun AnimatedCoin(
+    coin: CoinModel,
+    onClick: () -> Unit,
+    onExpired: () -> Unit
+) {
+    val animatedY = remember {
+        Animatable(coin.startY)
+    }
+
+    LaunchedEffect(Unit) {
+
+        animatedY.animateTo(
+            targetValue = coin.startY - 20f,
+            animationSpec = tween(
+                durationMillis = 250,
+                easing = FastOutSlowInEasing
+            )
+        )
+
+        animatedY.animateTo(
+            targetValue = coin.targetY,
+            animationSpec = tween(
+                durationMillis = 2000,
+                easing = LinearEasing
+            )
+        )
+
+        delay(COIN_EXPIRE_TIME)
+
+        onExpired()
+    }
+
+    CoinView(
+        modifier = Modifier.offset(
+            x = coin.x.dp,
+            y = animatedY.value.dp
+        ),
+        onClick = onClick
+    )
+}
