@@ -15,24 +15,27 @@ object CoinLoop {
     private var job: Job? = null
 
     fun start(
-        lifecycleOwner: LifecycleOwner,
-        targetY: Float
+        lifecycleOwner: LifecycleOwner
     ) {
         job?.cancel()
         job = lifecycleOwner.lifecycleScope.launch {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 while (isActive) {
+                    var totalIncome = 0
                     FishManager.fishes.forEach { fish ->
-                        val income = fish.income * fish.coinMultiplier()
-                        if (income > 0) {
-                            CoinManager.spawnCoin(
-                                fish = fish,
-                                targetY = targetY,
-                                count = income,
-                                amount = 1
-                            )
-                        }
+                        totalIncome += fish.income * fish.coinMultiplier()
                     }
+
+                    CoinManager.addCoins(totalIncome)
+
+                    /*CoinManager.spawnCoin(
+                        x = fish.move.x,
+                        y = fish.move.y,
+                        direction = fish.move.direction,
+                        count = income,
+                        amount = 1
+                    )*/
+
                     delay(INCOME_CYCLE_SECONDS)
                 }
             }

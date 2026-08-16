@@ -18,11 +18,7 @@ object GoldFishManager {
     var y by mutableFloatStateOf(0f)
         private set
 
-    fun update(
-        screenWidth: Float,
-        screenHeight: Float
-    ) {
-
+    fun update(screenWidth: Float, screenHeight: Float) {
         if (!GameManager.state.goldFishUnlocked) {
             visible = false
             return
@@ -33,10 +29,7 @@ object GoldFishManager {
         }
 
         val now = System.currentTimeMillis()
-
-        val elapsed =
-            now - GameManager.state.lastGoldFishTime
-
+        val elapsed = now - GameManager.state.lastGoldFishTime
         if (elapsed >= GOLD_FISH_SPAWN_INTERVAL) {
             spawn(
                 screenWidth,
@@ -45,19 +38,10 @@ object GoldFishManager {
         }
     }
 
-    private fun spawn(
-        screenWidth: Float,
-        screenHeight: Float
-    ) {
-
+    private fun spawn(screenWidth: Float, screenHeight: Float) {
         visible = true
-
         x = -180f
-
-        y =
-            Random.nextFloat() *
-                    (screenHeight * 0.65f) +
-                    screenHeight * 0.15f
+        y = Random.nextFloat() * (screenHeight * 0.65f) + screenHeight * 0.15f
 
         // ÖNEMLİ:
         // Balık çıktığı anda zamanı kaydediyoruz.
@@ -68,14 +52,9 @@ object GoldFishManager {
         }
     }
 
-    fun move(
-        screenWidth: Float
-    ) {
-
+    fun move(screenWidth: Float) {
         if (!visible) return
-
         x += 1.2f
-
         if (x > screenWidth + 180f) {
             visible = false
         }
@@ -83,13 +62,7 @@ object GoldFishManager {
 
     fun collect() {
         if (!visible) return
-
-        GameManager.update {
-            it.copy(
-                coins = it.coins + GOLD_FISH_REWARD
-            )
-        }
-
+        CoinManager.addCoins(GOLD_FISH_REWARD)
         visible = false
     }
 }

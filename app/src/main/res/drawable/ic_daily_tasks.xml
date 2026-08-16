@@ -1,0 +1,82 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Outer badge -->
+    <path
+        android:fillColor="#FFD95A"
+        android:strokeColor="#8B6428"
+        android:strokeWidth="4"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M48,8
+            C52,8 55,12 58,13
+            C62,13 67,12 70,15
+            C73,18 72,23 75,26
+            C78,29 83,30 84,34
+            C85,38 82,42 83,46
+            C84,50 87,54 85,58
+            C84,62 79,64 77,67
+            C75,71 76,76 72,79
+            C69,82 64,80 60,82
+            C56,84 54,88 50,88
+            C46,89 43,85 39,83
+            C35,81 30,83 27,80
+            C24,77 25,72 22,69
+            C19,66 14,64 13,60
+            C12,56 15,52 14,48
+            C13,44 10,40 12,36
+            C13,32 18,30 21,27
+            C23,23 22,19 26,16
+            C29,13 34,15 38,14
+            C42,12 44,8 48,8Z" />
+
+    <!-- Inner circle -->
+    <path
+        android:fillColor="#FFF1A8"
+        android:strokeColor="#C58A32"
+        android:strokeWidth="3"
+        android:pathData="
+            M48,20
+            C63.46,20 76,32.54 76,48
+            C76,63.46 63.46,76 48,76
+            C32.54,76 20,63.46 20,48
+            C20,32.54 32.54,20 48,20Z" />
+
+    <!-- Check circle -->
+    <path
+        android:fillColor="#4CAF50"
+        android:strokeColor="#315F32"
+        android:strokeWidth="3"
+        android:pathData="
+            M48,29
+            C58.49,29 67,37.51 67,48
+            C67,58.49 58.49,67 48,67
+            C37.51,67 29,58.49 29,48
+            C29,37.51 37.51,29 48,29Z" />
+
+    <!-- Check -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="
+            M38,47
+            L44,53
+            L58,39
+            L62,43
+            L44,61
+            L34,51
+            Z" />
+
+    <!-- Small shine -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:alpha="0.65"
+        android:pathData="
+            M31,30
+            C34,27 38,25 42,24
+            C38,29 35,33 32,38
+            C29,36 29,33 31,30Z" />
+
+</vector>

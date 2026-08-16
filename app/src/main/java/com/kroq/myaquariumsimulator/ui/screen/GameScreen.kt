@@ -57,14 +57,9 @@ fun GameScreen() {
         GameManager.initialize(loaded)
         TutorialManager.initialize()
         WelcomeGiftManager.refreshIfNeeded()
-        DailyTaskManager.refreshIfNeeded(
-            GameProgress(
-                AquariumManager.currentAquarium.type,
-                ItemManager.items.map { it.type }
-            ).calculateTier()
-        )
+        DailyTaskManager.refreshIfNeeded(GameProgress().calculateTier())
         DirtManager.initialize(AquariumManager.currentAquarium)
-        CoinLoop.start(lifecycleOwner, currentAquariumBottom())
+        CoinLoop.start(lifecycleOwner)
     }
 
     LaunchedEffect(screenWidth, screenHeight) {

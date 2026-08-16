@@ -1,12 +1,14 @@
 package com.kroq.myaquariumsimulator.model
 
+import com.kroq.myaquariumsimulator.managers.AquariumManager
+import com.kroq.myaquariumsimulator.managers.ItemManager
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.fish.RequirementType
 import com.kroq.myaquariumsimulator.model.item.ItemType
 
 data class GameProgress(
-    val aquariumType: AquariumType,
-    val ownedItems: List<ItemType>
+    val aquariumType: AquariumType = AquariumManager.currentAquarium.type,
+    val ownedItems: List<ItemType> = ItemManager.items.map { it.type }
 )
 
 fun GameProgress.calculateTier(): PlayerTier {

@@ -5,5 +5,6 @@ enum class TutorialBoundsType {
     CLEAN,
     FIRST_FISH,
     FEED_FISH,
+    COLLECT_COIN,
     DAILY_TASK
 }

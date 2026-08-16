@@ -15,11 +15,8 @@ object BubbleManager {
 
     fun update(aquarium: AquariumModel) {
         val now = System.currentTimeMillis()
-
         if (now - lastSpawnTime > BUBBLE_SPAWN_TIME) {
-
             lastSpawnTime = now
-
             bubbles.add(
                 BubbleModel(
                     id = now,
@@ -33,9 +30,7 @@ object BubbleManager {
 
         // 🫧 hareket + yukarı çıkınca sil
         val newList = bubbles.mapNotNull { b ->
-
             val newY = b.y - b.speed
-
             if (newY < 0) {
                 null
             } else {

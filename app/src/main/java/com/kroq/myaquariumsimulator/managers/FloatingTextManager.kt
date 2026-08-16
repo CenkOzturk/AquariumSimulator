@@ -6,11 +6,11 @@ import com.kroq.myaquariumsimulator.model.extras.FloatingTextModel
 object FloatingTextManager {
     val texts = mutableStateListOf<FloatingTextModel>()
 
-    fun spawn(text: String, x: Float, y: Float) {
+    fun spawn(amount: Int, x: Float, y: Float) {
         texts.add(
             FloatingTextModel(
                 id = System.currentTimeMillis(),
-                text = text,
+                amount = amount,
                 x = x,
                 y = y
             )

@@ -1,17 +1,15 @@
 package com.kroq.myaquariumsimulator.managers
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.R
-import com.kroq.myaquariumsimulator.data.Constants.COIN_SIZE
-import com.kroq.myaquariumsimulator.data.Constants.FISH_SIZE
 import com.kroq.myaquariumsimulator.model.CoinModel
-import com.kroq.myaquariumsimulator.model.fish.FishModel
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.getFoodCountByIds
 import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.task.DailyTaskType
 import com.kroq.myaquariumsimulator.utils.Utils
-import kotlin.random.Random
 
 
 object CoinManager {
@@ -62,25 +60,15 @@ object CoinManager {
         DailyTaskManager.addProgress(DailyTaskType.COLLECT_COIN, amount)
     }
 
-    fun spawnCoin(
-        fish: FishModel,
-        targetY: Float,
-        count: Int,
-        amount: Int = 1
-    ) {
+    fun spawnCoin(x: Float, y: Float, direction: Int = 1, count: Int, amount: Int = 1) {
         repeat(count) { index ->
-            val spawnX = getSpawnX(
-                fishX = fish.move.x,
-                direction = fish.move.direction,
-                index = index,
-                count = count
-            )
+            val spawnX = getSpawnX(fishX = x, direction = direction, index = index, count = count)
 
             _coins += CoinModel(
                 id = nextCoinId++,
                 x = spawnX,
-                startY = fish.move.y,
-                targetY = targetY,
+                startY = y,
+                targetY = AquariumManager.currentAquariumBottom(),
                 amount = amount
             )
         }
@@ -92,22 +80,23 @@ object CoinManager {
         }
     }
 
-    private fun getSpawnX(
-        fishX: Float,
-        direction: Int,
-        index: Int,
-        count: Int
-    ): Float {
-        if (count <= 1) {
-            return fishX
-        }
-        val maxOffset = COIN_SIZE * 0.75f
+    private fun getSpawnX(fishX: Float, direction: Int, index: Int, count: Int): Float {
+        if (count <= 1) return fishX
+
+        val maxOffset = 48f
         val offset = maxOffset * index / (count - 1)
 
-        return if (direction > 0) {
-            fishX + offset
-        } else {
-            fishX - offset
+        return if (direction > 0) { fishX + offset } else { fishX - offset }
+    }
+
+    fun getCoinSize(amount: Int): Dp {
+        return when {
+            amount <= 1 -> 64.dp
+            amount <= 5 -> 80.dp
+            amount <= 20 -> 100.dp
+            amount <= 100 -> 128.dp
+            amount <= 200 -> 156.dp
+            else -> 104.dp
         }
     }
 }

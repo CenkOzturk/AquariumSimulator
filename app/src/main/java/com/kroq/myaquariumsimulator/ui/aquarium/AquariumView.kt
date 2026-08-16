@@ -138,8 +138,13 @@ fun AquariumView(aquarium: AquariumModel) {
                 key(coin.id) {
                     AnimatedCoin(
                         coin = coin,
-                        onClick = {
+                        onClick = { currentY ->
                             CoinManager.addCoins(coin.amount)
+                            FloatingTextManager.spawn(
+                                amount = coin.amount,
+                                x = coin.x,
+                                y = currentY
+                            )
                             CoinManager.removeCoin(coin.id)
                         },
                         onExpired = {

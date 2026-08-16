@@ -15,6 +15,7 @@ import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.GameUiState
 import com.kroq.myaquariumsimulator.model.tutorial.TutorialBoundsType
 import com.kroq.myaquariumsimulator.ui.component.buttons.DailyTaskButton
+import com.kroq.myaquariumsimulator.ui.component.buttons.WelcomeGiftButton
 
 @Composable
 fun GameHud(
@@ -69,7 +70,7 @@ fun GameHud(
             }
         )
 
-        DailyTaskButton(
+        WelcomeGiftButton(
             modifier = Modifier.padding(top = 24.dp),
             hasAnyTask = true,
             hasClaimableReward = true,

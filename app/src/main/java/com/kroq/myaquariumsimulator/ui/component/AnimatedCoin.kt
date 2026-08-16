@@ -11,13 +11,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kroq.myaquariumsimulator.data.Constants.COIN_EXPIRE_TIME
+import com.kroq.myaquariumsimulator.managers.GameManager
+import com.kroq.myaquariumsimulator.managers.TutorialManager
 import com.kroq.myaquariumsimulator.model.CoinModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun AnimatedCoin(
     coin: CoinModel,
-    onClick: () -> Unit,
+    onClick: (Float) -> Unit,
     onExpired: () -> Unit
 ) {
     val animatedY = remember {
@@ -25,33 +27,26 @@ fun AnimatedCoin(
     }
 
     LaunchedEffect(Unit) {
-
         animatedY.animateTo(
             targetValue = coin.startY - 20f,
-            animationSpec = tween(
-                durationMillis = 250,
-                easing = FastOutSlowInEasing
-            )
+            animationSpec = tween(durationMillis = 250, easing = FastOutSlowInEasing)
         )
-
         animatedY.animateTo(
             targetValue = coin.targetY,
-            animationSpec = tween(
-                durationMillis = 2000,
-                easing = LinearEasing
-            )
+            animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
         )
-
         delay(COIN_EXPIRE_TIME)
-
         onExpired()
     }
 
     CoinView(
-        modifier = Modifier.offset(
-            x = coin.x.dp,
-            y = animatedY.value.dp
-        ),
-        onClick = onClick
+        modifier = Modifier.offset(x = coin.x.dp, y = animatedY.value.dp),
+        amount = coin.amount,
+        onClick = {
+            onClick(animatedY.value)
+            if (!GameManager.state.tutorialCompleted) {
+                TutorialManager.onCoinCollected()
+            }
+        }
     )
 }

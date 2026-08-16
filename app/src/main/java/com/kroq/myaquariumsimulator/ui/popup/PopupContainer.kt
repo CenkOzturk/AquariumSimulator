@@ -30,10 +30,7 @@ fun PopupContainer(uiState: GameUiState) {
             onClose = {
                 uiState.closeShop()
             },
-            playerTier = GameProgress(
-                AquariumManager.currentAquarium.type,
-                ItemManager.items.map { it.type }
-            ).calculateTier(),
+            playerTier = GameProgress().calculateTier(),
             onTankSelected = {
                 uiState.openConfirm(it)
             },

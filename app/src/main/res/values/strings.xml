@@ -5,6 +5,7 @@
     <string name="buy_aquarium_title">Buy this aquarium?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="coin_floating_text" translatable="false">"+%s 💰"</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
@@ -99,6 +100,9 @@
 
     <string name="tutorial_feed_fish_title">Feed Your First Fish</string>
     <string name="tutorial_feed_fish_message">Tap your fish to feed it.</string>
+
+    <string name="tutorial_collect_coin_title">Collect Coins</string>
+    <string name="tutorial_collect_coin_message">Tap the coin.Its your prize.</string>
 
     <string name="tutorial_clean_title">Clean Your Aquarium</string>
     <string name="tutorial_clean_message">Feeding your fish can make your aquarium dirty. Keep your aquarium clean.</string>

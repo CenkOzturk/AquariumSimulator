@@ -38,7 +38,7 @@ fun BubbleView() {
                     )
                     .clickable {
                         BubbleManager.popBubble(bubble.id)
-                        FloatingTextManager.spawn(BUBBLE_VALUE.toString(), bubble.x, bubble.y)
+                        FloatingTextManager.spawn(BUBBLE_VALUE, bubble.x, bubble.y)
                     }
             )
         }

@@ -28,7 +28,9 @@ object TutorialManager {
 
             TutorialStep.BUY_FIRST_FISH -> TutorialStep.FEED_FISH
 
-            TutorialStep.FEED_FISH -> TutorialStep.CLEAN
+            TutorialStep.FEED_FISH -> TutorialStep.COLLECT_COIN
+
+            TutorialStep.COLLECT_COIN -> TutorialStep.CLEAN
 
             TutorialStep.CLEAN -> TutorialStep.DAILY_TASK
 
@@ -86,6 +88,12 @@ object TutorialManager {
 
     fun onFeedFish() {
         if (currentStep == TutorialStep.FEED_FISH) {
+            next()
+        }
+    }
+
+    fun onCoinCollected() {
+        if (currentStep == TutorialStep.COLLECT_COIN) {
             next()
         }
     }

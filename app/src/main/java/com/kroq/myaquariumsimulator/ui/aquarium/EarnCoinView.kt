@@ -11,7 +11,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.model.extras.FloatingTextModel
 import kotlinx.coroutines.launch
 
@@ -42,7 +44,7 @@ fun EarnCoinView(
 
     Box(modifier = Modifier.fillMaxSize()) {
         Text(
-            text = "+${coin.text} 💰",
+            text = stringResource(R.string.coin_floating_text, coin.amount),
             color = Color.Yellow.copy(alpha = alpha.value),
             modifier = Modifier
                 .offset(

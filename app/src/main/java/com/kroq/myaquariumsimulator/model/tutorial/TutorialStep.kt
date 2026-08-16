@@ -9,6 +9,7 @@ enum class TutorialStep {
     TIER_INFO,
     BUY_FIRST_FISH,
     FEED_FISH,
+    COLLECT_COIN,
     CLEAN,
     DAILY_TASK,
     FINISH
@@ -46,6 +47,12 @@ fun TutorialStep.toUiState() = when (this) {
         popupPosition = TutorialPopupPosition.TOP
     )
 
+    TutorialStep.COLLECT_COIN -> TutorialUiState(
+        titleResId = R.string.tutorial_collect_coin_title,
+        messageResId = R.string.tutorial_collect_coin_message,
+        popupPosition = TutorialPopupPosition.TOP
+    )
+
     TutorialStep.CLEAN -> TutorialUiState(
         titleResId = R.string.tutorial_clean_title,
         messageResId = R.string.tutorial_clean_message,
@@ -74,6 +81,7 @@ fun TutorialStep.toBoundsType(): TutorialBoundsType? =
         TutorialStep.OPEN_SHOP -> TutorialBoundsType.SHOP
         TutorialStep.BUY_FIRST_FISH -> TutorialBoundsType.FIRST_FISH
         TutorialStep.FEED_FISH -> TutorialBoundsType.FEED_FISH
+        TutorialStep.COLLECT_COIN -> TutorialBoundsType.COLLECT_COIN
         TutorialStep.CLEAN -> TutorialBoundsType.CLEAN
         TutorialStep.DAILY_TASK -> TutorialBoundsType.DAILY_TASK
         else -> null

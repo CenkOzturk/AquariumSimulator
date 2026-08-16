@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,11 +16,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
 
 @Composable
-fun DailyTaskButton(
+fun WelcomeGiftButton(
     modifier: Modifier = Modifier,
     hasAnyTask: Boolean,
     hasClaimableReward: Boolean,
@@ -36,21 +34,20 @@ fun DailyTaskButton(
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFFB8F5C8),
-                        Color(0xFF6DDC8A)
+                        Color(0xFFE0C6FF),
+                        Color(0xFFA56BEB)
                     )
                 )
             )
             .border(
                 width = 2.dp,
-                color = Color(0xFF35A85A),
+                color = Color(0xFF7B3FC6),
                 shape = CircleShape
             )
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
 
-        // Hafif parlaklık
         Box(
             modifier = Modifier
                 .size(46.dp)
@@ -61,7 +58,7 @@ fun DailyTaskButton(
         )
 
         Image(
-            painter = painterResource(R.drawable.ic_daily_tasks),
+            painter = painterResource(R.drawable.ic_welcome_gift),
             contentDescription = null,
             modifier = Modifier.size(52.dp)
         )
@@ -69,11 +66,14 @@ fun DailyTaskButton(
         if (hasClaimableReward) {
             Box(
                 modifier = Modifier
-                    .size(17.dp)
-                    .offset(x = 5.dp, y = (-5).dp)
+                    .size(16.dp)
+                    .offset(
+                        x = 6.dp,
+                        y = (-6).dp
+                    )
                     .align(Alignment.TopEnd)
                     .background(
-                        Color(0xFFFF4D4D),
+                        Color.Red,
                         CircleShape
                     )
                     .border(
