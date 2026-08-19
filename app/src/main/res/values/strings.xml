@@ -113,18 +113,19 @@
     <string name="tutorial_finish_message">Enjoy AquaVille!</string>
 
     <!-- Credits -->
-    <string name="credits_title">Credits</string>
+    <string name="credits_title">Emeği Geçenler</string>
 
-    <string name="credits_game_design">Game Design</string>
-    <string name="credits_programming">Programming</string>
-    <string name="credits_game_art">Game Art</string>
-    <string name="credits_music">Music</string>
-    <string name="credits_version">Version</string>
+    <string name="credits_game_design">Oyun Tasarımı</string>
+    <string name="credits_programming">Programlama</string>
+    <string name="credits_game_art">Oyun Grafikleri</string>
+    <string name="credits_music">Müzik</string>
+    <string name="credits_version">Sürüm</string>
 
-    <string name="credits_name_cenk">Cenk Öztürk</string>
-    <string name="credits_name_cenk_chatgpt">Cenk Öztürk &amp; ChatGPT</string>
+    <string name="credits_name_kukuro_dev">Kukuro Dev</string>
+    <string name="credits_name_kukuro_dev_chatgpt">Kukuro Dev &amp; ChatGPT</string>
+    <string name="credits_music_unknown">Music Source</string>
 
-    <string name="credits_coming_soon">Coming Soon</string>
+    <string name="credits_coming_soon">Yakında</string>
 
     <!-- Daily -->
     <string name="daily_today_missions_subtitle">Complete every mission to claim today\'s reward.</string>
@@ -138,6 +139,13 @@
     <string name="daily_task_pop_bubble">Pop Bubbles</string>
     <string name="daily_task_gold_fish">Catch Gold Fish</string>
 
+    <!-- Welcome Gift -->
+    <string name="welcome_gift_title">Welcome Gift</string>
+    <string name="welcome_gift_subtitle">Come back every day to collect rewards!</string>
+    <string name="welcome_gift_claim">Claim Reward</string>
+    <string name="welcome_gift_claimed">Already Claimed</string>
+    <string name="welcome_gift_today_reward">TODAY\'S REWARD</string>
+
     <!-- Settings -->
     <string name="settings_title">SETTINGS</string>
 
@@ -145,6 +153,12 @@
     <string name="settings_sound_effects">Sound Effects</string>
     <string name="settings_notifications">Notifications</string>
 
+    <string name="settings_language">Language</string>
+    <string name="language_system">System</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+
     <string name="settings_reset_progress">Reset Progress</string>
     <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_version">Version</string>
 </resources>

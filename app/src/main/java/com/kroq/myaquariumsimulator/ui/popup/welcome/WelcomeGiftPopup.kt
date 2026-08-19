@@ -18,9 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.data.Constants.WELCOME_GIFT_DAYS
 import com.kroq.myaquariumsimulator.model.component.GameColors
 import com.kroq.myaquariumsimulator.model.welcome.GiftModel
@@ -45,40 +47,51 @@ fun WelcomeGiftPopup(
 
         GamePopup(
             modifier = popupModifier,
-            title = "Welcome Gift",
-            subtitle = "Come back every day to collect rewards!",
+            title = stringResource(R.string.welcome_gift_title),
+            subtitle = stringResource(R.string.welcome_gift_subtitle),
             gradient = colors,
             buttonText = if (canClaim) {
-                "Claim Reward"
+                stringResource(R.string.welcome_gift_claim)
             } else {
-                "Already Claimed"
+                stringResource(R.string.welcome_gift_claimed)
             },
             buttonEnabled = canClaim,
             onButtonClick = onClaim,
             onClose = dismiss
         ) {
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
 
-                WelcomeGiftDatabase.getAllGifts().forEach { gift ->
-                    WelcomeGiftItem(
-                        giftModel = gift,
-                        claimed = gift.day < currentDay ||
-                                (gift.day == currentDay && claimedToday),
-                        current = gift.day == currentDay,
-                        lastDay = gift.day == WELCOME_GIFT_DAYS
-                    )
-                }
+                WelcomeGiftDatabase
+                    .getAllGifts()
+                    .forEach { gift ->
+
+                        WelcomeGiftItem(
+                            giftModel = gift,
+                            claimed = gift.day < currentDay ||
+                                    (
+                                            gift.day == currentDay &&
+                                                    claimedToday
+                                            ),
+                            current = gift.day == currentDay,
+                            lastDay = gift.day == WELCOME_GIFT_DAYS
+                        )
+                    }
             }
 
-            Spacer(Modifier.height(24.dp))
+            Spacer(
+                Modifier.height(24.dp)
+            )
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(18.dp))
+                    .clip(
+                        RoundedCornerShape(18.dp)
+                    )
                     .background(
                         Brush.verticalGradient(
                             listOf(
@@ -103,13 +116,17 @@ fun WelcomeGiftPopup(
                 ) {
 
                     Text(
-                        text = "TODAY'S REWARD",
+                        text = stringResource(
+                            R.string.welcome_gift_today_reward
+                        ),
                         fontWeight = FontWeight.Bold,
                         fontSize = 12.sp,
                         color = colors.dark
                     )
 
-                    Spacer(Modifier.height(10.dp))
+                    Spacer(
+                        Modifier.height(10.dp)
+                    )
 
                     Text(
                         text = gift.rewardText,

@@ -18,19 +18,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
+import com.kroq.myaquariumsimulator.model.AppLanguage
 import com.kroq.myaquariumsimulator.model.component.GameColors
 import com.kroq.myaquariumsimulator.ui.component.buttons.GameMenuButton
-import com.kroq.myaquariumsimulator.ui.component.settings.*
+import com.kroq.myaquariumsimulator.ui.component.settings.SettingsActionItem
+import com.kroq.myaquariumsimulator.ui.component.settings.SettingsLanguageItem
+import com.kroq.myaquariumsimulator.ui.component.settings.SettingsToggleItem
+import com.kroq.myaquariumsimulator.ui.component.settings.SettingsVersionItem
 
 
 @Composable
 fun SettingsScreen(
     music: Boolean,
     soundEffects: Boolean,
-    notifications: Boolean,
+    language: AppLanguage,
     onMusicChanged: (Boolean) -> Unit,
     onSoundEffectsChanged: (Boolean) -> Unit,
-    onNotificationsChanged: (Boolean) -> Unit,
+    onLanguageChanged: (AppLanguage) -> Unit,
     onResetProgress: () -> Unit,
     onPrivacyPolicy: () -> Unit,
     onBack: () -> Unit
@@ -49,6 +53,7 @@ fun SettingsScreen(
                 )
             )
     ) {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -83,10 +88,9 @@ fun SettingsScreen(
 
             Spacer(Modifier.height(12.dp))
 
-            SettingsToggleItem(
-                title = stringResource(R.string.settings_notifications),
-                checked = notifications,
-                onCheckedChange = onNotificationsChanged
+            SettingsLanguageItem(
+                language = language,
+                onLanguageSelected = onLanguageChanged
             )
 
             Spacer(Modifier.height(12.dp))

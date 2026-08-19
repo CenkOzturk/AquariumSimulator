@@ -31,7 +31,6 @@ fun MainMenuScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-
         // Full screen background
         Image(
             painter = painterResource(R.drawable.bg_main_menu),

@@ -100,6 +100,9 @@
     <string name="tutorial_feed_fish_title">İlk Balığını Besle</string>
     <string name="tutorial_feed_fish_message">Balığını beslemek için üzerine dokun.</string>
 
+    <string name="tutorial_collect_coin_title">Coinleri topla</string>
+    <string name="tutorial_collect_coin_message">Coinleri topla. Bu senin ödülün.</string>
+
     <string name="tutorial_clean_title">Akvaryumunu Temizle</string>
     <string name="tutorial_clean_message">Balık besledikçe akvaryum kirlenebilir. Akvaryumunu temiz tut.</string>
 
@@ -118,8 +121,9 @@
     <string name="credits_music">Müzik</string>
     <string name="credits_version">Sürüm</string>
 
-    <string name="credits_name_cenk">Cenk Öztürk</string>
-    <string name="credits_name_cenk_chatgpt">Cenk Öztürk &amp; ChatGPT</string>
+    <string name="credits_name_kukuro_dev">Kukuro Dev</string>
+    <string name="credits_name_kukuro_dev_chatgpt">Kukuro Dev &amp; ChatGPT</string>
+    <string name="credits_music_unknown">Müzik Kaynağı</string>
 
     <string name="credits_coming_soon">Yakında</string>
 
@@ -135,6 +139,13 @@
     <string name="daily_task_pop_bubble">Baloncuk Patlat</string>
     <string name="daily_task_gold_fish">Altın Balığı Yakala</string>
 
+    <!-- Welcome Gift -->
+    <string name="welcome_gift_title">Hoş Geldin Hediyesi</string>
+    <string name="welcome_gift_subtitle">Ödüllerini almak için her gün geri gel!</string>
+    <string name="welcome_gift_claim">Ödülü Al</string>
+    <string name="welcome_gift_claimed">Bugün Alındı</string>
+    <string name="welcome_gift_today_reward">BUGÜNÜN ÖDÜLÜ</string>
+
     <!-- Settings -->
     <string name="settings_title">AYARLAR</string>
 
@@ -142,7 +153,13 @@
     <string name="settings_sound_effects">Ses Efektleri</string>
     <string name="settings_notifications">Bildirimler</string>
 
+    <string name="settings_language">Dil</string>
+    <string name="language_system">Sistem</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+
     <string name="settings_reset_progress">İlerlemeyi Sıfırla</string>
     <string name="settings_privacy_policy">Gizlilik Politikası</string>
+    <string name="settings_version">Versiyon</string>
 
 </resources>

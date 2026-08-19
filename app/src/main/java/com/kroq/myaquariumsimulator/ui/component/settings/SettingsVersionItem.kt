@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.kroq.myaquariumsimulator.R
 
 @Composable
 fun SettingsVersionItem(
@@ -29,7 +31,7 @@ fun SettingsVersionItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Version",
+                text = stringResource(R.string.settings_version),
                 color = Color.White,
                 modifier = Modifier.weight(1f)
             )

@@ -3,8 +3,6 @@ package com.kroq.myaquariumsimulator.ui.screen
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -12,12 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.managers.AquariumManager
-import com.kroq.myaquariumsimulator.managers.AquariumManager.currentAquariumBottom
 import com.kroq.myaquariumsimulator.managers.BubbleManager
 import com.kroq.myaquariumsimulator.managers.CoinLoop
 import com.kroq.myaquariumsimulator.managers.DailyTaskManager
@@ -25,7 +20,6 @@ import com.kroq.myaquariumsimulator.managers.DirtManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.GoldFishManager
-import com.kroq.myaquariumsimulator.managers.ItemManager
 import com.kroq.myaquariumsimulator.managers.SaveManager
 import com.kroq.myaquariumsimulator.managers.ScreenManager
 import com.kroq.myaquariumsimulator.managers.TutorialManager
@@ -40,7 +34,6 @@ import com.kroq.myaquariumsimulator.ui.component.GameHud
 import com.kroq.myaquariumsimulator.ui.component.RightMenu
 import com.kroq.myaquariumsimulator.ui.popup.PopupContainer
 import com.kroq.myaquariumsimulator.ui.tutorial.TutorialOverlay
-import com.kroq.myaquariumsimulator.utils.Utils
 import kotlinx.coroutines.delay
 
 @Composable
@@ -95,17 +88,6 @@ fun GameScreen() {
                 .padding(16.dp),
             uiState = uiState
         )
-
-        //RESET BUTTON
-        Button(
-            modifier = Modifier.align(Alignment.BottomStart),
-            onClick = {
-                GameManager.resetGame()
-                Utils.showToast(R.string.btn_reset)
-            }
-        ) {
-            Text(text = stringResource(R.string.btn_reset))
-        }
 
         RightMenu(
             modifier = Modifier

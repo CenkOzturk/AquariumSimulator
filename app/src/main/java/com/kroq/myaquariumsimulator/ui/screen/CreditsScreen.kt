@@ -61,22 +61,22 @@ fun CreditsScreen(
 
             CreditItem(
                 stringResource(R.string.credits_game_design),
-                stringResource(R.string.credits_name_cenk)
+                stringResource(R.string.credits_name_kukuro_dev)
             )
 
             CreditItem(
                 stringResource(R.string.credits_programming),
-                stringResource(R.string.credits_name_cenk)
+                stringResource(R.string.credits_name_kukuro_dev_chatgpt)
             )
 
             CreditItem(
                 stringResource(R.string.credits_game_art),
-                stringResource(R.string.credits_name_cenk_chatgpt)
+                stringResource(R.string.credits_name_kukuro_dev)
             )
 
             CreditItem(
                 stringResource(R.string.credits_music),
-                stringResource(R.string.credits_coming_soon)
+                stringResource(R.string.credits_music_unknown)
             )
 
             CreditItem(
