@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -25,6 +29,7 @@ import com.kroq.myaquariumsimulator.ui.component.settings.SettingsActionItem
 import com.kroq.myaquariumsimulator.ui.component.settings.SettingsLanguageItem
 import com.kroq.myaquariumsimulator.ui.component.settings.SettingsToggleItem
 import com.kroq.myaquariumsimulator.ui.component.settings.SettingsVersionItem
+import com.kroq.myaquariumsimulator.ui.popup.ResetProgressPopup
 
 
 @Composable
@@ -39,6 +44,10 @@ fun SettingsScreen(
     onPrivacyPolicy: () -> Unit,
     onBack: () -> Unit
 ) {
+    var showResetPopup by rememberSaveable {
+        mutableStateOf(false)
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -97,7 +106,7 @@ fun SettingsScreen(
 
             SettingsActionItem(
                 title = stringResource(R.string.settings_reset_progress),
-                onClick = onResetProgress
+                onClick = { showResetPopup = true }
             )
 
             Spacer(Modifier.height(12.dp))
@@ -122,6 +131,18 @@ fun SettingsScreen(
             )
 
             Spacer(Modifier.height(20.dp))
+        }
+
+        if (showResetPopup) {
+            ResetProgressPopup(
+                onClose = {
+                    showResetPopup = false
+                },
+                onReset = {
+                    onResetProgress()
+                    showResetPopup = false
+                }
+            )
         }
     }
 }

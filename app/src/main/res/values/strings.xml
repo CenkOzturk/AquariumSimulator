@@ -5,6 +5,7 @@
     <string name="buy_aquarium_title">Buy this aquarium?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="ok">OK</string>
     <string name="coin_floating_text" translatable="false">"+%s 💰"</string>
 
     <string name="btn_reset">RESET</string>
@@ -73,15 +74,20 @@
     <string name="aqua_large">Large</string>
 
     <!-- Item Names -->
-    <string name="item_sand_name">Soft Sand</string>
-    <string name="item_seaweed_short_name">Tiny Seaweed</string>
+    <string name="item_sand_name">Sand</string>
+    <string name="item_seaweed_short_name">Seaweed</string>
     <string name="item_rock_small_name">Little Rock</string>
     <string name="item_starfish_name">Starfish</string>
 
     <!-- Cleaner Names -->
     <string name="cleaner_cloth_name">Cloth</string>
     <string name="cleaner_sponge_name">Sponge</string>
-    <string name="cleaner_robot_name">Robot Cleaner</string>
+    <string name="cleaner_robot_name">Robot</string>
+
+    <string name="shop_extra_info_fish">+%s 💰</string>
+    <string name="shop_extra_info_aquarium">🐟%s fish</string>
+    <string name="shop_extra_info_item">%sx items</string>
+
 
     <!-- Tutorial -->
     <string name="tutorial_title">AquaVille Guide</string>
@@ -161,4 +167,30 @@
     <string name="settings_reset_progress">Reset Progress</string>
     <string name="settings_privacy_policy">Privacy Policy</string>
     <string name="settings_version">Version</string>
+
+    <!-- Reset -->
+    <string name="reset_progress_title">Reset Progress?</string>
+    <string name="reset_progress_subtitle">Your entire game progress will be reset.</string>
+    <string name="reset_progress_button">Reset Progress</string>
+    <string name="reset_progress_fish">All owned fish will be removed.</string>
+    <string name="reset_progress_items">All owned items will be removed.</string>
+    <string name="reset_progress_aquarium">Your aquarium will return to Small.</string>
+    <string name="reset_progress_coins">Your coins and food will be reset.</string>
+    <string name="reset_progress_warning">This action cannot be undone.</string>
+
+    <!-- Tier Info -->
+    <string name="tier_info_title">Tier Levels</string>
+    <string name="tier_info_subtitle">Complete the requirements to unlock higher tier items.</string>
+
+    <string name="tier_free">NORMAL</string>
+    <string name="tier_free_description">Available from the beginning. No requirements needed.</string>
+
+    <string name="tier_bronze">BRONZE</string>
+    <string name="tier_bronze_description">Own the Sand item.</string>
+
+    <string name="tier_silver">SILVER</string>
+    <string name="tier_silver_description">Own the Seaweed item and a Medium aquarium.</string>
+
+    <string name="tier_gold">GOLD</string>
+    <string name="tier_gold_description">Own the Small Rock item and a Large aquarium.</string>
 </resources>

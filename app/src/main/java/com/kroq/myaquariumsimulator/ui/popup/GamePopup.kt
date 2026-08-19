@@ -43,7 +43,6 @@ fun GamePopup(
     onButtonClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
-
     Box(
         modifier = modifier
             .fillMaxSize()

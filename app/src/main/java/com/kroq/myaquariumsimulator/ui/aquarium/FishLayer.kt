@@ -1,6 +1,7 @@
 package com.kroq.myaquariumsimulator.ui.aquarium
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import com.kroq.myaquariumsimulator.R
 import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
 import com.kroq.myaquariumsimulator.managers.CoinManager
@@ -17,11 +18,12 @@ fun FishLayer() {
     FishManager.fishes.forEach { fish ->
         val remaining = (fish.fedUntil - System.currentTimeMillis()).coerceAtLeast(0)
         val progress = (remaining.toFloat() / FEED_DURATION).coerceIn(0f, 1f)
+        val text: String = stringResource(R.string.no_food_error, fish.income)
 
         FishView(fish, fish.isFed(), progress, {
             if (!fish.isFed()) {
                 if (GameManager.state.foodCount < fish.income) {
-                    Utils.showToast(R.string.no_food_error, fish.income)
+                    Utils.showToast(text)
                     return@FishView
                 }
                 if (!GameManager.state.tutorialCompleted) {

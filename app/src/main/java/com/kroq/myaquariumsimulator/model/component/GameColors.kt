@@ -45,6 +45,14 @@ object GameColors {
         border = Color(0xFFF4A300)
     )
 
+    val Red = GameGradient(
+        top = Color(0xFFFFFBE7),
+        light = Color(0xFFFFF1A8),
+        base = Color(0xFFE53935),
+        dark = Color(0xFFB71C1C),
+        border = Color(0xFFE53935)
+    )
+
     val OceanGradient = Brush.verticalGradient(
         listOf(
             Color(0xFF6FD3FF),

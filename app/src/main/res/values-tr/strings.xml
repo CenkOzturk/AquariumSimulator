@@ -5,6 +5,7 @@
     <string name="buy_aquarium_title">Bu akvaryumu satın almak istiyor musun?</string>
     <string name="no">Hayır</string>
     <string name="yes">Evet</string>
+    <string name="ok">Tamam</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
@@ -34,7 +35,7 @@
     <string name="daily_task_reward_claimed">Bütün görevleri bitirdin :)</string>
     <string name="already_received_reward">Bugünün ödülünü aldın yarın tekrar görüşürüz</string>
 
-    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem %s"</string>
+    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem: %s"</string>
     <string name="no_cleaner_error">Temizlik maddeleri yetmedi :(</string>
     <string name="shop_no_coin_error">"Satın alma başarısız! Paran yetmedi :("</string>
     <string name="shop_too_much_fish">"Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz"</string>
@@ -72,15 +73,15 @@
     <string name="aqua_large">Büyük</string>
 
     <!-- Item Names -->
-    <string name="item_sand_name">Yumuşak Kum</string>
-    <string name="item_seaweed_short_name">Mini Deniz Yosunu</string>
+    <string name="item_sand_name">Kum</string>
+    <string name="item_seaweed_short_name">Yosun</string>
     <string name="item_rock_small_name">Küçük Kaya</string>
     <string name="item_starfish_name">Denizyıldızı</string>
 
     <!-- Cleaner Names -->
     <string name="cleaner_cloth_name">Bez</string>
     <string name="cleaner_sponge_name">Sünger</string>
-    <string name="cleaner_robot_name">Robot Temizleyici</string>
+    <string name="cleaner_robot_name">Robot</string>
 
     <!-- Tutorial -->
     <string name="tutorial_title">AquaVille Eğitim</string>
@@ -161,5 +162,31 @@
     <string name="settings_reset_progress">İlerlemeyi Sıfırla</string>
     <string name="settings_privacy_policy">Gizlilik Politikası</string>
     <string name="settings_version">Versiyon</string>
+
+    <!-- Reset -->
+    <string name="reset_progress_title">İlerlemeyi Sıfırla?</string>
+    <string name="reset_progress_subtitle">Tüm oyun ilerlemen sıfırlanacak.</string>
+    <string name="reset_progress_button">İlerlemeyi Sıfırla</string>
+    <string name="reset_progress_fish">Sahip olduğun tüm balıklar silinecek.</string>
+    <string name="reset_progress_items">Sahip olduğun tüm eşyalar silinecek.</string>
+    <string name="reset_progress_aquarium">Akvaryumun Küçük seviyesine dönecek.</string>
+    <string name="reset_progress_coins">Coin ve yem miktarın sıfırlanacak.</string>
+    <string name="reset_progress_warning">Bu işlem geri alınamaz.</string>
+
+    <!-- Tier Info -->
+    <string name="tier_info_title">Tier Seviyeleri</string>
+    <string name="tier_info_subtitle">Daha yüksek tier eşyalarının kilidini açmak için gerekenleri tamamla.</string>
+
+    <string name="tier_free">NORMAL</string>
+    <string name="tier_free_description">Başlangıçta kullanılabilir. Herhangi bir gereksinim yok.</string>
+
+    <string name="tier_bronze">BAKIR</string>
+    <string name="tier_bronze_description">Kum eşyasına sahip ol.</string>
+
+    <string name="tier_silver">GÜMÜŞ</string>
+    <string name="tier_silver_description">Yosun eşyasına ve Orta akvaryuma sahip ol.</string>
+
+    <string name="tier_gold">ALTIN</string>
+    <string name="tier_gold_description">Küçük Kaya eşyasına ve Büyük akvaryuma sahip ol.</string>
 
 </resources>

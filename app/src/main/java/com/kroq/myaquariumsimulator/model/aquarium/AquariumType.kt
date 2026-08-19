@@ -5,6 +5,7 @@ import com.kroq.myaquariumsimulator.managers.ScreenManager.screenHeight
 import com.kroq.myaquariumsimulator.managers.ScreenManager.screenWidth
 import com.kroq.myaquariumsimulator.model.PlayerTier
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
 enum class AquariumType {
     SMALL,
@@ -57,8 +58,8 @@ fun createAquarium(
 
 fun AquariumType.toShopItem(): ShopItem {
     return when (this) {
-        AquariumType.SMALL -> ShopItem(0, R.string.aqua_small, 0, "🧪")
-        AquariumType.MEDIUM -> ShopItem(1, R.string.aqua_medium, 7500, "🧪", requiredTier = PlayerTier.BRONZE)
-        AquariumType.LARGE -> ShopItem(2, R.string.aqua_large, 50000, "🧪", requiredTier = PlayerTier.SILVER)
+        AquariumType.SMALL -> ShopItem(0, ShopTab.AQUARIUM, R.string.aqua_small, 0, "🧪", extraInfo = 6.toString())
+        AquariumType.MEDIUM -> ShopItem(1, ShopTab.AQUARIUM,R.string.aqua_medium, 7500, "🧪", extraInfo = 10.toString(),  requiredTier = PlayerTier.BRONZE)
+        AquariumType.LARGE -> ShopItem(2, ShopTab.AQUARIUM,R.string.aqua_large, 50000, "🧪", extraInfo = 15.toString(), requiredTier = PlayerTier.SILVER)
     }
 }

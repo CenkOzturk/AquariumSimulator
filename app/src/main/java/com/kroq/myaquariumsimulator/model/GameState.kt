@@ -41,7 +41,7 @@ suspend fun loadGameState(context: Context): GameState {
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(),
         coins = prefs[PrefKeys.COINS] ?: 25,
         foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
-        cleanerCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
+        cleanerCount = prefs[PrefKeys.CLEANER_COUNT] ?: 10,
         dirtParticleCount = prefs[PrefKeys.DIRT_PARTICLE_COUNT] ?: 0,
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
@@ -51,7 +51,6 @@ suspend fun loadGameState(context: Context): GameState {
         tutorialCompleted = prefs[PrefKeys.TUTORIAL_COMPLETED] ?: false,
         goldFishUnlocked = prefs[PrefKeys.GOLD_FISH_UNLOCKED] ?: false,
         lastGoldFishTime = prefs[PrefKeys.LAST_GOLD_FISH_TIME] ?: 0L
-
     )
 }
 

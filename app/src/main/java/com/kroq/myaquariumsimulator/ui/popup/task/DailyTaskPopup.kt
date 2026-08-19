@@ -39,7 +39,6 @@ fun DailyTaskPopup(
     GeneralPopup(
         onClose = onClose
     ) { popupModifier, dismiss ->
-
         GamePopup(
             modifier = popupModifier,
             title = stringResource(R.string.today_missions),

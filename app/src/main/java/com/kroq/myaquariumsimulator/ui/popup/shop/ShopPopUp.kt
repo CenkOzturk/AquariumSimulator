@@ -2,8 +2,10 @@ package com.kroq.myaquariumsimulator.ui.popup.shop
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,17 +13,25 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -51,19 +61,20 @@ fun ShopPopup(
     var currentTab by remember {
         mutableStateOf(GameManager.state.selectedShopTab)
     }
+    var showTierInfoPopup by rememberSaveable {
+        mutableStateOf(false)
+    }
 
     val currentItems = currentTab.items()
 
     GeneralPopup(
         onClose = onClose
     ) { popupModifier, dismiss ->
-
         Box(
             modifier = popupModifier
                 .fillMaxWidth(.92f)
                 .fillMaxHeight(.68f)
         ) {
-
             Box(
                 modifier = Modifier
                     .matchParentSize()
@@ -99,13 +110,48 @@ fun ShopPopup(
 
                     Spacer(Modifier.height(8.dp))
 
-                    Text(
-                        modifier = Modifier.align(Alignment.CenterHorizontally),
-                        text = stringResource(R.string.shop),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = GameColors.Shop.dark
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+
+                        Text(
+                            text = stringResource(R.string.shop),
+                            modifier = Modifier.weight(1f),
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                        Box(
+                            modifier = Modifier
+                                .size(32.dp)
+                                .clip(CircleShape)
+                                .background(
+                                    Brush.verticalGradient(
+                                        listOf(
+                                            Color(0xFF81D4FA),
+                                            Color(0xFF29B6F6)
+                                        )
+                                    )
+                                )
+                                .border(
+                                    width = 2.dp,
+                                    color = Color.White.copy(alpha = 0.8f),
+                                    shape = CircleShape
+                                )
+                                .clickable {
+                                    showTierInfoPopup = true
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.Info,
+                                contentDescription = stringResource(R.string.empty_string),
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                    }
 
                     Spacer(Modifier.height(4.dp))
 
@@ -160,6 +206,14 @@ fun ShopPopup(
                 gradient = GameColors.Shop,
                 onClose = dismiss
             )
+
+            if (showTierInfoPopup) {
+                TierInfoPopup(
+                    onClose = {
+                        showTierInfoPopup = false
+                    }
+                )
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.kroq.myaquariumsimulator.model.fish
 
 import com.kroq.myaquariumsimulator.data.Constants.FEED_DURATION
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
+import com.kroq.myaquariumsimulator.model.shop.ShopTab
 
 data class FishModel(
     val id: Int,
@@ -25,9 +26,11 @@ fun FishModel.coinMultiplier(): Int {
 fun FishModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
+        type = ShopTab.FISH,
         titleResId = nameResId,
         price = price,
         icon = "🐟",
+        extraInfo = income.toString(),
         requiredTier = requirementType.toPlayerTier()
     )
 }

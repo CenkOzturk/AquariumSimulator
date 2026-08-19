@@ -3,10 +3,10 @@ package com.kroq.myaquariumsimulator.managers
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.kroq.myaquariumsimulator.data.GameDefaults
 import com.kroq.myaquariumsimulator.managers.FishManager.fishes
 import com.kroq.myaquariumsimulator.managers.ItemManager.items
 import com.kroq.myaquariumsimulator.model.GameState
-import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.item.ItemDatabase
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
@@ -43,16 +43,16 @@ object GameManager {
     fun resetGame() {
         update {
             it.copy(
-                aquariumType = AquariumType.SMALL.name,
-                ownedFishIds = setOf(),
-                ownedItemIds = setOf(),
-                coins = 2500,
-                foodCount = 10,
+                aquariumType = GameDefaults.STARTING_AQUARIUM,
+                ownedFishIds = emptySet(),
+                ownedItemIds = emptySet(),
+                coins = GameDefaults.STARTING_COINS,
+                foodCount = GameDefaults.STARTING_FOOD,
                 dailyTask = null,
                 welcomeGiftDay = 0,
                 welcomeGiftClaimed = false,
                 tutorialCompleted = false,
-                goldFishUnlocked = true,
+                goldFishUnlocked = false,
                 lastGoldFishTime = 0L
             )
         }

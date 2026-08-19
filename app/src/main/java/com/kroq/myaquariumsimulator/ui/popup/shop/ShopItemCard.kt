@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
@@ -17,10 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.managers.TutorialManager
@@ -38,19 +41,27 @@ fun ShopItemCard(
 
     val isUnlocked = playerTier.canAccess(item.requiredTier)
 
+    val contentAlpha = if (isUnlocked) 1f else 0.45f
+
     Box(
         modifier = Modifier
             .padding(6.dp)
             .clip(RoundedCornerShape(18.dp))
             .background(
-                if (isUnlocked) Color.White else Color(0xFFF2F2F2)
+                if (isUnlocked) {
+                    Color.White
+                } else {
+                    Color(0xFFF2F2F2)
+                }
             )
             .clickable(
                 enabled = isUnlocked,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(bounded = true)
-            ) { onClick() }
-            .padding(8.dp)
+            ) {
+                onClick()
+            }
+            .padding(10.dp)
             .onGloballyPositioned {
                 if (item.id == 100) {
                     TutorialManager.updateBounds(
@@ -65,15 +76,15 @@ fun ShopItemCard(
         Box(
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .size(10.dp)
+                .size(12.dp)
                 .background(
                     color = when (item.requiredTier) {
-                        PlayerTier.FREE -> Color.White
+                        PlayerTier.FREE -> Color(0xFF66BB6A)
                         PlayerTier.BRONZE -> Color(0xFFCD7F32)
                         PlayerTier.SILVER -> Color(0xFFC0C0C0)
                         PlayerTier.GOLD -> Color(0xFFFFD700)
                     },
-                    shape = RoundedCornerShape(50)
+                    shape = CircleShape
                 )
         )
 
@@ -85,8 +96,8 @@ fun ShopItemCard(
             // ICON
             Text(
                 text = item.icon,
-                fontSize = 30.sp,
-                color = if (isUnlocked) Color.Unspecified else Color.Gray
+                fontSize = 34.sp,
+                modifier = Modifier.alpha(contentAlpha)
             )
 
             Spacer(modifier = Modifier.height(6.dp))
@@ -95,17 +106,27 @@ fun ShopItemCard(
             Text(
                 text = stringResource(item.titleResId),
                 fontSize = 12.sp,
-                color = if (isUnlocked) Color.Black else Color.Gray,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.Black.copy(alpha = contentAlpha),
                 maxLines = 1
             )
 
-            Spacer(modifier = Modifier.height(2.dp))
+            Spacer(modifier = Modifier.height(6.dp))
+
+            // EXTRA INFO
+            ShopItemInfo(
+                item = item,
+                alpha = contentAlpha
+            )
+
+            Spacer(modifier = Modifier.height(6.dp))
 
             // PRICE
             Text(
                 text = "${item.price} 💰",
                 fontSize = 12.sp,
-                color = if (isUnlocked) Color.Gray else Color.Gray.copy(alpha = 0.7f)
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFFFFA000).copy(alpha = contentAlpha)
             )
         }
 
@@ -114,8 +135,16 @@ fun ShopItemCard(
             Box(
                 modifier = Modifier
                     .matchParentSize()
-                    .background(Color.White.copy(alpha = 0.55f))
-            )
+                    .background(
+                        Color.White.copy(alpha = 0.45f)
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "🔒",
+                    fontSize = 20.sp
+                )
+            }
         }
     }
 }

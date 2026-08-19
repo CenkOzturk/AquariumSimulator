@@ -1,6 +1,7 @@
 package com.kroq.myaquariumsimulator.utils
 
 import android.content.Context
+import android.content.res.Configuration
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
@@ -8,9 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import com.google.gson.Gson
+import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.ItemManager.items
 import java.time.LocalDate
 import java.util.Calendar
+import java.util.Locale
 
 object Utils {
     var appContext: Context? = null
@@ -37,10 +40,18 @@ object Utils {
         @StringRes resId: Int,
         vararg formatArgs: Any?
     ) {
-        appContext?.let {
+        appContext?.let { context ->
+            val configuration = Configuration(
+                context.resources.configuration
+            ).apply {
+                setLocale(locale)
+            }
+
+            val localizedContext = context.createConfigurationContext(configuration)
+
             Toast.makeText(
-                it,
-                it.getString(resId, *formatArgs),
+                localizedContext,
+                localizedContext.getString(resId, *formatArgs),
                 Toast.LENGTH_SHORT
             ).show()
         }
