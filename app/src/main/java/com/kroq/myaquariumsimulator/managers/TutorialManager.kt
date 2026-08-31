@@ -14,7 +14,7 @@ import com.kroq.myaquariumsimulator.model.tutorial.toBoundsType
 object TutorialManager {
     private val bounds = mutableStateMapOf<TutorialBoundsType, Rect>()
     val currentBounds: Rect? get() = bounds[currentStep.toBoundsType()]
-    var currentStep by mutableStateOf(TutorialStep.WELCOME)
+    var currentStep by mutableStateOf(TutorialStep.NONE)
         private set
 
     fun next() {

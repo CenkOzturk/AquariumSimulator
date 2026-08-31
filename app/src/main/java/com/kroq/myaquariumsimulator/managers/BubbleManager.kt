@@ -7,6 +7,7 @@ import com.kroq.myaquariumsimulator.model.SoundEffect
 import com.kroq.myaquariumsimulator.model.extras.BubbleModel
 import com.kroq.myaquariumsimulator.model.aquarium.AquariumModel
 import com.kroq.myaquariumsimulator.model.task.DailyTaskType
+import com.kroq.myaquariumsimulator.model.upgrade.UpgradeType
 import com.kroq.myaquariumsimulator.utils.Utils.random
 
 object BubbleManager {
@@ -16,7 +17,9 @@ object BubbleManager {
 
     fun update(aquarium: AquariumModel) {
         val now = System.currentTimeMillis()
-        if (now - lastSpawnTime > BUBBLE_SPAWN_TIME) {
+        val upgradeTime = UpgradeManager.getUpgradeValue(UpgradeType.BUBBLE_TIME) * 1000L
+        val bubbleTime = BUBBLE_SPAWN_TIME - upgradeTime
+        if ((now - lastSpawnTime) > bubbleTime) {
             lastSpawnTime = now
             bubbles.add(
                 BubbleModel(
@@ -46,7 +49,7 @@ object BubbleManager {
     fun popBubble(bubbleId: Long) {
         bubbles.removeAll { it.id == bubbleId }
         DailyTaskManager.addProgress(DailyTaskType.POP_BUBBLE)
-        CoinManager.addCoins(BUBBLE_VALUE)
+        CoinManager.addCoins(BUBBLE_VALUE + UpgradeManager.getUpgradeValue(UpgradeType.BUBBLE_VALUE))
         AudioManager.playEffect(SoundEffect.BUBBLE_POP)
     }
 }

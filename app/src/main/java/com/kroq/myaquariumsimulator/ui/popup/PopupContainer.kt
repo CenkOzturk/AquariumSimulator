@@ -10,7 +10,8 @@ import com.kroq.myaquariumsimulator.managers.FishFoodManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.ItemManager
-import com.kroq.myaquariumsimulator.managers.TutorialManager
+import com.kroq.myaquariumsimulator.managers.UpgradeManager
+import com.kroq.myaquariumsimulator.managers.UpgradeManager.buyUpgrade
 import com.kroq.myaquariumsimulator.managers.WelcomeGiftManager
 import com.kroq.myaquariumsimulator.model.GameProgress
 import com.kroq.myaquariumsimulator.model.GameUiState
@@ -20,6 +21,7 @@ import com.kroq.myaquariumsimulator.model.item.FishFoodItemDatabase.isFood
 import com.kroq.myaquariumsimulator.ui.popup.shop.ConfirmPopup
 import com.kroq.myaquariumsimulator.ui.popup.shop.ShopPopup
 import com.kroq.myaquariumsimulator.ui.popup.task.DailyTaskPopup
+import com.kroq.myaquariumsimulator.ui.popup.upgrade.UpgradePopup
 import com.kroq.myaquariumsimulator.ui.popup.welcome.WelcomeGiftPopup
 import com.kroq.myaquariumsimulator.utils.Utils
 
@@ -105,6 +107,26 @@ fun PopupContainer(uiState: GameUiState) {
             },
             onClose = {
                 uiState.closeWelcomeGift()
+            }
+        )
+    }
+
+    if (uiState.showUpgrade) {
+        UpgradePopup(
+            selectedTab = uiState.selectedUpgradeTab,
+            onTabSelected = { selected ->
+                uiState.selectedUpgradeTab = selected
+            },
+            upgrades = UpgradeManager.getUpgrades(uiState.selectedUpgradeTab),
+            onUpgradeClick = { upgrade ->
+                buyUpgrade(
+                    upgrade,
+                )
+                Utils.showToast("Level arttı.")
+            },
+
+            onClose = {
+                uiState.closeUpgrade()
             }
         )
     }

@@ -61,15 +61,27 @@ object CoinManager {
     }
 
     fun spawnCoin(x: Float, y: Float, direction: Int = 1, count: Int, amount: Int = 1) {
-        repeat(count) { index ->
-            val spawnX = getSpawnX(fishX = x, direction = direction, index = index, count = count)
+        val coinAmounts = mutableListOf<Int>()
+        var remainingIncome = count
+
+        while (remainingIncome > 0) {
+            val coinAmount = minOf(
+                amount,
+                remainingIncome
+            )
+            coinAmounts.add(coinAmount)
+            remainingIncome -= coinAmount
+        }
+
+        coinAmounts.forEachIndexed { index, coinAmount ->
+            val spawnX = getSpawnX(fishX = x, direction = direction, index = index, count = coinAmounts.size)
 
             _coins += CoinModel(
                 id = nextCoinId++,
                 x = spawnX,
                 startY = y,
                 targetY = AquariumManager.currentAquariumBottom(),
-                amount = amount
+                amount = coinAmount
             )
         }
     }

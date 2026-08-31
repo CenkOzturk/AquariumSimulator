@@ -8,6 +8,10 @@ import com.kroq.myaquariumsimulator.model.aquarium.AquariumType
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.task.DailyTaskModel
 import com.kroq.myaquariumsimulator.model.tutorial.TutorialStep
+import com.kroq.myaquariumsimulator.model.upgrade.UpgradeDatabase
+import com.kroq.myaquariumsimulator.model.upgrade.UpgradeState
+import com.kroq.myaquariumsimulator.model.upgrade.toUpgradeState
+import com.kroq.myaquariumsimulator.model.upgrade.toUpgradeStateModel
 import com.kroq.myaquariumsimulator.utils.Utils.emptyString
 import com.kroq.myaquariumsimulator.utils.Utils.fromJson
 import com.kroq.myaquariumsimulator.utils.Utils.toJson
@@ -15,8 +19,8 @@ import kotlinx.coroutines.flow.first
 
 data class GameState(
     val aquariumType: String = AquariumType.SMALL.name,
-    val ownedFishIds: Set<Int> = setOf(),
-    val ownedItemIds: Set<Int> = setOf(),
+    val ownedFishIds: Set<Int> = emptySet(),
+    val ownedItemIds: Set<Int> = emptySet(),
     val coins: Int = 25,
     val foodCount: Int = 10,
     val cleanerCount: Int = 10,
@@ -29,7 +33,9 @@ data class GameState(
     val tutorialStep: String = TutorialStep.WELCOME.name,
     val tutorialCompleted: Boolean = false,
     val goldFishUnlocked: Boolean = false,
-    val lastGoldFishTime: Long = 0L
+    val lastGoldFishTime: Long = 0L,
+    val ownedUpgrades: UpgradeState =
+        UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState()
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -37,8 +43,8 @@ suspend fun loadGameState(context: Context): GameState {
 
     return GameState(
         aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
-        ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: setOf(),
-        ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: setOf(),
+        ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: emptySet(),
+        ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: emptySet(),
         coins = prefs[PrefKeys.COINS] ?: 25,
         foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
         cleanerCount = prefs[PrefKeys.CLEANER_COUNT] ?: 10,
@@ -50,7 +56,8 @@ suspend fun loadGameState(context: Context): GameState {
         tutorialStep = prefs[PrefKeys.TUTORIAL_STEP] ?: TutorialStep.WELCOME.name,
         tutorialCompleted = prefs[PrefKeys.TUTORIAL_COMPLETED] ?: false,
         goldFishUnlocked = prefs[PrefKeys.GOLD_FISH_UNLOCKED] ?: false,
-        lastGoldFishTime = prefs[PrefKeys.LAST_GOLD_FISH_TIME] ?: 0L
+        lastGoldFishTime = prefs[PrefKeys.LAST_GOLD_FISH_TIME] ?: 0L,
+        ownedUpgrades = prefs[PrefKeys.UPGRADES]?.fromJson<UpgradeState>() ?: UpgradeState(emptyList()),
     )
 }
 
@@ -74,5 +81,6 @@ suspend fun saveGameState(
         prefs[PrefKeys.TUTORIAL_COMPLETED] = state.tutorialCompleted
         prefs[PrefKeys.GOLD_FISH_UNLOCKED] = state.goldFishUnlocked
         prefs[PrefKeys.LAST_GOLD_FISH_TIME] = state.lastGoldFishTime
+        prefs[PrefKeys.UPGRADES] = state.ownedUpgrades.toJson()
     }
 }

@@ -10,6 +10,7 @@ import com.kroq.myaquariumsimulator.model.GameState
 import com.kroq.myaquariumsimulator.model.fish.FishDatabase
 import com.kroq.myaquariumsimulator.model.item.ItemDatabase
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
+import com.kroq.myaquariumsimulator.model.upgrade.UpgradeState
 
 object GameManager {
     var state by mutableStateOf(GameState())
@@ -28,6 +29,8 @@ object GameManager {
 
         items.clear()
         items.addAll(initialItems)
+
+        UpgradeManager.initializeUpgrades()
     }
 
     fun update(reducer: (GameState) -> GameState) {
@@ -46,8 +49,10 @@ object GameManager {
                 aquariumType = GameDefaults.STARTING_AQUARIUM,
                 ownedFishIds = emptySet(),
                 ownedItemIds = emptySet(),
+                ownedUpgrades = UpgradeState(emptyList()),
                 coins = GameDefaults.STARTING_COINS,
                 foodCount = GameDefaults.STARTING_FOOD,
+                cleanerCount = GameDefaults.CLEANER_COUNT,
                 dailyTask = null,
                 welcomeGiftDay = 0,
                 welcomeGiftClaimed = false,

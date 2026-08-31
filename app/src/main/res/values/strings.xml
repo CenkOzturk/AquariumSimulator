@@ -193,4 +193,33 @@
 
     <string name="tier_gold">GOLD</string>
     <string name="tier_gold_description">Own the Small Rock item and a Large aquarium.</string>
+
+
+    <!-- Upgrades -->
+    <string name="upgrades_title">Upgrades</string>
+    <string name="upgrades_subtitle">Improve your aquarium and earn more rewards!</string>
+
+    <string name="upgrade_increase_income">"+ %s💰"</string>
+    <string name="upgrade_time">"- %s time"</string>
+
+    <string name="upgrade_tab_fish">Fish</string>
+    <string name="upgrade_tab_bubble">Bubbles</string>
+
+    <string name="upgrade_level_format">LVL %1$d</string>
+    <string name="upgrade_max_level">MAX</string>
+
+    <string name="upgrade_coin_value">Coin Value</string>
+    <string name="upgrade_coin_value_description">Increases the amount of coins earned when tapping fish.</string>
+
+    <string name="upgrade_coin_speed">Coin Duration</string>
+    <string name="upgrade_coin_speed_description">Increases how long coins stay on the screen.</string>
+
+    <string name="upgrade_bubble_value">Bobble Value</string>
+    <string name="upgrade_bubble_value_description">Increases the amount of coins earned when tapping bobble.</string>
+
+    <string name="upgrade_bubble_time">Bobble Time</string>
+    <string name="upgrade_bubble_time_description">Increases the repeat of the bubbles.</string>
+
+    <string name="close">Close</string>
+
 </resources>

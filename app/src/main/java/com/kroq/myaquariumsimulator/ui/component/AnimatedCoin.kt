@@ -10,12 +10,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.kroq.myaquariumsimulator.data.Constants.COIN_EXPIRE_TIME
+import com.kroq.myaquariumsimulator.data.Constants.BASE_COIN_EXPIRE_TIME
 import com.kroq.myaquariumsimulator.managers.AudioManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.TutorialManager
+import com.kroq.myaquariumsimulator.managers.UpgradeManager
 import com.kroq.myaquariumsimulator.model.CoinModel
 import com.kroq.myaquariumsimulator.model.SoundEffect
+import com.kroq.myaquariumsimulator.model.upgrade.UpgradeType
 import kotlinx.coroutines.delay
 
 @Composable
@@ -40,7 +42,7 @@ fun AnimatedCoin(
         if (!GameManager.state.tutorialCompleted) {
             return@LaunchedEffect
         }
-        delay(COIN_EXPIRE_TIME)
+        delay(BASE_COIN_EXPIRE_TIME + UpgradeManager.getUpgradeValue(UpgradeType.COIN_DURATION))
         onExpired()
     }
 

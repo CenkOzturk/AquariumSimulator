@@ -10,7 +10,9 @@ import com.kroq.myaquariumsimulator.managers.FishFoodManager
 import com.kroq.myaquariumsimulator.managers.FishManager
 import com.kroq.myaquariumsimulator.managers.GameManager
 import com.kroq.myaquariumsimulator.managers.TutorialManager
+import com.kroq.myaquariumsimulator.managers.UpgradeManager
 import com.kroq.myaquariumsimulator.model.fish.isFed
+import com.kroq.myaquariumsimulator.model.upgrade.UpgradeType
 import com.kroq.myaquariumsimulator.utils.Utils
 
 @Composable
@@ -42,7 +44,9 @@ fun FishLayer() {
                     y = fish.move.y,
                     direction = fish.move.direction,
                     count = fish.income,
-                    amount = 1
+                    amount = UpgradeManager
+                        .getUpgradeValue(UpgradeType.COIN_VALUE)
+                        .coerceAtLeast(1)
                 )
             }
         })

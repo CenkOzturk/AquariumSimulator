@@ -71,7 +71,7 @@ fun GameHud(
         )
 
         WelcomeGiftButton(
-            modifier = Modifier.padding(top = 24.dp),
+            modifier = Modifier.padding(top = 8.dp),
             hasAnyTask = true,
             hasClaimableReward = true,
             onClick = {

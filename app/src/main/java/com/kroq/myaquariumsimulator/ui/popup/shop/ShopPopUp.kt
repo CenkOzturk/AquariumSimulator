@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kroq.myaquariumsimulator.R
@@ -45,6 +46,7 @@ import com.kroq.myaquariumsimulator.model.component.GameColors
 import com.kroq.myaquariumsimulator.model.shop.ShopItem
 import com.kroq.myaquariumsimulator.model.shop.ShopTab
 import com.kroq.myaquariumsimulator.model.shop.items
+import com.kroq.myaquariumsimulator.ui.component.InfoView
 import com.kroq.myaquariumsimulator.ui.component.buttons.CloseButton
 import com.kroq.myaquariumsimulator.ui.popup.GeneralPopup
 import com.kroq.myaquariumsimulator.utils.Utils
@@ -57,7 +59,6 @@ fun ShopPopup(
     onFishSelected: (ShopItem) -> Unit,
     onItemSelected: (ShopItem) -> Unit
 ) {
-
     var currentTab by remember {
         mutableStateOf(GameManager.state.selectedShopTab)
     }
@@ -119,38 +120,15 @@ fun ShopPopup(
                             text = stringResource(R.string.shop),
                             modifier = Modifier.weight(1f),
                             fontSize = 22.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
                         )
 
-                        Box(
-                            modifier = Modifier
-                                .size(32.dp)
-                                .clip(CircleShape)
-                                .background(
-                                    Brush.verticalGradient(
-                                        listOf(
-                                            Color(0xFF81D4FA),
-                                            Color(0xFF29B6F6)
-                                        )
-                                    )
-                                )
-                                .border(
-                                    width = 2.dp,
-                                    color = Color.White.copy(alpha = 0.8f),
-                                    shape = CircleShape
-                                )
-                                .clickable {
-                                    showTierInfoPopup = true
-                                },
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Info,
-                                contentDescription = stringResource(R.string.empty_string),
-                                tint = Color.White,
-                                modifier = Modifier.size(16.dp)
-                            )
-                        }
+                        InfoView(
+                            onClick = {
+                                showTierInfoPopup = true
+                            }
+                        )
                     }
 
                     Spacer(Modifier.height(4.dp))

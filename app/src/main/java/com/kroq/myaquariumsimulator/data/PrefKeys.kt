@@ -9,7 +9,6 @@ import androidx.datastore.preferences.core.stringSetPreferencesKey
 object PrefKeys {
     val AQUARIUM = stringPreferencesKey("aquarium")
     val FISH = stringSetPreferencesKey("fish")
-
     val ITEMS = stringSetPreferencesKey("items")
     val COINS = intPreferencesKey("coins")
     val FOOD_COUNT = intPreferencesKey("foodCount")
@@ -23,5 +22,6 @@ object PrefKeys {
     val TUTORIAL_COMPLETED = booleanPreferencesKey("tutorialCompleted")
     val GOLD_FISH_UNLOCKED = booleanPreferencesKey("goldFishUnlocked")
     val LAST_GOLD_FISH_TIME = longPreferencesKey("lastGoldFishTime")
+    val UPGRADES = stringPreferencesKey("upgrades")
 }
 
