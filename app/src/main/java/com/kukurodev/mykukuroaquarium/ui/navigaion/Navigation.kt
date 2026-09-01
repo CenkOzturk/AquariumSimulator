@@ -1,6 +1,8 @@
 package com.kukurodev.mykukuroaquarium.ui.navigaion
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
@@ -86,7 +88,13 @@ fun Navigation() {
                 onResetProgress = {
                     GameManager.resetGame()
                 },
-                onPrivacyPolicy = {},
+                onPrivacyPolicy = {
+                    val intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://cenkozturk.github.io/AquariumSimulator/privacy-policy.html")
+                    )
+                    activity.startActivity(intent)
+                },
                 onBack = {
                     navController.popBackStack()
                 }
