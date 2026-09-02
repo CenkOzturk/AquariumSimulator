@@ -1,3 +1,225 @@
 <resources>
-    <string name="app_name">My Aquarium Simulator</string>
+    <string name="app_name">AquaVille</string>
+    <string name="empty_string" translatable="false" />
+    <string name="waiting_action">Waiting for your action…</string>
+    <string name="buy_aquarium_title">Buy this aquarium?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="ok">OK</string>
+    <string name="coin_floating_text" translatable="false">"+%s 💰"</string>
+
+    <string name="btn_reset">RESET</string>
+    <string name="btn_close">✕</string>
+    <string name="btn_shop">"🛒"</string>
+    <string name="btn_continue">Continue</string>
+
+    <string name="menu_play">PLAY</string>
+    <string name="menu_settings">SETTINGS</string>
+    <string name="menu_credits">CREDITS</string>
+    <string name="menu_back">BACK</string>
+
+    <string name="shop">Shop</string>
+    <string name="cleaner">Cleaner</string>
+    <string name="fish_food">Fish Food</string>
+
+    <string name="shop_tab_fish">"🐟 Fish"</string>
+    <string name="shop_tab_aquarium">"🧪 Aquarium"</string>
+    <string name="shop_tab_items">"🧱 Items"</string>
+
+    <string name="coin_value">"💰 %s"</string>
+    <string name="fish_food_value">"🍤 %s"</string>
+    <string name="cleaner_value">"🧽 %s"</string>
+
+    <string name="collect">Collect %s 💰</string>
+    <string name="today_missions">Today\'s Missions</string>
+    <string name="not_complete_tasks">I haven\'t completed the missions yet :(</string>
+    <string name="daily_task_reward_claimed">You completed all missions :)</string>
+    <string name="already_received_reward">You already claimed today\'s reward. See you tomorrow!</string>
+
+    <string name="no_food_error">"Feeding failed! Not enough food :( Required food for this fish: %s"</string>
+    <string name="no_cleaner_error">Not enough cleaning supplies :(</string>
+    <string name="shop_no_coin_error">"Purchase failed! Not enough coins :("</string>
+    <string name="shop_too_much_fish">"Aquarium capacity reached. Please upgrade your aquarium."</string>
+
+    <!-- Fish Names -->
+    <string name="fish_100_name">Melos</string>
+    <string name="fish_101_name">Zibo</string>
+    <string name="fish_102_name">Sunny</string>
+    <string name="fish_103_name">Coral</string>
+    <string name="fish_104_name">Bubbles</string>
+    <string name="fish_105_name">Peach</string>
+    <string name="fish_106_name">Minty</string>
+    <string name="fish_107_name">Twinkle</string>
+    <string name="fish_108_name">Berry</string>
+    <string name="fish_109_name">Ocean</string>
+    <string name="fish_110_name">Luna</string>
+    <string name="fish_111_name">Sapphire</string>
+    <string name="fish_112_name">Pearl</string>
+    <string name="fish_113_name">Bubblegum</string>
+    <string name="fish_114_name">Lagoon</string>
+    <string name="fish_115_name">Daisy</string>
+    <string name="fish_116_name">Rose</string>
+    <string name="fish_117_name">Sakura</string>
+    <string name="fish_118_name">Amethyst</string>
+    <string name="fish_119_name">Aurora</string>
+    <string name="fish_120_name">Crystal</string>
+    <string name="fish_121_name">Starlight</string>
+    <string name="fish_122_name">Dreamer</string>
+    <string name="fish_123_name">Royal</string>
+    <string name="fish_124_name">Golden Star</string>
+
+    <!-- Aqua Names -->
+    <string name="aqua_small">Small</string>
+    <string name="aqua_medium">Medium</string>
+    <string name="aqua_large">Large</string>
+
+    <!-- Item Names -->
+    <string name="item_sand_name">Sand</string>
+    <string name="item_seaweed_short_name">Seaweed</string>
+    <string name="item_rock_small_name">Little Rock</string>
+    <string name="item_starfish_name">Starfish</string>
+
+    <!-- Cleaner Names -->
+    <string name="cleaner_cloth_name">Cloth</string>
+    <string name="cleaner_sponge_name">Sponge</string>
+    <string name="cleaner_robot_name">Robot</string>
+
+    <string name="shop_extra_info_fish">+%s 💰</string>
+    <string name="shop_extra_info_aquarium">🐟%s fish</string>
+    <string name="shop_extra_info_item">%sx items</string>
+
+
+    <!-- Tutorial -->
+    <string name="tutorial_title">AquaVille Guide</string>
+
+    <string name="tutorial_welcome_title">Welcome to AquaVille!</string>
+    <string name="tutorial_welcome_message">Let\'s build your first aquarium.</string>
+
+    <string name="tutorial_open_shop_title">Open Shop</string>
+    <string name="tutorial_open_shop_message">Tap the Shop button to continue.</string>
+
+    <string name="tutorial_tier_info_title">Unlock New Content</string>
+    <string name="tutorial_tier_info_message">Bronze, Silver and Gold tiers unlock new fish and decorations.</string>
+
+    <string name="tutorial_buy_first_fish_title">Buy Your First Fish</string>
+    <string name="tutorial_buy_first_fish_message">Every aquarium needs a fish.</string>
+
+    <string name="tutorial_feed_fish_title">Feed Your First Fish</string>
+    <string name="tutorial_feed_fish_message">Tap your fish to feed it.</string>
+
+    <string name="tutorial_collect_coin_title">Collect Coins</string>
+    <string name="tutorial_collect_coin_message">Tap the coin.Its your prize.</string>
+
+    <string name="tutorial_clean_title">Clean Your Aquarium</string>
+    <string name="tutorial_clean_message">Feeding your fish can make your aquarium dirty. Keep your aquarium clean.</string>
+    <string name="tutorial_daily_task_title">Daily Tasks</string>
+    <string name="tutorial_daily_task_message">Complete tasks to earn extra coins.</string>
+
+    <string name="tutorial_finish_title">You\'re Ready!</string>
+    <string name="tutorial_finish_message">Enjoy AquaVille!</string>
+
+    <!-- Credits -->
+    <string name="credits_title">Emeği Geçenler</string>
+
+    <string name="credits_game_design">Oyun Tasarımı</string>
+    <string name="credits_programming">Programlama</string>
+    <string name="credits_game_art">Oyun Grafikleri</string>
+    <string name="credits_music">Müzik</string>
+    <string name="credits_version">Sürüm</string>
+
+    <string name="credits_name_kukuro_dev">Kukuro Dev</string>
+    <string name="credits_name_kukuro_dev_chatgpt">Kukuro Dev &amp; ChatGPT</string>
+    <string name="credits_music_unknown">Music Source</string>
+
+    <string name="credits_coming_soon">Yakında</string>
+
+    <!-- Daily -->
+    <string name="daily_today_missions_subtitle">Complete every mission to claim today\'s reward.</string>
+    <string name="daily_total_reward">TOTAL REWARD</string>
+    <string name="daily_total_reward_coins">%s Coins</string>
+    <string name="daily_task_feed_fish">Feed Fish</string>
+    <string name="daily_task_buy_fish_feed">Buy Fish Food</string>
+    <string name="daily_task_buy_fish">Buy Fish</string>
+    <string name="daily_task_buy_item">Buy Item</string>
+    <string name="daily_task_collect_coin">Collect Coins</string>
+    <string name="daily_task_pop_bubble">Pop Bubbles</string>
+    <string name="daily_task_gold_fish">Catch Gold Fish</string>
+
+    <!-- Welcome Gift -->
+    <string name="welcome_gift_title">Welcome Gift</string>
+    <string name="welcome_gift_subtitle">Come back every day to collect rewards!</string>
+    <string name="welcome_gift_claim">Claim Reward</string>
+    <string name="welcome_gift_claimed">Already Claimed</string>
+    <string name="welcome_gift_today_reward">TODAY\'S REWARD</string>
+
+    <!-- Settings -->
+    <string name="settings_title">SETTINGS</string>
+
+    <string name="settings_music">Music</string>
+    <string name="settings_sound_effects">Sound Effects</string>
+    <string name="settings_notifications">Notifications</string>
+
+    <string name="settings_language">Language</string>
+    <string name="language_system">System</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+
+    <string name="settings_reset_progress">Reset Progress</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_version">Version</string>
+
+    <!-- Reset -->
+    <string name="reset_progress_title">Reset Progress?</string>
+    <string name="reset_progress_subtitle">Your entire game progress will be reset.</string>
+    <string name="reset_progress_button">Reset Progress</string>
+    <string name="reset_progress_fish">All owned fish will be removed.</string>
+    <string name="reset_progress_items">All owned items will be removed.</string>
+    <string name="reset_progress_aquarium">Your aquarium will return to Small.</string>
+    <string name="reset_progress_coins">Your coins and food will be reset.</string>
+    <string name="reset_progress_warning">This action cannot be undone.</string>
+
+    <!-- Tier Info -->
+    <string name="tier_info_title">Tier Levels</string>
+    <string name="tier_info_subtitle">Complete the requirements to unlock higher tier items.</string>
+
+    <string name="tier_free">NORMAL</string>
+    <string name="tier_free_description">Available from the beginning. No requirements needed.</string>
+
+    <string name="tier_bronze">BRONZE</string>
+    <string name="tier_bronze_description">Own the Sand item.</string>
+
+    <string name="tier_silver">SILVER</string>
+    <string name="tier_silver_description">Own the Seaweed item and a Medium aquarium.</string>
+
+    <string name="tier_gold">GOLD</string>
+    <string name="tier_gold_description">Own the Small Rock item and a Large aquarium.</string>
+
+
+    <!-- Upgrades -->
+    <string name="upgrades_title">Upgrades</string>
+    <string name="upgrades_subtitle">Improve your aquarium and earn more rewards!</string>
+
+    <string name="upgrade_increase_income">"+ %s💰"</string>
+    <string name="upgrade_time">"- %s time"</string>
+
+    <string name="upgrade_tab_fish">Fish</string>
+    <string name="upgrade_tab_bubble">Bubbles</string>
+
+    <string name="upgrade_level_format">LVL %1$d</string>
+    <string name="upgrade_max_level">MAX</string>
+
+    <string name="upgrade_coin_value">Coin Value</string>
+    <string name="upgrade_coin_value_description">Increases the amount of coins earned when tapping fish.</string>
+
+    <string name="upgrade_coin_speed">Coin Duration</string>
+    <string name="upgrade_coin_speed_description">Increases how long coins stay on the screen.</string>
+
+    <string name="upgrade_bubble_value">Bobble Value</string>
+    <string name="upgrade_bubble_value_description">Increases the amount of coins earned when tapping bobble.</string>
+
+    <string name="upgrade_bubble_time">Bobble Time</string>
+    <string name="upgrade_bubble_time_description">Increases the repeat of the bubbles.</string>
+
+    <string name="close">Close</string>
+
 </resources>

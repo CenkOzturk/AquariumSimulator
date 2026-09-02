@@ -1,0 +1,137 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Sponge -->
+    <path
+        android:fillColor="#FFD76A"
+        android:strokeColor="#80552A"
+        android:strokeWidth="4"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M22,38
+            C22,32 27,27 33,27
+            L67,27
+            C73,27 78,32 78,38
+            L78,61
+            C78,67 73,72 67,72
+            L31,72
+            C25,72 20,67 20,61
+            L20,42
+            C20,40 21,39 22,38
+            Z" />
+
+    <!-- Sponge lower area -->
+    <path
+        android:fillColor="#F5B94D"
+        android:pathData="
+            M20,56
+            C29,60 39,62 50,62
+            C61,62 70,60 78,56
+            L78,61
+            C78,67 73,72 67,72
+            L31,72
+            C25,72 20,67 20,61
+            Z" />
+
+    <!-- Sponge holes -->
+    <path
+        android:fillColor="#D99338"
+        android:pathData="
+            M34,39
+            C34,36 37,34 40,35
+            C43,36 44,39 42,42
+            C40,45 36,45 34,43
+            C33,42 33,40 34,39
+            Z" />
+
+    <path
+        android:fillColor="#D99338"
+        android:pathData="
+            M54,34
+            C57,32 61,34 62,37
+            C63,40 61,43 58,44
+            C55,44 52,42 52,39
+            C52,37 53,35 54,34
+            Z" />
+
+    <path
+        android:fillColor="#D99338"
+        android:pathData="
+            M60,51
+            C63,49 67,50 68,53
+            C69,56 67,59 64,60
+            C61,60 58,58 58,55
+            C58,53 59,52 60,51
+            Z" />
+
+    <path
+        android:fillColor="#D99338"
+        android:pathData="
+            M36,53
+            C38,51 42,52 43,55
+            C44,58 42,61 39,61
+            C36,61 34,59 34,56
+            C34,55 35,54 36,53
+            Z" />
+
+    <!-- Small hole -->
+    <path
+        android:fillColor="#D99338"
+        android:pathData="
+            M48,46
+            C50,45 52,46 52,48
+            C52,50 50,51 48,50
+            C46,50 46,47 48,46
+            Z" />
+
+    <!-- Sponge highlight -->
+    <path
+        android:fillColor="#FFF0A8"
+        android:pathData="
+            M29,32
+            C33,29 39,29 43,30
+            C39,32 35,36 32,40
+            C29,39 27,35 29,32
+            Z" />
+
+    <!-- Bubble -->
+    <path
+        android:fillColor="#D9F7FF"
+        android:strokeColor="#6BA5B8"
+        android:strokeWidth="2"
+        android:pathData="
+            M72,17
+            C76,17 79,20 79,24
+            C79,28 76,31 72,31
+            C68,31 65,28 65,24
+            C65,20 68,17 72,17
+            Z" />
+
+    <!-- Bubble shine -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="
+            M69,21
+            C70,19 73,19 74,20
+            C72,21 71,23 71,24
+            C69,24 68,22 69,21
+            Z" />
+
+    <!-- Small sparkle -->
+    <path
+        android:fillColor="#FFF3A6"
+        android:pathData="
+            M78,39
+            L80,44
+            L85,46
+            L80,48
+            L78,53
+            L76,48
+            L71,46
+            L76,44
+            Z" />
+
+</vector>

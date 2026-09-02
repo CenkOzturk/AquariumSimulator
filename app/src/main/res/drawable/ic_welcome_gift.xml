@@ -1,0 +1,112 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Gift box -->
+    <path
+        android:fillColor="#FFB84D"
+        android:strokeColor="#8B5428"
+        android:strokeWidth="4"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M18,40
+            L78,40
+            L74,78
+            L22,78
+            Z" />
+
+    <!-- Gift top -->
+    <path
+        android:fillColor="#FFD86A"
+        android:strokeColor="#8B5428"
+        android:strokeWidth="4"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M15,31
+            C15,28 17,26 20,26
+            L76,26
+            C79,26 81,28 81,31
+            L81,40
+            L15,40
+            Z" />
+
+    <!-- Vertical ribbon -->
+    <path
+        android:fillColor="#4FAED7"
+        android:strokeColor="#28647F"
+        android:strokeWidth="3"
+        android:pathData="
+            M43,26
+            L53,26
+            L53,78
+            L43,78
+            Z" />
+
+    <!-- Horizontal ribbon -->
+    <path
+        android:fillColor="#4FAED7"
+        android:strokeColor="#28647F"
+        android:strokeWidth="3"
+        android:pathData="
+            M15,32
+            L81,32
+            L81,40
+            L15,40
+            Z" />
+
+    <!-- Ribbon knot -->
+    <path
+        android:fillColor="#5FC1E7"
+        android:strokeColor="#28647F"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M48,27
+            C43,21 34,19 31,23
+            C28,27 34,32 43,32
+            L48,32
+            Z" />
+
+    <path
+        android:fillColor="#5FC1E7"
+        android:strokeColor="#28647F"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M48,27
+            C53,21 62,19 65,23
+            C68,27 62,32 53,32
+            L48,32
+            Z" />
+
+    <!-- Gold shine -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:alpha="0.7"
+        android:pathData="
+            M23,29
+            C25,27 28,27 31,27
+            L34,27
+            C31,30 28,32 25,34
+            C22,33 21,31 23,29Z" />
+
+    <!-- Sparkle -->
+    <path
+        android:fillColor="#FFF4A8"
+        android:strokeColor="#B77A28"
+        android:strokeWidth="2"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M73,13
+            L75,18
+            L80,20
+            L75,22
+            L73,27
+            L71,22
+            L66,20
+            L71,18
+            Z" />
+
+</vector>
