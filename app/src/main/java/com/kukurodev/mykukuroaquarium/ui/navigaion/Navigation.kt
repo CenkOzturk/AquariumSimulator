@@ -5,10 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -71,27 +67,15 @@ fun Navigation() {
         }
 
         composable(Screen.Settings.route) {
-            var music by rememberSaveable {
-                mutableStateOf(true)
-            }
-
-            var soundEffects by rememberSaveable {
-                mutableStateOf(true)
-            }
-
             SettingsScreen(
-                music = music,
-                soundEffects = soundEffects,
+                music = GameManager.state.musicEnable,
+                soundEffects = GameManager.state.soundEffectEnable,
                 language = LanguageManager.currentLanguage,
-
                 onMusicChanged = { enabled ->
-                    music = enabled
-                    AudioManager.setMusicEnabled(enabled)
+                    AudioManager.setMusicEnable(enabled)
                 },
-
                 onSoundEffectsChanged = { enabled ->
-                    soundEffects = enabled
-                    AudioManager.setSoundEffectsEnabled(enabled)
+                    AudioManager.setSoundEffectsEnable(enabled)
                 },
                 onLanguageChanged = { language ->
                     LanguageManager.setLanguage(

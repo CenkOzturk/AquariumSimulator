@@ -23,5 +23,7 @@ object PrefKeys {
     val GOLD_FISH_UNLOCKED = booleanPreferencesKey("goldFishUnlocked")
     val LAST_GOLD_FISH_TIME = longPreferencesKey("lastGoldFishTime")
     val UPGRADES = stringPreferencesKey("upgrades")
+    val MUSIC_ENABLE = booleanPreferencesKey("musicEnable")
+    val SOUND_EFFECT_ENABLE = booleanPreferencesKey("soundEffectEnable")
 }
 

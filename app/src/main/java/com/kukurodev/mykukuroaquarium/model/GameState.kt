@@ -35,7 +35,9 @@ data class GameState(
     val goldFishUnlocked: Boolean = false,
     val lastGoldFishTime: Long = 0L,
     val ownedUpgrades: UpgradeState =
-        UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState()
+        UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState(),
+    val musicEnable: Boolean = true,
+    val soundEffectEnable: Boolean = true
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -58,6 +60,8 @@ suspend fun loadGameState(context: Context): GameState {
         goldFishUnlocked = prefs[PrefKeys.GOLD_FISH_UNLOCKED] ?: false,
         lastGoldFishTime = prefs[PrefKeys.LAST_GOLD_FISH_TIME] ?: 0L,
         ownedUpgrades = prefs[PrefKeys.UPGRADES]?.fromJson<UpgradeState>() ?: UpgradeState(emptyList()),
+        musicEnable = prefs[PrefKeys.MUSIC_ENABLE] ?: true,
+        soundEffectEnable = prefs[PrefKeys.SOUND_EFFECT_ENABLE] ?: true,
     )
 }
 
@@ -82,5 +86,7 @@ suspend fun saveGameState(
         prefs[PrefKeys.GOLD_FISH_UNLOCKED] = state.goldFishUnlocked
         prefs[PrefKeys.LAST_GOLD_FISH_TIME] = state.lastGoldFishTime
         prefs[PrefKeys.UPGRADES] = state.ownedUpgrades.toJson()
+        prefs[PrefKeys.MUSIC_ENABLE] = state.musicEnable
+        prefs[PrefKeys.SOUND_EFFECT_ENABLE] = state.soundEffectEnable
     }
 }
