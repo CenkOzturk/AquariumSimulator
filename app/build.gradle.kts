@@ -14,7 +14,7 @@ android {
         applicationId = "com.kukurodev.mykukuroaquarium"
         minSdk = 29
         targetSdk = 36
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -83,4 +83,28 @@ dependencies {
     // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+}
+
+afterEvaluate {
+    tasks.findByName("bundleRelease")?.doLast {
+        val versionName = android.defaultConfig.versionName ?: "unknown"
+
+        val bundleDir = layout.buildDirectory
+            .dir("outputs/bundle/release")
+            .get()
+            .asFile
+
+        val aabFile = bundleDir
+            .listFiles()
+            ?.firstOrNull { it.extension == "aab" }
+
+        if (aabFile != null) {
+            val newFile = bundleDir.resolve("AquaVille-v$versionName.aab")
+
+            if (aabFile.name != newFile.name) {
+                aabFile.renameTo(newFile)
+                println("AAB renamed to: ${newFile.name}")
+            }
+        }
+    }
 }
