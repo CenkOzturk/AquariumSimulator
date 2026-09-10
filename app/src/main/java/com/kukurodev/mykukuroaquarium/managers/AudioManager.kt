@@ -9,46 +9,48 @@ import com.kukurodev.mykukuroaquarium.utils.Utils
 object AudioManager {
     private var mediaPlayer: MediaPlayer? = null
     private var soundPool: SoundPool? = null
-
     private val soundEffects = mutableMapOf<SoundEffect, Int>()
 
-    private var musicEnabled = true
-    private var soundEffectsEnabled = true
-
     fun initialize() {
-        if (mediaPlayer != null) return
-
         val context = Utils.appContext ?: return
 
         // Background music
-        mediaPlayer = MediaPlayer.create(
-            context,
-            R.raw.game_music
-        ).apply {
-            isLooping = true
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(
+                context,
+                R.raw.game_music
+            ).apply {
+                isLooping = true
+            }
         }
 
         // Sound effects
-        soundPool = SoundPool.Builder()
-            .setMaxStreams(5)
-            .build()
+        if (soundPool == null) {
+            soundPool = SoundPool.Builder()
+                .setMaxStreams(5)
+                .build()
 
-        soundEffects[SoundEffect.BUBBLE_POP] =
-            soundPool!!.load(
-                context,
-                R.raw.bubble_pop,
-                1
-            )
-        soundEffects[SoundEffect.COIN_COLLECT] =
-            soundPool!!.load(
-                context,
-                R.raw.coin_collect,
-                1
-            )
+            soundEffects[SoundEffect.BUBBLE_POP] =
+                soundPool!!.load(
+                    context,
+                    R.raw.bubble_pop,
+                    1
+                )
+
+            soundEffects[SoundEffect.COIN_COLLECT] =
+                soundPool!!.load(
+                    context,
+                    R.raw.coin_collect,
+                    1
+                )
+        }
+
+        setMusicEnable(GameManager.state.musicEnable)
+        setSoundEffectsEnable(GameManager.state.soundEffectEnable)
     }
 
     fun playMusic() {
-        if (!musicEnabled) return
+        if (!GameManager.state.musicEnable) return
 
         mediaPlayer?.let {
             if (!it.isPlaying) {
@@ -61,8 +63,8 @@ object AudioManager {
         mediaPlayer?.pause()
     }
 
-    fun setMusicEnabled(enabled: Boolean) {
-        musicEnabled = enabled
+    fun setMusicEnable(enabled: Boolean) {
+        setStatusMusic(enabled)
 
         if (enabled) {
             playMusic()
@@ -71,12 +73,12 @@ object AudioManager {
         }
     }
 
-    fun setSoundEffectsEnabled(enabled: Boolean) {
-        soundEffectsEnabled = enabled
+    fun setSoundEffectsEnable(enabled: Boolean) {
+        setStatusSoundEffect(enabled)
     }
 
     fun playEffect(effect: SoundEffect) {
-        if (!soundEffectsEnabled) return
+        if (!GameManager.state.soundEffectEnable) return
 
         val soundId = soundEffects[effect] ?: return
 
@@ -88,6 +90,22 @@ object AudioManager {
             0,
             1f
         )
+    }
+
+    fun setStatusMusic(enabled: Boolean) {
+        GameManager.update {
+            it.copy(
+                musicEnable = enabled
+            )
+        }
+    }
+
+    fun setStatusSoundEffect(enabled: Boolean) {
+        GameManager.update {
+            it.copy(
+                soundEffectEnable = enabled
+            )
+        }
     }
 
     fun release() {

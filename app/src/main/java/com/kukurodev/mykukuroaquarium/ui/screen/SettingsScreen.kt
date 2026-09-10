@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kukurodev.mykukuroaquarium.BuildConfig
 import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.model.AppLanguage
 import com.kukurodev.mykukuroaquarium.model.component.GameColors
@@ -119,7 +120,7 @@ fun SettingsScreen(
             Spacer(Modifier.height(12.dp))
 
             SettingsVersionItem(
-                version = "1.0.0"
+                version = BuildConfig.VERSION_NAME
             )
 
             Spacer(Modifier.weight(1f))

@@ -18,6 +18,9 @@ object GameManager {
 
     fun initialize(newState: GameState) {
         state = newState
+    }
+
+    fun initializeGameScreen() {
         AquariumManager.initialize(state.aquariumType)
 
         val initialFishes = FishDatabase.getFishByIds(state.ownedFishIds)

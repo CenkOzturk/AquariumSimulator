@@ -68,16 +68,14 @@ fun Navigation() {
 
         composable(Screen.Settings.route) {
             SettingsScreen(
-                music = true,
-                soundEffects = true,
+                music = GameManager.state.musicEnable,
+                soundEffects = GameManager.state.soundEffectEnable,
                 language = LanguageManager.currentLanguage,
-
                 onMusicChanged = { enabled ->
-                    AudioManager.setMusicEnabled(enabled)
+                    AudioManager.setMusicEnable(enabled)
                 },
-
                 onSoundEffectsChanged = { enabled ->
-                    AudioManager.setSoundEffectsEnabled(enabled)
+                    AudioManager.setSoundEffectsEnable(enabled)
                 },
                 onLanguageChanged = { language ->
                     LanguageManager.setLanguage(

@@ -9,16 +9,22 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kukurodev.mykukuroaquarium.BuildConfig
 import com.kukurodev.mykukuroaquarium.R
+import com.kukurodev.mykukuroaquarium.managers.AudioManager
+import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.model.component.GameColors
+import com.kukurodev.mykukuroaquarium.model.loadGameState
 import com.kukurodev.mykukuroaquarium.ui.component.buttons.GameMenuButton
 
 @Composable
@@ -27,6 +33,14 @@ fun MainMenuScreen(
     onSettings: () -> Unit,
     onCredits: () -> Unit
 ) {
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        val loaded = loadGameState(context)
+        GameManager.initialize(loaded)
+        AudioManager.initialize()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -87,7 +101,7 @@ fun MainMenuScreen(
             )
 
             Text(
-                text = "Version 1.0.0",
+                text = stringResource(R.string.settings_version) + BuildConfig.VERSION_NAME,
                 fontSize = 14.sp,
                 color = Color.White.copy(.75f)
             )

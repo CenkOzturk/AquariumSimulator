@@ -19,6 +19,7 @@ import com.kukurodev.mykukuroaquarium.managers.DailyTaskManager
 import com.kukurodev.mykukuroaquarium.managers.DirtManager
 import com.kukurodev.mykukuroaquarium.managers.FishManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
+import com.kukurodev.mykukuroaquarium.managers.GameManager.initializeGameScreen
 import com.kukurodev.mykukuroaquarium.managers.GoldFishManager
 import com.kukurodev.mykukuroaquarium.managers.ScreenManager
 import com.kukurodev.mykukuroaquarium.managers.TutorialManager
@@ -45,8 +46,7 @@ fun GameScreen() {
     val uiState = rememberGameUiState()
 
     LaunchedEffect(Unit) {
-        val loaded = loadGameState(context)
-        GameManager.initialize(loaded)
+        initializeGameScreen()
         Utils.init(context)
         TutorialManager.initialize()
         WelcomeGiftManager.refreshIfNeeded()
