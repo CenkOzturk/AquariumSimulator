@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kukurodev.mykukuroaquarium.BuildConfig
 import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.managers.AudioManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
@@ -100,7 +101,7 @@ fun MainMenuScreen(
             )
 
             Text(
-                text = "Version 1.0.0",
+                text = stringResource(R.string.settings_version) + BuildConfig.VERSION_NAME,
                 fontSize = 14.sp,
                 color = Color.White.copy(.75f)
             )

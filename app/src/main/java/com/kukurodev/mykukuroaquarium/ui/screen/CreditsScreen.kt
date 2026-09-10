@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kukurodev.mykukuroaquarium.BuildConfig
 import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.ui.component.CreditItem
@@ -80,7 +81,7 @@ fun CreditsScreen(
 
             CreditItem(
                 stringResource(R.string.credits_version),
-                "1.0.0"
+                BuildConfig.VERSION_NAME
             )
 
             Spacer(Modifier.weight(1f))
