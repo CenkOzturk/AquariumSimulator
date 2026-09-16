@@ -32,14 +32,14 @@ data class GameState(
     val welcomeGiftClaimed: Boolean = false,
     val welcomeGiftLastClaimTime: Long = 0L,
     val lastLoginTime: Long = 0L,
-    val tutorialStep: String = TutorialStep.FINISH.name,
-    val tutorialCompleted: Boolean = true,
+    val tutorialStep: String = TutorialStep.WELCOME.name,
+    val tutorialCompleted: Boolean = false,
     val goldFishUnlocked: Boolean = false,
     val lastGoldFishTime: Long = 0L,
     val ownedUpgrades: UpgradeState =
         UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState(),
-    val musicEnable: Boolean = false,
-    val soundEffectEnable: Boolean = false
+    val musicEnable: Boolean = true,
+    val soundEffectEnable: Boolean = true
 )
 
 suspend fun loadGameState(context: Context): GameState {
