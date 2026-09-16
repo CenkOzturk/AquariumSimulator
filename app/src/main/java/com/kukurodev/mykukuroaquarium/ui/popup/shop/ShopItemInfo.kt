@@ -7,18 +7,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.kukurodev.mykukuroaquarium.R
-import com.kukurodev.mykukuroaquarium.model.shop.ShopItem
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
 
 @Composable
 fun ShopItemInfo(
-    item: ShopItem,
+    shopTab: ShopTab,
+    extraInfo: String,
     alpha: Float
 ) {
-    when (item.type) {
+    when (shopTab) {
         ShopTab.FISH -> {
             Text(
-                text = stringResource(R.string.shop_extra_info_fish, item.extraInfo),
+                text = stringResource(R.string.shop_extra_info_fish, extraInfo),
                 fontSize = 11.sp,
                 color = Color(0xFF43A047).copy(alpha = alpha),
                 fontWeight = FontWeight.Medium,
@@ -28,7 +28,7 @@ fun ShopItemInfo(
 
         ShopTab.AQUARIUM -> {
             Text(
-                text = stringResource(R.string.shop_extra_info_aquarium, item.extraInfo),
+                text = stringResource(R.string.shop_extra_info_aquarium, extraInfo),
                 fontSize = 11.sp,
                 color = Color(0xFF1E88E5).copy(alpha = alpha),
                 fontWeight = FontWeight.Medium,
@@ -38,14 +38,12 @@ fun ShopItemInfo(
 
         ShopTab.ITEMS -> {
             Text(
-                text = stringResource(R.string.shop_extra_info_item, item.extraInfo),
+                text = stringResource(R.string.shop_extra_info_item, extraInfo),
                 fontSize = 11.sp,
                 color = Color(0xFF1E88E5).copy(alpha = alpha),
                 fontWeight = FontWeight.Medium,
                 maxLines = 1
             )
         }
-
-        else -> Unit
     }
 }

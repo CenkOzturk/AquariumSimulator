@@ -12,33 +12,14 @@ object UpgradeDatabase {
             upgradeResId = R.string.upgrade_increase_income,
             descriptionResId = R.string.upgrade_coin_value_description,
             iconResId = R.drawable.ic_upgrade_coin_value,
-            currentLevel = 1,
+            currentLevel = 0,
             levelList = listOf(
-                UpgradeLevelModel(
-                    level = 1,
-                    cost = 100,
-                    value = 1
-                ),
-                UpgradeLevelModel(
-                    level = 2,
-                    cost = 250,
-                    value = 2
-                ),
-                UpgradeLevelModel(
-                    level = 3,
-                    cost = 500,
-                    value = 4
-                ),
-                UpgradeLevelModel(
-                    level = 4,
-                    cost = 1000,
-                    value = 9
-                ),
-                UpgradeLevelModel(
-                    level = 5,
-                    cost = 2000,
-                    value = 14
-                )
+                UpgradeLevelModel(level = 0, cost = 0, value = 0),
+                UpgradeLevelModel(level = 1, cost = 100, value = 1),
+                UpgradeLevelModel(level = 2, cost = 250, value = 2),
+                UpgradeLevelModel(level = 3, cost = 500, value = 4),
+                UpgradeLevelModel(level = 4, cost = 1000, value = 9),
+                UpgradeLevelModel(level = 5, cost = 2000, value = 14)
             )
         ),
 
@@ -50,33 +31,14 @@ object UpgradeDatabase {
             upgradeResId = R.string.upgrade_time,
             descriptionResId = R.string.upgrade_coin_speed_description,
             iconResId = R.drawable.ic_upgrade_coin_time,
-            currentLevel = 1,
+            currentLevel = 0,
             levelList = listOf(
-                UpgradeLevelModel(
-                    level = 1,
-                    cost = 100,
-                    value = 1
-                ),
-                UpgradeLevelModel(
-                    level = 2,
-                    cost = 250,
-                    value = 2
-                ),
-                UpgradeLevelModel(
-                    level = 3,
-                    cost = 500,
-                    value = 3
-                ),
-                UpgradeLevelModel(
-                    level = 4,
-                    cost = 1000,
-                    value = 4
-                ),
-                UpgradeLevelModel(
-                    level = 5,
-                    cost = 2000,
-                    value = 6
-                )
+                UpgradeLevelModel(level = 0, cost = 0, value = 0),
+                UpgradeLevelModel(level = 1, cost = 50, value = 1),
+                UpgradeLevelModel(level = 2, cost = 150, value = 2),
+                UpgradeLevelModel(level = 3, cost = 400, value = 3),
+                UpgradeLevelModel(level = 4, cost = 1000, value = 4),
+                UpgradeLevelModel(level = 5, cost = 2500, value = 6)
             )
         ),
 
@@ -88,33 +50,14 @@ object UpgradeDatabase {
             upgradeResId = R.string.upgrade_increase_income,
             descriptionResId = R.string.upgrade_bubble_value_description,
             iconResId = R.drawable.ic_upgrade_bubble_value,
-            currentLevel = 1,
+            currentLevel = 0,
             levelList = listOf(
-                UpgradeLevelModel(
-                    level = 1,
-                    cost = 1000,
-                    value = 3
-                ),
-                UpgradeLevelModel(
-                    level = 2,
-                    cost = 2500,
-                    value = 5
-                ),
-                UpgradeLevelModel(
-                    level = 3,
-                    cost = 5000,
-                    value = 5
-                ),
-                UpgradeLevelModel(
-                    level = 4,
-                    cost = 10000,
-                    value = 10
-                ),
-                UpgradeLevelModel(
-                    level = 5,
-                    cost = 20000,
-                    value = 20
-                )
+                UpgradeLevelModel(level = 0, cost = 0, value = 0),
+                UpgradeLevelModel(level = 1, cost = 250, value = 3),
+                UpgradeLevelModel(level = 2, cost = 750, value = 5),
+                UpgradeLevelModel(level = 3, cost = 2000, value = 5),
+                UpgradeLevelModel(level = 4, cost = 5000, value = 10),
+                UpgradeLevelModel(level = 5, cost = 12000, value = 20)
             )
         ),
 
@@ -126,33 +69,14 @@ object UpgradeDatabase {
             upgradeResId = R.string.upgrade_time,
             descriptionResId = R.string.upgrade_bubble_time_description,
             iconResId = R.drawable.ic_upgrade_bubble_time,
-            currentLevel = 1,
+            currentLevel = 0,
             levelList = listOf(
-                UpgradeLevelModel(
-                    level = 1,
-                    cost = 1000,
-                    value = 1
-                ),
-                UpgradeLevelModel(
-                    level = 2,
-                    cost = 2500,
-                    value = 2
-                ),
-                UpgradeLevelModel(
-                    level = 3,
-                    cost = 5000,
-                    value = 2
-                ),
-                UpgradeLevelModel(
-                    level = 4,
-                    cost = 10000,
-                    value = 2
-                ),
-                UpgradeLevelModel(
-                    level = 5,
-                    cost = 20000,
-                    value = 3
-                )
+                UpgradeLevelModel(level = 0, cost = 0, value = 0),
+                UpgradeLevelModel(level = 1, cost = 250, value = 1),
+                UpgradeLevelModel(level = 2, cost = 750, value = 2),
+                UpgradeLevelModel(level = 3, cost = 2000, value = 2),
+                UpgradeLevelModel(level = 4, cost = 5000, value = 2),
+                UpgradeLevelModel(level = 5, cost = 12000, value = 3)
             )
         )
     )

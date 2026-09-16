@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kukurodev.mykukuroaquarium.R
@@ -34,21 +35,21 @@ fun DailyTaskPopup(
     onCollect: () -> Unit,
     onClose: () -> Unit
 ) {
-    val colors = GameColors.DailyTask
+    val colors = GameColors.Leaf
 
     GeneralPopup(
         onClose = onClose
     ) { popupModifier, dismiss ->
         GamePopup(
             modifier = popupModifier,
-            title = stringResource(R.string.today_missions),
+            title = stringResource(R.string.daily_task_today_missions),
             subtitle = stringResource(R.string.daily_today_missions_subtitle),
             gradient = colors,
             widthFraction = .68f,
             buttonText = if (allCompleted) {
-                stringResource(R.string.collect, totalReward)
+                stringResource(R.string.daily_task_collect, totalReward)
             } else {
-                stringResource(R.string.not_complete_tasks)
+                stringResource(R.string.daily_task_not_complete_tasks)
             },
             buttonEnabled = allCompleted,
             onButtonClick = onCollect,
@@ -80,20 +81,21 @@ fun DailyTaskPopup(
                         shape = RoundedCornerShape(18.dp)
                     )
             ) {
-
                 Column(
-                    modifier = Modifier.padding(
-                        horizontal = 18.dp,
-                        vertical = 16.dp
-                    ),
+                    modifier = Modifier
+                        .padding(
+                            horizontal = 18.dp,
+                            vertical = 16.dp
+                        )
+                        .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-
                     Text(
                         text = stringResource(R.string.daily_total_reward),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = colors.dark
+                        color = colors.dark,
+                        textAlign = TextAlign.Center
                     )
 
                     Spacer(Modifier.height(8.dp))
@@ -105,7 +107,8 @@ fun DailyTaskPopup(
                         ),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
-                        color = colors.border
+                        color = colors.border,
+                        textAlign = TextAlign.Center
                     )
                 }
             }

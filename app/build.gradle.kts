@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat
+import java.util.Date
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -16,6 +19,8 @@ android {
         targetSdk = 36
         versionCode = 2
         versionName = "1.0.1"
+        //val formattedDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
+        base.archivesName = "AquaVille-v$versionName"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,7 +45,6 @@ android {
         compose = true
         buildConfig = true
     }
-
 }
 
 dependencies {
@@ -83,28 +87,4 @@ dependencies {
     // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-}
-
-afterEvaluate {
-    tasks.findByName("bundleRelease")?.doLast {
-        val versionName = android.defaultConfig.versionName ?: "unknown"
-
-        val bundleDir = layout.buildDirectory
-            .dir("outputs/bundle/release")
-            .get()
-            .asFile
-
-        val aabFile = bundleDir
-            .listFiles()
-            ?.firstOrNull { it.extension == "aab" }
-
-        if (aabFile != null) {
-            val newFile = bundleDir.resolve("AquaVille-v$versionName.aab")
-
-            if (aabFile.name != newFile.name) {
-                aabFile.renameTo(newFile)
-                println("AAB renamed to: ${newFile.name}")
-            }
-        }
-    }
 }

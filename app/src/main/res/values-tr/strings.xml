@@ -6,35 +6,22 @@
     <string name="no">Hayır</string>
     <string name="yes">Evet</string>
     <string name="ok">Tamam</string>
+    <string name="close">Kapat</string>
+    <string name="shop">Shop</string>
+    <string name="cleaner">Temizlikçi</string>
+    <string name="fish_food">Balık Yemi</string>
+    <string name="inventory">Envanter</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
     <string name="btn_shop">"🛒"</string>
     <string name="btn_continue">Devam Et</string>
 
-    <string name="menu_play">OYNA</string>
-    <string name="menu_settings">AYARLAR</string>
-    <string name="menu_credits">HAKKIMIZDA</string>
-    <string name="menu_back">GERİ</string>
-
-    <string name="shop">Shop</string>
-    <string name="cleaner">Temizlikçi</string>
-    <string name="fish_food">Balık Yemi</string>
-
-    <string name="shop_tab_fish">"🐟 Balıklar"</string>
-    <string name="shop_tab_aquarium">"🧪 Akvaryum"</string>
-    <string name="shop_tab_items">"🧱 Items"</string>
-
     <string name="coin_value">"💰 %s"</string>
     <string name="fish_food_value">"🍤 %s"</string>
     <string name="cleaner_value">"🧽 %s"</string>
 
-    <string name="collect">Topla %s 💰</string>
-    <string name="today_missions">Bugünün Görevleri</string>
-    <string name="not_complete_tasks">Görevleri henüz bitirmedim :(</string>
-    <string name="daily_task_reward_claimed">Bütün görevleri bitirdin :)</string>
-    <string name="already_received_reward">Bugünün ödülünü aldın yarın tekrar görüşürüz</string>
-
+    <!-- Errors -->
     <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem: %s"</string>
     <string name="no_cleaner_error">Temizlik maddeleri yetmedi :(</string>
     <string name="shop_no_coin_error">"Satın alma başarısız! Paran yetmedi :("</string>
@@ -113,8 +100,14 @@
     <string name="tutorial_finish_title">Artık Hazırsın!</string>
     <string name="tutorial_finish_message">AquaVille\'in tadını çıkar!</string>
 
+    <!-- Menu -->
+    <string name="menu_play">OYNA</string>
+    <string name="menu_settings">AYARLAR</string>
+    <string name="menu_credits">HAKKIMIZDA</string>
+    <string name="menu_back">GERİ</string>
+
     <!-- Credits -->
-    <string name="credits_title">Emeği Geçenler</string>
+    <string name="credits_title">HAKKIMIZDA</string>
 
     <string name="credits_game_design">Oyun Tasarımı</string>
     <string name="credits_programming">Programlama</string>
@@ -131,7 +124,7 @@
     <!-- Daily -->
     <string name="daily_today_missions_subtitle">Bugünün ödülünü almak için tüm görevleri tamamla.</string>
     <string name="daily_total_reward">TOPLAM ÖDÜL</string>
-    <string name="daily_total_reward_coins">%s Coins</string>
+    <string name="daily_total_reward_coins">%s Coin</string>
     <string name="daily_task_feed_fish">Balık Besle</string>
     <string name="daily_task_buy_fish_feed">Balık Yemi Satın Al</string>
     <string name="daily_task_buy_fish">Balık Satın Al</string>
@@ -139,6 +132,11 @@
     <string name="daily_task_collect_coin">Coin Topla</string>
     <string name="daily_task_pop_bubble">Baloncuk Patlat</string>
     <string name="daily_task_gold_fish">Altın Balığı Yakala</string>
+    <string name="daily_task_collect">Topla %s 💰</string>
+    <string name="daily_task_today_missions">Bugünün Görevleri</string>
+    <string name="daily_task_not_complete_tasks">Görevleri henüz bitirmedim :(</string>
+    <string name="daily_task_reward_claimed">Bütün görevleri bitirdin :)</string>
+    <string name="daily_task_already_received_reward">Bugünün ödülünü aldın yarın tekrar görüşürüz</string>
 
     <!-- Welcome Gift -->
     <string name="welcome_gift_title">Hoş Geldin Hediyesi</string>
@@ -172,6 +170,11 @@
     <string name="reset_progress_aquarium">Akvaryumun Küçük seviyesine dönecek.</string>
     <string name="reset_progress_coins">Coin ve yem miktarın sıfırlanacak.</string>
     <string name="reset_progress_warning">Bu işlem geri alınamaz.</string>
+
+    <!-- Shop Tabs -->
+    <string name="shop_tab_fish">"🐟 Balıklar"</string>
+    <string name="shop_tab_aquarium">"🧪 Akvaryum"</string>
+    <string name="shop_tab_items">"🧱 Items"</string>
 
     <!-- Tier Info -->
     <string name="tier_info_title">Tier Seviyeleri</string>
@@ -213,7 +216,5 @@
 
     <string name="upgrade_bubble_time">Baloncuk Süresi</string>
     <string name="upgrade_bubble_time_description">Baloncukların çıkış süresini kısalt.</string>
-
-    <string name="close">Kapat</string>
 
 </resources>

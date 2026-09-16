@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -26,12 +25,11 @@ import com.kukurodev.mykukuroaquarium.managers.TutorialManager
 import com.kukurodev.mykukuroaquarium.managers.WelcomeGiftManager
 import com.kukurodev.mykukuroaquarium.model.GameProgress
 import com.kukurodev.mykukuroaquarium.model.calculateTier
-import com.kukurodev.mykukuroaquarium.model.loadGameState
 import com.kukurodev.mykukuroaquarium.model.rememberGameUiState
 import com.kukurodev.mykukuroaquarium.model.tutorial.TutorialStep
 import com.kukurodev.mykukuroaquarium.ui.aquarium.AquariumView
+import com.kukurodev.mykukuroaquarium.ui.component.BottomMenu
 import com.kukurodev.mykukuroaquarium.ui.component.GameHud
-import com.kukurodev.mykukuroaquarium.ui.component.RightMenu
 import com.kukurodev.mykukuroaquarium.ui.popup.PopupContainer
 import com.kukurodev.mykukuroaquarium.ui.tutorial.TutorialOverlay
 import com.kukurodev.mykukuroaquarium.utils.Utils
@@ -72,24 +70,18 @@ fun GameScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
         Background()
 
-        AquariumView(
-            remember(
-                GameManager.state.aquariumType,
-                screenWidth,
-                screenHeight
-            ) {
-                AquariumManager.currentAquarium
-            }
-        )
+        AquariumView(AquariumManager.currentAquarium)
 
         GameHud(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(16.dp),
+                .padding(
+                    top = 40.dp,
+                    start = 16.dp),
             uiState = uiState
         )
 
-        RightMenu(
+        BottomMenu(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(20.dp),

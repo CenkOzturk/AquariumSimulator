@@ -72,14 +72,16 @@ fun UpgradePopup(
             ) {
                 items(
                     items = upgrades,
-                    key = {
-                        it.id
-                    }
+                    key = { it.id }
                 ) { upgrade ->
                     UpgradeCard(
                         upgrade = upgrade,
-                        currentLevel = upgrade.currentLevel,
-                        isMaxLevel = (upgrade.currentLevel == upgrade.levelList.size),
+                        currentLevelPlus =
+                            if (upgrade.currentLevel + 1 > upgrade.levelList.last().level)
+                                upgrade.levelList.last().level
+                            else upgrade.currentLevel + 1
+                        ,
+                        isMaxLevel = (upgrade.currentLevel == upgrade.levelList.last().level),
                         onInfoClick = {
                             infoUpgrade = upgrade
                         },

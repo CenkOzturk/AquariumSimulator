@@ -17,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -51,7 +50,7 @@ fun ShopPopup(
     onFishSelected: (ShopItem) -> Unit,
     onItemSelected: (ShopItem) -> Unit
 ) {
-    var currentTab by remember {
+    var currentTab by rememberSaveable {
         mutableStateOf(GameManager.state.selectedShopTab)
     }
     var showTierInfoPopup by rememberSaveable {
@@ -75,9 +74,9 @@ fun ShopPopup(
                     .background(
                         Brush.verticalGradient(
                             listOf(
-                                GameColors.Shop.top,
-                                GameColors.Shop.light,
-                                GameColors.Shop.base
+                                GameColors.Sun.top,
+                                GameColors.Sun.light,
+                                GameColors.Sun.base
                             )
                         )
                     )
@@ -85,8 +84,8 @@ fun ShopPopup(
                         width = 3.dp,
                         brush = Brush.verticalGradient(
                             listOf(
-                                GameColors.Shop.border,
-                                GameColors.Shop.dark
+                                GameColors.Sun.border,
+                                GameColors.Sun.dark
                             )
                         ),
                         shape = RoundedCornerShape(30.dp)
@@ -100,7 +99,6 @@ fun ShopPopup(
                             vertical = 18.dp
                         )
                 ) {
-
                     Spacer(Modifier.height(8.dp))
 
                     Row(
@@ -173,7 +171,7 @@ fun ShopPopup(
                         x = 16.dp,
                         y = (-16).dp
                     ),
-                gradient = GameColors.Shop,
+                gradient = GameColors.Sun,
                 onClose = dismiss
             )
 

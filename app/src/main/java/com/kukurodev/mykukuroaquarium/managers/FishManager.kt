@@ -1,11 +1,10 @@
 package com.kukurodev.mykukuroaquarium.managers
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import com.kukurodev.mykukuroaquarium.data.Constants.FISH_SIZE
 import com.kukurodev.mykukuroaquarium.model.GameProgress
-import com.kukurodev.mykukuroaquarium.model.GameState
 import com.kukurodev.mykukuroaquarium.model.aquarium.AquariumModel
-import com.kukurodev.mykukuroaquarium.model.fish.FishDatabase
 import com.kukurodev.mykukuroaquarium.model.fish.FishDatabase.getAllFishes
 import com.kukurodev.mykukuroaquarium.model.fish.FishModel
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
@@ -33,17 +32,17 @@ object FishManager {
         if(fishId == getAllFishes().first().id) {
             TutorialManager.onFirstFishBought()
         }
-        syncWithGameState(GameManager.state)
+        syncWithGameState()
     }
 
-    private fun syncWithGameState(state: GameState) {
+    fun syncWithGameState() {
         val currentIds = fishes.map { it.id }.toSet()
-        val targetIds = state.ownedFishIds
+        val targetIds = GameManager.state.ownedFishIds
 
         val newFishIds = targetIds - currentIds
         val aquarium = AquariumManager.currentAquarium
 
-        val newFishes = FishDatabase.getAllFishes()
+        val newFishes = getAllFishes()
             .filter { it.id in newFishIds }
             .map { template ->
                 template.copy(
@@ -57,10 +56,22 @@ object FishManager {
             }
 
         fishes.addAll(newFishes)
+        Log.i("Fishes", fishes.map { it.id }.toString())
+    }
+
+    fun dropFromGameState() {
+        val currentIds = fishes.map { it.id }.toSet()
+        val targetIds = GameManager.state.activeFishes
+        val deletedFishIds = currentIds - targetIds
+
+        fishes.remove(fishes.find { it.id == deletedFishIds.first() })
     }
 
     fun updateFish(fishId: Int) {
-        GameManager.update { it.copy(ownedFishIds = it.ownedFishIds + fishId) }
+        GameManager.update { it.copy(
+            ownedFishIds = it.ownedFishIds + fishId,
+            activeFishes = it.ownedFishIds + fishId
+        ) }
     }
 
     fun canUnlock(fish: FishModel, progress: GameProgress): Boolean {

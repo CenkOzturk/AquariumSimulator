@@ -21,6 +21,7 @@ data class GameState(
     val aquariumType: String = AquariumType.SMALL.name,
     val ownedFishIds: Set<Int> = emptySet(),
     val ownedItemIds: Set<Int> = emptySet(),
+    val activeFishes: Set<Int> = emptySet(),
     val coins: Int = 25,
     val foodCount: Int = 10,
     val cleanerCount: Int = 10,
@@ -29,15 +30,16 @@ data class GameState(
     val dailyTask: DailyTaskModel? = null,
     val welcomeGiftDay: Int = 0,
     val welcomeGiftClaimed: Boolean = false,
+    val welcomeGiftLastClaimTime: Long = 0L,
     val lastLoginTime: Long = 0L,
-    val tutorialStep: String = TutorialStep.WELCOME.name,
-    val tutorialCompleted: Boolean = false,
+    val tutorialStep: String = TutorialStep.FINISH.name,
+    val tutorialCompleted: Boolean = true,
     val goldFishUnlocked: Boolean = false,
     val lastGoldFishTime: Long = 0L,
     val ownedUpgrades: UpgradeState =
         UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState(),
-    val musicEnable: Boolean = true,
-    val soundEffectEnable: Boolean = true
+    val musicEnable: Boolean = false,
+    val soundEffectEnable: Boolean = false
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -47,6 +49,7 @@ suspend fun loadGameState(context: Context): GameState {
         aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
         ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: emptySet(),
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: emptySet(),
+        activeFishes = prefs[PrefKeys.ACTIVE_FISHES]?.map { it.toInt() }?.toSet() ?: emptySet(),
         coins = prefs[PrefKeys.COINS] ?: 25,
         foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
         cleanerCount = prefs[PrefKeys.CLEANER_COUNT] ?: 10,
@@ -54,6 +57,7 @@ suspend fun loadGameState(context: Context): GameState {
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,
         welcomeGiftClaimed = prefs[PrefKeys.WELCOME_GIFT_CLAIMED] ?: false,
+        welcomeGiftLastClaimTime = prefs[PrefKeys.WELCOME_GIFT_LAST_CLAIM_TIME] ?: 0L,
         lastLoginTime = prefs[PrefKeys.LAST_LOGIN_TIME] ?: 0L,
         tutorialStep = prefs[PrefKeys.TUTORIAL_STEP] ?: TutorialStep.WELCOME.name,
         tutorialCompleted = prefs[PrefKeys.TUTORIAL_COMPLETED] ?: false,
@@ -73,6 +77,7 @@ suspend fun saveGameState(
         prefs[PrefKeys.AQUARIUM] = state.aquariumType
         prefs[PrefKeys.FISH] = state.ownedFishIds.map { it.toString() }.toSet()
         prefs[PrefKeys.ITEMS] = state.ownedItemIds.map { it.toString() }.toSet()
+        prefs[PrefKeys.ACTIVE_FISHES] = state.activeFishes.map { it.toString() }.toSet()
         prefs[PrefKeys.COINS] = state.coins
         prefs[PrefKeys.FOOD_COUNT] = state.foodCount
         prefs[PrefKeys.CLEANER_COUNT] = state.cleanerCount
@@ -80,6 +85,7 @@ suspend fun saveGameState(
         prefs[PrefKeys.DAILY_TASK] = state.dailyTask?.toJson() ?: emptyString()
         prefs[PrefKeys.WELCOME_GIFT_DAY] = state.welcomeGiftDay
         prefs[PrefKeys.WELCOME_GIFT_CLAIMED] = state.welcomeGiftClaimed
+        prefs[PrefKeys.WELCOME_GIFT_LAST_CLAIM_TIME] = state.welcomeGiftLastClaimTime
         prefs[PrefKeys.LAST_LOGIN_TIME] = state.lastLoginTime
         prefs[PrefKeys.TUTORIAL_STEP] = state.tutorialStep
         prefs[PrefKeys.TUTORIAL_COMPLETED] = state.tutorialCompleted

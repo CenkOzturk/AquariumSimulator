@@ -10,6 +10,7 @@ object PrefKeys {
     val AQUARIUM = stringPreferencesKey("aquarium")
     val FISH = stringSetPreferencesKey("fish")
     val ITEMS = stringSetPreferencesKey("items")
+    val ACTIVE_FISHES = stringSetPreferencesKey("activeFishes")
     val COINS = intPreferencesKey("coins")
     val FOOD_COUNT = intPreferencesKey("foodCount")
     val DIRT_PARTICLE_COUNT = intPreferencesKey("dirtParticleCount")
@@ -17,6 +18,8 @@ object PrefKeys {
     val DAILY_TASK = stringPreferencesKey("dailyTask")
     val WELCOME_GIFT_DAY = intPreferencesKey("welcomeGiftDay")
     val WELCOME_GIFT_CLAIMED = booleanPreferencesKey("welcomeGiftClaimed")
+
+    val WELCOME_GIFT_LAST_CLAIM_TIME = longPreferencesKey("welcomeGiftLastClaimTime")
     val LAST_LOGIN_TIME = longPreferencesKey("lastLoginTime")
     val TUTORIAL_STEP = stringPreferencesKey("tutorialStep")
     val TUTORIAL_COMPLETED = booleanPreferencesKey("tutorialCompleted")

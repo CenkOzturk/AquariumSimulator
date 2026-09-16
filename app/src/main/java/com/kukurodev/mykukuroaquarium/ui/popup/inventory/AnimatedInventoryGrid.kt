@@ -1,20 +1,19 @@
-package com.kukurodev.mykukuroaquarium.ui.popup.shop
+package com.kukurodev.mykukuroaquarium.ui.popup.inventory
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.kukurodev.mykukuroaquarium.model.PlayerTier
-import com.kukurodev.mykukuroaquarium.model.shop.ShopItem
+import com.kukurodev.mykukuroaquarium.model.inventory.InventoryItem
 import kotlinx.coroutines.delay
+import kotlin.collections.set
 
 @Composable
-fun AnimatedShopGrid(
+fun AnimatedInventoryGrid(
     modifier: Modifier = Modifier,
-    items: List<ShopItem>,
-    onClick: (ShopItem) -> Unit,
-    playerTier: PlayerTier
+    items: List<InventoryItem>,
+    onClick: (InventoryItem) -> Unit
 ) {
     val visibleMap = remember { mutableStateMapOf<Int, Boolean>() }
 
@@ -27,10 +26,9 @@ fun AnimatedShopGrid(
         }
     }
 
-    ShopGrid(
+    InventoryGrid(
         modifier = modifier,
         items = items,
-        onClick = onClick,
-        playerTier = playerTier
+        onClick = onClick
     )
 }

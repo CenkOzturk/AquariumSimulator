@@ -3,6 +3,7 @@ package com.kukurodev.mykukuroaquarium.ui.popup
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.kukurodev.mykukuroaquarium.R
+import com.kukurodev.mykukuroaquarium.data.Constants.WELCOME_GIFT_DAYS
 import com.kukurodev.mykukuroaquarium.managers.AquariumManager
 import com.kukurodev.mykukuroaquarium.managers.CleanerManager
 import com.kukurodev.mykukuroaquarium.managers.DailyTaskManager
@@ -18,6 +19,7 @@ import com.kukurodev.mykukuroaquarium.model.GameUiState
 import com.kukurodev.mykukuroaquarium.model.calculateTier
 import com.kukurodev.mykukuroaquarium.model.item.CleanerDatabase.isCleaner
 import com.kukurodev.mykukuroaquarium.model.item.FishFoodItemDatabase.isFood
+import com.kukurodev.mykukuroaquarium.ui.popup.inventory.InventoryPopUp
 import com.kukurodev.mykukuroaquarium.ui.popup.shop.ConfirmPopup
 import com.kukurodev.mykukuroaquarium.ui.popup.shop.ShopPopup
 import com.kukurodev.mykukuroaquarium.ui.popup.task.DailyTaskPopup
@@ -75,7 +77,7 @@ fun PopupContainer(uiState: GameUiState) {
         GameManager.state.dailyTask?.let { dailyTask ->
             if (dailyTask.claimed) {
                 Utils.showToast(
-                    stringResource(R.string.already_received_reward)
+                    stringResource(R.string.daily_task_already_received_reward)
                 )
                 uiState.closeDailyTasks()
 
@@ -96,7 +98,7 @@ fun PopupContainer(uiState: GameUiState) {
         }
     }
 
-    if (uiState.showWelcomeGift) {
+    if (uiState.showWelcomeGift && GameManager.state.welcomeGiftDay != WELCOME_GIFT_DAYS) {
         WelcomeGiftPopup(
             currentDay = WelcomeGiftManager.currentDay(),
             gift = WelcomeGiftManager.currentGift(),
@@ -119,14 +121,19 @@ fun PopupContainer(uiState: GameUiState) {
             },
             upgrades = UpgradeManager.getUpgrades(uiState.selectedUpgradeTab),
             onUpgradeClick = { upgrade ->
-                buyUpgrade(
-                    upgrade,
-                )
-                Utils.showToast("Level arttı.")
+                buyUpgrade(upgrade)
             },
 
             onClose = {
                 uiState.closeUpgrade()
+            }
+        )
+    }
+
+    if (uiState.showInventory) {
+        InventoryPopUp(
+            onClose = {
+                uiState.closeInventory()
             }
         )
     }

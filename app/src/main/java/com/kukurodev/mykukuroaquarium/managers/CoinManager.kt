@@ -5,12 +5,13 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.model.CoinModel
+import com.kukurodev.mykukuroaquarium.model.item.CleanerDatabase.getCleaner
+import com.kukurodev.mykukuroaquarium.model.item.CleanerDatabase.isCleaner
 import com.kukurodev.mykukuroaquarium.model.item.FishFoodItemDatabase.getFoodCountByIds
 import com.kukurodev.mykukuroaquarium.model.item.FishFoodItemDatabase.isFood
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
 import com.kukurodev.mykukuroaquarium.model.task.DailyTaskType
 import com.kukurodev.mykukuroaquarium.utils.Utils
-
 
 object CoinManager {
     private val _coins = mutableStateListOf<CoinModel>()
@@ -22,12 +23,10 @@ object CoinManager {
         shopTab: ShopTab,
         price: Int,
         shopItemId: Int,
-        onFail: () -> Unit = {
-            Utils.showToast(R.string.shop_no_coin_error)
-        },
+        onFail: () -> Unit = {},
         onSuccess: () -> Unit = {}
     ) {
-        if (spendCoins(price)) {
+        if (hasEnoughCoin(price)) {
             onSuccess()
         } else {
             onFail()
@@ -35,24 +34,35 @@ object CoinManager {
         }
 
         when (shopTab) {
-            ShopTab.ITEMS -> controlFoodAndUpdate(shopItemId)
+            ShopTab.ITEMS -> controlAndUpdate(shopItemId)
             ShopTab.FISH -> FishManager.updateFish(shopItemId)
             ShopTab.AQUARIUM -> {}
         }
     }
 
-    fun controlFoodAndUpdate(itemId: Int) {
+    fun controlAndUpdate(itemId: Int) {
         if (isFood(itemId)) {
             FishFoodManager.updateFood(getFoodCountByIds(itemId))
+        } else if (isCleaner(itemId)) {
+            CleanerManager.updateCleaner((getCleaner(itemId) ?: return).cleanerCount)
         } else {
             ItemManager.updateItems(itemId)
         }
     }
 
-    fun spendCoins(amount: Int): Boolean {
-        if (GameManager.state.coins < amount) return false
+    fun hasEnoughCoin(amount: Int): Boolean {
+        return if (GameManager.state.coins < amount) {
+            Utils.showToast(R.string.shop_no_coin_error)
+            false
+        }
+        else {
+            spendCoins(amount)
+            true
+        }
+    }
+
+    private fun spendCoins(amount: Int) {
         GameManager.update { it.copy(coins = it.coins - amount) }
-        return true
     }
 
     fun addCoins(amount: Int) {

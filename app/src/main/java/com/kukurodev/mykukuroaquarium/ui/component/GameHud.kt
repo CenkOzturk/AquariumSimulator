@@ -13,9 +13,9 @@ import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.TutorialManager
 import com.kukurodev.mykukuroaquarium.model.GameUiState
+import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.model.tutorial.TutorialBoundsType
-import com.kukurodev.mykukuroaquarium.ui.component.buttons.DailyTaskButton
-import com.kukurodev.mykukuroaquarium.ui.component.buttons.WelcomeGiftButton
+import com.kukurodev.mykukuroaquarium.ui.component.buttons.MenuButton
 
 @Composable
 fun GameHud(
@@ -51,7 +51,7 @@ fun GameHud(
             )
         }
 
-        DailyTaskButton(
+        MenuButton(
             modifier = Modifier
                 .padding(top = 24.dp)
                 .onGloballyPositioned {
@@ -60,18 +60,19 @@ fun GameHud(
                         it
                     )
                 },
-            hasAnyTask = true,
-            hasClaimableReward = true,
+            gradient = GameColors.Leaf,
+            imgResId = R.drawable.ic_daily_tasks,
+            imgSize = 52,
             onClick = {
                 uiState.openDailyTasks()
                 TutorialManager.next()
             }
         )
 
-        WelcomeGiftButton(
-            modifier = Modifier.padding(top = 8.dp),
-            hasAnyTask = true,
-            hasClaimableReward = true,
+        MenuButton(
+            gradient = GameColors.Purple,
+            imgResId = R.drawable.ic_welcome_gift,
+            imgSize = 52,
             onClick = {
                 uiState.openWelcomeGift()
             }

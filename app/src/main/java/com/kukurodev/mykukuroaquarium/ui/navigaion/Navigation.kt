@@ -45,7 +45,9 @@ fun Navigation() {
 
             MainMenuScreen(
                 onPlay = {
-                    navController.navigate(Screen.Game.route)
+                    navController.navigate(Screen.Game.route) {
+                        launchSingleTop = true
+                    }
                 },
 
                 onSettings = {

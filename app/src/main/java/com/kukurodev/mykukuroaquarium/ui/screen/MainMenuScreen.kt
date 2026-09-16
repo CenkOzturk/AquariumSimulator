@@ -82,7 +82,7 @@ fun MainMenuScreen(
 
             GameMenuButton(
                 text = stringResource(R.string.menu_settings),
-                gradient = GameColors.WelcomeGift,
+                gradient = GameColors.Purple,
                 onClick = onSettings
             )
 
@@ -92,7 +92,7 @@ fun MainMenuScreen(
 
             GameMenuButton(
                 text = stringResource(R.string.menu_credits),
-                gradient = GameColors.Shop,
+                gradient = GameColors.Sun,
                 onClick = onCredits
             )
 

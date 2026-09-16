@@ -46,7 +46,6 @@ fun GamePopup(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = .45f))
             .clickable(
                 indication = null,
                 interactionSource = remember { MutableInteractionSource() }

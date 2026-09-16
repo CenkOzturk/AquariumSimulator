@@ -6,36 +6,24 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="ok">OK</string>
-    <string name="coin_floating_text" translatable="false">"+%s 💰"</string>
+    <string name="close">Close</string>
+    <string name="shop">Shop</string>
+    <string name="cleaner">Cleaner</string>
+    <string name="fish_food">Fish Food</string>
+    <string name="inventory">Inventory</string>
+    <string name="privacy_policy_url">https://cenkozturk.github.io/AquariumSimulator/privacy-policy.html</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
     <string name="btn_shop">"🛒"</string>
     <string name="btn_continue">Continue</string>
 
-    <string name="menu_play">PLAY</string>
-    <string name="menu_settings">SETTINGS</string>
-    <string name="menu_credits">CREDITS</string>
-    <string name="menu_back">BACK</string>
-
-    <string name="shop">Shop</string>
-    <string name="cleaner">Cleaner</string>
-    <string name="fish_food">Fish Food</string>
-
-    <string name="shop_tab_fish">"🐟 Fish"</string>
-    <string name="shop_tab_aquarium">"🧪 Aquarium"</string>
-    <string name="shop_tab_items">"🧱 Items"</string>
-
     <string name="coin_value">"💰 %s"</string>
     <string name="fish_food_value">"🍤 %s"</string>
     <string name="cleaner_value">"🧽 %s"</string>
+    <string name="coin_floating_text" translatable="false">"+%s 💰"</string>
 
-    <string name="collect">Collect %s 💰</string>
-    <string name="today_missions">Today\'s Missions</string>
-    <string name="not_complete_tasks">I haven\'t completed the missions yet :(</string>
-    <string name="daily_task_reward_claimed">You completed all missions :)</string>
-    <string name="already_received_reward">You already claimed today\'s reward. See you tomorrow!</string>
-
+    <!-- Errors -->
     <string name="no_food_error">"Feeding failed! Not enough food :( Required food for this fish: %s"</string>
     <string name="no_cleaner_error">Not enough cleaning supplies :(</string>
     <string name="shop_no_coin_error">"Purchase failed! Not enough coins :("</string>
@@ -88,7 +76,6 @@
     <string name="shop_extra_info_aquarium">🐟%s fish</string>
     <string name="shop_extra_info_item">%sx items</string>
 
-
     <!-- Tutorial -->
     <string name="tutorial_title">AquaVille Guide</string>
 
@@ -118,8 +105,14 @@
     <string name="tutorial_finish_title">You\'re Ready!</string>
     <string name="tutorial_finish_message">Enjoy AquaVille!</string>
 
+    <!-- Menu -->
+    <string name="menu_play">PLAY</string>
+    <string name="menu_settings">SETTINGS</string>
+    <string name="menu_credits">CREDITS</string>
+    <string name="menu_back">BACK</string>
+
     <!-- Credits -->
-    <string name="credits_title">Credits</string>
+    <string name="credits_title">CREDITS</string>
 
     <string name="credits_game_design">Game Design</string>
     <string name="credits_programming">Programming</string>
@@ -131,7 +124,7 @@
     <string name="credits_name_kukuro_dev_chatgpt">Kukuro Dev &amp; ChatGPT</string>
     <string name="credits_music_unknown">Music Source</string>
 
-    <string name="credits_coming_soon">Yakında</string>
+    <string name="credits_coming_soon">Soon</string>
 
     <!-- Daily -->
     <string name="daily_today_missions_subtitle">Complete every mission to claim today\'s reward.</string>
@@ -144,6 +137,11 @@
     <string name="daily_task_collect_coin">Collect Coins</string>
     <string name="daily_task_pop_bubble">Pop Bubbles</string>
     <string name="daily_task_gold_fish">Catch Gold Fish</string>
+    <string name="daily_task_collect">Collect %s 💰</string>
+    <string name="daily_task_today_missions">Today\'s Missions</string>
+    <string name="daily_task_not_complete_tasks">I haven\'t completed the missions yet :(</string>
+    <string name="daily_task_reward_claimed">You completed all missions :)</string>
+    <string name="daily_task_already_received_reward">You already claimed today\'s reward. See you tomorrow!</string>
 
     <!-- Welcome Gift -->
     <string name="welcome_gift_title">Welcome Gift</string>
@@ -178,6 +176,11 @@
     <string name="reset_progress_coins">Your coins and food will be reset.</string>
     <string name="reset_progress_warning">This action cannot be undone.</string>
 
+    <!-- Shop Tabs -->
+    <string name="shop_tab_fish">"🐟 Fish"</string>
+    <string name="shop_tab_aquarium">"🧪 Aquarium"</string>
+    <string name="shop_tab_items">"🧱 Items"</string>
+
     <!-- Tier Info -->
     <string name="tier_info_title">Tier Levels</string>
     <string name="tier_info_subtitle">Complete the requirements to unlock higher tier items.</string>
@@ -193,7 +196,6 @@
 
     <string name="tier_gold">GOLD</string>
     <string name="tier_gold_description">Own the Small Rock item and a Large aquarium.</string>
-
 
     <!-- Upgrades -->
     <string name="upgrades_title">Upgrades</string>
@@ -219,7 +221,4 @@
 
     <string name="upgrade_bubble_time">Bobble Time</string>
     <string name="upgrade_bubble_time_description">Increases the repeat of the bubbles.</string>
-
-    <string name="close">Close</string>
-
 </resources>

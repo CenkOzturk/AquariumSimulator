@@ -17,7 +17,7 @@ fun TierInfoPopup(
     onClose: () -> Unit
 ) {
 
-    val colors = GameColors.Shop
+    val colors = GameColors.Sun
 
     GeneralPopup(
         onClose = onClose

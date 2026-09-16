@@ -1,4 +1,4 @@
-package com.kukurodev.mykukuroaquarium.ui.popup.shop
+package com.kukurodev.mykukuroaquarium.ui.popup.inventory
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
@@ -21,26 +19,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kukurodev.mykukuroaquarium.managers.TutorialManager
-import com.kukurodev.mykukuroaquarium.model.PlayerTier
-import com.kukurodev.mykukuroaquarium.model.canAccess
-import com.kukurodev.mykukuroaquarium.model.shop.ShopItem
-import com.kukurodev.mykukuroaquarium.model.tutorial.TutorialBoundsType
+import com.kukurodev.mykukuroaquarium.managers.GameManager
+import com.kukurodev.mykukuroaquarium.model.inventory.InventoryItem
+import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
+import com.kukurodev.mykukuroaquarium.ui.popup.shop.ShopItemInfo
 
 @Composable
-fun ShopItemCard(
-    item: ShopItem,
-    playerTier: PlayerTier,
+fun InventoryItemCard(
+    item: InventoryItem,
     onClick: () -> Unit
 ) {
-
-    val isUnlocked = playerTier.canAccess(item.requiredTier)
-
+    val isUnlocked = GameManager.state.activeFishes.contains(item.id)
     val contentAlpha = if (isUnlocked) 1f else 0.45f
 
     Box(
@@ -55,39 +48,13 @@ fun ShopItemCard(
                 }
             )
             .clickable(
-                enabled = isUnlocked,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(bounded = true)
             ) {
                 onClick()
             }
             .padding(10.dp)
-            .onGloballyPositioned {
-                if (item.id == 100) {
-                    TutorialManager.updateBounds(
-                        TutorialBoundsType.FIRST_FISH,
-                        it
-                    )
-                }
-            }
     ) {
-
-        // TIER BADGE
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .size(12.dp)
-                .background(
-                    color = when (item.requiredTier) {
-                        PlayerTier.FREE -> Color(0xFF66BB6A)
-                        PlayerTier.BRONZE -> Color(0xFFCD7F32)
-                        PlayerTier.SILVER -> Color(0xFFC0C0C0)
-                        PlayerTier.GOLD -> Color(0xFFFFD700)
-                    },
-                    shape = CircleShape
-                )
-        )
-
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -114,22 +81,10 @@ fun ShopItemCard(
             Spacer(modifier = Modifier.height(6.dp))
 
             // EXTRA INFO
-            if (item.extraInfo.isNotEmpty()) {
-                ShopItemInfo(
-                    shopTab = item.type,
-                    extraInfo = item.extraInfo,
-                    alpha = contentAlpha
-                )
-
-                Spacer(modifier = Modifier.height(6.dp))
-            }
-
-            // PRICE
-            Text(
-                text = "${item.price} 💰",
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFFFA000).copy(alpha = contentAlpha)
+            ShopItemInfo(
+                shopTab = ShopTab.FISH,
+                extraInfo = item.extraInfo,
+                alpha = contentAlpha
             )
         }
 
@@ -143,10 +98,10 @@ fun ShopItemCard(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
+                /*Text(
                     text = "🔒",
                     fontSize = 20.sp
-                )
+                )*/
             }
         }
     }

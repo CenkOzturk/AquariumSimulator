@@ -49,7 +49,11 @@ object BubbleManager {
     fun popBubble(bubbleId: Long) {
         bubbles.removeAll { it.id == bubbleId }
         DailyTaskManager.addProgress(DailyTaskType.POP_BUBBLE)
-        CoinManager.addCoins(BUBBLE_VALUE + UpgradeManager.getUpgradeValue(UpgradeType.BUBBLE_VALUE))
+        CoinManager.addCoins(calculatedBubbleValue())
         AudioManager.playEffect(SoundEffect.BUBBLE_POP)
+    }
+
+    fun calculatedBubbleValue(): Int {
+        return BUBBLE_VALUE + UpgradeManager.getUpgradeValue(UpgradeType.BUBBLE_VALUE)
     }
 }
