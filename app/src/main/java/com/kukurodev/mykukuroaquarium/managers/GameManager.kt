@@ -53,6 +53,8 @@ object GameManager {
                 ownedFishIds = emptySet(),
                 ownedItemIds = emptySet(),
                 ownedUpgrades = UpgradeState(emptyList()),
+                activeFishes = emptySet(),
+                lastLoginTime = 0L,
                 coins = GameDefaults.STARTING_COINS,
                 foodCount = GameDefaults.STARTING_FOOD,
                 cleanerCount = GameDefaults.CLEANER_COUNT,

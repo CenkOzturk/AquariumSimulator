@@ -17,8 +17,8 @@ android {
         applicationId = "com.kukurodev.mykukuroaquarium"
         minSdk = 29
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = 3
+        versionName = "1.0.2"
         //val formattedDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
         base.archivesName = "AquaVille-v$versionName"
 
