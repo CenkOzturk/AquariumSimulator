@@ -154,6 +154,10 @@ fun AquariumView(aquarium: AquariumModel) {
                 }
             }
 
+            AquariumDirtOverlay(
+                dirtLevel = 0.5f
+            )
+
             DirtView()
         }
 
