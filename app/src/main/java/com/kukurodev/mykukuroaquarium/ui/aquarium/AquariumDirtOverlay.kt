@@ -13,29 +13,29 @@ import kotlin.random.Random
 
 @Composable
 fun AquariumDirtOverlay(
-    dirtLevel: Float
+    dirtLevel: Int
 ) {
     val dirtCount = when {
-        dirtLevel <= 0f -> 0
-        dirtLevel < 0.25f -> 5
-        dirtLevel < 0.5f -> 10
-        dirtLevel < 0.75f -> 16
-        else -> 24
+        dirtLevel <= 0 -> 0
+        dirtLevel <= 25 -> 20
+        dirtLevel <= 50 -> 40
+        dirtLevel <= 75 -> 80
+        else -> 150
     }
 
     val dirtAlpha = when {
-        dirtLevel < 0.25f -> 0.08f
-        dirtLevel < 0.5f -> 0.12f
-        dirtLevel < 0.75f -> 0.17f
-        else -> 0.22f
+        dirtLevel <= 25 -> 0.16f
+        dirtLevel <= 50 -> 0.24f
+        dirtLevel <= 75 -> 0.32f
+        else -> 0.42f
     }
 
     val dirtSpots = remember {
-        List(24) {
+        List(45) {
             DirtSpot(
                 x = Random.nextFloat(),
                 y = Random.nextFloat(),
-                size = Random.nextInt(5, 16)
+                size = Random.nextInt(5, 40)
             )
         }
     }
@@ -47,7 +47,9 @@ fun AquariumDirtOverlay(
             .take(dirtCount)
             .forEach { dirt ->
                 drawCircle(
-                    color = Color(0xFF6B5A3A).copy(alpha = dirtAlpha),
+                    color = Color(0xFF6B5A3A).copy(
+                        alpha = dirtAlpha
+                    ),
                     radius = dirt.size.dp.toPx() / 2f,
                     center = Offset(
                         x = size.width * dirt.x,
