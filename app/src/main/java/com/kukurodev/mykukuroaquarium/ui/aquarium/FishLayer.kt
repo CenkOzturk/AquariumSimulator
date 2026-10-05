@@ -11,6 +11,7 @@ import com.kukurodev.mykukuroaquarium.managers.FishManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.TutorialManager
 import com.kukurodev.mykukuroaquarium.managers.UpgradeManager
+import com.kukurodev.mykukuroaquarium.model.extras.DirtLevel
 import com.kukurodev.mykukuroaquarium.model.fish.isFed
 import com.kukurodev.mykukuroaquarium.model.upgrade.UpgradeType
 import com.kukurodev.mykukuroaquarium.utils.Utils
@@ -23,6 +24,11 @@ fun FishLayer() {
         val text: String = stringResource(R.string.no_food_error, fish.income)
 
         FishView(fish, fish.isFed(), progress, {
+            if (DirtLevel.fromValue(GameManager.state.dirtParticleCount).blocksInteraction) {
+                Utils.showToast(R.string.aquarium_too_dirty)
+                return@FishView
+            }
+
             if (!fish.isFed()) {
                 if (GameManager.state.foodCount < fish.income) {
                     Utils.showToast(text)

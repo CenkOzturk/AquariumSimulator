@@ -29,6 +29,7 @@ import com.kukurodev.mykukuroaquarium.managers.FloatingTextManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.GoldFishManager
 import com.kukurodev.mykukuroaquarium.model.aquarium.AquariumModel
+import com.kukurodev.mykukuroaquarium.model.extras.DirtLevel
 import com.kukurodev.mykukuroaquarium.ui.component.AnimatedCoin
 import com.kukurodev.mykukuroaquarium.ui.theme.MyAquariumSimulatorTheme
 import com.kukurodev.mykukuroaquarium.utils.Utils.hasItem
@@ -155,7 +156,7 @@ fun AquariumView(aquarium: AquariumModel) {
             }
 
             AquariumDirtOverlay(
-                dirtLevel = 25
+                dirtLevel = DirtLevel.fromValue(GameManager.state.dirtParticleCount)
             )
 
             DirtView()

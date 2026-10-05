@@ -14,18 +14,24 @@
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
-    <string name="btn_shop">"🛒"</string>
+    <string name="btn_shop">🛒</string>
     <string name="btn_continue">Devam Et</string>
 
-    <string name="coin_value">"💰 %s"</string>
-    <string name="fish_food_value">"🍤 %s"</string>
-    <string name="cleaner_value">"🧽 %s"</string>
+    <string name="coin_value">💰 %s</string>
+    <string name="fish_food_value">🍤 %s</string>
+    <string name="cleaner_value">🧽 %s</string>
+
+    <string name="shop_extra_info_fish">+%s 💰</string>
+    <string name="shop_extra_info_aquarium">🐟%s balık</string>
+    <string name="shop_extra_info_item">%sx items</string>
 
     <!-- Errors -->
-    <string name="no_food_error">"Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem: %s"</string>
+    <string name="no_food_error">Besleme başarısız! Yemler yetmedi :( Bu balık için gerekli yem: %s</string>
     <string name="no_cleaner_error">Temizlik maddeleri yetmedi :(</string>
-    <string name="shop_no_coin_error">"Satın alma başarısız! Paran yetmedi :("</string>
-    <string name="shop_too_much_fish">"Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz"</string>
+    <string name="shop_no_coin_error">Satın alma başarısız! Paran yetmedi :(</string>
+    <string name="shop_too_much_fish">Akvaryum sınırına ulaşıldı. Lütfen akvaryumu büyütünüz</string>
+    <string name="aquarium_too_dirty">Akvaryum çok girli</string>
+
 
     <!-- Fish Names -->
     <string name="fish_100_name">Meloş</string>
@@ -172,9 +178,9 @@
     <string name="reset_progress_warning">Bu işlem geri alınamaz.</string>
 
     <!-- Shop Tabs -->
-    <string name="shop_tab_fish">"🐟 Balıklar"</string>
-    <string name="shop_tab_aquarium">"🧪 Akvaryum"</string>
-    <string name="shop_tab_items">"🧱 Items"</string>
+    <string name="shop_tab_fish">🐟 Balıklar</string>
+    <string name="shop_tab_aquarium">🧪 Akvaryum</string>
+    <string name="shop_tab_items">🧱 Items</string>
 
     <!-- Tier Info -->
     <string name="tier_info_title">Tier Seviyeleri</string>
@@ -196,8 +202,8 @@
     <string name="upgrades_title">Geliştirmeler</string>
     <string name="upgrades_subtitle">Akvaryumunu geliştir ve daha fazla ödül kazan!</string>
 
-    <string name="upgrade_increase_income">"+ %s💰"</string>
-    <string name="upgrade_time">"- %s süre"</string>
+    <string name="upgrade_increase_income">+ %s💰</string>
+    <string name="upgrade_time">- %s süre</string>
 
     <string name="upgrade_tab_fish">Balık</string>
     <string name="upgrade_tab_bubble">Baloncuk</string>

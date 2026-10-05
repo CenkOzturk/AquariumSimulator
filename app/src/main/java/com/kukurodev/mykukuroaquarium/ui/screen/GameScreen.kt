@@ -60,7 +60,7 @@ fun GameScreen() {
             GoldFishManager.update(screenWidth, screenHeight)
             GoldFishManager.move(screenWidth)
             BubbleManager.update(aquarium)
-            DirtManager.update(aquarium)
+            DirtManager.createDirt(aquarium)
             delay(16)
         }
     }

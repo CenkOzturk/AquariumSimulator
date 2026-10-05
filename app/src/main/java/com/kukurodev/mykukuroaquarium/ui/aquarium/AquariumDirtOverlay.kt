@@ -1,5 +1,6 @@
 package com.kukurodev.mykukuroaquarium.ui.aquarium
 
+import com.kukurodev.mykukuroaquarium.model.extras.DirtLevel
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -13,25 +14,10 @@ import kotlin.random.Random
 
 @Composable
 fun AquariumDirtOverlay(
-    dirtLevel: Int
+    dirtLevel: DirtLevel
 ) {
-    val dirtCount = when {
-        dirtLevel <= 0 -> 0
-        dirtLevel <= 25 -> 20
-        dirtLevel <= 50 -> 40
-        dirtLevel <= 75 -> 80
-        else -> 150
-    }
-
-    val dirtAlpha = when {
-        dirtLevel <= 25 -> 0.16f
-        dirtLevel <= 50 -> 0.24f
-        dirtLevel <= 75 -> 0.32f
-        else -> 0.42f
-    }
-
     val dirtSpots = remember {
-        List(45) {
+        List(DirtLevel.BLOCKED.overlaySpotCount) {
             DirtSpot(
                 x = Random.nextFloat(),
                 y = Random.nextFloat(),
@@ -44,11 +30,11 @@ fun AquariumDirtOverlay(
         modifier = Modifier.fillMaxSize()
     ) {
         dirtSpots
-            .take(dirtCount)
+            .take(dirtLevel.overlaySpotCount)
             .forEach { dirt ->
                 drawCircle(
                     color = Color(0xFF6B5A3A).copy(
-                        alpha = dirtAlpha
+                        alpha = dirtLevel.overlayAlpha
                     ),
                     radius = dirt.size.dp.toPx() / 2f,
                     center = Offset(

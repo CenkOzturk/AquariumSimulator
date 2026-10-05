@@ -11,23 +11,28 @@
     <string name="cleaner">Cleaner</string>
     <string name="fish_food">Fish Food</string>
     <string name="inventory">Inventory</string>
-    <string name="privacy_policy_url">https://cenkozturk.github.io/AquariumSimulator/privacy-policy.html</string>
+    <string name="privacy_policy_url" translatable="false">https://cenkozturk.github.io/AquariumSimulator/privacy-policy.html</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
     <string name="btn_shop">"🛒"</string>
     <string name="btn_continue">Continue</string>
 
-    <string name="coin_value">"💰 %s"</string>
-    <string name="fish_food_value">"🍤 %s"</string>
-    <string name="cleaner_value">"🧽 %s"</string>
-    <string name="coin_floating_text" translatable="false">"+%s 💰"</string>
+    <string name="coin_value">💰 %s</string>
+    <string name="fish_food_value">🍤 %s</string>
+    <string name="cleaner_value">🧽 %s</string>
+    <string name="coin_floating_text" translatable="false">+%s 💰</string>
+
+    <string name="shop_extra_info_fish">+%s 💰</string>
+    <string name="shop_extra_info_aquarium">🐟%s fish</string>
+    <string name="shop_extra_info_item">%sx items</string>
 
     <!-- Errors -->
-    <string name="no_food_error">"Feeding failed! Not enough food :( Required food for this fish: %s"</string>
+    <string name="no_food_error">Feeding failed! Not enough food :( Required food for this fish: %s</string>
     <string name="no_cleaner_error">Not enough cleaning supplies :(</string>
-    <string name="shop_no_coin_error">"Purchase failed! Not enough coins :("</string>
-    <string name="shop_too_much_fish">"Aquarium capacity reached. Please upgrade your aquarium."</string>
+    <string name="shop_no_coin_error">Purchase failed! Not enough coins :(</string>
+    <string name="shop_too_much_fish">Aquarium capacity reached. Please upgrade your aquarium.</string>
+    <string name="aquarium_too_dirty">Aquarium too dirty</string>
 
     <!-- Fish Names -->
     <string name="fish_100_name">Melos</string>
@@ -71,10 +76,6 @@
     <string name="cleaner_cloth_name">Cloth</string>
     <string name="cleaner_sponge_name">Sponge</string>
     <string name="cleaner_robot_name">Robot</string>
-
-    <string name="shop_extra_info_fish">+%s 💰</string>
-    <string name="shop_extra_info_aquarium">🐟%s fish</string>
-    <string name="shop_extra_info_item">%sx items</string>
 
     <!-- Tutorial -->
     <string name="tutorial_title">AquaVille Guide</string>
@@ -177,9 +178,9 @@
     <string name="reset_progress_warning">This action cannot be undone.</string>
 
     <!-- Shop Tabs -->
-    <string name="shop_tab_fish">"🐟 Fish"</string>
-    <string name="shop_tab_aquarium">"🧪 Aquarium"</string>
-    <string name="shop_tab_items">"🧱 Items"</string>
+    <string name="shop_tab_fish">🐟 Fish</string>
+    <string name="shop_tab_aquarium">🧪 Aquarium</string>
+    <string name="shop_tab_items">🧱 Items</string>
 
     <!-- Tier Info -->
     <string name="tier_info_title">Tier Levels</string>
@@ -201,8 +202,8 @@
     <string name="upgrades_title">Upgrades</string>
     <string name="upgrades_subtitle">Improve your aquarium and earn more rewards!</string>
 
-    <string name="upgrade_increase_income">"+ %s💰"</string>
-    <string name="upgrade_time">"- %s time"</string>
+    <string name="upgrade_increase_income">+ %s💰</string>
+    <string name="upgrade_time">- %s time</string>
 
     <string name="upgrade_tab_fish">Fish</string>
     <string name="upgrade_tab_bubble">Bubbles</string>
