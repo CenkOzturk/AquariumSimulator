@@ -144,7 +144,7 @@ fun ShopPopup(
                                 }
 
                                 ShopTab.FISH -> {
-                                    if (GameManager.state.ownedFishIds.size >=
+                                    if (GameManager.state.activeFishes.size >=
                                         AquariumManager.currentAquarium.fishCount
                                     ) {
                                         Utils.showToast(

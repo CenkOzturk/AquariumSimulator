@@ -21,9 +21,10 @@ object AquariumManager {
 
     fun upgrade(type: AquariumType) {
         val price = type.toShopItem().price
-        CoinManager.hasEnoughCoin(price)
-        GameManager.update { it.copy(aquariumType = type.name) }
-        refresh()
+        if (CoinManager.hasEnoughCoin(price)) {
+            GameManager.update { it.copy(aquariumType = type.name) }
+            refresh()
+        }
     }
 
     private fun refresh() {

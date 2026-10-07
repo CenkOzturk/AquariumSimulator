@@ -62,7 +62,6 @@ fun PopupContainer(uiState: GameUiState) {
                 uiState.closeConfirm()
             },
             onYes = {
-
                 AquariumManager.upgrade(
                     uiState.selectedTank
                 )

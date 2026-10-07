@@ -46,6 +46,16 @@ object DirtManager {
         }
     }
 
+    fun updateParticles() {
+        val targetCount = GameManager.state.dirtParticleCount
+
+        if (particles.size > targetCount) {
+            repeat(particles.size - targetCount) {
+                particles.removeLastOrNull()
+            }
+        }
+    }
+
     fun needCleaning(): Boolean {
         return particles.isNotEmpty()
     }

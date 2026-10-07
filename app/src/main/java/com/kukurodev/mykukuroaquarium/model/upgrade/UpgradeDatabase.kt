@@ -15,8 +15,8 @@ object UpgradeDatabase {
             currentLevel = 0,
             levelList = listOf(
                 UpgradeLevelModel(level = 0, cost = 0, value = 0),
-                UpgradeLevelModel(level = 1, cost = 100, value = 1),
-                UpgradeLevelModel(level = 2, cost = 250, value = 2),
+                UpgradeLevelModel(level = 1, cost = 100, value = 2),
+                UpgradeLevelModel(level = 2, cost = 250, value = 3),
                 UpgradeLevelModel(level = 3, cost = 500, value = 4),
                 UpgradeLevelModel(level = 4, cost = 1000, value = 9),
                 UpgradeLevelModel(level = 5, cost = 2000, value = 14)
@@ -55,7 +55,7 @@ object UpgradeDatabase {
                 UpgradeLevelModel(level = 0, cost = 0, value = 0),
                 UpgradeLevelModel(level = 1, cost = 250, value = 3),
                 UpgradeLevelModel(level = 2, cost = 750, value = 5),
-                UpgradeLevelModel(level = 3, cost = 2000, value = 5),
+                UpgradeLevelModel(level = 3, cost = 2000, value = 8),
                 UpgradeLevelModel(level = 4, cost = 5000, value = 10),
                 UpgradeLevelModel(level = 5, cost = 12000, value = 20)
             )
@@ -75,8 +75,8 @@ object UpgradeDatabase {
                 UpgradeLevelModel(level = 1, cost = 250, value = 1),
                 UpgradeLevelModel(level = 2, cost = 750, value = 2),
                 UpgradeLevelModel(level = 3, cost = 2000, value = 2),
-                UpgradeLevelModel(level = 4, cost = 5000, value = 2),
-                UpgradeLevelModel(level = 5, cost = 12000, value = 3)
+                UpgradeLevelModel(level = 4, cost = 5000, value = 3),
+                UpgradeLevelModel(level = 5, cost = 12000, value = 5)
             )
         )
     )

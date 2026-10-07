@@ -37,7 +37,7 @@ object FishManager {
 
     fun syncWithGameState() {
         val currentIds = fishes.map { it.id }.toSet()
-        val targetIds = GameManager.state.ownedFishIds
+        val targetIds = GameManager.state.activeFishes
 
         val newFishIds = targetIds - currentIds
         val aquarium = AquariumManager.currentAquarium

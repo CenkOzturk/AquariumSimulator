@@ -17,7 +17,7 @@ enum class DirtLevel(
 
     LIGHT(
         minValue = 5,
-        incomeMultiplier = 0.75f,
+        incomeMultiplier = 0.8f,
         overlaySpotCount = 20,
         overlayAlpha = 0.16f,
         blocksInteraction = false
@@ -25,7 +25,7 @@ enum class DirtLevel(
 
     DIRTY(
         minValue = 8,
-        incomeMultiplier = 0.5f,
+        incomeMultiplier = 0.6f,
         overlaySpotCount = 40,
         overlayAlpha = 0.24f,
         blocksInteraction = false
@@ -33,7 +33,7 @@ enum class DirtLevel(
 
     VERY_DIRTY(
         minValue = 12,
-        incomeMultiplier = 0.25f,
+        incomeMultiplier = 0.4f,
         overlaySpotCount = 80,
         overlayAlpha = 0.32f,
         blocksInteraction = false
@@ -50,6 +50,16 @@ enum class DirtLevel(
     companion object {
         fun fromValue(value: Int): DirtLevel {
             return entries.last { value >= it.minValue }
+        }
+    }
+
+    fun previous(): DirtLevel {
+        return when (this) {
+            CLEAN -> CLEAN
+            LIGHT -> CLEAN
+            DIRTY -> LIGHT
+            VERY_DIRTY -> DIRTY
+            BLOCKED -> VERY_DIRTY
         }
     }
 }
