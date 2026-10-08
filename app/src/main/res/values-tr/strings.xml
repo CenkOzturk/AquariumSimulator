@@ -223,4 +223,8 @@
     <string name="upgrade_bubble_time">Baloncuk Süresi</string>
     <string name="upgrade_bubble_time_description">Baloncukların çıkış süresini kısalt.</string>
 
+    <!-- Force Update -->
+    <string name="force_update_title">Zorunlu Güncelleme</string>
+    <string name="force_update_message">AquaVille\'in yeni bir sürümü mevcut. Oyuna devam edebilmek için lütfen uygulamayı güncelleyin.</string>
+    <string name="force_update_button">Şimdi Güncelle</string>
 </resources>

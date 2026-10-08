@@ -1,6 +1,6 @@
 [versions]
 agp = "8.13.2"
-kotlin = "2.0.21"
+kotlin = "2.1.10"
 
 coreKtx = "1.17.0"
 lifecycleRuntimeKtx = "2.10.0"
@@ -17,6 +17,10 @@ navigation = "2.9.3"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
+
+googleServices = "4.5.0"
+firebaseCrashlytics = "3.0.8"
+firebaseBom = "34.19.0"
 
 
 [libraries]
@@ -50,6 +54,12 @@ androidx-core-splashscreen = {group = "androidx.core",name = "core-splashscreen"
 # Gson
 gson = {group = "com.google.code.gson",name = "gson",version.ref = "gson"}
 
+# Firebase
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config" }
+
 # Tests
 junit = {group = "junit",name = "junit",version.ref = "junit"}
 androidx-junit = {group = "androidx.test.ext",name = "junit",version.ref = "junitVersion"}
@@ -59,4 +69,6 @@ androidx-espresso-core = {group = "androidx.test.espresso",name = "espresso-core
 android-application = {id = "com.android.application",version.ref = "agp"}
 kotlin-android = {id = "org.jetbrains.kotlin.android",version.ref = "kotlin"}
 kotlin-compose = {id = "org.jetbrains.kotlin.plugin.compose",version.ref = "kotlin"}
+google-services = {id = "com.google.gms.google-services", version.ref = "googleServices"}
+firebase-crashlytics = {id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics"}
 

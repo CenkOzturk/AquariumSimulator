@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -17,10 +19,10 @@ android {
         applicationId = "com.kukurodev.mykukuroaquarium"
         minSdk = 29
         targetSdk = 36
-        versionCode = 3
-        versionName = "1.0.2"
+        versionCode = 4
+        versionName = "1.0.1"
         //val formattedDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
-        base.archivesName = "AquaVille-v$versionName"
+        base.archivesName = "AquaVille-v$versionName-v$versionCode"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -75,6 +77,12 @@ dependencies {
 
     // Gson
     implementation(libs.gson)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.config)
 
     // Tests
     testImplementation(libs.junit)
