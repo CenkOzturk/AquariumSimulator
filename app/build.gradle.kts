@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -40,8 +41,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
     buildFeatures {
         compose = true
@@ -83,6 +86,12 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.config)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+
+    // Auth & Security (Google Sign-In & Keystore Backup)
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("androidx.security:security-crypto:1.1.0")
 
     // Tests
     testImplementation(libs.junit)

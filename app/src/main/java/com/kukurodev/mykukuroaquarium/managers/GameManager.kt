@@ -62,10 +62,11 @@ object GameManager {
                 dailyTask = null,
                 welcomeGiftDay = 0,
                 welcomeGiftClaimed = false,
-                tutorialCompleted = true,
+                tutorialCompleted = false,
                 goldFishUnlocked = false,
                 lastGoldFishTime = 0L
             )
         }
+        CloudSyncManager.deleteCloudSave()
     }
 }

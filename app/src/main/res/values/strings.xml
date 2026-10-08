@@ -227,4 +227,6 @@
     <string name="force_update_title">Update Required</string>
     <string name="force_update_message">A new version of AquaVille is available. Please update the app to continue playing.</string>
     <string name="force_update_button">Update Now</string>
+    <string name="google_sign_in">Sign in with Google</string>
+    <string name="google_connected">Google Account Connected</string>
 </resources>

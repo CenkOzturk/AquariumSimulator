@@ -10,6 +10,9 @@ import com.kukurodev.mykukuroaquarium.model.fish.FishModel
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
 import com.kukurodev.mykukuroaquarium.model.task.DailyTaskType
 import com.kukurodev.mykukuroaquarium.utils.Utils.random
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 object FishManager {
     val fishes = mutableStateListOf<FishModel>()
@@ -70,8 +73,11 @@ object FishManager {
     fun updateFish(fishId: Int) {
         GameManager.update { it.copy(
             ownedFishIds = it.ownedFishIds + fishId,
-            activeFishes = it.ownedFishIds + fishId
+            activeFishes = it.activeFishes + fishId
         ) }
+        CoroutineScope(Dispatchers.IO).launch {
+            CloudSyncManager.pushToCloud(GameManager.state)
+        }
     }
 
     fun canUnlock(fish: FishModel, progress: GameProgress): Boolean {

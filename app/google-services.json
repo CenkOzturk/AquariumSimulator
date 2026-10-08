@@ -12,7 +12,20 @@
           "package_name": "com.kukurodev.mykukuroaquarium"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1017641982931-pemlci3kkq84o1d76jtho438ca08e17o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kukurodev.mykukuroaquarium",
+            "certificate_hash": "fe45ad9f8c11551025c9085f2d7b74e54a7bfd0a"
+          }
+        },
+        {
+          "client_id": "1017641982931-oqr7gm5rudc9r6eef626mupr8fivmkgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBTRXYII7-HYz0x0fsIAbGwQWRcCf9pto0"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017641982931-oqr7gm5rudc9r6eef626mupr8fivmkgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

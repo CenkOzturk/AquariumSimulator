@@ -227,4 +227,6 @@
     <string name="force_update_title">Zorunlu Güncelleme</string>
     <string name="force_update_message">AquaVille\'in yeni bir sürümü mevcut. Oyuna devam edebilmek için lütfen uygulamayı güncelleyin.</string>
     <string name="force_update_button">Şimdi Güncelle</string>
+    <string name="google_sign_in">Google ile Giriş Yap</string>
+    <string name="google_connected">Google Hesabı Bağlı</string>
 </resources>
