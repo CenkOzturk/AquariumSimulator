@@ -95,6 +95,17 @@ class GameUiState {
     fun closeWelcomeGift() {
         showWelcomeGift = false
     }
+
+    var showAchievements by mutableStateOf(false)
+        private set
+
+    fun openAchievements() {
+        showAchievements = true
+    }
+
+    fun closeAchievements() {
+        showAchievements = false
+    }
 }
 
 @Composable

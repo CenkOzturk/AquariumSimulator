@@ -19,6 +19,7 @@ import com.kukurodev.mykukuroaquarium.model.GameUiState
 import com.kukurodev.mykukuroaquarium.model.calculateTier
 import com.kukurodev.mykukuroaquarium.model.item.CleanerDatabase.isCleaner
 import com.kukurodev.mykukuroaquarium.model.item.FishFoodItemDatabase.isFood
+import com.kukurodev.mykukuroaquarium.ui.popup.achievement.AchievementPopup
 import com.kukurodev.mykukuroaquarium.ui.popup.inventory.InventoryPopUp
 import com.kukurodev.mykukuroaquarium.ui.popup.shop.ConfirmPopup
 import com.kukurodev.mykukuroaquarium.ui.popup.shop.ShopPopup
@@ -133,6 +134,14 @@ fun PopupContainer(uiState: GameUiState) {
         InventoryPopUp(
             onClose = {
                 uiState.closeInventory()
+            }
+        )
+    }
+
+    if (uiState.showAchievements) {
+        AchievementPopup(
+            onClose = {
+                uiState.closeAchievements()
             }
         )
     }

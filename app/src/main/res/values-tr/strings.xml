@@ -223,4 +223,43 @@
     <string name="upgrade_bubble_time">Baloncuk Süresi</string>
     <string name="upgrade_bubble_time_description">Baloncukların çıkış süresini kısalt.</string>
 
+    <!-- Achievements -->
+    <string name="achievements_title">BAŞARILAR</string>
+    <string name="achievements_subtitle">Görevleri tamamla ve coin ödülleri kazan!</string>
+    <string name="achievement_claim">Ödülü Al</string>
+    <string name="achievement_claimed">Alındı</string>
+    <string name="achievement_locked">Kilitli</string>
+
+    <string name="achievement_1_title">İlk Balık</string>
+    <string name="achievement_1_desc">İlk balığını satın al</string>
+    <string name="achievement_2_title">Kalabalık Akvaryum</string>
+    <string name="achievement_2_desc">Aynı anda 5 balığa sahip ol</string>
+    <string name="achievement_3_title">İlk Geliştirme</string>
+    <string name="achievement_3_desc">Herhangi bir yükseltmeyi ilk kez satın al</string>
+    <string name="achievement_4_title">Baloncuk Avcısı</string>
+    <string name="achievement_4_desc">Toplam 20 baloncuk ödülü topla</string>
+    <string name="achievement_5_title">Baloncuk Ustası</string>
+    <string name="achievement_5_desc">Toplam 200 baloncuk ödülü topla</string>
+    <string name="achievement_6_title">Balık Kaşifi</string>
+    <string name="achievement_6_desc">10 farklı balık türü keşfet</string>
+    <string name="achievement_7_title">İlk Dekorasyon</string>
+    <string name="achievement_7_desc">İlk dekorasyonunu satın al</string>
+    <string name="achievement_8_title">Akvaryum Büyütme</string>
+    <string name="achievement_8_desc">İlk akvaryum yükseltmeni satın al</string>
+    <string name="achievement_9_title">Yem Ustası</string>
+    <string name="achievement_9_desc">Balıklarını toplam 100 kez besle</string>
+    <string name="achievement_10_title">Efsanevi Besleyici</string>
+    <string name="achievement_10_desc">1000 balık besleme</string>
+    <string name="achievement_11_title">Pırıl Pırıl</string>
+    <string name="achievement_11_desc">Tam kirlenmiş akvaryumunu temizle</string>
+    <string name="achievement_12_title">Coin Koleksiyoncusu</string>
+    <string name="achievement_12_desc">Toplam 10.000 coin kazan</string>
+    <string name="achievement_13_title">Zenginlik Abidesi</string>
+    <string name="achievement_13_desc">Toplam 100.000 coin kazan</string>
+    <string name="achievement_14_title">Altın Şans</string>
+    <string name="achievement_14_desc">Gold Fish\'in kilidini aç</string>
+    <string name="achievement_15_title">Altın Seviye</string>
+    <string name="achievement_15_desc">GOLD seviyesindeki akvaryuma ulaş</string>
+    <string name="achievement_16_title">Usta Geliştirici</string>
+    <string name="achievement_16_desc">Tüm geliştirmeleri aldın</string>
 </resources>

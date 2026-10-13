@@ -28,5 +28,10 @@ object PrefKeys {
     val UPGRADES = stringPreferencesKey("upgrades")
     val MUSIC_ENABLE = booleanPreferencesKey("musicEnable")
     val SOUND_EFFECT_ENABLE = booleanPreferencesKey("soundEffectEnable")
+    val CLAIMED_ACHIEVEMENTS = stringSetPreferencesKey("claimedAchievements")
+    val TOTAL_TIMES_FED = intPreferencesKey("totalTimesFed")
+    val CLEANED_FULLY_DIRTY_AQUARIUM = booleanPreferencesKey("cleanedFullyDirtyAquarium")
+    val TOTAL_COINS_EARNED = intPreferencesKey("totalCoinsEarned")
+    val TOTAL_BUBBLES_COLLECTED = intPreferencesKey("totalBubblesCollected")
 }
 

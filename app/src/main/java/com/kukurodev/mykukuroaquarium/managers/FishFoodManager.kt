@@ -16,6 +16,7 @@ object FishFoodManager {
             fedUntil = System.currentTimeMillis() + FEED_DURATION
         )
         updateFood(- fishes[index].income)
+        GameManager.update { it.copy(totalTimesFed = it.totalTimesFed + 1) }
         DailyTaskManager.addProgress(DailyTaskType.FEED_FISH)
     }
     fun buyFood(itemId: Int, itemPrice: Int) {

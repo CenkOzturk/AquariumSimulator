@@ -7,11 +7,12 @@ import com.kukurodev.mykukuroaquarium.utils.Utils
 
 object WelcomeGiftManager {
     fun refreshIfNeeded() {
-        val today = Utils.currentDay()
-        if (GameManager.state.lastLoginTime.toInt() == today) return
+        val now = System.currentTimeMillis()
+        val lastClaimTime = GameManager.state.welcomeGiftLastClaimTime
+        if (Utils.isSameDay(lastClaimTime, now)) return
+
         GameManager.update {
             it.copy(
-                lastLoginTime = Utils.currentTime(),
                 welcomeGiftClaimed = false
             )
         }

@@ -66,7 +66,7 @@ object CoinManager {
     }
 
     fun addCoins(amount: Int) {
-        GameManager.update { it.copy(coins = it.coins + amount) }
+        GameManager.update { it.copy(coins = it.coins + amount, totalCoinsEarned = it.totalCoinsEarned + amount) }
         DailyTaskManager.addProgress(DailyTaskType.COLLECT_COIN, amount)
     }
 

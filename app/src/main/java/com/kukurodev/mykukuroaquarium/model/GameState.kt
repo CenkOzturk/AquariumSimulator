@@ -39,7 +39,12 @@ data class GameState(
     val ownedUpgrades: UpgradeState =
         UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState(),
     val musicEnable: Boolean = true,
-    val soundEffectEnable: Boolean = true
+    val soundEffectEnable: Boolean = true,
+    val claimedAchievementIds: Set<Int> = emptySet(),
+    val totalTimesFed: Int = 0,
+    val cleanedFullyDirtyAquarium: Boolean = false,
+    val totalCoinsEarned: Int = 0,
+    val totalBubblesCollected: Int = 0
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -66,6 +71,11 @@ suspend fun loadGameState(context: Context): GameState {
         ownedUpgrades = prefs[PrefKeys.UPGRADES]?.fromJson<UpgradeState>() ?: UpgradeState(emptyList()),
         musicEnable = prefs[PrefKeys.MUSIC_ENABLE] ?: true,
         soundEffectEnable = prefs[PrefKeys.SOUND_EFFECT_ENABLE] ?: true,
+        claimedAchievementIds = prefs[PrefKeys.CLAIMED_ACHIEVEMENTS]?.map { it.toInt() }?.toSet() ?: emptySet(),
+        totalTimesFed = prefs[PrefKeys.TOTAL_TIMES_FED] ?: 0,
+        cleanedFullyDirtyAquarium = prefs[PrefKeys.CLEANED_FULLY_DIRTY_AQUARIUM] ?: false,
+        totalCoinsEarned = prefs[PrefKeys.TOTAL_COINS_EARNED] ?: 0,
+        totalBubblesCollected = prefs[PrefKeys.TOTAL_BUBBLES_COLLECTED] ?: 0
     )
 }
 
@@ -94,5 +104,10 @@ suspend fun saveGameState(
         prefs[PrefKeys.UPGRADES] = state.ownedUpgrades.toJson()
         prefs[PrefKeys.MUSIC_ENABLE] = state.musicEnable
         prefs[PrefKeys.SOUND_EFFECT_ENABLE] = state.soundEffectEnable
+        prefs[PrefKeys.CLAIMED_ACHIEVEMENTS] = state.claimedAchievementIds.map { it.toString() }.toSet()
+        prefs[PrefKeys.TOTAL_TIMES_FED] = state.totalTimesFed
+        prefs[PrefKeys.CLEANED_FULLY_DIRTY_AQUARIUM] = state.cleanedFullyDirtyAquarium
+        prefs[PrefKeys.TOTAL_COINS_EARNED] = state.totalCoinsEarned
+        prefs[PrefKeys.TOTAL_BUBBLES_COLLECTED] = state.totalBubblesCollected
     }
 }

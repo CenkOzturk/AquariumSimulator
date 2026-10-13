@@ -50,6 +50,7 @@ object BubbleManager {
         bubbles.removeAll { it.id == bubbleId }
         DailyTaskManager.addProgress(DailyTaskType.POP_BUBBLE)
         CoinManager.addCoins(calculatedBubbleValue())
+        GameManager.update { it.copy(totalBubblesCollected = it.totalBubblesCollected + 1) }
         AudioManager.playEffect(SoundEffect.BUBBLE_POP)
     }
 

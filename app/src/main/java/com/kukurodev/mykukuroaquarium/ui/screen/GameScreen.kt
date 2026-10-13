@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.kukurodev.mykukuroaquarium.managers.AchievementManager
 import com.kukurodev.mykukuroaquarium.managers.AquariumManager
 import com.kukurodev.mykukuroaquarium.managers.BubbleManager
 import com.kukurodev.mykukuroaquarium.managers.CoinLoop
@@ -25,11 +26,13 @@ import com.kukurodev.mykukuroaquarium.managers.TutorialManager
 import com.kukurodev.mykukuroaquarium.managers.WelcomeGiftManager
 import com.kukurodev.mykukuroaquarium.model.GameProgress
 import com.kukurodev.mykukuroaquarium.model.calculateTier
+import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.model.rememberGameUiState
 import com.kukurodev.mykukuroaquarium.model.tutorial.TutorialStep
 import com.kukurodev.mykukuroaquarium.ui.aquarium.AquariumView
 import com.kukurodev.mykukuroaquarium.ui.component.BottomMenu
 import com.kukurodev.mykukuroaquarium.ui.component.GameHud
+import com.kukurodev.mykukuroaquarium.ui.component.buttons.HamburgerButton
 import com.kukurodev.mykukuroaquarium.ui.popup.PopupContainer
 import com.kukurodev.mykukuroaquarium.ui.tutorial.TutorialOverlay
 import com.kukurodev.mykukuroaquarium.utils.Utils
@@ -79,6 +82,20 @@ fun GameScreen() {
                     top = 40.dp,
                     start = 16.dp),
             uiState = uiState
+        )
+
+        HamburgerButton(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(
+                    top = 40.dp,
+                    end = 16.dp
+                ),
+            gradient = GameColors.PurpleDark,
+            showBadge = AchievementManager.hasUnclaimedAchievements(GameManager.state),
+            onClick = {
+                uiState.openAchievements()
+            }
         )
 
         BottomMenu(

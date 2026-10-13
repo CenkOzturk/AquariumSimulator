@@ -222,4 +222,44 @@
 
     <string name="upgrade_bubble_time">Bobble Time</string>
     <string name="upgrade_bubble_time_description">Increases the repeat of the bubbles.</string>
+
+    <!-- Achievements -->
+    <string name="achievements_title">ACHIEVEMENTS</string>
+    <string name="achievements_subtitle">Complete tasks and earn coin rewards!</string>
+    <string name="achievement_claim">Claim</string>
+    <string name="achievement_claimed">Claimed</string>
+    <string name="achievement_locked">Locked</string>
+
+    <string name="achievement_1_title">First Fish</string>
+    <string name="achievement_1_desc">Buy your first fish</string>
+    <string name="achievement_2_title">Aquarium Crowd</string>
+    <string name="achievement_2_desc">Own 5 fishes at the same time</string>
+    <string name="achievement_3_title">First Upgrade</string>
+    <string name="achievement_3_desc">Purchase any upgrade for the first time</string>
+    <string name="achievement_4_title">Bubble Popper</string>
+    <string name="achievement_4_desc">Collect a total of 20 bubble rewards</string>
+    <string name="achievement_5_title">Bubble Master</string>
+    <string name="achievement_5_desc">Collect a total of 200 bubble rewards</string>
+    <string name="achievement_6_title">Fish Explorer</string>
+    <string name="achievement_6_desc">Discover 10 different fish species</string>
+    <string name="achievement_7_title">First Decoration</string>
+    <string name="achievement_7_desc">Buy your first decoration</string>
+    <string name="achievement_8_title">Aquarium Expansion</string>
+    <string name="achievement_8_desc">Buy your first aquarium upgrade</string>
+    <string name="achievement_9_title">Master Feeder</string>
+    <string name="achievement_9_desc">Feed your fish a total of 100 times</string>
+    <string name="achievement_10_title">Ultimate Feeder</string>
+    <string name="achievement_10_desc">Feed your fish a total of 1000 times</string>
+    <string name="achievement_11_title">Sparkling Clean</string>
+    <string name="achievement_11_desc">Clean a fully dirtied aquarium</string>
+    <string name="achievement_12_title">Coin Collector</string>
+    <string name="achievement_12_desc">Earn a total of 10,000 coins</string>
+    <string name="achievement_13_title">Wealthy Tycoon</string>
+    <string name="achievement_13_desc">Earn a total of 100,000 coins</string>
+    <string name="achievement_14_title">Golden Luck</string>
+    <string name="achievement_14_desc">Unlock the Gold Fish</string>
+    <string name="achievement_15_title">Gold Aquarium</string>
+    <string name="achievement_15_desc">Reach GOLD tier (Large) aquarium</string>
+    <string name="achievement_16_title">Maxed Out</string>
+    <string name="achievement_16_desc">Purchase all upgrades to maximum level</string>
 </resources>

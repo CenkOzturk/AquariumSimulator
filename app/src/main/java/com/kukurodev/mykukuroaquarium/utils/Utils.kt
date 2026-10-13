@@ -79,12 +79,20 @@ object Utils {
         return calendar.timeInMillis
     }
 
+    fun isSameDay(time1: Long, time2: Long): Boolean {
+        if (time1 <= 0L || time2 <= 0L) return false
+        val cal1 = Calendar.getInstance().apply { timeInMillis = time1 }
+        val cal2 = Calendar.getInstance().apply { timeInMillis = time2 }
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
+    }
+
     fun currentDay(): Int {
-        return LocalDate.now().toEpochDay().toInt()
+        return Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
     }
 
     fun currentTime(): Long {
-        return LocalDate.now().toEpochDay()
+        return System.currentTimeMillis()
     }
 
     fun isExpired(time: Long): Boolean {

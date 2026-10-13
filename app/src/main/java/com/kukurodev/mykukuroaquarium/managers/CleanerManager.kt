@@ -34,7 +34,8 @@ object CleanerManager {
         GameManager.update {
             it.copy(
                 cleanerCount = it.cleanerCount - 1,
-                dirtParticleCount = newLevel.minValue
+                dirtParticleCount = newLevel.minValue,
+                cleanedFullyDirtyAquarium = it.cleanedFullyDirtyAquarium || (currentLevel == DirtLevel.BLOCKED || currentLevel == DirtLevel.VERY_DIRTY)
             )
         }
 
