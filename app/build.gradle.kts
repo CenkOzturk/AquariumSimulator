@@ -20,7 +20,7 @@ android {
         applicationId = "com.kukurodev.mykukuroaquarium"
         minSdk = 29
         targetSdk = 36
-        versionCode = 5
+        versionCode = 6
         versionName = "1.0.1"
         //val formattedDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
         base.archivesName = "AquaVille-v$versionName-v$versionCode"
@@ -30,7 +30,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

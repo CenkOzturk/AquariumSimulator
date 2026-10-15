@@ -7,7 +7,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.kukurodev.mykukuroaquarium.R
 
 object AuthManager {
     fun getGoogleSignInClient(context: Context): GoogleSignInClient {
@@ -15,8 +14,9 @@ object AuthManager {
         val webClientId = if (resId != 0) {
             context.getString(resId)
         } else {
-            "1017641982931.apps.googleusercontent.com"
+            "1017641982931-oqr7gm5rudc9r6eef626mupr8fivmkgm.apps.googleusercontent.com"
         }
+        Log.d("GoogleSyncTest", "Using Web Client ID: $webClientId")
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(webClientId)
             .requestEmail()
