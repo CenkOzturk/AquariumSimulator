@@ -114,12 +114,15 @@ fun ShopItemCard(
             Spacer(modifier = Modifier.height(6.dp))
 
             // EXTRA INFO
-            ShopItemInfo(
-                item = item,
-                alpha = contentAlpha
-            )
+            if (item.extraInfo.isNotEmpty()) {
+                ShopItemInfo(
+                    shopTab = item.type,
+                    extraInfo = item.extraInfo,
+                    alpha = contentAlpha
+                )
 
-            Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(6.dp))
+            }
 
             // PRICE
             Text(

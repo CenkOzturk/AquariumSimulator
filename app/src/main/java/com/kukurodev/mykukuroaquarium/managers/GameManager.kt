@@ -23,7 +23,7 @@ object GameManager {
     fun initializeGameScreen() {
         AquariumManager.initialize(state.aquariumType)
 
-        val initialFishes = FishDatabase.getFishByIds(state.ownedFishIds)
+        val initialFishes = FishDatabase.getFishByIds(state.activeFishes)
 
         fishes.clear()
         fishes.addAll(initialFishes)
@@ -53,9 +53,12 @@ object GameManager {
                 ownedFishIds = emptySet(),
                 ownedItemIds = emptySet(),
                 ownedUpgrades = UpgradeState(emptyList()),
+                activeFishes = emptySet(),
+                lastLoginTime = 0L,
                 coins = GameDefaults.STARTING_COINS,
                 foodCount = GameDefaults.STARTING_FOOD,
                 cleanerCount = GameDefaults.CLEANER_COUNT,
+                dirtParticleCount = 0,
                 dailyTask = null,
                 welcomeGiftDay = 0,
                 welcomeGiftClaimed = false,
@@ -64,5 +67,6 @@ object GameManager {
                 lastGoldFishTime = 0L
             )
         }
+        CloudSyncManager.deleteCloudSave()
     }
 }

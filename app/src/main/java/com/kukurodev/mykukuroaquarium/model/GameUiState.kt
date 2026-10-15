@@ -17,6 +17,9 @@ class GameUiState {
     var showUpgrade by mutableStateOf(false)
         private set
 
+    var showInventory by mutableStateOf(false)
+        private set
+
     var showFishUpgradeTree by mutableStateOf(false)
         private set
 
@@ -41,6 +44,14 @@ class GameUiState {
 
     fun closeShop() {
         isShopOpen = false
+    }
+
+    fun openInventory() {
+        showInventory = true
+    }
+
+    fun closeInventory() {
+        showInventory = false
     }
 
     fun openUpgrade(tab: UpgradeCategoryTab) {

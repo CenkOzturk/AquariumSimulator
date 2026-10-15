@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.kukurodev.mykukuroaquarium.data.Constants.INCOME_CYCLE_SECONDS
+import com.kukurodev.mykukuroaquarium.model.extras.DirtLevel
 import com.kukurodev.mykukuroaquarium.model.fish.coinMultiplier
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -21,9 +22,18 @@ object CoinLoop {
         job = lifecycleOwner.lifecycleScope.launch {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 while (isActive) {
+                    val dirtLevel = DirtLevel.fromValue(
+                        GameManager.state.dirtParticleCount
+                    )
+
                     var totalIncome = 0
+
                     FishManager.fishes.forEach { fish ->
-                        totalIncome += fish.income * fish.coinMultiplier()
+                        totalIncome += (
+                                fish.income *
+                                        fish.coinMultiplier() *
+                                        dirtLevel.incomeMultiplier
+                                ).toInt()
                     }
 
                     CoinManager.addCoins(totalIncome)

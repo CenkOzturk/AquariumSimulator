@@ -16,7 +16,6 @@ fun AnimatedShopGrid(
     onClick: (ShopItem) -> Unit,
     playerTier: PlayerTier
 ) {
-
     val visibleMap = remember { mutableStateMapOf<Int, Boolean>() }
 
     LaunchedEffect(items) {

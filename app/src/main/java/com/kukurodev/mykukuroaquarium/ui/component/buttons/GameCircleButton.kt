@@ -28,11 +28,10 @@ import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.model.component.GameGradient
 import com.kukurodev.mykukuroaquarium.utils.Utils.emptyString
 
-
 @Composable
 fun GameCircleButton(
     modifier: Modifier = Modifier,
-    gradient: GameGradient = GameColors.WelcomeGift,
+    gradient: GameGradient = GameColors.Purple,
     icon: ImageVector,
     size: Dp = 52.dp,
     onClick: () -> Unit

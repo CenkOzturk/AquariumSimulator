@@ -4,11 +4,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,17 +18,16 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.kukurodev.mykukuroaquarium.R
+import com.kukurodev.mykukuroaquarium.model.component.GameGradient
 
 @Composable
-fun DailyTaskButton(
+fun MenuButton(
     modifier: Modifier = Modifier,
-    hasAnyTask: Boolean,
-    hasClaimableReward: Boolean,
+    gradient: GameGradient,
+    imgResId: Int,
+    imgSize: Int,
     onClick: () -> Unit
 ) {
-    if (!hasAnyTask) return
-
     Box(
         modifier = modifier
             .size(64.dp)
@@ -34,37 +35,43 @@ fun DailyTaskButton(
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFFB8F5C8),
-                        Color(0xFF6DDC8A)
+                        gradient.light,
+                        gradient.base,
+                        gradient.dark
                     )
                 )
             )
             .border(
-                width = 2.dp,
-                color = Color(0xFF35A85A),
+                width = 3.dp,
+                color = gradient.border,
                 shape = CircleShape
             )
-            .clickable { onClick() },
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = ripple(
+                    bounded = true
+                ),
+                onClick = onClick
+            ),
         contentAlignment = Alignment.Center
     ) {
-
-        // Hafif parlaklık
+        // Hafif parlak iç alan
         Box(
             modifier = Modifier
                 .size(46.dp)
                 .clip(CircleShape)
                 .background(
-                    Color.White.copy(alpha = 0.16f)
+                    Color.White.copy(alpha = 0.12f)
                 )
         )
 
         Image(
-            painter = painterResource(R.drawable.ic_daily_tasks),
+            painter = painterResource(imgResId),
             contentDescription = null,
-            modifier = Modifier.size(52.dp)
+            modifier = Modifier.size(imgSize.dp)
         )
 
-        if (hasClaimableReward) {
+        /*if (hasClaimableReward) {
             Box(
                 modifier = Modifier
                     .size(17.dp)
@@ -80,6 +87,6 @@ fun DailyTaskButton(
                         CircleShape
                     )
             )
-        }
+        }*/
     }
 }

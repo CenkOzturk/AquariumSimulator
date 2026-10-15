@@ -14,8 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kukurodev.mykukuroaquarium.data.Constants.BUBBLE_VALUE
 import com.kukurodev.mykukuroaquarium.managers.BubbleManager
+import com.kukurodev.mykukuroaquarium.managers.BubbleManager.calculatedBubbleValue
 import com.kukurodev.mykukuroaquarium.managers.FloatingTextManager
 import com.kukurodev.mykukuroaquarium.ui.theme.MyAquariumSimulatorTheme
 
@@ -38,7 +38,11 @@ fun BubbleView() {
                     )
                     .clickable {
                         BubbleManager.popBubble(bubble.id)
-                        FloatingTextManager.spawn(BUBBLE_VALUE, bubble.x, bubble.y)
+                        FloatingTextManager.spawn(
+                            calculatedBubbleValue(),
+                            bubble.x,
+                            bubble.y
+                        )
                     }
             )
         }

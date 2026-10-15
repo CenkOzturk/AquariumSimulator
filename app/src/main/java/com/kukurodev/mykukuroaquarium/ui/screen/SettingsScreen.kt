@@ -127,7 +127,7 @@ fun SettingsScreen(
 
             GameMenuButton(
                 text = stringResource(R.string.menu_back),
-                gradient = GameColors.Shop,
+                gradient = GameColors.Sun,
                 onClick = onBack
             )
 

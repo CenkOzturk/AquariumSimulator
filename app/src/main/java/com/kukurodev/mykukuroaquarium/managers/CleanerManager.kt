@@ -1,18 +1,14 @@
 package com.kukurodev.mykukuroaquarium.managers
 
 import com.kukurodev.mykukuroaquarium.R
+import com.kukurodev.mykukuroaquarium.model.extras.DirtLevel
 import com.kukurodev.mykukuroaquarium.model.item.CleanerDatabase
 import com.kukurodev.mykukuroaquarium.utils.Utils
 
 object CleanerManager {
     fun buyCleaner(id: Int, price: Int) {
-        val cleaner = CleanerDatabase.get(id) ?: return
-
-        if (!CoinManager.spendCoins(price)) {
-            Utils.showToast(R.string.shop_no_coin_error)
-            return
-        }
-
+        val cleaner = CleanerDatabase.getCleaner(id) ?: return
+        CoinManager.hasEnoughCoin(price)
         GameManager.update {
             it.copy(
                 cleanerCount = it.cleanerCount + cleaner.cleanerCount
@@ -20,23 +16,37 @@ object CleanerManager {
         }
     }
 
-    fun canClean(): Boolean {
-        return GameManager.state.cleanerCount > 0
-    }
-
-    fun cleanDirt(): Boolean {
-        if (!canClean()) {
+    fun cleanDirt() {
+        if (GameManager.state.cleanerCount == 0) {
             Utils.showToast(R.string.no_cleaner_error)
-            return false
+            return
         }
+
+        val currentLevel = DirtLevel.fromValue(
+            GameManager.state.dirtParticleCount
+        )
+
+        if (currentLevel == DirtLevel.CLEAN)
+            DirtManager.clear()
+
+        val newLevel = currentLevel.previous()
 
         GameManager.update {
             it.copy(
                 cleanerCount = it.cleanerCount - 1,
+                dirtParticleCount = newLevel.minValue
+            )
+        }
+
+        DirtManager.updateParticles()
+    }
+
+    fun updateCleaner(value: Int) {
+        GameManager.update {
+            it.copy(
+                cleanerCount = it.cleanerCount + value,
                 dirtParticleCount = 0
             )
         }
-        DirtManager.clear()
-        return true
     }
 }

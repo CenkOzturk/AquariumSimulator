@@ -28,7 +28,6 @@ object DailyTaskManager {
             it.copy(
                 dailyTask = dailyTask.copy(
                     tasks = dailyTask.tasks.map { task ->
-
                         if (task.type != type) {
                             task
                         } else {

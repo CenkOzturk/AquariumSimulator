@@ -1,7 +1,13 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.text.SimpleDateFormat
+import java.util.Date
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -14,15 +20,18 @@ android {
         applicationId = "com.kukurodev.mykukuroaquarium"
         minSdk = 29
         targetSdk = 36
-        versionCode = 2
+        versionCode = 6
         versionName = "1.0.1"
+        //val formattedDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
+        base.archivesName = "AquaVille-v$versionName-v$versionCode"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -33,14 +42,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
     buildFeatures {
         compose = true
         buildConfig = true
     }
-
 }
 
 dependencies {
@@ -72,6 +82,18 @@ dependencies {
     // Gson
     implementation(libs.gson)
 
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.config)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+
+    // Auth & Security (Google Sign-In & Keystore Backup)
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("androidx.security:security-crypto:1.1.0")
+
     // Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -83,28 +105,4 @@ dependencies {
     // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-}
-
-afterEvaluate {
-    tasks.findByName("bundleRelease")?.doLast {
-        val versionName = android.defaultConfig.versionName ?: "unknown"
-
-        val bundleDir = layout.buildDirectory
-            .dir("outputs/bundle/release")
-            .get()
-            .asFile
-
-        val aabFile = bundleDir
-            .listFiles()
-            ?.firstOrNull { it.extension == "aab" }
-
-        if (aabFile != null) {
-            val newFile = bundleDir.resolve("AquaVille-v$versionName.aab")
-
-            if (aabFile.name != newFile.name) {
-                aabFile.renameTo(newFile)
-                println("AAB renamed to: ${newFile.name}")
-            }
-        }
-    }
 }

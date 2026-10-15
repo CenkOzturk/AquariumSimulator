@@ -23,7 +23,6 @@ import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.ui.component.CreditItem
 import com.kukurodev.mykukuroaquarium.ui.component.buttons.GameMenuButton
 
-
 @Composable
 fun CreditsScreen(
     onBack: () -> Unit
@@ -88,7 +87,7 @@ fun CreditsScreen(
 
             GameMenuButton(
                 text = stringResource(R.string.menu_back),
-                gradient = GameColors.Shop,
+                gradient = GameColors.Sun,
                 onClick = onBack
             )
 

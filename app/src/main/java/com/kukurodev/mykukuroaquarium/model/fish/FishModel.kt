@@ -1,6 +1,7 @@
 package com.kukurodev.mykukuroaquarium.model.fish
 
 import com.kukurodev.mykukuroaquarium.data.Constants.FEED_DURATION
+import com.kukurodev.mykukuroaquarium.model.inventory.InventoryItem
 import com.kukurodev.mykukuroaquarium.model.shop.ShopItem
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
 
@@ -32,6 +33,16 @@ fun FishModel.toShopItem(): ShopItem {
         icon = "🐟",
         extraInfo = income.toString(),
         requiredTier = requirementType.toPlayerTier()
+    )
+}
+
+fun FishModel.toInventoryItem(): InventoryItem {
+    return InventoryItem(
+        id = id,
+        titleResId = nameResId,
+        icon = "🐟",
+        extraInfo = income.toString(),
+        isActive = false
     )
 }
 

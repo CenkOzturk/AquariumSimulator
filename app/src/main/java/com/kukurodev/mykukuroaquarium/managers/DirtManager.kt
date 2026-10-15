@@ -27,7 +27,7 @@ object DirtManager {
         )
     }
 
-    fun update(aquarium: AquariumModel) {
+    fun createDirt(aquarium: AquariumModel) {
         val targetY =
             if (GameManager.state.ownedItemIds.count() == 0) aquarium.height - 8f
             else aquarium.height - 32f
@@ -42,6 +42,16 @@ object DirtManager {
                         targetY
                     )
                 )
+            }
+        }
+    }
+
+    fun updateParticles() {
+        val targetCount = GameManager.state.dirtParticleCount
+
+        if (particles.size > targetCount) {
+            repeat(particles.size - targetCount) {
+                particles.removeLastOrNull()
             }
         }
     }

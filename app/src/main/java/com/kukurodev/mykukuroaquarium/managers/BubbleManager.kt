@@ -26,7 +26,7 @@ object BubbleManager {
                     id = now,
                     x = (50f..(aquarium.width - 50f)).random(),
                     y = aquarium.height - 20f,
-                    radius = (10f..15f).random(), // büyük baloncuk
+                    radius = (12f..16f).random(), // büyük baloncuk
                     speed = (1.5f..2.5f).random()
                 )
             )
@@ -49,7 +49,11 @@ object BubbleManager {
     fun popBubble(bubbleId: Long) {
         bubbles.removeAll { it.id == bubbleId }
         DailyTaskManager.addProgress(DailyTaskType.POP_BUBBLE)
-        CoinManager.addCoins(BUBBLE_VALUE + UpgradeManager.getUpgradeValue(UpgradeType.BUBBLE_VALUE))
+        CoinManager.addCoins(calculatedBubbleValue())
         AudioManager.playEffect(SoundEffect.BUBBLE_POP)
+    }
+
+    fun calculatedBubbleValue(): Int {
+        return BUBBLE_VALUE + UpgradeManager.getUpgradeValue(UpgradeType.BUBBLE_VALUE)
     }
 }

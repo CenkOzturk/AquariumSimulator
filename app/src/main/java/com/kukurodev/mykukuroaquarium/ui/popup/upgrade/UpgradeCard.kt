@@ -33,7 +33,7 @@ import com.kukurodev.mykukuroaquarium.ui.component.InfoView
 @Composable
 fun UpgradeCard(
     upgrade: UpgradeModel,
-    currentLevel: Int,
+    currentLevelPlus: Int,
     isMaxLevel: Boolean,
     onInfoClick: () -> Unit,
     onUpgradeClick: () -> Unit
@@ -127,7 +127,7 @@ fun UpgradeCard(
 
         Text(
             text = stringResource(upgrade.upgradeResId,
-                (upgrade.getLevel(upgrade.currentLevel).value).toString()),
+                (upgrade.getLevel(currentLevelPlus).value).toString()),
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = Color(0xFF5BC2E5)
@@ -140,7 +140,7 @@ fun UpgradeCard(
         Text(
             text = stringResource(
                 R.string.upgrade_level_format,
-                currentLevel
+                currentLevelPlus
             ),
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
@@ -173,7 +173,7 @@ fun UpgradeCard(
                 Text(
                     text = stringResource(
                         R.string.coin_value,
-                        upgrade.getLevel(upgrade.currentLevel).cost),
+                        upgrade.getLevel(currentLevelPlus).cost),
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFFE58B16)

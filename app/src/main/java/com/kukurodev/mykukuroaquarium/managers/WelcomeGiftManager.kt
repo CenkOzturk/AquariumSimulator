@@ -34,6 +34,15 @@ object WelcomeGiftManager {
         return WelcomeGiftDatabase.getGift(currentDay())
     }
 
+    fun remainingTime(currentTime: Long): Long {
+        val lastClaimTime = GameManager.state.welcomeGiftLastClaimTime
+
+        val nextClaimTime = lastClaimTime + 24 * 60 * 60 * 1000L
+
+        return (nextClaimTime - currentTime)
+            .coerceAtLeast(0L)
+    }
+
     fun claimReward() {
         if (!canClaim()) return
         currentGift().let { gift ->
@@ -43,11 +52,12 @@ object WelcomeGiftManager {
             if (gift.food > 0) {
                 FishFoodManager.updateFood(gift.food)
             }
-            // TODO Golden Fish
+
             GameManager.update {
                 it.copy(
                     welcomeGiftDay = it.welcomeGiftDay + 1,
-                    welcomeGiftClaimed = true
+                    welcomeGiftClaimed = true,
+                    welcomeGiftLastClaimTime = System.currentTimeMillis()
                 )
             }
 

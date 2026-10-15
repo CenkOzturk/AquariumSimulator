@@ -12,11 +12,15 @@ object SaveManager {
 
     fun init(context: Context) {
         appContext = context.applicationContext
+        CloudSyncManager.init(context)
     }
 
     fun save(state: GameState) {
         CoroutineScope(Dispatchers.IO).launch {
-            saveGameState(appContext, state)
+            val updatedState = state.copy(lastLoginTime = System.currentTimeMillis())
+            saveGameState(appContext, updatedState)
+            CloudSyncManager.saveKeystoreBackup(updatedState)
+            CloudSyncManager.pushToCloud(updatedState)
         }
     }
 }

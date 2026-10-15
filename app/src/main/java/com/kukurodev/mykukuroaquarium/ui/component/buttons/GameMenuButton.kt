@@ -30,9 +30,9 @@ import com.kukurodev.mykukuroaquarium.model.component.GameGradient
 
 @Composable
 fun GameMenuButton(
-    text: String,
     modifier: Modifier = Modifier,
     gradient: GameGradient = GameColors.Ocean,
+    text: String,
     isPrimary: Boolean = false,
     onClick: () -> Unit
 ) {

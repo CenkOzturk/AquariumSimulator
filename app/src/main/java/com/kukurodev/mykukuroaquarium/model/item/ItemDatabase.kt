@@ -10,7 +10,7 @@ object ItemDatabase {
             nameResId = R.string.item_sand_name,
             type = ItemType.SAND,
             resId = R.drawable.sand,
-            price = 750
+            price = 300
         ),
         AquariumItemModel(
             id = 301,

@@ -22,7 +22,7 @@ object CleanerDatabase {
             id = 502,
             nameResId = R.string.cleaner_robot_name,
             icon = R.drawable.ic_cleaner_robot,
-            price = 50000,
+            price = 500000,
             cleanerCount = 999999 // TODO Robot sistemi geldiğinde değiştirilecek.
         )
     )
@@ -31,7 +31,7 @@ object CleanerDatabase {
         return cleaners
     }
 
-    fun get(id: Int): CleanerModel? {
+    fun getCleaner(id: Int): CleanerModel? {
         return cleaners.firstOrNull { it.id == id }
     }
 
