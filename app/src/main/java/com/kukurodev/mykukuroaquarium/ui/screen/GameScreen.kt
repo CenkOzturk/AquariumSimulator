@@ -25,10 +25,12 @@ import com.kukurodev.mykukuroaquarium.managers.TutorialManager
 import com.kukurodev.mykukuroaquarium.managers.WelcomeGiftManager
 import com.kukurodev.mykukuroaquarium.model.GameProgress
 import com.kukurodev.mykukuroaquarium.model.calculateTier
+import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.model.rememberGameUiState
 import com.kukurodev.mykukuroaquarium.model.tutorial.TutorialStep
 import com.kukurodev.mykukuroaquarium.ui.aquarium.AquariumView
 import com.kukurodev.mykukuroaquarium.ui.component.BottomMenu
+import com.kukurodev.mykukuroaquarium.ui.component.GameAlertBanner
 import com.kukurodev.mykukuroaquarium.ui.component.GameHud
 import com.kukurodev.mykukuroaquarium.ui.popup.PopupContainer
 import com.kukurodev.mykukuroaquarium.ui.tutorial.TutorialOverlay
@@ -90,6 +92,12 @@ fun GameScreen() {
 
         PopupContainer(
             uiState = uiState
+        )
+
+        GameAlertBanner(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(top = 80.dp)
         )
 
         if (!GameManager.state.tutorialCompleted &&
