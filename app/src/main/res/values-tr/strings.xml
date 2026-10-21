@@ -8,9 +8,12 @@
     <string name="ok">Tamam</string>
     <string name="close">Kapat</string>
     <string name="shop">Shop</string>
+    <string name="shop_subtitle">Balıklar, eşyalar ve yükseltmeleri incele!</string>
     <string name="cleaner">Temizlikçi</string>
     <string name="fish_food">Balık Yemi</string>
     <string name="inventory">Envanter</string>
+    <string name="inventory_subtitle">Balıklarını ve dekorasyonlarını yönet</string>
+    <string name="buy_aquarium_subtitle">Akvaryum kapasitini ve görünümünü yükselt</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>

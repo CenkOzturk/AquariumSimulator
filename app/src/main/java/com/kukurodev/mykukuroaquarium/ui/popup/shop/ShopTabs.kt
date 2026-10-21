@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,16 +30,14 @@ fun ShopTabs(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 16.dp)
+            .padding(horizontal = 8.dp, vertical = 8.dp)
             .background(
-                Color.LightGray.copy(alpha = 0.3f),
+                Color(0xFFE2E8F0).copy(alpha = 0.6f),
                 RoundedCornerShape(50)
             )
-            .padding(4.dp)
+            .padding(3.dp)
     ) {
-
         ShopTab.entries.forEach { tab ->
-
             val isSelected = tab == selected
 
             Box(
@@ -52,26 +52,24 @@ fun ShopTabs(
                         onTabSelected(tab)
                     }
                     .padding(
-                        horizontal = 6.dp,
-                        vertical = 10.dp
+                        horizontal = 2.dp,
+                        vertical = 8.dp
                     ),
                 contentAlignment = Alignment.Center
             ) {
-
                 Text(
                     text = when (tab) {
-                        ShopTab.FISH ->
-                            stringResource(R.string.shop_tab_fish)
-
-                        ShopTab.AQUARIUM ->
-                            stringResource(R.string.shop_tab_aquarium)
-
-                        ShopTab.ITEMS ->
-                            stringResource(R.string.shop_tab_items)
+                        ShopTab.FISH -> stringResource(R.string.shop_tab_fish)
+                        ShopTab.AQUARIUM -> stringResource(R.string.shop_tab_aquarium)
+                        ShopTab.ITEMS -> stringResource(R.string.shop_tab_items)
                     },
-                    fontSize = 16.sp,
+                    fontSize = 12.sp,
+                    fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Bold,
+                    color = if (isSelected) Color(0xFF0F172A) else Color(0xFF64748B),
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center
                 )
             }
         }

@@ -8,9 +8,12 @@
     <string name="ok">OK</string>
     <string name="close">Close</string>
     <string name="shop">Shop</string>
+    <string name="shop_subtitle">Select fish, items or aquarium upgrades!</string>
     <string name="cleaner">Cleaner</string>
     <string name="fish_food">Fish Food</string>
     <string name="inventory">Inventory</string>
+    <string name="inventory_subtitle">Manage your fish and decorations</string>
+    <string name="buy_aquarium_subtitle">Upgrade your tank capacity and theme</string>
     <string name="privacy_policy_url" translatable="false">https://cenkozturk.github.io/AquariumSimulator/privacy-policy.html</string>
 
     <string name="btn_reset">RESET</string>

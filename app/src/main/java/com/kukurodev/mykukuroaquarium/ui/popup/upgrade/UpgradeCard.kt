@@ -74,7 +74,6 @@ fun UpgradeCard(
                 .fillMaxWidth()
                 .height(72.dp)
         ) {
-
             Box(
                 modifier = Modifier
                     .align(Alignment.Center)

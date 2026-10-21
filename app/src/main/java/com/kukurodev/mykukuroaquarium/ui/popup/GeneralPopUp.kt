@@ -1,6 +1,7 @@
 package com.kukurodev.mykukuroaquarium.ui.popup
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,29 +34,35 @@ fun GeneralPopup(
 ) {
     val scope = rememberCoroutineScope()
 
-    val offsetY = remember { Animatable(1000f) }
+    val offsetY = remember { Animatable(500f) }
     val alpha = remember { Animatable(0f) }
-    val scale = remember { Animatable(.95f) }
+    val scale = remember { Animatable(0.72f) }
 
     LaunchedEffect(Unit) {
         launch {
             offsetY.animateTo(
                 targetValue = 0f,
-                animationSpec = tween(450)
+                animationSpec = spring(
+                    dampingRatio = 0.62f,
+                    stiffness = 380f
+                )
             )
         }
 
         launch {
             alpha.animateTo(
                 targetValue = 1f,
-                animationSpec = tween(250)
+                animationSpec = tween(180)
             )
         }
 
         launch {
             scale.animateTo(
                 targetValue = 1f,
-                animationSpec = tween(300)
+                animationSpec = spring(
+                    dampingRatio = 0.62f,
+                    stiffness = 380f
+                )
             )
         }
     }
@@ -65,22 +72,22 @@ fun GeneralPopup(
             coroutineScope {
                 launch {
                     offsetY.animateTo(
-                        targetValue = 1000f,
-                        animationSpec = tween(300)
+                        targetValue = 350f,
+                        animationSpec = tween(180)
                     )
                 }
 
                 launch {
                     alpha.animateTo(
                         targetValue = 0f,
-                        animationSpec = tween(200)
+                        animationSpec = tween(160)
                     )
                 }
 
                 launch {
                     scale.animateTo(
-                        targetValue = .95f,
-                        animationSpec = tween(200)
+                        targetValue = 0.85f,
+                        animationSpec = tween(180)
                     )
                 }
             }
@@ -93,20 +100,16 @@ fun GeneralPopup(
         modifier = Modifier
             .fillMaxSize()
             .background(
-                Color.Black.copy(.45f * alpha.value)
+                Color.Black.copy(alpha = 0.52f * alpha.value)
             )
             .then(
                 if (dismissOnOutsideClick) {
-
                     Modifier.clickable(
                         indication = null,
-                        interactionSource = remember {
-                            MutableInteractionSource()
-                        }
+                        interactionSource = remember { MutableInteractionSource() }
                     ) {
                         dismiss()
                     }
-
                 } else {
                     Modifier
                 }
