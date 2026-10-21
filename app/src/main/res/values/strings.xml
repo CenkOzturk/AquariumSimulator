@@ -143,16 +143,25 @@
     <string name="daily_task_gold_fish">Catch Gold Fish</string>
     <string name="daily_task_collect">Collect %s 💰</string>
     <string name="daily_task_today_missions">Today\'s Missions</string>
-    <string name="daily_task_not_complete_tasks">I haven\'t completed the missions yet :(</string>
+    <string name="daily_task_not_complete_tasks">Complete Tasks</string>
     <string name="daily_task_reward_claimed">You completed all missions :)</string>
     <string name="daily_task_already_received_reward">You already claimed today\'s reward. See you tomorrow!</string>
 
     <!-- Welcome Gift -->
-    <string name="welcome_gift_title">Welcome Gift</string>
+    <string name="welcome_gift_title">Welcome Rewards</string>
     <string name="welcome_gift_subtitle">Come back every day to collect rewards!</string>
     <string name="welcome_gift_claim">Claim Reward</string>
-    <string name="welcome_gift_claimed">Already Claimed</string>
+    <string name="welcome_gift_claimed">Claimed Today</string>
     <string name="welcome_gift_today_reward">TODAY\'S REWARD</string>
+    <string name="welcome_gift_day_format">%1$d. Day</string>
+    <string name="welcome_gift_next_reward_in">Next reward in</string>
+    <string name="welcome_gift_reward_day_1">100 Coins</string>
+    <string name="welcome_gift_reward_day_2">25 Fish Food</string>
+    <string name="welcome_gift_reward_day_3">250 Coins</string>
+    <string name="welcome_gift_reward_day_4">50 Fish Food</string>
+    <string name="welcome_gift_reward_day_5">500 Coins</string>
+    <string name="welcome_gift_reward_day_6">1000 Coins &amp; 50 Food</string>
+    <string name="welcome_gift_reward_day_7">Gold Fish</string>
 
     <!-- Settings -->
     <string name="settings_title">SETTINGS</string>

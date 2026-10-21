@@ -105,36 +105,30 @@ fun UpgradeCard(
             )
         }
 
-        Spacer(
-            Modifier.height(4.dp)
-        )
+        Spacer(Modifier.height(4.dp))
 
         Text(
             text = stringResource(
                 upgrade.nameResId
             ),
             fontSize = 14.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF164D66),
+            fontWeight = FontWeight.ExtraBold,
+            color = Color(0xFF0F172A),
             textAlign = TextAlign.Center,
             maxLines = 2
         )
 
-        Spacer(
-            Modifier.height(4.dp)
-        )
+        Spacer(Modifier.height(4.dp))
 
         Text(
             text = stringResource(upgrade.upgradeResId,
                 (upgrade.getLevel(currentLevelPlus).value).toString()),
             fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF5BC2E5)
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF0F766E)
         )
 
-        Spacer(
-            Modifier.height(4.dp)
-        )
+        Spacer(Modifier.height(4.dp))
 
         Text(
             text = stringResource(
@@ -142,13 +136,11 @@ fun UpgradeCard(
                 currentLevelPlus
             ),
             fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF2AA7D7)
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF0369A1)
         )
 
-        Spacer(
-            Modifier.height(4.dp)
-        )
+        Spacer(Modifier.height(4.dp))
 
         Box(
             modifier = Modifier
@@ -166,7 +158,7 @@ fun UpgradeCard(
                     ),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF888888)
+                    color = Color(0xFF64748B)
                 )
             } else {
                 Text(
@@ -174,8 +166,8 @@ fun UpgradeCard(
                         R.string.coin_value,
                         upgrade.getLevel(currentLevelPlus).cost),
                     fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFFE58B16)
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color(0xFFD97706)
                 )
             }
         }

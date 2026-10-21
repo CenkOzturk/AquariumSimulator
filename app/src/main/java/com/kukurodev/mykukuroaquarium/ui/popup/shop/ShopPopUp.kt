@@ -1,7 +1,6 @@
 package com.kukurodev.mykukuroaquarium.ui.popup.shop
 
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -48,8 +47,7 @@ fun ShopPopup(
     ) { popupModifier, dismiss ->
         GamePopup(
             modifier = popupModifier
-                .fillMaxWidth(0.92f)
-                .fillMaxHeight(0.72f),
+                .fillMaxWidth(0.92f),
             title = stringResource(R.string.shop),
             subtitle = stringResource(R.string.shop_subtitle),
             gradient = gradient,
@@ -66,7 +64,7 @@ fun ShopPopup(
             Spacer(Modifier.height(8.dp))
 
             AnimatedShopGrid(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.fillMaxWidth(),
                 items = currentItems,
                 playerTier = playerTier,
                 onClick = { item ->

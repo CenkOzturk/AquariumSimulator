@@ -39,7 +39,7 @@ fun BottomMenu(
                         it
                     )
                 },
-            gradient = GameColors.Pink,
+            gradient = GameColors.Mint,
             imgResId = R.drawable.ic_clean,
             imgSize = 52,
             onClick = {

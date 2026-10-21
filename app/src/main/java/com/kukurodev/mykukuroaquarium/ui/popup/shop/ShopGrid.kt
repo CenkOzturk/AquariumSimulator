@@ -1,6 +1,7 @@
 package com.kukurodev.mykukuroaquarium.ui.popup.shop
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -17,17 +18,15 @@ fun ShopGrid(
     playerTier: PlayerTier,
     onClick: (ShopItem) -> Unit
 ) {
-
     LazyVerticalGrid(
-        modifier = modifier,
+        modifier = modifier.heightIn(max = 290.dp),
         columns = GridCells.Fixed(3),
-        contentPadding = PaddingValues(12.dp)
+        contentPadding = PaddingValues(6.dp)
     ) {
         items(
             items = items,
-            key = { it.id } // 🔥 önemli
+            key = { it.id }
         ) { item ->
-
             ShopItemCard(
                 item = item,
                 playerTier = playerTier,

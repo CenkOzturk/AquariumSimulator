@@ -32,7 +32,6 @@ fun TierInfoRow(
     description: String,
     icon: String
 ) {
-
     val tierColor = when (tier) {
         PlayerTier.FREE -> Color(0xFF66BB6A)
         PlayerTier.BRONZE -> Color(0xFFCD7F32)
@@ -83,7 +82,6 @@ fun TierInfoRow(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-
                 Text(
                     text = title,
                     fontSize = 14.sp,
@@ -95,9 +93,10 @@ fun TierInfoRow(
 
                 Text(
                     text = description,
-                    fontSize = 11.sp,
-                    lineHeight = 15.sp,
-                    color = Color.DarkGray
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFF334155)
                 )
             }
         }

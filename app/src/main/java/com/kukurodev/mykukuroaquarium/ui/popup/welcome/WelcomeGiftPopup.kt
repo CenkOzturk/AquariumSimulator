@@ -22,15 +22,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kukurodev.mykukuroaquarium.R
-import com.kukurodev.mykukuroaquarium.data.Constants
 import com.kukurodev.mykukuroaquarium.data.Constants.WELCOME_GIFT_DAYS
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.WelcomeGiftManager
@@ -87,33 +84,29 @@ fun WelcomeGiftPopup(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-
                 WelcomeGiftDatabase
                     .getAllGifts()
                     .forEach { gift ->
                         WelcomeGiftItem(
                             giftModel = gift,
-                            claimed =
-                                gift.day < currentDay || (gift.day == currentDay && claimedToday),
+                            claimed = gift.day < currentDay || (gift.day == currentDay && claimedToday),
                             current = gift.day == currentDay,
                             lastDay = gift.day == WELCOME_GIFT_DAYS
                         )
                     }
             }
 
-            Spacer(Modifier.height(24.dp))
+            Spacer(Modifier.height(20.dp))
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(
-                        RoundedCornerShape(18.dp)
-                    )
+                    .clip(RoundedCornerShape(18.dp))
                     .background(
                         Brush.verticalGradient(
                             listOf(
-                                Color(0xFFFDF9FF),
-                                Color(0xFFF3EAFF)
+                                colors.top,
+                                colors.light
                             )
                         )
                     )
@@ -125,49 +118,73 @@ fun WelcomeGiftPopup(
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(
-                            horizontal = 20.dp,
-                            vertical = 18.dp
-                        )
+                        .padding(horizontal = 20.dp, vertical = 16.dp)
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = stringResource(
-                            R.string.welcome_gift_today_reward
-                        ),
+                        text = stringResource(R.string.welcome_gift_today_reward),
                         fontWeight = FontWeight.Bold,
                         fontSize = 12.sp,
                         color = colors.dark,
                         textAlign = TextAlign.Center
                     )
 
-                    Spacer(
-                        Modifier.height(10.dp)
-                    )
+                    Spacer(Modifier.height(8.dp))
 
                     Text(
-                        text = gift.rewardText,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp,
+                        text = if (gift.rewardResId != 0) stringResource(gift.rewardResId) else "",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 20.sp,
                         color = colors.border,
                         textAlign = TextAlign.Center
                     )
                 }
             }
 
-            Spacer(Modifier.height(8.dp))
+            if (!currentCanClaim && GameManager.state.welcomeGiftDay != WELCOME_GIFT_DAYS) {
+                Spacer(Modifier.height(10.dp))
 
-            if (!currentCanClaim &&
-                GameManager.state.welcomeGiftDay != WELCOME_GIFT_DAYS) {
-                Text(
-                    text = Utils.formatRemainingTime(remainingTime),
-                    color = Color.Red,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
+                val redGradient = GameColors.Red
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    redGradient.top,
+                                    redGradient.light
+                                )
+                            )
+                        )
+                        .border(
+                            width = 1.5.dp,
+                            color = redGradient.dark,
+                            shape = RoundedCornerShape(18.dp)
+                        )
+                        .padding(horizontal = 14.dp, vertical = 10.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "⏳ " + stringResource(R.string.welcome_gift_next_reward_in) + " ",
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = redGradient.dark
+                        )
+                        Text(
+                            text = Utils.formatRemainingTime(remainingTime),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = redGradient.border
+                        )
+                    }
+                }
             }
         }
     }
