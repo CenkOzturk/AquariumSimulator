@@ -280,17 +280,20 @@ Priority order should generally be:
 
 When modifying the project:
 
--   First inspect existing models/managers/components.
--   Identify the existing source of truth.
--   Reuse existing code where possible.
--   Make the smallest change that solves the task.
--   Avoid rewriting entire files unless necessary.
+-   First inspect existing models/managers/components before making changes.
+-   Read relevant documentation (`AGENTS.md`, `DESIGN.md`, `LOGIC.md`) before starting any task.
+-   Follow `DESIGN.md` for UI changes and `LOGIC.md` for gameplay/behavior changes.
+-   Identify the existing source of truth and preserve existing architecture/managers.
+-   Reuse existing code, theme gradients, and components where possible.
+-   Make the smallest change that solves the task without unnecessary refactoring.
 -   Preserve existing behavior unless the task explicitly changes it.
 -   Keep gameplay values out of UI when possible.
 -   Keep persistence inside the existing persistence architecture.
--   Keep visual constants centralized when a system already exists for
-    them.
+-   Keep visual constants centralized in `GameColors` / theme configurations.
 -   Test edge cases around saved state, app restart and lifecycle.
 -   Consider popup/overlay ordering when adding UI.
 -   Consider both fresh install and returning-player behavior.
 -   Do not assume a feature exists just because it is listed as planned.
+-   Prefer using `?.let { ... }` for null checks instead of `if (value != null)`.
+-   Update documentation files after completing code changes to reflect verified state.
+-   At the end of every task, summarize changed code files, updated doc files, colors/gradients used, test results, and open items.

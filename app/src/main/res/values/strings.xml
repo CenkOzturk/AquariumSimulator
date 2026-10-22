@@ -20,6 +20,7 @@
     <string name="btn_close">✕</string>
     <string name="btn_shop">"🛒"</string>
     <string name="btn_continue">Continue</string>
+    <string name="btn_finish">Finish</string>
 
     <string name="coin_value">💰 %s</string>
     <string name="fish_food_value">🍤 %s</string>

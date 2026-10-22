@@ -101,6 +101,21 @@ required.
 
 Shared popup behavior belongs in reusable popup components.
 
+## Tutorial System
+
+Managed through `TutorialManager` and `TutorialStep` enum:
+- Step flow: `WELCOME` -> `OPEN_SHOP` -> `TIER_INFO` -> `BUY_FIRST_FISH` -> `FEED_FISH` -> `COLLECT_COIN` -> `CLEAN` -> `DAILY_TASK` -> `FINISH` -> `NONE`.
+- UI rendered via `TutorialOverlay` and `TutorialPopup`.
+- Positioning: `TutorialPopupPosition.TOP` (positioned at top with `top = 32.dp`) or `BOTTOM` (positioned at bottom with `bottom = 80.dp` above navigation area).
+- Action buttons: Intermediate steps display `Continue` / `Devam` (`R.string.btn_continue`), while the final step (`TutorialStep.FINISH`) displays `Finish` / `Bitir` (`R.string.btn_finish`), and tapping it finishes the tutorial (`TutorialManager.next()`).
+
+## Localization & Language Detection
+
+Managed through `LanguageManager`:
+- Supported languages: `AppLanguage.TURKISH` (`"tr"`) and `AppLanguage.ENGLISH` (`"en"`).
+- Initial launch detection: On first app launch (when `language` key is not present in `SharedPreferences`), `LanguageManager.init()` checks `Locale.getDefault().language`. If Turkish (`"tr"`), sets initial language to Turkish; otherwise defaults to English fallback.
+- Persistence: The initial language choice is saved in `SharedPreferences` (`settings`/`language`). Subsequent app launches load the saved preference and never overwrite the user's manual selection from Settings.
+
 ## Fish Neglect / Death
 
 Planned system.

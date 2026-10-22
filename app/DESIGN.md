@@ -38,9 +38,11 @@ feedback. - Flat system-looking buttons. - Excessive text.
 
 ## Color Usage
 
-Use the existing `GameColors` / gradient system when available.
+Use the existing `GameColors` / gradient system when available (`Purple`, `Leaf`, `Ocean`, `Sun`, `Red`, `Pink`, `Slate`, `Mint`, `Coral`, `Lime`).
 
 Typical pattern: - `top` - `light` - `base` - `border` - `dark`
+
+Do not define loose inline `Color(#...)` hex codes in UI composables; reuse central `GameColors` gradients.
 
 Use accent colors consistently within a screen/popup.
 
@@ -49,16 +51,33 @@ timer
 
 Do not use red as a general decorative color.
 
-## Typography
+## Contrast & Legibility
 
-Target: - One game/display font. - Optional supporting font.
+All text elements must maintain high contrast against their background container:
+- Dark text (`Color(0xFF0F172A)` / `gradient.dark`) on light backgrounds.
+- Crisp white text (`Color.White`) on dark/gradient backgrounds.
+- Secondary and subtitle text must remain bold and high-contrast (`Color(0xFF334155)` / `Color(0xFF475569)`).
+- Never place light text on light pastel backgrounds or dark text on dark backgrounds.
 
-Titles: - Bold. - Short. - Centered when appropriate.
+## Popup & Component Standards
 
-Buttons: - Strong weight. - High contrast. - Short labels.
+Popups:
+- Use solid/opaque container surfaces to prevent background aquarium graphics from bleeding through and straining eyes.
+- Use `3.5.dp` 3D gradient borders matching `gradient.border` and `gradient.dark`.
+- Rounded corners (`28.dp`-`32.dp`) and `16.dp`-`18.dp` drop shadows.
+- Integrated corner close tab (`CornerCloseTab`) attached at `Alignment.TopEnd`.
 
-Descriptions: - Smaller. - Lower contrast than titles. - Centered when
-the component is centered.
+Buttons:
+- 3D game button style with inner top glossy highlight line (`Color.White.copy(0.35f)`).
+- Bottom 3D bevel shadow edge (`Color.Black.copy(0.20f)`).
+- Bouncy press scale animation (`scale = 0.92f`-`0.93f`).
+- Single-line responsive text fitting for both English and Turkish lengths.
+
+## Responsive Localization
+
+UI layouts must accommodate both English and Turkish text lengths:
+- Turkish text is often longer than English; design buttons and tabs using flexible weights (`weight(1f)`) or compact padding instead of hardcoded fixed `dp` widths.
+- Ensure text never clips or overflows on small screen sizes.
 
 ## Animation
 

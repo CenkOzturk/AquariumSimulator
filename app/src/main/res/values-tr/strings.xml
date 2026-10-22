@@ -19,6 +19,7 @@
     <string name="btn_close">✕</string>
     <string name="btn_shop">🛒</string>
     <string name="btn_continue">Devam Et</string>
+    <string name="btn_finish">Bitir</string>
 
     <string name="coin_value">💰 %s</string>
     <string name="fish_food_value">🍤 %s</string>

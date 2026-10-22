@@ -14,14 +14,10 @@ import com.kukurodev.mykukuroaquarium.model.tutorial.toUiState
 
 @Composable
 fun TutorialOverlay() {
-
     if (TutorialManager.currentStep == TutorialStep.NONE) return
 
-    val alignment =
-        when (TutorialManager.currentStep.toUiState().popupPosition) {
-            TutorialPopupPosition.TOP -> Alignment.TopCenter
-            else -> Alignment.BottomCenter
-    }
+    val position = TutorialManager.currentStep.toUiState().popupPosition
+    val alignment = if (position == TutorialPopupPosition.TOP) Alignment.TopCenter else Alignment.BottomCenter
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -32,10 +28,10 @@ fun TutorialOverlay() {
             modifier = Modifier
                 .align(alignment)
                 .padding(
-                    top = 32.dp,
-                    bottom = 32.dp,
-                    start = 20.dp,
-                    end = 20.dp
+                    top = if (position == TutorialPopupPosition.TOP) 32.dp else 16.dp,
+                    bottom = if (position == TutorialPopupPosition.TOP) 16.dp else 80.dp,
+                    start = 16.dp,
+                    end = 16.dp
                 )
         ) {
             TutorialPopup()
