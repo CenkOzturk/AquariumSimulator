@@ -295,5 +295,6 @@ When modifying the project:
 -   Consider both fresh install and returning-player behavior.
 -   Do not assume a feature exists just because it is listed as planned.
 -   Prefer using `?.let { ... }` for null checks instead of `if (value != null)`.
+-   Tutorial Overlay Positioning Rules: Category A steps (`showContinue == true`) must be centered (`Alignment.Center`). Category B steps (`showContinue == false`) must be positioned 16.dp above target bounds, tracking moving targets dynamically in real-time, with fallback below target if top edge is reached.
 -   Update documentation files after completing code changes to reflect verified state.
 -   At the end of every task, summarize changed code files, updated doc files, colors/gradients used, test results, and open items.

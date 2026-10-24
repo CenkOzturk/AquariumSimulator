@@ -133,7 +133,7 @@ fun TutorialPopup() {
                             text = stringResource(state.titleResId),
                             fontWeight = FontWeight.ExtraBold,
                             fontSize = 16.sp,
-                            color = gradient.dark,
+                            color = gradient.border,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -145,7 +145,7 @@ fun TutorialPopup() {
                             fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             lineHeight = 18.sp,
-                            color = gradient.dark,
+                            color = gradient.border,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -154,7 +154,7 @@ fun TutorialPopup() {
 
                         Box(
                             modifier = Modifier.fillMaxWidth(),
-                            contentAlignment = Alignment.CenterEnd
+                            contentAlignment = Alignment.Center
                         ) {
                             if (state.showContinue) {
                                 SmallGameButton(
@@ -172,7 +172,7 @@ fun TutorialPopup() {
                                 ) {
                                     Text(
                                         text = "⏳ " + stringResource(R.string.waiting_action),
-                                        color = gradient.dark,
+                                        color = gradient.border,
                                         fontSize = 11.sp,
                                         fontWeight = FontWeight.Bold,
                                         fontStyle = FontStyle.Italic

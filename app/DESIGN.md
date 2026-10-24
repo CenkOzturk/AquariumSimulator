@@ -73,6 +73,14 @@ Buttons:
 - Bouncy press scale animation (`scale = 0.92f`-`0.93f`).
 - Single-line responsive text fitting for both English and Turkish lengths.
 
+## Tutorial UI & Speech Bubble Standards
+
+- Talking Fish Mascot: Uses `R.drawable.fish_01` on the left side with gentle swimming bobbing Y animation (`-3.dp` to `+3.dp`).
+- Speech Bubble Panel: Puffy rounded shape (`26.dp`), `3.5.dp` 3D gradient border (`GameColors.Ocean`), and `14.dp` drop shadow.
+- High-Contrast Text: All tutorial titles & messages are centered (`TextAlign.Center`) using bold, high-contrast dark slate text (`Color(0xFF0F172A)`) directly on the speech bubble background without unnecessary inner boxes.
+- Compact Action Button: Compact right-aligned `SmallGameButton` (`Alignment.CenterEnd`) with text + arrow (`"DEVAM ➔"` / `"NEXT ➔"`).
+- Positioning: Steps with continue buttons (`showContinue == true`) are centered on screen (`Alignment.Center`). Target-action steps are placed 16.dp above the target element, tracking moving targets dynamically, with top-edge fallback placing popup 16.dp below target.
+
 ## Responsive Localization
 
 UI layouts must accommodate both English and Turkish text lengths:
