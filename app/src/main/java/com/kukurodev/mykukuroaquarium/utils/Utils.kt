@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.Dp
 import com.google.gson.Gson
 import com.kukurodev.mykukuroaquarium.managers.GameAlertManager
 import com.kukurodev.mykukuroaquarium.managers.ItemManager.items
+import com.kukurodev.mykukuroaquarium.model.alert.GameAlertType
 import java.time.LocalDate
 import java.util.Calendar
 
@@ -35,7 +36,8 @@ object Utils {
 
     fun showToast(
         @StringRes resId: Int,
-        vararg formatArgs: Any?
+        vararg formatArgs: Any?,
+        type: GameAlertType = GameAlertType.WARNING,
     ) {
         appContext?.let { context ->
             val configuration = Configuration(
@@ -46,7 +48,7 @@ object Utils {
 
             val localizedContext = context.createConfigurationContext(configuration)
             val message = localizedContext.getString(resId, *formatArgs)
-            GameAlertManager.show(message)
+            GameAlertManager.show(message, type = type)
         }
     }
 

@@ -2,6 +2,7 @@ package com.kukurodev.mykukuroaquarium.managers
 
 import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.model.PlayerTier
+import com.kukurodev.mykukuroaquarium.model.alert.GameAlertType
 import com.kukurodev.mykukuroaquarium.model.task.DailyTaskDatabase
 import com.kukurodev.mykukuroaquarium.model.task.DailyTaskModel
 import com.kukurodev.mykukuroaquarium.model.task.DailyTaskType
@@ -58,7 +59,10 @@ object DailyTaskManager {
             )
         }
 
-        Utils.showToast(R.string.daily_task_reward_claimed)
+        Utils.showToast(
+            R.string.daily_task_reward_claimed,
+            GameAlertType.SUCCESS
+        )
     }
 
     private fun createDailyTask(multiplier: Int = 1) {
