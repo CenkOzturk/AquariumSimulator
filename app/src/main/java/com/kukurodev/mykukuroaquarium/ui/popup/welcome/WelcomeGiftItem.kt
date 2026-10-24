@@ -12,12 +12,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kukurodev.mykukuroaquarium.R
+import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.model.welcome.GiftModel
 
 @Composable
@@ -27,19 +28,16 @@ fun WelcomeGiftItem(
     current: Boolean,
     lastDay: Boolean
 ) {
-
     val shellRes = getShellRes(current, claimed, lastDay)
+    val itemSize = if (current || lastDay) 48.dp else 38.dp
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Box(
-            modifier = Modifier.size(
-                size = if (current||lastDay) 40.dp else 34.dp),
+            modifier = Modifier.size(itemSize),
             contentAlignment = Alignment.Center
         ) {
-
             Image(
                 painter = painterResource(shellRes),
                 contentDescription = null,
@@ -50,8 +48,8 @@ fun WelcomeGiftItem(
                 Icon(
                     painter = painterResource(R.drawable.ic_check_bold),
                     contentDescription = null,
-                    tint = Color.Green,
-                    modifier = Modifier.size(36.dp)
+                    tint = GameColors.LeafDark.top,
+                    modifier = Modifier.size(32.dp)
                 )
             }
         }
@@ -59,10 +57,10 @@ fun WelcomeGiftItem(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Day ${giftModel.day}",
-            fontSize = 11.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF46637A)
+            text = stringResource(R.string.welcome_gift_day_format, giftModel.day),
+            fontSize = if (current) 12.sp else 11.sp,
+            fontWeight = if (current) FontWeight.ExtraBold else FontWeight.Bold,
+            color = if (current) GameColors.PurpleDark.top else GameColors.Slate.border
         )
     }
 }
@@ -74,21 +72,14 @@ private fun getShellRes(
 ): Int {
     return when {
         current -> {
-            R.drawable.shell_blue_pearl
+            if (lastDay) R.drawable.shell_gold_pearl else R.drawable.shell_blue_pearl
         }
-
         lastDay -> {
-            if (current) {
-                R.drawable.shell_gold_pearl
-            } else {
-                R.drawable.shell_gold_empty
-            }
+            R.drawable.shell_gold_empty
         }
-
         claimed -> {
             R.drawable.shell_gray_pearl
         }
-
         else -> {
             R.drawable.shell_gray_empty
         }

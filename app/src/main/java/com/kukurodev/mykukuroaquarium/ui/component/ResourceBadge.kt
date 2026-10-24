@@ -21,7 +21,7 @@ fun ResourceBadge(
                 Color.Black.copy(alpha = 0.45f),
                 RoundedCornerShape(50)
             )
-            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .padding(horizontal = 10.dp, vertical = 4.dp)
     ) {
         Text(
             text = text,

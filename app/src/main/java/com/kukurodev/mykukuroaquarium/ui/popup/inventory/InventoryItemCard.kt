@@ -59,8 +59,6 @@ fun InventoryItemCard(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            // ICON
             Text(
                 text = item.icon,
                 fontSize = 34.sp,
@@ -69,18 +67,16 @@ fun InventoryItemCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // TITLE
             Text(
                 text = stringResource(item.titleResId),
                 fontSize = 12.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.Black.copy(alpha = contentAlpha),
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF0F172A).copy(alpha = contentAlpha),
                 maxLines = 1
             )
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // EXTRA INFO
             ShopItemInfo(
                 shopTab = ShopTab.FISH,
                 extraInfo = item.extraInfo,
@@ -88,7 +84,6 @@ fun InventoryItemCard(
             )
         }
 
-        // LOCK OVERLAY
         if (!isUnlocked) {
             Box(
                 modifier = Modifier
@@ -98,10 +93,6 @@ fun InventoryItemCard(
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                /*Text(
-                    text = "🔒",
-                    fontSize = 20.sp
-                )*/
             }
         }
     }

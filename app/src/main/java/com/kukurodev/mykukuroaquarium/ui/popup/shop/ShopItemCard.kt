@@ -1,11 +1,14 @@
 package com.kukurodev.mykukuroaquarium.ui.popup.shop
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -24,6 +27,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kukurodev.mykukuroaquarium.managers.TutorialManager
@@ -38,21 +43,25 @@ fun ShopItemCard(
     playerTier: PlayerTier,
     onClick: () -> Unit
 ) {
-
     val isUnlocked = playerTier.canAccess(item.requiredTier)
-
     val contentAlpha = if (isUnlocked) 1f else 0.45f
 
     Box(
         modifier = Modifier
-            .padding(6.dp)
+            .padding(4.dp)
+            .height(124.dp)
             .clip(RoundedCornerShape(18.dp))
             .background(
                 if (isUnlocked) {
                     Color.White
                 } else {
-                    Color(0xFFF2F2F2)
+                    Color(0xFFF1F5F9)
                 }
+            )
+            .border(
+                width = 1.5.dp,
+                color = if (isUnlocked) Color(0xFFE2E8F0) else Color(0xFFCBD5E1),
+                shape = RoundedCornerShape(18.dp)
             )
             .clickable(
                 enabled = isUnlocked,
@@ -61,7 +70,7 @@ fun ShopItemCard(
             ) {
                 onClick()
             }
-            .padding(10.dp)
+            .padding(8.dp)
             .onGloballyPositioned {
                 if (item.id == 100) {
                     TutorialManager.updateBounds(
@@ -71,12 +80,10 @@ fun ShopItemCard(
                 }
             }
     ) {
-
-        // TIER BADGE
         Box(
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .size(12.dp)
+                .size(10.dp)
                 .background(
                     color = when (item.requiredTier) {
                         PlayerTier.FREE -> Color(0xFF66BB6A)
@@ -89,57 +96,52 @@ fun ShopItemCard(
         )
 
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-
-            // ICON
             Text(
                 text = item.icon,
-                fontSize = 34.sp,
+                fontSize = 32.sp,
                 modifier = Modifier.alpha(contentAlpha)
             )
 
-            Spacer(modifier = Modifier.height(6.dp))
-
-            // TITLE
             Text(
                 text = stringResource(item.titleResId),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.Black.copy(alpha = contentAlpha),
-                maxLines = 1
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF0F172A).copy(alpha = contentAlpha),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(6.dp))
-
-            // EXTRA INFO
             if (item.extraInfo.isNotEmpty()) {
                 ShopItemInfo(
                     shopTab = item.type,
                     extraInfo = item.extraInfo,
                     alpha = contentAlpha
                 )
-
-                Spacer(modifier = Modifier.height(6.dp))
+            } else {
+                Spacer(modifier = Modifier.height(12.dp))
             }
 
-            // PRICE
             Text(
                 text = "${item.price} 💰",
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFFFA000).copy(alpha = contentAlpha)
+                fontSize = 11.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color(0xFFD97706).copy(alpha = contentAlpha),
+                textAlign = TextAlign.Center
             )
         }
 
-        // LOCK OVERLAY
         if (!isUnlocked) {
             Box(
                 modifier = Modifier
                     .matchParentSize()
                     .background(
-                        Color.White.copy(alpha = 0.45f)
+                        Color.White.copy(alpha = 0.50f)
                     ),
                 contentAlignment = Alignment.Center
             ) {

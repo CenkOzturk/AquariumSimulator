@@ -86,11 +86,11 @@ object GameColors {
     )
 
     val Pink = GameGradient(
-        top = Color(0xFFFFF0F5),    // Çok açık pembe
-        light = Color(0xFFFFE4EC),  // Yumuşak geçiş
-        base = Color(0xFFFFC1D6),   // Açık pastel pembe
-        dark = Color(0xFFFF94B8),    // Sertleşmeyen, tatlı orta ton
-        border = Color(0xFFF06292)  // Çerçeveyi belirgin tutan ama yumuşak kalan renk
+        top = Color(0xFFFFF0F5),
+        light = Color(0xFFFFE4EC),
+        base = Color(0xFFFFC1D6),
+        dark = Color(0xFFFF94B8),
+        border = Color(0xFFF06292)
     )
 
     val PinkDark = GameGradient(
@@ -115,6 +115,30 @@ object GameColors {
         base = Color(0xFF334155),
         dark = Color(0xFF1E293B),
         border = Color(0xFF0F172A)
+    )
+
+    val Mint = GameGradient(
+        top = Color(0xFFECFDF5),
+        light = Color(0xFFA7F3D0),
+        base = Color(0xFF34D399),
+        dark = Color(0xFF059669),
+        border = Color(0xFF047857)
+    )
+
+    val Coral = GameGradient(
+        top = Color(0xFFFFF1F2),
+        light = Color(0xFFFECDD3),
+        base = Color(0xFFFB7185),
+        dark = Color(0xFFE11D48),
+        border = Color(0xFFBE123C)
+    )
+
+    val Lime = GameGradient(
+        top = Color(0xFFF7FEE7),
+        light = Color(0xFFD9F99D),
+        base = Color(0xFFA3E635),
+        dark = Color(0xFF65A30D),
+        border = Color(0xFF4D7C0F)
     )
 
     val OceanGradient = Brush.verticalGradient(

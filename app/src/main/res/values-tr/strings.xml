@@ -8,14 +8,19 @@
     <string name="ok">Tamam</string>
     <string name="close">Kapat</string>
     <string name="shop">Shop</string>
+    <string name="shop_subtitle">Balıklar, eşyalar ve yükseltmeleri incele!</string>
     <string name="cleaner">Temizlikçi</string>
     <string name="fish_food">Balık Yemi</string>
     <string name="inventory">Envanter</string>
+    <string name="inventory_subtitle">Balıklarını ve dekorasyonlarını yönet</string>
+    <string name="buy_aquarium_subtitle">Akvaryum kapasitini ve görünümünü yükselt</string>
 
     <string name="btn_reset">RESET</string>
     <string name="btn_close">✕</string>
     <string name="btn_shop">🛒</string>
     <string name="btn_continue">Devam Et</string>
+    <string name="btn_finish">Bitir</string>
+    <string name="btn_skip">Geç ⏩</string>
 
     <string name="coin_value">💰 %s</string>
     <string name="fish_food_value">🍤 %s</string>
@@ -140,16 +145,25 @@
     <string name="daily_task_gold_fish">Altın Balığı Yakala</string>
     <string name="daily_task_collect">Topla %s 💰</string>
     <string name="daily_task_today_missions">Bugünün Görevleri</string>
-    <string name="daily_task_not_complete_tasks">Görevleri henüz bitirmedim :(</string>
-    <string name="daily_task_reward_claimed">Bütün görevleri bitirdin :)</string>
-    <string name="daily_task_already_received_reward">Bugünün ödülünü aldın yarın tekrar görüşürüz</string>
+    <string name="daily_task_not_complete_tasks">Görevleri Tamamla</string>
+    <string name="daily_task_reward_claimed">Tüm görevleri tamamladın :)</string>
+    <string name="daily_task_already_received_reward">Bugünün ödülünü aldın, yarın tekrar görüşürüz!</string>
 
     <!-- Welcome Gift -->
-    <string name="welcome_gift_title">Hoş Geldin Hediyesi</string>
-    <string name="welcome_gift_subtitle">Ödüllerini almak için her gün geri gel!</string>
+    <string name="welcome_gift_title">Hoş Geldin Ödülleri</string>
+    <string name="welcome_gift_subtitle">Ödüllerini toplamak için her gün tekrar uğra!</string>
     <string name="welcome_gift_claim">Ödülü Al</string>
     <string name="welcome_gift_claimed">Bugün Alındı</string>
     <string name="welcome_gift_today_reward">BUGÜNÜN ÖDÜLÜ</string>
+    <string name="welcome_gift_day_format">%1$d. Gün</string>
+    <string name="welcome_gift_next_reward_in">Sonraki ödül:</string>
+    <string name="welcome_gift_reward_day_1">100 Coin</string>
+    <string name="welcome_gift_reward_day_2">25 Yem</string>
+    <string name="welcome_gift_reward_day_3">250 Coin</string>
+    <string name="welcome_gift_reward_day_4">50 Yem</string>
+    <string name="welcome_gift_reward_day_5">500 Coin</string>
+    <string name="welcome_gift_reward_day_6">1000 Coin ve 50 Yem</string>
+    <string name="welcome_gift_reward_day_7">Altın Balık (Gold Fish)</string>
 
     <!-- Settings -->
     <string name="settings_title">AYARLAR</string>

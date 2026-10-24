@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import com.google.gson.Gson
+import com.kukurodev.mykukuroaquarium.managers.GameAlertManager
 import com.kukurodev.mykukuroaquarium.managers.ItemManager.items
+import com.kukurodev.mykukuroaquarium.model.alert.GameAlertType
 import java.time.LocalDate
 import java.util.Calendar
 
@@ -29,14 +31,13 @@ object Utils {
     }
 
     fun showToast(message: String) {
-        appContext?.let {
-            Toast.makeText(it, message, Toast.LENGTH_SHORT).show()
-        } ?: Log.e("ToastUtil", "Context henüz init edilmemiş!")
+        GameAlertManager.show(message)
     }
 
     fun showToast(
         @StringRes resId: Int,
-        vararg formatArgs: Any?
+        vararg formatArgs: Any?,
+        type: GameAlertType = GameAlertType.WARNING,
     ) {
         appContext?.let { context ->
             val configuration = Configuration(
@@ -46,12 +47,8 @@ object Utils {
             }
 
             val localizedContext = context.createConfigurationContext(configuration)
-
-            Toast.makeText(
-                localizedContext,
-                localizedContext.getString(resId, *formatArgs),
-                Toast.LENGTH_SHORT
-            ).show()
+            val message = localizedContext.getString(resId, *formatArgs)
+            GameAlertManager.show(message, type = type)
         }
     }
 
