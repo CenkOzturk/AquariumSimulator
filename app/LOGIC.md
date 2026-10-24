@@ -101,6 +101,24 @@ required.
 
 Shared popup behavior belongs in reusable popup components.
 
+## Tutorial System
+
+Managed through `TutorialManager` and `TutorialStep` enum:
+- Step flow: `WELCOME` -> `OPEN_SHOP` -> `TIER_INFO` -> `BUY_FIRST_FISH` -> `FEED_FISH` -> `COLLECT_COIN` -> `CLEAN` -> `DAILY_TASK` -> `FINISH` -> `NONE`.
+- UI rendered via `TutorialOverlay` and `TutorialPopup`.
+- Category A Positioning (`showContinue == true`: `WELCOME`, `TIER_INFO`, `FINISH`) -> Placed at screen center (`Alignment.Center`).
+- Category B Positioning (`showContinue == false`: `OPEN_SHOP`, `BUY_FIRST_FISH`, `FEED_FISH`, `COLLECT_COIN`, `CLEAN`, `DAILY_TASK`) -> Dynamically positioned 16.dp above target bounds (`targetTopDp - popupHeightDp - 16.dp`).
+- Real-time Dynamic Target Tracking: `TutorialOverlay` reads `TutorialManager.currentBounds` per frame, so `TutorialPopup` smoothly follows moving targets (such as swimming fish or floating coins) in real-time.
+- Top-Edge Fallback: If `idealYDp < 24.dp` (target near top edge), `TutorialOverlay` places `TutorialPopup` 16.dp below target at `targetBottomDp + 16.dp` to prevent off-screen clipping.
+- Action buttons: Intermediate steps display `Continue` / `Devam` (`R.string.btn_continue`), while the final step (`TutorialStep.FINISH`) displays `Finish` / `Bitir` (`R.string.btn_finish`), and tapping it finishes the tutorial (`TutorialManager.next()`).
+
+## Localization & Language Detection
+
+Managed through `LanguageManager`:
+- Supported languages: `AppLanguage.TURKISH` (`"tr"`) and `AppLanguage.ENGLISH` (`"en"`).
+- Initial launch detection: On first app launch (when `language` key is not present in `SharedPreferences`), `LanguageManager.init()` checks `Locale.getDefault().language`. If Turkish (`"tr"`), sets initial language to Turkish; otherwise defaults to English fallback.
+- Persistence: The initial language choice is saved in `SharedPreferences` (`settings`/`language`). Subsequent app launches load the saved preference and never overwrite the user's manual selection from Settings.
+
 ## Fish Neglect / Death
 
 Planned system.

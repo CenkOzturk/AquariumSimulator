@@ -17,16 +17,23 @@ object LanguageManager {
         private set
 
     fun init(context: Context) {
-        val savedLanguage = context
-            .getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-            .getString(
-                LANGUAGE_KEY,
-                AppLanguage.ENGLISH.name
-            )
+        val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
-        currentLanguage = runCatching {
-            AppLanguage.valueOf(savedLanguage!!)
-        }.getOrDefault(AppLanguage.ENGLISH)
+        if (!prefs.contains(LANGUAGE_KEY)) {
+            val systemLanguage = Locale.getDefault().language.lowercase()
+            val initialLanguage = if (systemLanguage.startsWith("tr")) {
+                AppLanguage.TURKISH
+            } else {
+                AppLanguage.ENGLISH
+            }
+            prefs.edit().putString(LANGUAGE_KEY, initialLanguage.name).apply()
+            currentLanguage = initialLanguage
+        } else {
+            val savedLanguage = prefs.getString(LANGUAGE_KEY, AppLanguage.ENGLISH.name)
+            currentLanguage = runCatching {
+                AppLanguage.valueOf(savedLanguage!!)
+            }.getOrDefault(AppLanguage.ENGLISH)
+        }
 
         applyLocale(context, currentLanguage)
     }
@@ -45,7 +52,7 @@ object LanguageManager {
 
         applyLocale(context, language)
 
-        (context as Activity).recreate()
+        (context as? Activity)?.recreate()
     }
 
     private fun applyLocale(

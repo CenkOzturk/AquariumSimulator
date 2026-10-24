@@ -45,7 +45,7 @@ fun DailyTaskPopup(
             title = stringResource(R.string.daily_task_today_missions),
             subtitle = stringResource(R.string.daily_today_missions_subtitle),
             gradient = colors,
-            widthFraction = .68f,
+            widthFraction = 0.82f,
             buttonText = if (allCompleted) {
                 stringResource(R.string.daily_task_collect, totalReward)
             } else {
@@ -55,11 +55,8 @@ fun DailyTaskPopup(
             onButtonClick = onCollect,
             onClose = dismiss
         ) {
-
             tasks.forEach { task ->
-
                 TaskRow(task)
-
                 Spacer(Modifier.height(10.dp))
             }
 
@@ -94,7 +91,7 @@ fun DailyTaskPopup(
                         text = stringResource(R.string.daily_total_reward),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = colors.dark,
+                        color = colors.border,
                         textAlign = TextAlign.Center
                     )
 

@@ -1,49 +1,45 @@
 package com.kukurodev.mykukuroaquarium.model.welcome
 
+import com.kukurodev.mykukuroaquarium.R
+
 object WelcomeGiftDatabase {
 
     private val gifts = listOf(
         GiftModel(
             day = 1,
             coins = 100,
-            rewardText = "100 Coins"
+            rewardResId = R.string.welcome_gift_reward_day_1
         ),
-
         GiftModel(
             day = 2,
             food = 25,
-            rewardText = "25 Fish Food"
+            rewardResId = R.string.welcome_gift_reward_day_2
         ),
-
         GiftModel(
             day = 3,
             coins = 250,
-            rewardText = "250 Coins"
+            rewardResId = R.string.welcome_gift_reward_day_3
         ),
-
         GiftModel(
             day = 4,
             food = 50,
-            rewardText = "50 Fish Food"
+            rewardResId = R.string.welcome_gift_reward_day_4
         ),
-
         GiftModel(
             day = 5,
             coins = 500,
-            rewardText = "500 Coins"
+            rewardResId = R.string.welcome_gift_reward_day_5
         ),
-
         GiftModel(
             day = 6,
             coins = 1000,
             food = 50,
-            rewardText = "1000 Coins and 50 Fish Food"
+            rewardResId = R.string.welcome_gift_reward_day_6
         ),
-
         GiftModel(
             day = 7,
-            rewardText = "Golden Fish"
-        ),
+            rewardResId = R.string.welcome_gift_reward_day_7
+        )
     )
 
     fun getAllGifts(): List<GiftModel> {

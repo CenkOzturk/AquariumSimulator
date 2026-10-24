@@ -26,6 +26,7 @@ fun InventoryPopUp(
                 .fillMaxWidth(.92f)
                 .fillMaxHeight(.48f),
             title = stringResource(R.string.inventory),
+            subtitle = stringResource(R.string.inventory_subtitle),
             gradient = GameColors.Pink,
             onClose = dismiss
         ) {
