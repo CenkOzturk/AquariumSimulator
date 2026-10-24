@@ -55,13 +55,16 @@ fun WelcomeGiftPopup(
     LaunchedEffect(Unit) {
         while (true) {
             currentTime = System.currentTimeMillis()
+            WelcomeGiftManager.refreshIfNeeded()
             delay(1000L)
         }
     }
 
     val colors = GameColors.Purple
     val remainingTime = WelcomeGiftManager.remainingTime(currentTime)
-    val currentCanClaim = canClaim || remainingTime <= 0L
+    val currentCanClaim = WelcomeGiftManager.canClaim()
+    val activeDay = WelcomeGiftManager.currentDay()
+    val activeGift = WelcomeGiftManager.currentGift()
 
     GeneralPopup(
         onClose = onClose
@@ -86,12 +89,12 @@ fun WelcomeGiftPopup(
             ) {
                 WelcomeGiftDatabase
                     .getAllGifts()
-                    .forEach { gift ->
+                    .forEach { item ->
                         WelcomeGiftItem(
-                            giftModel = gift,
-                            claimed = gift.day < currentDay || (gift.day == currentDay && claimedToday),
-                            current = gift.day == currentDay,
-                            lastDay = gift.day == WELCOME_GIFT_DAYS
+                            giftModel = item,
+                            claimed = item.day < activeDay || (item.day == activeDay && !currentCanClaim),
+                            current = item.day == activeDay,
+                            lastDay = item.day == WELCOME_GIFT_DAYS
                         )
                     }
             }
@@ -133,7 +136,7 @@ fun WelcomeGiftPopup(
                     Spacer(Modifier.height(8.dp))
 
                     Text(
-                        text = if (gift.rewardResId != 0) stringResource(gift.rewardResId) else "",
+                        text = if (activeGift.rewardResId != 0) stringResource(activeGift.rewardResId) else "",
                         fontWeight = FontWeight.ExtraBold,
                         fontSize = 20.sp,
                         color = colors.border,

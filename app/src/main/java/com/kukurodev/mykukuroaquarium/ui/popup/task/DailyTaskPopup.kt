@@ -91,7 +91,7 @@ fun DailyTaskPopup(
                         text = stringResource(R.string.daily_total_reward),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = colors.dark,
+                        color = colors.border,
                         textAlign = TextAlign.Center
                     )
 
