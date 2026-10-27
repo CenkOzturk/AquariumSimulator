@@ -1,5 +1,6 @@
 package com.kukurodev.mykukuroaquarium.ui.popup.shop
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -24,7 +25,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -100,11 +103,22 @@ fun ShopItemCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = item.icon,
-                fontSize = 32.sp,
-                modifier = Modifier.alpha(contentAlpha)
-            )
+            if (item.imgResId != null) {
+                Image(
+                    painter = painterResource(item.imgResId),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .size(38.dp)
+                        .alpha(contentAlpha)
+                )
+            } else {
+                Text(
+                    text = item.icon,
+                    fontSize = 32.sp,
+                    modifier = Modifier.alpha(contentAlpha)
+                )
+            }
 
             Text(
                 text = stringResource(item.titleResId),

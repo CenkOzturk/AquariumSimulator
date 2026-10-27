@@ -165,6 +165,11 @@
     <string name="welcome_gift_reward_day_6">1000 Coin ve 50 Yem</string>
     <string name="welcome_gift_reward_day_7">Altın Balık (Gold Fish)</string>
 
+    <!-- Shop Sections -->
+    <string name="shop_section_tanks">🏠 Akvaryum Yükseltmeleri</string>
+    <string name="shop_section_foods">🍤 Balık Yemleri</string>
+    <string name="shop_section_cleaners">🧽 Temizlik Malzemeleri</string>
+
     <!-- Settings -->
     <string name="settings_title">AYARLAR</string>
 

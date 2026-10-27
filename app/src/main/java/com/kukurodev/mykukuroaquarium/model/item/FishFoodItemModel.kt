@@ -15,10 +15,11 @@ data class FishFoodItemModel(
 fun FishFoodItemModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        type = ShopTab.ITEMS,
+        type = ShopTab.AQUARIUM,
         titleResId = R.string.fish_food,
         price = price,
-        icon = "\uD83C\uDF64",
+        icon = "🍤",
+        imgResId = if (resId != 0) resId else null,
         extraInfo = foodAmount.toString(),
         isConsumable = true
     )

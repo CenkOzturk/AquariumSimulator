@@ -19,10 +19,11 @@ data class AquariumItemModel(
 fun AquariumItemModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        type = ShopTab.AQUARIUM,
+        type = ShopTab.ITEMS,
         titleResId = nameResId,
         price = price,
         icon = "🌿",
+        imgResId = resId,
         extraInfo = Utils.emptyString(),
         requiredTier = requirementType.toPlayerTier(),
         isConsumable = isConsumable

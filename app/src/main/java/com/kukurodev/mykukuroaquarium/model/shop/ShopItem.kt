@@ -8,10 +8,8 @@ data class ShopItem(
     val titleResId: Int,
     val price: Int,
     val icon: String,
+    val imgResId: Int? = null,
     val extraInfo: String,
     val requiredTier: PlayerTier = PlayerTier.FREE,
     val isConsumable: Boolean = false
 )
-
-
-

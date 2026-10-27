@@ -70,9 +70,13 @@ fun ShopPopup(
                 onClick = { item ->
                     when (currentTab) {
                         ShopTab.AQUARIUM -> {
-                            AquariumType.entries
-                                .getOrNull(item.id)
-                                ?.let(onTankSelected)
+                            if (item.id < 10) {
+                                AquariumType.entries
+                                    .getOrNull(item.id)
+                                    ?.let(onTankSelected)
+                            } else {
+                                onItemSelected(item)
+                            }
                         }
 
                         ShopTab.FISH -> {

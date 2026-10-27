@@ -18,14 +18,18 @@ enum class ShopTab {
 
 fun ShopTab.items(): List<ShopItem> {
     return when (this) {
-        ShopTab.AQUARIUM -> {
-            AquariumType.entries
-                .filter {
-                    it.ordinal > AquariumType.valueOf(GameManager.state.aquariumType)
-                        .ordinal
-                }
-                .map { it.toShopItem() }
-        }
+        ShopTab.AQUARIUM ->
+            buildList {
+                addAll(
+                    AquariumType.entries
+                        .filter {
+                            it.ordinal > AquariumType.valueOf(GameManager.state.aquariumType).ordinal
+                        }
+                        .map { it.toShopItem() }
+                )
+                addAll(FishFoodItemDatabase.getAllFishFeed().map { it.toShopItem() })
+                addAll(CleanerDatabase.getAllCleaners().map { it.toShopItem() })
+            }
 
         ShopTab.FISH -> {
             FishDatabase.getAllFishes()
@@ -34,13 +38,8 @@ fun ShopTab.items(): List<ShopItem> {
         }
 
         ShopTab.ITEMS ->
-            buildList {
-                addAll(FishFoodItemDatabase.getAllFishFeed().map { it.toShopItem() } )
-                addAll(CleanerDatabase.getAllCleaners().map { it.toShopItem() } )
-                addAll(
-                    ItemDatabase.getAllItems()
-                        .filter { it.id !in GameManager.state.ownedItemIds }
-                        .map { it.toShopItem() } )
-            }
+            ItemDatabase.getAllItems()
+                .filter { it.id !in GameManager.state.ownedItemIds }
+                .map { it.toShopItem() }
     }
 }

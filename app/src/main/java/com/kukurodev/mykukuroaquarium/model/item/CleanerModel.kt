@@ -15,10 +15,11 @@ data class CleanerModel(
 fun CleanerModel.toShopItem(): ShopItem {
     return ShopItem(
         id = id,
-        type = ShopTab.ITEMS,
+        type = ShopTab.AQUARIUM,
         titleResId = nameResId,
         price = price,
-        icon = "\uD83E\uDDFD",
+        icon = "🧽",
+        imgResId = icon,
         extraInfo = cleanerCount.toString(),
         isConsumable = true
     )

@@ -31,6 +31,7 @@ fun FishModel.toShopItem(): ShopItem {
         titleResId = nameResId,
         price = price,
         icon = "🐟",
+        imgResId = resId,
         extraInfo = income.toString(),
         requiredTier = requirementType.toPlayerTier()
     )
@@ -45,5 +46,3 @@ fun FishModel.toInventoryItem(): InventoryItem {
         isActive = false
     )
 }
-
-
