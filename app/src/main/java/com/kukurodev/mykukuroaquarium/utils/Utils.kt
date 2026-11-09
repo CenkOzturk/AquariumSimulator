@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.kukurodev.mykukuroaquarium.managers.GameAlertManager
 import com.kukurodev.mykukuroaquarium.managers.ItemManager.items
 import com.kukurodev.mykukuroaquarium.model.alert.GameAlertType
@@ -61,7 +62,8 @@ object Utils {
     }
 
     inline fun <reified T> String.fromJson(): T {
-        return Gson().fromJson(this, T::class.java)
+        val type = object : TypeToken<T>() {}.type
+        return Gson().fromJson(this, type)
     }
 
     fun tomorrowAtMidnight(): Long {

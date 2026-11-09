@@ -23,6 +23,8 @@ object GameManager {
     fun initializeGameScreen() {
         AquariumManager.initialize(state.aquariumType)
 
+        FishLifeManager.checkAndProcessDeathOnLaunch()
+
         val initialFishes = FishDatabase.getFishByIds(state.activeFishes)
 
         fishes.clear()

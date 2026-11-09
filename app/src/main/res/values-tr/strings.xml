@@ -243,4 +243,14 @@
     <string name="force_update_button">Şimdi Güncelle</string>
     <string name="google_sign_in">Google ile Giriş Yap</string>
     <string name="google_connected">Google Hesabı Bağlı</string>
+
+    <!-- Fish Neglect & Death -->
+    <string name="notification_channel_name">Akvaryum Bildirimleri</string>
+    <string name="notification_channel_desc">Akvaryumun ve balıklarının sağlığı ile ilgili bildirimler.</string>
+    <string name="notification_day3_title">Balıkların acıktı! 🐟</string>
+    <string name="notification_day3_body">Balıklarının yeme ihtiyacı var! Yem vermek için akvaryuma geri dön.</string>
+    <string name="notification_day4_title">Balığını kurtar! 🚨</string>
+    <string name="notification_day4_body">Balığın çok acıktı! Gel balığını kurtar.</string>
+    <string name="fish_death_title">Balığın Öldü 💔</string>
+    <string name="fish_death_subtitle">Yem verilmediği için balığın kayboldu. Mağazadan yeni bir balık alabilirsin!</string>
 </resources>

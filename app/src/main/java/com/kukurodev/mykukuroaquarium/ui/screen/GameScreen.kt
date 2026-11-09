@@ -16,6 +16,7 @@ import com.kukurodev.mykukuroaquarium.managers.BubbleManager
 import com.kukurodev.mykukuroaquarium.managers.CoinLoop
 import com.kukurodev.mykukuroaquarium.managers.DailyTaskManager
 import com.kukurodev.mykukuroaquarium.managers.DirtManager
+import com.kukurodev.mykukuroaquarium.managers.FishLifeManager
 import com.kukurodev.mykukuroaquarium.managers.FishManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager.initializeGameScreen
@@ -46,6 +47,7 @@ fun GameScreen() {
     val uiState = rememberGameUiState()
 
     LaunchedEffect(Unit) {
+        val fishDied = FishLifeManager.checkAndProcessDeathOnLaunch()
         initializeGameScreen()
         Utils.init(context)
         TutorialManager.initialize()
@@ -53,6 +55,9 @@ fun GameScreen() {
         DailyTaskManager.refreshIfNeeded(GameProgress().calculateTier())
         DirtManager.initialize(AquariumManager.currentAquarium)
         CoinLoop.start(lifecycleOwner)
+        if (fishDied || FishLifeManager.hasPendingDeathNotice) {
+            uiState.openFishDeathPopup()
+        }
     }
 
     LaunchedEffect(screenWidth, screenHeight) {

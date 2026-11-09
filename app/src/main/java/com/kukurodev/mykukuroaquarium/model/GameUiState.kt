@@ -95,6 +95,17 @@ class GameUiState {
     fun closeWelcomeGift() {
         showWelcomeGift = false
     }
+
+    var showFishDeathPopup by mutableStateOf(false)
+        private set
+
+    fun openFishDeathPopup() {
+        showFishDeathPopup = true
+    }
+
+    fun closeFishDeathPopup() {
+        showFishDeathPopup = false
+    }
 }
 
 @Composable

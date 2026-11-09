@@ -243,4 +243,14 @@
     <string name="force_update_button">Update Now</string>
     <string name="google_sign_in">Sign in with Google</string>
     <string name="google_connected">Google Account Connected</string>
+
+    <!-- Fish Neglect & Death -->
+    <string name="notification_channel_name">Aquarium Alerts</string>
+    <string name="notification_channel_desc">Notifications about your aquarium and fish health.</string>
+    <string name="notification_day3_title">Your fish are hungry! 🐟</string>
+    <string name="notification_day3_body">Your fish need food! Come back to feed them.</string>
+    <string name="notification_day4_title">Save your fish! 🚨</string>
+    <string name="notification_day4_body">Your fish needs help! Come save your fish before it\'s too late.</string>
+    <string name="fish_death_title">Fish Passed Away 💔</string>
+    <string name="fish_death_subtitle">Your fish passed away due to lack of food. You can get a new fish from the shop!</string>
 </resources>
