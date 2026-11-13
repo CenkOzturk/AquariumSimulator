@@ -39,7 +39,8 @@ data class GameState(
     val ownedUpgrades: UpgradeState =
         UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState(),
     val musicEnable: Boolean = true,
-    val soundEffectEnable: Boolean = true
+    val soundEffectEnable: Boolean = true,
+    val activeBackgroundId: Int = 1
 )
 
 suspend fun loadGameState(context: Context): GameState {
@@ -66,6 +67,7 @@ suspend fun loadGameState(context: Context): GameState {
         ownedUpgrades = prefs[PrefKeys.UPGRADES]?.fromJson<UpgradeState>() ?: UpgradeState(emptyList()),
         musicEnable = prefs[PrefKeys.MUSIC_ENABLE] ?: true,
         soundEffectEnable = prefs[PrefKeys.SOUND_EFFECT_ENABLE] ?: true,
+        activeBackgroundId = prefs[PrefKeys.ACTIVE_BACKGROUND] ?: 1
     )
 }
 
@@ -94,5 +96,6 @@ suspend fun saveGameState(
         prefs[PrefKeys.UPGRADES] = state.ownedUpgrades.toJson()
         prefs[PrefKeys.MUSIC_ENABLE] = state.musicEnable
         prefs[PrefKeys.SOUND_EFFECT_ENABLE] = state.soundEffectEnable
+        prefs[PrefKeys.ACTIVE_BACKGROUND] = state.activeBackgroundId
     }
 }

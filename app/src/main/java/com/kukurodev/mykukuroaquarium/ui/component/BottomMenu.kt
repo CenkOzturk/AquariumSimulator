@@ -54,6 +54,15 @@ fun BottomMenu(
             verticalAlignment = Alignment.CenterVertically
         ) {
             MenuButton(
+                gradient = GameColors.SunDark,
+                imgResId = R.drawable.button_bg,
+                imgSize = 52,
+                onClick = {
+                    uiState.openBackgroundPopup()
+                }
+            )
+
+            MenuButton(
                 gradient = GameColors.Pink,
                 imgResId = R.drawable.ic_inventory,
                 imgSize = 56,

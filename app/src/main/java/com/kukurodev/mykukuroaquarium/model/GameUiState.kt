@@ -32,6 +32,9 @@ class GameUiState {
     var showWelcomeGift by mutableStateOf(false)
         private set
 
+    var showBackgroundPopup by mutableStateOf(false)
+        private set
+
     var selectedUpgradeTab by mutableStateOf(UpgradeCategoryTab.FISH)
         set
 
@@ -52,6 +55,14 @@ class GameUiState {
 
     fun closeInventory() {
         showInventory = false
+    }
+
+    fun openBackgroundPopup() {
+        showBackgroundPopup = true
+    }
+
+    fun closeBackgroundPopup() {
+        showBackgroundPopup = false
     }
 
     fun openUpgrade(tab: UpgradeCategoryTab) {

@@ -28,5 +28,6 @@ object PrefKeys {
     val UPGRADES = stringPreferencesKey("upgrades")
     val MUSIC_ENABLE = booleanPreferencesKey("musicEnable")
     val SOUND_EFFECT_ENABLE = booleanPreferencesKey("soundEffectEnable")
+    val ACTIVE_BACKGROUND = intPreferencesKey("activeBackground")
 }
 

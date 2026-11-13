@@ -29,6 +29,7 @@ import com.kukurodev.mykukuroaquarium.managers.FloatingTextManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.GoldFishManager
 import com.kukurodev.mykukuroaquarium.model.aquarium.AquariumModel
+import com.kukurodev.mykukuroaquarium.model.background.BackgroundDatabase
 import com.kukurodev.mykukuroaquarium.model.extras.DirtLevel
 import com.kukurodev.mykukuroaquarium.ui.component.AnimatedCoin
 import com.kukurodev.mykukuroaquarium.ui.theme.MyAquariumSimulatorTheme
@@ -36,17 +37,15 @@ import com.kukurodev.mykukuroaquarium.utils.Utils.hasItem
 
 @Composable
 fun AquariumView(aquarium: AquariumModel) {
+    val bg = BackgroundDatabase.getBackgroundById(GameManager.state.activeBackgroundId)
+
     Box(
         modifier = Modifier
             .offset(aquarium.offsetX.dp, aquarium.offsetY.dp)
             .width(aquarium.width.dp)
             .height(aquarium.height.dp)
             .clip(RoundedCornerShape(28.dp))
-            /*.clip(RoundedCornerShape(
-                topStart = 28.dp,
-                topEnd = 28.dp
-            ))*/
-            .background(Color(0xFF0A2A43))
+            .background(bg.tankFrameColor)
     ) {
         Box(
             modifier = Modifier
@@ -54,8 +53,8 @@ fun AquariumView(aquarium: AquariumModel) {
                 .background(
                     Brush.verticalGradient(
                         listOf(
-                            Color(0xFF3FA7D6),
-                            Color(0xFF1B6CA8)
+                            bg.waterColorTop,
+                            bg.waterColorBottom
                         )
                     )
                 )

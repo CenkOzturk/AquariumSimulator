@@ -62,11 +62,11 @@ object GameColors {
     )
 
     val SunDark = GameGradient(
-        top = Color(0xFFE08700),
-        light = Color(0xFFFB8C00),
-        base = Color(0xFFF57C00),
-        dark = Color(0xFFE65100),
-        border = Color(0xFFBF360C)
+        top = Color(0xFFFFF3E0),
+        light = Color(0xFFFFE0B2),
+        base = Color(0xFFFFB74D),
+        dark = Color(0xFFFB8C00),
+        border = Color(0xFFF57C00)
     )
 
     val Red = GameGradient(
@@ -139,6 +139,14 @@ object GameColors {
         base = Color(0xFFA3E635),
         dark = Color(0xFF65A30D),
         border = Color(0xFF4D7C0F)
+    )
+
+    val RainbowShell = GameGradient(
+        top = Color(0xFFFFF0F5),
+        light = Color(0xFFF48FB1),
+        base = Color(0xFF80DEEA),
+        dark = Color(0xFF00ACC1),
+        border = Color(0xFF00838F)
     )
 
     val OceanGradient = Brush.verticalGradient(

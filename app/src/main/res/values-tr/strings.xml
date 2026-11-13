@@ -243,4 +243,18 @@
     <string name="force_update_button">Şimdi Güncelle</string>
     <string name="google_sign_in">Google ile Giriş Yap</string>
     <string name="google_connected">Google Hesabı Bağlı</string>
+
+    <!-- Backgrounds -->
+    <string name="backgrounds_title">ARKAPLAN TEMALARI</string>
+    <string name="backgrounds_subtitle">Akvaryumun için en sevdiğin temayı seç!</string>
+    <string name="bg_selected">Seçili</string>
+    <string name="bg_1_name">Klasik Okyanus</string>
+    <string name="bg_2_name">Derin Turkuaz</string>
+    <string name="bg_3_name">Zümrüt Resif</string>
+    <string name="bg_4_name">Gece Mavisi</string>
+    <string name="bg_5_name">Mor Lagün</string>
+    <string name="bg_6_name">Mercan Gün Batımı</string>
+    <string name="bg_7_name">Kristal Pembe</string>
+    <string name="bg_8_name">Akuamarin</string>
+    <string name="bg_9_name">Derin Mavi</string>
 </resources>

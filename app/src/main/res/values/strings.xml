@@ -243,4 +243,18 @@
     <string name="force_update_button">Update Now</string>
     <string name="google_sign_in">Sign in with Google</string>
     <string name="google_connected">Google Account Connected</string>
+
+    <!-- Backgrounds -->
+    <string name="backgrounds_title">BACKGROUND THEMES</string>
+    <string name="backgrounds_subtitle">Choose your favorite aquarium theme!</string>
+    <string name="bg_selected">Selected</string>
+    <string name="bg_1_name">Classic Ocean</string>
+    <string name="bg_2_name">Deep Cyan</string>
+    <string name="bg_3_name">Emerald Reef</string>
+    <string name="bg_4_name">Midnight Blue</string>
+    <string name="bg_5_name">Purple Lagoon</string>
+    <string name="bg_6_name">Coral Sunset</string>
+    <string name="bg_7_name">Pink Crystal</string>
+    <string name="bg_8_name">Aqua Marine</string>
+    <string name="bg_9_name">Abyssal Deep</string>
 </resources>
