@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.datastore.preferences.core.edit
 import com.kukurodev.mykukuroaquarium.data.PrefKeys
 import com.kukurodev.mykukuroaquarium.data.dataStore
-import com.kukurodev.mykukuroaquarium.model.aquarium.AquariumType
+import com.kukurodev.mykukuroaquarium.data.GameDefaults
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
 import com.kukurodev.mykukuroaquarium.model.task.DailyTaskModel
 import com.kukurodev.mykukuroaquarium.model.tutorial.TutorialStep
@@ -18,13 +18,13 @@ import com.kukurodev.mykukuroaquarium.utils.Utils.toJson
 import kotlinx.coroutines.flow.first
 
 data class GameState(
-    val aquariumType: String = AquariumType.SMALL.name,
+    val aquariumType: String = GameDefaults.STARTING_AQUARIUM,
     val ownedFishIds: Set<Int> = emptySet(),
     val ownedItemIds: Set<Int> = emptySet(),
     val activeFishes: Set<Int> = emptySet(),
-    val coins: Int = 25,
-    val foodCount: Int = 10,
-    val cleanerCount: Int = 10,
+    val coins: Int = GameDefaults.STARTING_COINS,
+    val foodCount: Int = GameDefaults.STARTING_FOOD,
+    val cleanerCount: Int = GameDefaults.CLEANER_COUNT,
     val dirtParticleCount: Int = 0,
     val selectedShopTab: ShopTab = ShopTab.FISH,
     val dailyTask: DailyTaskModel? = null,
@@ -58,13 +58,13 @@ suspend fun loadGameState(context: Context): GameState {
     }
 
     return GameState(
-        aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
+        aquariumType = prefs[PrefKeys.AQUARIUM] ?: GameDefaults.STARTING_AQUARIUM,
         ownedFishIds = prefs[PrefKeys.FISH]?.map { it.toInt() }?.toSet() ?: emptySet(),
         ownedItemIds = prefs[PrefKeys.ITEMS]?.map { it.toInt() }?.toSet() ?: emptySet(),
         activeFishes = prefs[PrefKeys.ACTIVE_FISHES]?.map { it.toInt() }?.toSet() ?: emptySet(),
-        coins = prefs[PrefKeys.COINS] ?: 25,
-        foodCount = prefs[PrefKeys.FOOD_COUNT] ?: 10,
-        cleanerCount = prefs[PrefKeys.CLEANER_COUNT] ?: 10,
+        coins = prefs[PrefKeys.COINS] ?: GameDefaults.STARTING_COINS,
+        foodCount = prefs[PrefKeys.FOOD_COUNT] ?: GameDefaults.STARTING_FOOD,
+        cleanerCount = prefs[PrefKeys.CLEANER_COUNT] ?: GameDefaults.CLEANER_COUNT,
         dirtParticleCount = prefs[PrefKeys.DIRT_PARTICLE_COUNT] ?: 0,
         dailyTask = prefs[PrefKeys.DAILY_TASK]?.fromJson<DailyTaskModel>(),
         welcomeGiftDay = prefs[PrefKeys.WELCOME_GIFT_DAY] ?: 0,

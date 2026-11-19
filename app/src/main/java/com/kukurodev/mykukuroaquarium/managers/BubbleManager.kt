@@ -32,6 +32,8 @@ object BubbleManager {
             )
         }
 
+        if (bubbles.isEmpty()) return
+
         // 🫧 hareket + yukarı çıkınca sil
         val newList = bubbles.mapNotNull { b ->
             val newY = b.y - b.speed

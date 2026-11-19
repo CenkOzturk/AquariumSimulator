@@ -8,6 +8,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.kukurodev.mykukuroaquarium.data.GameDefaults
 import com.kukurodev.mykukuroaquarium.model.GameState
 import com.kukurodev.mykukuroaquarium.model.loadGameState
 import com.kukurodev.mykukuroaquarium.model.saveGameState
@@ -101,7 +102,7 @@ object CloudSyncManager {
 
                 if (remoteState != null) {
                     val shouldUseGoogleData = (remoteState.lastLoginTime != localState.lastLoginTime) &&
-                            (localState.coins == 25) &&
+                            (localState.coins == GameDefaults.STARTING_COINS) &&
                             (!localState.tutorialCompleted)
 
                     val useRemote = shouldUseGoogleData || (remoteState.lastLoginTime > localState.lastLoginTime)
@@ -165,7 +166,7 @@ object CloudSyncManager {
 
                 if (remoteState != null) {
                     val shouldUseGoogleData = (remoteState.lastLoginTime != keystoreBackup.lastLoginTime) &&
-                            (keystoreBackup.coins == 25) &&
+                            (keystoreBackup.coins == GameDefaults.STARTING_COINS) &&
                             (!keystoreBackup.tutorialCompleted)
 
                     Log.d("GoogleSyncTest", "Rule check -> remoteLastLogin (${remoteState.lastLoginTime}) != localLastLogin (${keystoreBackup.lastLoginTime}) && coins == 25 && tutorialCompleted == false => shouldUseGoogleData: $shouldUseGoogleData")

@@ -3,14 +3,12 @@ package com.kukurodev.mykukuroaquarium.managers
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.kukurodev.mykukuroaquarium.data.GameDefaults
 import com.kukurodev.mykukuroaquarium.managers.FishManager.fishes
 import com.kukurodev.mykukuroaquarium.managers.ItemManager.items
 import com.kukurodev.mykukuroaquarium.model.GameState
 import com.kukurodev.mykukuroaquarium.model.fish.FishDatabase
 import com.kukurodev.mykukuroaquarium.model.item.ItemDatabase
 import com.kukurodev.mykukuroaquarium.model.shop.ShopTab
-import com.kukurodev.mykukuroaquarium.model.upgrade.UpgradeState
 
 object GameManager {
     var state by mutableStateOf(GameState())
@@ -22,8 +20,6 @@ object GameManager {
 
     fun initializeGameScreen() {
         AquariumManager.initialize(state.aquariumType)
-
-        FishLifeManager.checkAndProcessDeathOnLaunch()
 
         val initialFishes = FishDatabase.getFishByIds(state.activeFishes)
 
@@ -49,24 +45,12 @@ object GameManager {
     }
 
     fun resetGame() {
+        // Fresh state; sound settings and the tutorial step survive a reset.
         update {
-            it.copy(
-                aquariumType = GameDefaults.STARTING_AQUARIUM,
-                ownedFishIds = emptySet(),
-                ownedItemIds = emptySet(),
-                ownedUpgrades = UpgradeState(emptyList()),
-                activeFishes = emptySet(),
-                lastLoginTime = 0L,
-                coins = GameDefaults.STARTING_COINS,
-                foodCount = GameDefaults.STARTING_FOOD,
-                cleanerCount = GameDefaults.CLEANER_COUNT,
-                dirtParticleCount = 0,
-                dailyTask = null,
-                welcomeGiftDay = 0,
-                welcomeGiftClaimed = false,
-                tutorialCompleted = false,
-                goldFishUnlocked = false,
-                lastGoldFishTime = 0L
+            GameState(
+                musicEnable = it.musicEnable,
+                soundEffectEnable = it.soundEffectEnable,
+                tutorialStep = it.tutorialStep
             )
         }
         CloudSyncManager.deleteCloudSave()

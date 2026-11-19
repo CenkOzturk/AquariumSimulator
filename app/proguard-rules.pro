@@ -46,3 +46,6 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+
+# Strip android.util.Log calls from release builds.
+-assumenosideeffects class android.util.Log { *; }

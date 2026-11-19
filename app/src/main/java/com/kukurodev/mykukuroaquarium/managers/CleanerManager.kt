@@ -8,7 +8,7 @@ import com.kukurodev.mykukuroaquarium.utils.Utils
 object CleanerManager {
     fun buyCleaner(id: Int, price: Int) {
         val cleaner = CleanerDatabase.getCleaner(id) ?: return
-        CoinManager.hasEnoughCoin(price)
+        if (!CoinManager.hasEnoughCoin(price)) return
         GameManager.update {
             it.copy(
                 cleanerCount = it.cleanerCount + cleaner.cleanerCount

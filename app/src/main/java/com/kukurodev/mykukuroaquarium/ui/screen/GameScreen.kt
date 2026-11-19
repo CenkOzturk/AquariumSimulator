@@ -8,7 +8,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.kukurodev.mykukuroaquarium.managers.AquariumManager
@@ -35,12 +34,10 @@ import com.kukurodev.mykukuroaquarium.ui.component.GameAlertBanner
 import com.kukurodev.mykukuroaquarium.ui.component.GameHud
 import com.kukurodev.mykukuroaquarium.ui.popup.PopupContainer
 import com.kukurodev.mykukuroaquarium.ui.tutorial.TutorialOverlay
-import com.kukurodev.mykukuroaquarium.utils.Utils
 import kotlinx.coroutines.delay
 
 @Composable
 fun GameScreen() {
-    val context = LocalContext.current
     val screenWidth = LocalConfiguration.current.screenWidthDp.toFloat()
     val screenHeight = LocalConfiguration.current.screenHeightDp.toFloat()
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -49,7 +46,6 @@ fun GameScreen() {
     LaunchedEffect(Unit) {
         val fishDied = FishLifeManager.checkAndProcessDeathOnLaunch()
         initializeGameScreen()
-        Utils.init(context)
         TutorialManager.initialize()
         WelcomeGiftManager.refreshIfNeeded()
         DailyTaskManager.refreshIfNeeded(GameProgress().calculateTier())

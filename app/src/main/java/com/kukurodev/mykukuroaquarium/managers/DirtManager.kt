@@ -32,6 +32,9 @@ object DirtManager {
             if (GameManager.state.ownedItemIds.count() == 0) aquarium.height - 8f
             else aquarium.height - 32f
 
+        // All particles settled: skip the write so DirtView doesn't recompose every frame.
+        if (particles.all { it.y >= targetY }) return
+
         particles.replaceAll { particle ->
             if (particle.y >= targetY) {
                 particle
