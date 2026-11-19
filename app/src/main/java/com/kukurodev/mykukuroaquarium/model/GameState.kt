@@ -39,11 +39,23 @@ data class GameState(
     val ownedUpgrades: UpgradeState =
         UpgradeDatabase.getAllUpgrades().map { it.toUpgradeStateModel() }.toUpgradeState(),
     val musicEnable: Boolean = true,
-    val soundEffectEnable: Boolean = true
+    val soundEffectEnable: Boolean = true,
+    val fishLastFedTimes: Map<Int, Long> = emptyMap()
 )
 
 suspend fun loadGameState(context: Context): GameState {
     val prefs = context.dataStore.data.first()
+
+    val rawMap = prefs[PrefKeys.FISH_LAST_FED_TIMES]
+    val fishLastFedTimes: Map<Int, Long> = try {
+        if (!rawMap.isNullOrEmpty()) {
+            rawMap.fromJson<Map<Int, Long>>()
+        } else {
+            emptyMap()
+        }
+    } catch (e: Exception) {
+        emptyMap()
+    }
 
     return GameState(
         aquariumType = prefs[PrefKeys.AQUARIUM] ?: AquariumType.SMALL.name,
@@ -66,6 +78,7 @@ suspend fun loadGameState(context: Context): GameState {
         ownedUpgrades = prefs[PrefKeys.UPGRADES]?.fromJson<UpgradeState>() ?: UpgradeState(emptyList()),
         musicEnable = prefs[PrefKeys.MUSIC_ENABLE] ?: true,
         soundEffectEnable = prefs[PrefKeys.SOUND_EFFECT_ENABLE] ?: true,
+        fishLastFedTimes = fishLastFedTimes
     )
 }
 
@@ -94,5 +107,6 @@ suspend fun saveGameState(
         prefs[PrefKeys.UPGRADES] = state.ownedUpgrades.toJson()
         prefs[PrefKeys.MUSIC_ENABLE] = state.musicEnable
         prefs[PrefKeys.SOUND_EFFECT_ENABLE] = state.soundEffectEnable
+        prefs[PrefKeys.FISH_LAST_FED_TIMES] = state.fishLastFedTimes.toJson()
     }
 }

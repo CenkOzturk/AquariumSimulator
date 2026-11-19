@@ -10,4 +10,7 @@ object Constants {
     const val WELCOME_GIFT_DAYS = 7
     const val GOLD_FISH_SPAWN_INTERVAL = 3 * 60 * 1000L
     const val GOLD_FISH_REWARD = 200
+    const val DAY_3_WARNING_MS = 2 * 60 * 1000L
+    const val DAY_4_WARNING_MS = 2 * 60 * 1000L
+    const val DEATH_GRACE_PERIOD_MS = 2 * 60 * 1000L
 }

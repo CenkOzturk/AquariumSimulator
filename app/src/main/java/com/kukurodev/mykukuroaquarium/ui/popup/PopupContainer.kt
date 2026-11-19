@@ -1,13 +1,34 @@
 package com.kukurodev.mykukuroaquarium.ui.popup
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.kukurodev.mykukuroaquarium.R
 import com.kukurodev.mykukuroaquarium.data.Constants.WELCOME_GIFT_DAYS
 import com.kukurodev.mykukuroaquarium.managers.AquariumManager
 import com.kukurodev.mykukuroaquarium.managers.CleanerManager
 import com.kukurodev.mykukuroaquarium.managers.DailyTaskManager
 import com.kukurodev.mykukuroaquarium.managers.FishFoodManager
+import com.kukurodev.mykukuroaquarium.managers.FishLifeManager
 import com.kukurodev.mykukuroaquarium.managers.FishManager
 import com.kukurodev.mykukuroaquarium.managers.GameManager
 import com.kukurodev.mykukuroaquarium.managers.ItemManager
@@ -17,6 +38,7 @@ import com.kukurodev.mykukuroaquarium.managers.WelcomeGiftManager
 import com.kukurodev.mykukuroaquarium.model.GameProgress
 import com.kukurodev.mykukuroaquarium.model.GameUiState
 import com.kukurodev.mykukuroaquarium.model.calculateTier
+import com.kukurodev.mykukuroaquarium.model.component.GameColors
 import com.kukurodev.mykukuroaquarium.model.item.CleanerDatabase.isCleaner
 import com.kukurodev.mykukuroaquarium.model.item.FishFoodItemDatabase.isFood
 import com.kukurodev.mykukuroaquarium.ui.popup.inventory.InventoryPopUp
@@ -135,5 +157,58 @@ fun PopupContainer(uiState: GameUiState) {
                 uiState.closeInventory()
             }
         )
+    }
+
+    if (uiState.showFishDeathPopup) {
+        val deadFishes = FishLifeManager.deadFishes
+
+        GamePopup(
+            title = stringResource(R.string.fish_death_title),
+            subtitle = stringResource(R.string.fish_death_subtitle),
+            gradient = GameColors.Red,
+            buttonText = stringResource(R.string.ok),
+            buttonEnabled = true,
+            onButtonClick = {
+                FishLifeManager.acknowledgeDeathNotice()
+                uiState.closeFishDeathPopup()
+            },
+            onClose = {
+                FishLifeManager.acknowledgeDeathNotice()
+                uiState.closeFishDeathPopup()
+            }
+        ) {
+            if (deadFishes.isNotEmpty()) {
+                Spacer(Modifier.height(8.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    deadFishes.take(4).forEach { fish ->
+                        Box(
+                            modifier = Modifier
+                                .padding(horizontal = 6.dp)
+                                .size(56.dp)
+                                .clip(CircleShape)
+                                .background(Color.White.copy(alpha = 0.85f))
+                                .border(2.dp, GameColors.Red.border, CircleShape),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Image(
+                                painter = painterResource(fish.resId),
+                                contentDescription = null,
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier
+                                    .size(42.dp)
+                                    .alpha(0.85f)
+                            )
+                        }
+                    }
+                }
+            }
+
+            Spacer(Modifier.height(8.dp))
+        }
     }
 }
